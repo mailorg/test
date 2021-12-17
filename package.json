@@ -1,0 +1,19 @@
+{
+  "name": "@mailo/utilities",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "description": "",
+  "exports": {
+    "./*": "./src/*"
+  },
+  "scripts": {
+    "init": "npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mailo",
+  "license": "MIT",
+  "dependencies": {
+    "@mailo/front": "../front"
+  }
+}
