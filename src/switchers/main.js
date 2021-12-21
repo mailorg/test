@@ -5,7 +5,7 @@ export const main = async (
   target
 ) => {
   const { ownerDocument } = target
-  const current = one('main', ownerDocument)
+  const current = one('#div_IN_MAIN', ownerDocument)
 
   if (current !== target) {
     replace(current, target)
