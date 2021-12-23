@@ -1,7 +1,7 @@
-import { one } from '@mailo/front/selectors/one.js'
-import { replace } from '@mailo/front/tree/replace.js'
+import one from '@mailo/front/selectors/one.js'
+import replace from '@mailo/front/tree/replace.js'
 
-export const title = async (
+export default async (
   target
 ) => {
   const { ownerDocument } = target

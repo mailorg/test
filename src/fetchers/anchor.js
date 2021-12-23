@@ -1,6 +1,6 @@
-import { onClickPrevented } from '@mailo/front/events/listeners/onClickPrevented.js'
-import { page } from '@mailo/front/fetchers/page.js'
-import { object } from '@mailo/front/utils/object.js'
+import onClickPrevented from '@mailo/front/events/listeners/onClickPrevented.js'
+import page from '@mailo/front/fetchers/page.js'
+import object from '@mailo/front/utils/object.js'
 
 const fetcher = object(onClickPrevented, {
   async task (
@@ -17,7 +17,7 @@ const fetcher = object(onClickPrevented, {
   }
 })
 
-export const anchor = (
+export default (
   element
 ) => {
   fetcher.listen(element)

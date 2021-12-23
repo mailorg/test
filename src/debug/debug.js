@@ -1,1 +1,1 @@
-export { whoami } from './whoami.js'
+export { default as whoami } from './whoami.js'

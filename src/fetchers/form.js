@@ -1,6 +1,6 @@
-import { onSubmitPrevented } from '@mailo/front/events/listeners/onSubmitPrevented.js'
-import { page } from '@mailo/front/fetchers/page.js'
-import { object } from '@mailo/front/utils/object.js'
+import onSubmitPrevented from '@mailo/front/events/listeners/onSubmitPrevented.js'
+import page from '@mailo/front/fetchers/page.js'
+import object from '@mailo/front/utils/object.js'
 
 const empties = ['get', 'head']
 
@@ -28,7 +28,7 @@ const fetcher = object(onSubmitPrevented, {
   }
 })
 
-export const form = (
+export default (
   element
 ) => {
   fetcher.listen(element)

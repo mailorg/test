@@ -1,3 +1,3 @@
-export { main } from './main.js'
-export { meta } from './meta.js'
-export { title } from './title.js'
+export { default as main } from './main.js'
+export { default as meta } from './meta.js'
+export { default as title } from './title.js'

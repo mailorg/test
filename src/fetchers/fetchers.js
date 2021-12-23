@@ -1,2 +1,2 @@
-export { anchor } from './anchor.js'
-export { form } from './form.js'
+export { default as anchor } from './anchor.js'
+export { default as form } from './form.js'
