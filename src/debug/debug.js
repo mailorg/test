@@ -1,1 +1,1 @@
-export { default as whoami } from './whoami.js'
+export { default as locator } from './locator.js'
