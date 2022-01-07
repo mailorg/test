@@ -1,10 +1,12 @@
-import onSubmitPrevented from '@mailo/front/events/listeners/onSubmitPrevented.js'
 import page from '@mailo/front/fetchers/page.js'
+import prevented from '@mailo/front/events/listeners/prevented.js'
+import submit from '@mailo/front/events/types/submit.js'
 import object from '@mailo/front/utils/object.js'
 
 const empties = ['get', 'head']
 
-const fetcher = object(onSubmitPrevented, {
+const fetcher = object(prevented, {
+  type: submit,
   async task (
     target
   ) {
