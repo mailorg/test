@@ -1,7 +1,7 @@
-import page from '@mailo/front/fetchers/page.js'
-import prevented from '@mailo/front/events/listeners/prevented.js'
-import submit from '@mailo/front/events/types/submit.js'
-import object from '@mailo/front/utils/object.js'
+import page from '@mailobj-js/front/fetchers/page.js'
+import prevented from '@mailobj-js/front/events/listeners/prevented.js'
+import submit from '@mailobj-js/front/events/types/submit.js'
+import object from '@mailobj-js/front/utils/object.js'
 
 const empties = ['get', 'head']
 

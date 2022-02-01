@@ -1,7 +1,7 @@
-import page from '@mailo/front/fetchers/page.js'
-import prevented from '@mailo/front/events/listeners/prevented.js'
-import click from '@mailo/front/events/types/click.js'
-import object from '@mailo/front/utils/object.js'
+import page from '@mailobj-js/front/fetchers/page.js'
+import prevented from '@mailobj-js/front/events/listeners/prevented.js'
+import click from '@mailobj-js/front/events/types/click.js'
+import object from '@mailobj-js/front/utils/object.js'
 
 const fetcher = object(prevented, {
   type: click,

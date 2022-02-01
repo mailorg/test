@@ -1,5 +1,5 @@
 {
-  "name": "@mailo/utilities",
+  "name": "@mailobj-js/utilities",
   "version": "1.0.0",
   "type": "module",
   "private": true,
@@ -14,7 +14,9 @@
   "author": "Mailo",
   "license": "MIT",
   "dependencies": {
-    "@mailo/front": "../front",
-    "ace-builds": "^1.4.13"
+    "@babel/runtime": "^7.16.7",
+    "@mailobj-js/front": "../front",
+    "ace-builds": "^1.4.13",
+    "codemirror": "^5.65.1"
   }
 }

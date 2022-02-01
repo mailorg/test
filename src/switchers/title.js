@@ -1,5 +1,5 @@
-import one from '@mailo/front/selectors/one.js'
-import replace from '@mailo/front/tree/replace.js'
+import one from '@mailobj-js/front/selectors/one.js'
+import replace from '@mailobj-js/front/tree/replace.js'
 
 export default async (
   target
