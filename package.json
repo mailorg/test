@@ -9,7 +9,8 @@
   },
   "scripts": {
     "init": "npm install",
-    "push": "node ../assets/cli/push/push.js --",
+    "build": "cd ../assets && npm run build",
+    "push": "cd ../assets && npm run push --",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mailo",
