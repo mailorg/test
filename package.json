@@ -10,8 +10,8 @@
   "scripts": {
     "init": "npm install",
     "build": "cd ../assets && npm run build",
-    "push": "cd ../assets && npm run push --",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "push": "cd ../assets && npm run push ../front --",
+    "test": "cd ../assets && npm run test ../front --"
   },
   "author": "Mailo",
   "license": "MIT",
