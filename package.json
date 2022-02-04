@@ -10,8 +10,8 @@
   "scripts": {
     "init": "npm install",
     "build": "cd ../assets && npm run build",
-    "push": "cd ../assets && npm run push ../front --",
-    "test": "cd ../assets && npm run test ../front --"
+    "push": "cd ../assets && npm run push ../utilities --",
+    "test": "cd ../assets && npm run test ../utilities --"
   },
   "author": "Mailo",
   "license": "MIT",
