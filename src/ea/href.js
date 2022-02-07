@@ -1,6 +1,10 @@
-const { document, location } = globalThis
-const service = document.querySelector('meta[name="ea_service"]').content
-const s = document.querySelector('meta[name="ea_s"]').content
+import defaults from '@mailobj-js/front/selectors/defaults.js'
+import one from '@mailobj-js/front/selectors/one.js'
+
+const { document } = defaults
+const { location } = document
+const service = one('meta[name="ea_service"]').content
+const s = one('meta[name="ea_s"]').content
 
 export default (
   path,
