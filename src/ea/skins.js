@@ -1,0 +1,8 @@
+export default 'default'
+export const app = 'app'
+export const junior = 'junior'
+export const kid = 'kid'
+export const senior = 'senior'
+export const smartphone = 'smartphone'
+export const tablet = 'tablet'
+export const web2 = 'web2'
