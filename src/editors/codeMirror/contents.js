@@ -5,16 +5,22 @@ import config from './config.js'
 
 const { window } = defaults
 
+const entries = [
+  ['language-js', 'javascript']
+]
+
 const task = contents => {
   const { CodeMirror } = window
 
   if (CodeMirror) {
-    const { textContent } = contents
+    const { className, textContent } = contents
     const init = node => replaceWith(contents, node)
+    const [, mode] = entries.find(([name]) => name === className) ?? []
 
     CodeMirror(init, {
       ...config,
-      readonly: true,
+      mode,
+      readOnly: true,
       value: textContent
     })
 
@@ -23,7 +29,7 @@ const task = contents => {
 }
 
 export default (
-  code
+  contents
 ) => {
-  defer(code, task)
+  defer(contents, task)
 }
