@@ -14,6 +14,7 @@ const task = contents => {
 
     CodeMirror(init, {
       ...config,
+      readonly: true,
       value: textContent
     })
 
