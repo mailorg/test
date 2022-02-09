@@ -5,12 +5,12 @@ import config from './config.js'
 
 const { window } = defaults
 
-const task = pre => {
+const task = contents => {
   const { CodeMirror } = window
 
   if (CodeMirror) {
-    const { textContent } = pre
-    const init = node => replaceWith(pre, node)
+    const { textContent } = contents
+    const init = node => replaceWith(contents, node)
 
     CodeMirror(init, {
       ...config,

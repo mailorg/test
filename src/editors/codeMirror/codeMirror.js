@@ -1,2 +1,2 @@
-export { default as pre } from './pre.js'
+export { default as contents } from './contents.js'
 export { default as textarea } from './textarea.js'
