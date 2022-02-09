@@ -6,7 +6,9 @@ const { window } = defaults
 export default (
   textarea
 ) => {
-  const { CodeMirror } = window
+  requestAnimationFrame(() => {
+    const { CodeMirror } = window
 
-  CodeMirror.fromTextArea(textarea, config)
+    CodeMirror.fromTextArea(textarea, config)
+  })
 }
