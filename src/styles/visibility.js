@@ -1,6 +1,6 @@
 import object from '@mailobj-js/front/utils/object.js'
 
-const classes = object(null, {
+export const classes = object(null, {
   hidden: 'ea_utilities__visibility-hidden'
 })
 
