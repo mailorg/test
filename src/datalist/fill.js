@@ -15,5 +15,5 @@ export default (
     options.push(option)
   }
 
-  replaceChildren(target, options)
+  replaceChildren(target, ...options)
 }
