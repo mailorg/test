@@ -10,7 +10,8 @@ export default (
 ) => {
   const service = one('meta[name="ea_service"]').content
   const s = one('meta[name="ea_s"]').content
-  const url = new URL(`/${service}/${path}.php`, location)
+  const { href } = one('base') ?? location
+  const url = new URL(`/${service}/${path}.php`, href)
 
   url.search = `${new URLSearchParams(Object.entries({ ...params, s }))}`
 
