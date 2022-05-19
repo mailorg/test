@@ -1,7 +1,7 @@
-import defaults from '@mailobj-js/front/selectors/defaults.js'
-import one from '@mailobj-js/front/selectors/one.js'
-import defer from '@mailobj-js/front/tree/defer.js'
-import replaceWith from '@mailobj-js/front/tree/replaceWith.js'
+import defaults from '@mailobj-js/front/js/selectors/defaults.js'
+import one from '@mailobj-js/front/js/selectors/one.js'
+import defer from '@mailobj-js/front/js/tree/defer.js'
+import replaceWith from '@mailobj-js/front/js/tree/replaceWith.js'
 import config from './config.js'
 
 const { window } = defaults
