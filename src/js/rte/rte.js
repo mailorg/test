@@ -39,7 +39,7 @@ const selection = (
 ) => {
   const selection = document.getSelection()
   const { commonAncestorContainer } = selection.getRangeAt(0)
-  const rte = matchingOrClosest(selector, commonAncestorContainer)
+  const rte = one(selector, document)
   const contents = []
   
   if (rte) {
