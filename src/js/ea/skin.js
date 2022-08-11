@@ -1,3 +1,3 @@
-import one from '@mailobj-js/front/js/selectors/one.js'
+import defaults from '@mailobj-js/front/js/selectors/defaults.js'
 
-export default one('meta[name="ea_skin"]')?.content
+export default defaults.root.getAttribute('data-skin')

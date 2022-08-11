@@ -1,0 +1,26 @@
+import listener from '@mailobj-js/front/js/events/listeners/listener.js'
+import preventDefault from '@mailobj-js/front/js/events/hooks/preventDefault.js'
+import click from '@mailobj-js/front/js/events/types/click.js'
+import object from '@mailobj-js/front/js/utils/object.js'
+import globals from '@mailobj-js/utilities/js/ea/globals.js'
+import matchingOrClosest from '@mailobj-js/front/js/selectors/matchingOrClosest.js'
+import rte from '../rte.js'
+
+const onClick = object(listener, {
+  type: click,
+  hooks: [preventDefault],
+  task () {
+    globals.ea_rte_command('id_msg_text', 'bold', '')
+  }
+})
+
+export const test = (
+  text
+) => {
+  return matchingOrClosest('b', text)
+}
+
+export default button => {
+  onClick.listen(button)
+  rte(button, object(null, { test }))
+}
