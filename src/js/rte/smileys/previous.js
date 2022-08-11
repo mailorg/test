@@ -1,10 +1,10 @@
 import all from '@mailobj-js/front/js/selectors/all.js'
 import click from '@mailobj-js/front/js/events/types/click.js'
-import functions from '@mailobj-js/utilities/js/ea/functions.js'
 import listener from '@mailobj-js/front/js/events/listeners/listener.js'
 import object from '@mailobj-js/front/js/utils/object.js'
 import one from '@mailobj-js/front/js/selectors/one.js'
 import preventDefault from '@mailobj-js/front/js/events/hooks/preventDefault.js'
+import functions from '../../ea/functions.js'
 import rte from '../rte.js'
 
 const onClick = object(listener, {
