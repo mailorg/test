@@ -90,7 +90,6 @@ export default (
   { test }
 ) => {
   const form = button.closest('form')
-  console.log({ button, form })
   const { contentWindow } = one('iframe', form)
   const { document } = contentWindow
   const rte = one(selector, document)

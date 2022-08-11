@@ -26,11 +26,6 @@ const onClick = object(listener, {
   }
 })
 
-export const test = () => {
-	return false
-}
-
 export default button => {
 	onClick.listen(button)
-	rte(button, object(null, { test }))
 }
