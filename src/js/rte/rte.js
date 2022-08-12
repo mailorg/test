@@ -73,14 +73,12 @@ const onSelectionChange = object(listener, {
   ) {
     const [rte, texts] = selection(document)
     
-    console.log({ rte, texts })
-    
     for (const [button, { test }] of tasks.get(rte)) {
+      button.classList.remove(modifier)
+      
       for (const text of texts) {
         if (test(text)) {
           button.classList.add(modifier)
-        } else {
-          button.classList.remove(modifier)
         }
       }
     }
