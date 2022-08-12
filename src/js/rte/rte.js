@@ -73,6 +73,8 @@ const onSelectionChange = object(listener, {
   ) {
     const [rte, texts] = selection(document)
     
+    console.log({ rte, texts })
+    
     for (const [button, { test }] of tasks.get(rte)) {
       for (const text of texts) {
         if (test(text)) {
