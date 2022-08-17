@@ -1,9 +1,9 @@
-import matchingOrClosest from '@mailobj-js/front/js/selectors/matchingOrClosest.js'
-import object from '@mailobj-js/front/js/utils/object.js'
-import listener from '@mailobj-js/front/js/events/listeners/listener.js'
-import passive from '@mailobj-js/front/js/events/options/passive.js'
-import one from '@mailobj-js/front/js/selectors/one.js'
-import selectionChange from '@mailobj-js/front/js/events/types/selectionChange.js'
+import matchingOrClosest from '@mailobj-browser/front/js/selectors/matchingOrClosest.js'
+import object from '@mailobj-browser/front/js/utils/object.js'
+import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
+import passive from '@mailobj-browser/front/js/events/options/passive.js'
+import one from '@mailobj-browser/front/js/selectors/one.js'
+import selectionChange from '@mailobj-browser/front/js/events/types/selectionChange.js'
 
 const tasks = new WeakMap()
 

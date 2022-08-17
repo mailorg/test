@@ -1,5 +1,5 @@
-import defaults from '@mailobj-js/front/js/selectors/defaults.js'
-import one from '@mailobj-js/front/js/selectors/one.js'
+import defaults from '@mailobj-browser/front/js/selectors/defaults.js'
+import one from '@mailobj-browser/front/js/selectors/one.js'
 
 const { document } = defaults
 const { location } = document

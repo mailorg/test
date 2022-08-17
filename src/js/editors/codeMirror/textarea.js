@@ -1,5 +1,5 @@
-import defaults from '@mailobj-js/front/js/selectors/defaults.js'
-import defer from '@mailobj-js/front/js/tree/defer.js'
+import defaults from '@mailobj-browser/front/js/selectors/defaults.js'
+import defer from '@mailobj-browser/front/js/tree/defer.js'
 import config from './config.js'
 
 const { window } = defaults
