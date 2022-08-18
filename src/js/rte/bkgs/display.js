@@ -4,7 +4,7 @@ import object from '@mailobj-browser/front/js/utils/object.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import matchingOrClosest from '@mailobj-browser/front/js/selectors/matchingOrClosest.js'
-import functions from '../../ea/functions.js'
+import globals from '../../ea/globals.js'
 import rte from '../rte.js'
 
 const onClick = object(listener, {
@@ -17,7 +17,7 @@ const onClick = object(listener, {
     const list = one('#rte_opt_bkg')
 
     if (rte && list) {
-	  functions.ea_rte_context_menu(display, null, rte.id, 'bkg', 'rte_opt_bkg', null)
+      globals.ea_rte_context_menu(display, null, rte.id, 'bkg', 'rte_opt_bkg', null)
     }
   }
 })

@@ -5,7 +5,7 @@ import object from '@mailobj-browser/front/js/utils/object.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import { get, set } from '../../contextMenu/contextMenu.js'
-import functions from '../../ea/functions.js'
+import globals from '../../ea/globals.js'
 import rte from '../rte.js'
 
 const onClick = object(listener, {
@@ -18,7 +18,7 @@ const onClick = object(listener, {
     const list = one('#rte_opt_special')
 
     if (rte && list) {
-      functions.ea_rte_context_menu(display, null, rte.id, 'special', 'rte_opt_special', null)
+      globals.ea_rte_context_menu(display, null, rte.id, 'special', 'rte_opt_special', null)
     }
 
     const contextMenu = one('#div_contextmenu')
@@ -45,9 +45,9 @@ const insert = object(listener, {
     const src = target.innerHTML;
     const contextMenu = element.closest('#div_contextmenu')
     const { rte } = get(contextMenu)
-
-    functions.ea_rte_exec_insert(rte.id, src)
-    functions.ea_context_menu_close()
+  
+    globals.ea_rte_exec_insert(rte.id, src)
+    globals.ea_context_menu_close()
   }
 })
 

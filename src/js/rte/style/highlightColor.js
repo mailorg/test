@@ -5,7 +5,7 @@ import object from '@mailobj-browser/front/js/utils/object.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import href from '@mailobj-browser/utilities/js/ea/href.js'
 import matchingOrClosest from '@mailobj-browser/front/js/selectors/matchingOrClosest.js'
-import functions from '../../ea/functions.js'
+import globals from '../../ea/globals.js'
 import rte from '../rte.js'
 
 const onClick = object(listener, {
@@ -23,11 +23,11 @@ const onClick = object(listener, {
 	    'table': '12x19',
 	    'preview': 1,
 	    'cancel': 1,
-	    'color': functions.ea_rte_hilitecolor
+	    'color': globals.ea_rte_hilitecolor
 	  });
-
-	  functions.ea_rte_update_editor(functions.ea_rte_current);
-   	  functions.ea_rte_context_menu(highlightColor, null, rte.id, 'hilitecolor', 'rte_opt_cp', url);
+		
+		globals.ea_rte_update_editor(globals.ea_rte_current);
+		globals.ea_rte_context_menu(highlightColor, null, rte.id, 'hilitecolor', 'rte_opt_cp', url);
 	}
 
   }

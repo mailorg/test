@@ -4,7 +4,7 @@ import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
-import functions from '../../ea/functions.js'
+import globals from '../../ea/globals.js'
 import rte from '../rte.js'
 
 const onClick = object(listener, {
@@ -19,9 +19,9 @@ const onClick = object(listener, {
 	  const currentPage = one('.cl_rte_smiley_table:not(.cl_display_none)', contextMenu)
 	  const current = pages.indexOf(currentPage)
 	  const previous = ((current === 0) ? pages.length : current) - 1
-
-	  functions.ea_display(currentPage, false)
-	  functions.ea_display(pages[previous], true)
+		
+		globals.ea_display(currentPage, false)
+		globals.ea_display(pages[previous], true)
 	}
   }
 })

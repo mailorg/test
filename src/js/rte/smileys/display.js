@@ -7,7 +7,7 @@ import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefaul
 import { get, set } from '../../contextMenu/contextMenu.js'
 import previous from './previous.js'
 import next from './next.js'
-import functions from '../../ea/functions.js'
+import globals from '../../ea/globals.js'
 import rte from '../rte.js'
 
 const onClick = object(listener, {
@@ -23,11 +23,11 @@ const onClick = object(listener, {
       const pages = all('.cl_rte_smiley_table', list)
 
       for (const page of pages) {
-        functions.ea_display(page, false)
+        globals.ea_display(page, false)
       }
-
-      functions.ea_display(pages[0], true)
-      functions.ea_rte_context_menu(display, null, rte.id, 'smiley', 'rte_opt_smiley', null)
+  
+      globals.ea_display(pages[0], true)
+      globals.ea_rte_context_menu(display, null, rte.id, 'smiley', 'rte_opt_smiley', null)
     }
 
     const contextMenu = one('#div_contextmenu')
@@ -59,9 +59,9 @@ const insert = object(listener, {
     const { src } = one('img', target) ?? target
     const contextMenu = element.closest('#div_contextmenu')
     const { rte } = get(contextMenu)
-
-    functions.ea_rte_exec_insert_link(rte.id, src, 'image')
-    functions.ea_context_menu_close()
+  
+    globals.ea_rte_exec_insert_link(rte.id, src, 'image')
+    globals.ea_context_menu_close()
   }
 })
 

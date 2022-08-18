@@ -3,7 +3,7 @@ import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefaul
 import click from '@mailobj-browser/front/js/events/types/click.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import matchingOrClosest from '@mailobj-browser/front/js/selectors/matchingOrClosest.js'
-import functions from '../../ea/functions.js'
+import globals from '../../ea/globals.js'
 import rte from '../rte.js'
 
 const onClick = object(listener, {
@@ -13,8 +13,8 @@ const onClick = object(listener, {
     strikethrough,
     event
   ) {
-
-    functions.ea_rte_command('id_msg_text', 'strikethrough', '')
+  
+    globals.ea_rte_command('id_msg_text', 'strikethrough', '')
 
   }
 })
