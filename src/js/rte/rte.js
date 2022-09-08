@@ -72,7 +72,6 @@ const onLoad = object(listener, {
   task (
     iframe
   ) {
-    console.log(this.type, { iframe })
     const { button, test } = params.get(iframe)
     const { contentWindow } = iframe
     const { document } = contentWindow
