@@ -1,10 +1,11 @@
-import matchingOrClosest from '@mailobj-browser/front/js/selectors/matchingOrClosest.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import selectionChange from '@mailobj-browser/front/js/events/types/selectionChange.js'
+import load from '@mailobj-browser/front/js/events/types/load.js'
 
+const params = new WeakMap()
 const tasks = new WeakMap()
 
 const expression = 'descendant-or-self::*/text()'
@@ -65,6 +66,27 @@ const selection = (
   ]
 }
 
+const onLoad = object(listener, {
+  type: load,
+  passive,
+  task (
+    iframe
+  ) {
+    const { button, test } = params.get(iframe)
+    const { contentWindow } = iframe
+    const { document } = contentWindow
+    const rte = one(selector, document)
+  
+    if (!tasks.has(rte)) {
+      tasks.set(rte, new Map())
+    }
+  
+    params.delete(iframe)
+    tasks.get(rte).set(button, { test })
+    onSelectionChange.listen(document)
+  }
+})
+
 const onSelectionChange = object(listener, {
   type: selectionChange,
   passive,
@@ -90,14 +112,8 @@ export default (
   { test }
 ) => {
   const form = button.closest('form')
-  const { contentWindow } = one('iframe', form)
-  const { document } = contentWindow
-  const rte = one(selector, document)
+  const iframe = one('iframe', form)
   
-  if (!tasks.has(rte)) {
-    tasks.set(rte, new Map())
-  }
-  
-  tasks.get(rte).set(button, { test })
-  onSelectionChange.listen(document)
+  params.set(iframe, { button, test })
+  onLoad.listen(iframe)
 }
