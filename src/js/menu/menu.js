@@ -55,7 +55,7 @@ export const open = async (
 ) => {
   const { ownerDocument } = template
   const body = element(ownerDocument, 'body')
-  const { children: [menu] } = render(template, url)
+  const { children: [menu] } = await render(template, url)
   const { dataset } = menu
   
   close()
