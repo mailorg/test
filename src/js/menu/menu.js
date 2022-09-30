@@ -67,7 +67,7 @@ export const open = async (
   append(body, menu)
   await manager.trigger(body)
   append(container, menu)
-  onClickOut.listen(ownerDocument)
+  queueMicrotask(() => onClickOut.listen(ownerDocument))
   console.log('menu done')
   
   return menu
