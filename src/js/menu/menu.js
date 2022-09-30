@@ -9,11 +9,13 @@ import click from '@mailobj-browser/front/js/events/types/click.js'
 import once from '@mailobj-browser/front/js/events/options/once.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import text from '@mailobj-browser/front/js/fetchers/text.js'
+import defer from '@mailobj-browser/front/js/tree/defer.js'
 
 let current = null
 
 const onClickOut = object(listener, {
   type: click,
+  once,
   passive,
   task (
     document,
@@ -25,6 +27,14 @@ const onClickOut = object(listener, {
     }
   }
 })
+
+const listen = (
+  document
+) => {
+  onClickOut.listen(document)
+  
+  return true
+}
 
 const render = async (
   template,
@@ -60,13 +70,13 @@ export const open = async (
   const { dataset } = menu
   
   console.log({ menu })
-  queueMicrotask(() => onClickOut.listen(ownerDocument))
   close()
   current = menu
   Object.assign(dataset, { clientX, clientY })
   append(body, menu)
   await manager.trigger(body)
   append(container, menu)
+  defer(ownerDocument, listen)
   console.log('menu done')
   
   return menu
