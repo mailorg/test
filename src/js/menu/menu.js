@@ -21,6 +21,7 @@ const onClickOut = object(listener, {
     { target }
   ) {
     if (current !== target && !current.contains(target)) {
+      console.log({ onClickOut })
       close()
     }
   }
@@ -64,9 +65,9 @@ export const open = async (
   current = menu
   Object.assign(dataset, { clientX, clientY })
   append(body, menu)
-  //onClickOut.listen(ownerDocument)
   await manager.trigger(body)
   append(container, menu)
+  onClickOut.listen(ownerDocument)
   console.log('menu done')
   
   return menu
