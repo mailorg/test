@@ -14,7 +14,6 @@ let current = null
 
 const onClickOut = object(listener, {
   type: click,
-  once,
   passive,
   task (
     document,
@@ -61,13 +60,13 @@ export const open = async (
   const { dataset } = menu
   
   console.log({ menu })
+  queueMicrotask(() => onClickOut.listen(ownerDocument))
   close()
   current = menu
   Object.assign(dataset, { clientX, clientY })
   append(body, menu)
   await manager.trigger(body)
   append(container, menu)
-  queueMicrotask(() => onClickOut.listen(ownerDocument))
   console.log('menu done')
   
   return menu
