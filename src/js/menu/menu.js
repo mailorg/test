@@ -67,6 +67,7 @@ export const open = async (
   onClickOut.listen(ownerDocument)
   await manager.trigger(body)
   append(container, menu)
+  console.log('menu done')
   
   return menu
 }
