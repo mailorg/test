@@ -9,7 +9,6 @@ import click from '@mailobj-browser/front/js/events/types/click.js'
 import once from '@mailobj-browser/front/js/events/options/once.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import text from '@mailobj-browser/front/js/fetchers/text.js'
-import defer from '@mailobj-browser/front/js/tree/defer.js'
 
 let current = null
 
@@ -26,14 +25,6 @@ const onClickOut = object(listener, {
     }
   }
 })
-
-const listen = (
-  document
-) => {
-  onClickOut.listen(document)
-  
-  return true
-}
 
 const render = async (
   template,
@@ -73,7 +64,7 @@ export const open = async (
   append(body, menu)
   await manager.trigger(body)
   append(container, menu)
-  defer(ownerDocument, listen)
+  onClickOut.listen(ownerDocument)
   
   return menu
 }
