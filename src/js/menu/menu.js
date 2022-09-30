@@ -55,16 +55,17 @@ export const open = async (
 ) => {
   const { ownerDocument } = template
   const body = element(ownerDocument, 'body')
+  console.log({ container })
   const { children: [menu] } = await render(template, url)
   const { dataset } = menu
   
+  console.log({ menu })
   close()
   current = menu
   Object.assign(dataset, { clientX, clientY })
   append(body, menu)
   onClickOut.listen(ownerDocument)
   await manager.trigger(body)
-  console.log({ container, menu })
   append(container, menu)
   
   return menu
