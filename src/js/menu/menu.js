@@ -64,7 +64,7 @@ export const open = async (
   current = menu
   Object.assign(dataset, { clientX, clientY })
   append(body, menu)
-  onClickOut.listen(ownerDocument)
+  //onClickOut.listen(ownerDocument)
   await manager.trigger(body)
   append(container, menu)
   console.log('menu done')
