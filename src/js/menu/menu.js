@@ -36,9 +36,7 @@ const render = async (
   
   if (url) {
     const { fetched } = await text(object(null, {
-      request: new Request(`${url}`, {
-        credentials: true
-      })
+      request: new Request(`${url}`)
     }))
     
     template.innerHTML = fetched
