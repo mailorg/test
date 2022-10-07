@@ -9,6 +9,8 @@ import click from '@mailobj-browser/front/js/events/types/click.js'
 import once from '@mailobj-browser/front/js/events/options/once.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import text from '@mailobj-browser/front/js/fetchers/text.js'
+import {stopImmediatePropagation} from '@mailobj-browser/front/js/events/hooks/hooks.js'
+import one from '@mailobj-browser/front/js/selectors/one.js'
 
 let current = null
 
@@ -73,4 +75,37 @@ export const close = () => {
     onClickOut.forget(current)
     current = null
   }
+}
+
+const openers = new WeakMap()
+
+const onClick = object(listener, {
+  type: click,
+  passive,
+  hooks: [stopImmediatePropagation],
+  async task(
+    opener
+  ) {
+    const { nextElementSibling, ownerDocument } = opener
+    const aside = one(`body > .${generics.elements.fixed}`, ownerDocument)
+    
+    const menu = await open(nextElementSibling, aside, {
+      clientX: 100,
+      clientY: 100
+    })
+    
+    openers.set(menu, opener)
+  }
+})
+
+export const listen = (
+  opener
+) => {
+  onClick.listen(opener)
+}
+
+export const opener = (
+  menu
+) => {
+  return openers.get(menu)
 }
