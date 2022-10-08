@@ -114,7 +114,8 @@ export default (
 ) => {
   const form = button.closest('form')
   const iframe = one('iframe', form)
-  
+
+  console.log(iframe);
   params.set(iframe, { button, test })
   onLoad.listen(iframe)
 }
