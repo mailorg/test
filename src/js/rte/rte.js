@@ -72,7 +72,6 @@ const onLoad = object(listener, {
   task (
     iframe
   ) {
-    console.log(params);
     const { button, test } = params.get(iframe)
     const { contentWindow } = iframe
     const { document } = contentWindow
@@ -115,7 +114,6 @@ export default (
   const form = button.closest('form')
   const iframe = one('iframe', form)
 
-  console.log(iframe);
   params.set(iframe, { button, test })
   onLoad.listen(iframe)
 }
