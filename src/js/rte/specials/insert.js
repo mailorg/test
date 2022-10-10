@@ -4,6 +4,7 @@ import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import {close, opener} from '../../menu/menu.js'
 import {globals} from '../../ea/ea.js'
+import one from '@mailobj-browser/front/js/selectors/one.js'
 
 const onClick = object(listener, {
   type: click,
