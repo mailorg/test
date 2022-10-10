@@ -2,9 +2,8 @@ import all from '@mailobj-browser/front/js/selectors/all.js'
 import click from '@mailobj-browser/front/js/events/types/click.js'
 import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
-import {close} from '../../menu/menu.js'
+import {close, opener} from '../../menu/menu.js'
 import {globals} from '../../ea/ea.js'
-import {opener} from '../../menu/menu.js'
 
 const onClick = object(listener, {
   type: click,
@@ -12,8 +11,8 @@ const onClick = object(listener, {
     button,
     { target }
   ) {
-    const src = target.innerHTML;
-    const origin = opener(button)
+    const src = target.innerHTML
+    const origin = opener(button.parentNode)
     const rte = origin.closest('iframe')
   
     globals.ea_rte_exec_insert(rte.id, src)
