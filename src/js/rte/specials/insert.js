@@ -13,9 +13,12 @@ const onClick = object(listener, {
   ) {
     const src = target.innerHTML
     const origin = opener(button.parentNode)
-    const rte = origin.closest('iframe')
+    const { ownerDocument } = origin
+    const rte = one('iframe', ownerDocument)
   
-    globals.ea_rte_exec_insert(rte.id, src)
+    if (rte && rte.id) {
+      globals.ea_rte_exec_insert(rte.id, src)
+    }
     close()
   }
 })
