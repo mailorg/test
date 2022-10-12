@@ -23,7 +23,7 @@ const onClickOut = object(listener, {
     document,
     { target }
   ) {
-    if (current !== target && !current.contains(target)) {
+    if (current && (current !== target) && (!current.contains(target))) {
       close()
     }
   }
