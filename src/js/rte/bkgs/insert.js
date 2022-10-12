@@ -20,7 +20,7 @@ const onClick = object(listener, {
     if (rte && rte.id) {
       for (const img of all('img', bkgs)) {
         const { src } = img
-        globals.ea_rte_exec_insert(rte.id, src)
+        globals.ea_rte_exec_bkg(rte.id, src, 'repeat', 'attach', 'position', 'bkg', 'color', 'padding')
       }
     }
     close()
