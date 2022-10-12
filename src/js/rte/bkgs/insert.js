@@ -12,9 +12,9 @@ const onClick = object(listener, {
   task (
     bkgs,
   ) {
-    const origin = opener(bkgs)
-    const { ownerDocument } = origin
-    const rte = one('iframe', ownerDocument)
+    const origin = opener(bkgs.parentNode)
+    const form = origin.closest('form')
+    const rte = one('iframe', form)
   
     if (rte && rte.id) {
       for (const img of all('img', bkgs)) {

@@ -14,8 +14,8 @@ const onClick = object(listener, {
   ) {
     const src = target.innerHTML
     const origin = opener(button.parentNode)
-    const { ownerDocument } = origin
-    const rte = one('iframe', ownerDocument)
+    const form = origin.closest('form')
+    const rte = one('iframe', form)
   
     if (rte && rte.id) {
       globals.ea_rte_exec_insert(rte.id, src)
