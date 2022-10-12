@@ -21,7 +21,9 @@ const onClick = object(listener, {
   
     if (rte && rte.id) {
       const { src } = bkg
-      globals.ea_rte_exec_bkg(rte.id, src, 'repeat', 'attach', 'position', 'bkg', 'color', 'padding')
+      const { dataset } = bkg.parentNode
+      const { repeat, attach, position, bkg, color, padding } = dataset
+      globals.ea_rte_exec_bkg(rte.id, src, repeat, attach, position, bkg, color, padding)
     }
     close()
   }
