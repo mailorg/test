@@ -14,8 +14,8 @@ const onClick = object(listener, {
     bkg,
   ) {
     const page = bkg.closest('ul')
-    const pages = page.closest('ul')
-    const origin = opener(pages.parentNode.parentNode)
+    const pages = page.parentNode.closest('ul')
+    const origin = opener(pages.parentNode)
     const form = origin.closest('form')
     const rte = one('iframe', form)
   
