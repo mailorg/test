@@ -11,23 +11,25 @@ const onClick = object(listener, {
   type: click,
   hooks: [preventDefault],
   task (
-    bkgs,
+    bkg,
   ) {
-    const origin = opener(bkgs.parentNode)
+    const page = bkg.closest('ul')
+    const pages = page.closest('ul')
+    const origin = opener(pages.parentNode)
     const form = origin.closest('form')
     const rte = one('iframe', form)
   
     if (rte && rte.id) {
-      for (const img of all('img', bkgs)) {
-        const { src } = img
-        globals.ea_rte_exec_bkg(rte.id, src, 'repeat', 'attach', 'position', 'bkg', 'color', 'padding')
-      }
+      const { src } = bkg
+      globals.ea_rte_exec_bkg(rte.id, src, 'repeat', 'attach', 'position', 'bkg', 'color', 'padding')
     }
     close()
   }
 })
 
 export default bkgs => {
-  onClick.listen(bkgs)
+  for (const bkg of all('img', bkgs)) {
+    onClick.listen(bkg)
+  }
 }
 
