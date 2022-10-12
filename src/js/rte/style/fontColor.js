@@ -4,7 +4,6 @@ import click from '@mailobj-browser/front/js/events/types/click.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import href from '@mailobj-browser/utilities/js/ea/href.js'
-import matchingOrClosest from '@mailobj-browser/front/js/selectors/matchingOrClosest.js'
 import globals from '../../ea/globals.js'
 import rte from '../rte.js'
 
@@ -36,7 +35,7 @@ const onClick = object(listener, {
 export const test = (
 	text
 ) => {
-	return matchingOrClosest('font[color]', text)
+	return text.closest('font[color]')
 }
 
 export default button => {

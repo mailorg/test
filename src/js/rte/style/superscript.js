@@ -2,7 +2,6 @@ import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import click from '@mailobj-browser/front/js/events/types/click.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
-import matchingOrClosest from '@mailobj-browser/front/js/selectors/matchingOrClosest.js'
 import globals from '../../ea/globals.js'
 import rte from '../rte.js'
 
@@ -13,16 +12,14 @@ const onClick = object(listener, {
     superscript,
     event
   ) {
-  
     globals.ea_rte_command('id_msg_text', 'superscript', '')
-
   }
 })
 
 export const test = (
   text
 ) => {
-  return matchingOrClosest('sup', text)
+  return text.closest('sup')
 }
 
 export default button => {
