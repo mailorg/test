@@ -11,7 +11,8 @@ import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import text from '@mailobj-browser/front/js/fetchers/text.js'
 import {stopImmediatePropagation} from '@mailobj-browser/front/js/events/hooks/hooks.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
-import { elements } from '@mailobj-browser/components-generics/js/styles.js'
+import {elements} from '@mailobj-browser/components-generics/js/styles.js'
+import {fromNode, move, resize} from '@mailobj-browser/utilities/js/fixed/fixed.js'
 
 let current = null
 
@@ -87,10 +88,9 @@ const onClick = object(listener, {
     const { nextElementSibling, ownerDocument } = opener
     const aside = one(`body > .${elements.aside_fixed}`, ownerDocument)
     
-    const menu = await open(nextElementSibling, aside, {
-      clientX: 100,
-      clientY: 100
-    })
+    const menu = await open(nextElementSibling, aside)
+    resize(menu, opener)
+    move(menu, fromNode(menu, opener))
     
     openers.set(menu, opener)
   }
