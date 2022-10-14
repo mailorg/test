@@ -51,17 +51,14 @@ const render = async (
 export const open = async (
   template,
   container,
-  { clientX, clientY },
   url = template.dataset.url
 ) => {
   const { ownerDocument } = template
   const body = element(ownerDocument, 'body')
   const { children: [menu] } = await render(template, url)
-  const { dataset } = menu
   
   close()
   current = menu
-  Object.assign(dataset, { clientX, clientY })
   append(body, menu)
   await manager.trigger(body)
   append(container, menu)
