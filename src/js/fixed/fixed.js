@@ -192,6 +192,7 @@ export const move = (
 ) => {
   const { style } = target
   
+  style.position = 'fixed'
   style.left = `${clientX}px`
   style.top = `${clientY}px`
 }
