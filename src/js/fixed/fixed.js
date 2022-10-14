@@ -10,15 +10,15 @@ export const bottomRight = object(angle, {})
 const coords = (
   target
 ) => {
-  const { ownerDocument } = target
+  const { offsetHeight, ownerDocument } = target
   const { documentElement } = ownerDocument
   const { clientHeight, clientWidth } = documentElement
-  const { height, width, x, y } = rect(target)
+  const { width, x, y } = rect(target)
   
   return object(null, {
     clientHeight,
     clientWidth,
-    height,
+    height: offsetHeight,
     width,
     x,
     y
