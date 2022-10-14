@@ -188,12 +188,10 @@ export const fromNode = (
 
 export const move = (
   target,
-  node,
   { clientX, clientY }
 ) => {
   const { style } = target
   
-  resize(target, node)
   style.position = 'fixed'
   style.left = `${clientX}px`
   style.top = `${clientY}px`
