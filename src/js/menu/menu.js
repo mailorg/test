@@ -104,9 +104,9 @@ const onScroll = object(listener, {
   type: scroll,
   passive,
   task(
-    body
+    document
   ) {
-    console.log("SCROLL")
+    close()
   }
 })
 
