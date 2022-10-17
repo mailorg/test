@@ -13,6 +13,7 @@ import {stopImmediatePropagation} from '@mailobj-browser/front/js/events/hooks/h
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import {elements} from '@mailobj-browser/components-generics/js/styles.js'
 import {fromNode, move, resize} from '../fixed/fixed.js'
+import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 
 let current = null
 
