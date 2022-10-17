@@ -82,7 +82,7 @@ const openers = new WeakMap()
 const onClick = object(listener, {
   type: click,
   passive,
-  //hooks: [stopImmediatePropagation],
+  hooks: [stopImmediatePropagation],
   async task(
     opener
   ) {
