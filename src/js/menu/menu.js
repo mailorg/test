@@ -90,7 +90,6 @@ const onClick = object(listener, {
     const aside = one(`body > .${elements.aside_fixed}`, ownerDocument)
     const menu = await open(nextElementSibling, aside)
 
-    console.log(ownerDocument.body)
     onScroll.listen(ownerDocument)
     
     resize(menu, opener)
