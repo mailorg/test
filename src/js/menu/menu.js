@@ -90,7 +90,7 @@ const onClick = object(listener, {
     const menu = await open(nextElementSibling, aside)
 
     console.log(ownerDocument.body)
-    // onScroll.listen(ownerDocument)
+    onScroll.listen(ownerDocument)
     
     resize(menu, opener)
     move(menu, fromNode(menu, opener))
@@ -103,7 +103,7 @@ const onScroll = object(listener, {
   type: scroll,
   passive,
   task(
-    element
+    body
   ) {
     console.log("SCROLL")
   }
