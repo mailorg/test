@@ -88,11 +88,24 @@ const onClick = object(listener, {
     const { nextElementSibling, ownerDocument } = opener
     const aside = one(`body > .${elements.aside_fixed}`, ownerDocument)
     const menu = await open(nextElementSibling, aside)
+
+    console.log(ownerDocument)
+    onScroll.listen(ownerDocument)
     
     resize(menu, opener)
     move(menu, fromNode(menu, opener))
     
     openers.set(menu, opener)
+  }
+})
+
+const onScroll = object(listener, {
+  type: scroll,
+  passive,
+  task(
+    element
+  ) {
+    console.log("SCROLL")
   }
 })
 
