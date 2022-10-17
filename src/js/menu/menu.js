@@ -12,7 +12,7 @@ import text from '@mailobj-browser/front/js/fetchers/text.js'
 import {stopImmediatePropagation} from '@mailobj-browser/front/js/events/hooks/hooks.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import {elements} from '@mailobj-browser/components-generics/js/styles.js'
-import {fromNode, move, resize} from '@mailobj-browser/utilities/js/fixed/fixed.js'
+import {fromNode, move, resize} from '../fixed/fixed.js'
 
 let current = null
 
@@ -90,7 +90,7 @@ const onClick = object(listener, {
     
     const menu = await open(nextElementSibling, aside)
     resize(menu, opener)
-    setTimeout(() => move(menu, fromNode(menu, opener)), 2000)
+    move(menu, fromNode(menu, opener))
     
     openers.set(menu, opener)
   }
