@@ -90,7 +90,7 @@ const onClick = object(listener, {
     
     const menu = await open(nextElementSibling, aside)
     resize(menu, opener)
-    move(menu, fromNode(menu, opener))
+    requestAnimationFrame(() => move(menu, fromNode(menu, opener)))
     
     openers.set(menu, opener)
   }
