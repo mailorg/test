@@ -87,13 +87,10 @@ const onClick = object(listener, {
   ) {
     const { nextElementSibling, ownerDocument } = opener
     const aside = one(`body > .${elements.aside_fixed}`, ownerDocument)
-    
     const menu = await open(nextElementSibling, aside)
     
-    setTimeout(() => {
-      resize(menu, opener)
-      move(menu, fromNode(menu, opener))
-    }, 2000)
+    resize(menu, opener)
+    move(menu, fromNode(menu, opener))
     
     openers.set(menu, opener)
   }
