@@ -89,7 +89,7 @@ const onClick = object(listener, {
     const aside = one(`body > .${elements.aside_fixed}`, ownerDocument)
     
     const menu = await open(nextElementSibling, aside)
-    resize(menu, opener)
+    //resize(menu, opener)
     move(menu, fromNode(menu, opener))
     
     openers.set(menu, opener)

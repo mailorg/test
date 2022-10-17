@@ -127,7 +127,7 @@ export const fromNode = (
       
       if (bottom + height > clientHeight) {
         clientY = top - height
-        console.log(rect(target), rect(node))
+        setTimeout(() => console.log(rect(target), rect(node)), 2000)
       } else {
         clientY = bottom
       }
