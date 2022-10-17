@@ -99,10 +99,21 @@ const onClick = object(listener, {
   }
 })
 
+const onScroll = object(listener, {
+  type: scroll,
+  passive,
+  task(
+    element
+  ) {
+    console.log("SCROLL")
+  }
+})
+
 export const listen = (
   opener
 ) => {
   onClick.listen(opener)
+  onScroll.listen(opener)
 }
 
 export const opener = (
