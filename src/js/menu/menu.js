@@ -69,6 +69,7 @@ export const open = async (
 }
 
 export const close = () => {
+  console.log(close.name, { current })
   if (current) {
     remove(current)
     onClickOut.forget(current)
