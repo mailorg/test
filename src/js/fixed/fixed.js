@@ -127,7 +127,7 @@ export const fromNode = (
       
       if (bottom + height > clientHeight) {
         clientY = top - height
-        console.log(rect(target), rect(node))
+        console.log([rect(target), rect(node), target.ownerDocument.contains(target)])
       } else {
         clientY = bottom
       }
