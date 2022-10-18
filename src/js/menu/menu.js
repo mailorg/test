@@ -91,7 +91,8 @@ const onClick = object(listener, {
     const menu = await open(nextElementSibling, aside)
 
     onScroll.listen(ownerDocument)
-    
+  
+    move(menu, { clientX: 0, clientY: 0 })
     resize(menu, opener)
     move(menu, fromNode(menu, opener))
     
