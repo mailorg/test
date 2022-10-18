@@ -92,7 +92,7 @@ const onClick = object(listener, {
 
     onScroll.listen(ownerDocument)
   
-    //move(menu, { clientX: 0, clientY: 0 })
+    move(menu, { clientX: 0, clientY: 0 })
     resize(menu, opener)
     move(menu, fromNode(menu, opener))
     
