@@ -127,7 +127,6 @@ export const fromNode = (
       
       if (bottom + height > clientHeight) {
         clientY = top - height
-        console.log(rect(target), rect(node))
       } else {
         clientY = bottom
       }
@@ -189,19 +188,31 @@ export const fromNode = (
 
 export const move = (
   target,
-  { clientX, clientY }
+  { clientX, clientY },
+  mobile = false
 ) => {
   const { style } = target
   
   style.position = 'fixed'
-  style.left = `${clientX}px`
-  style.top = `${clientY}px`
+  
+  if (mobile) {
+    delete style.left
+    delete style.top
+  } else {
+    style.left = `${clientX}px`
+    style.top = `${clientY}px`
+  }
 }
 
 export const resize = (
   target,
-  node
+  node,
+  mobile = false
 ) => {
+  if (mobile) {
+    return
+  }
+  
   const { style } = target
   const { clientHeight } = coords(target)
   const { bottom, top } = rect(node)
