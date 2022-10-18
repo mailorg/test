@@ -81,7 +81,6 @@ const onLoad = object(listener, {
       tasks.set(rte, new Map())
     }
   
-    params.delete(iframe)
     tasks.get(rte).set(button, { test })
     onSelectionChange.listen(document)
   }
@@ -114,6 +113,6 @@ export default (
   const form = button.closest('form')
   const iframe = one('iframe', form)
 
-  params.set(iframe, { button, test })
+  params.set(iframe, object(null, { button, test }))
   onLoad.listen(iframe)
 }
