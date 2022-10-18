@@ -15,6 +15,11 @@ import {elements} from '@mailobj-browser/components-generics/js/styles.js'
 import {fromNode, move, resize} from '../fixed/fixed.js'
 import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 
+const init = object(null, {
+  clientX: 0,
+  clientY: 0
+})
+
 let current = null
 
 const onClickOut = object(listener, {
@@ -92,7 +97,7 @@ const onClick = object(listener, {
 
     onScroll.listen(ownerDocument)
   
-    move(menu, { clientX: 0, clientY: 0 })
+    move(menu, init)
     resize(menu, opener)
     move(menu, fromNode(menu, opener))
     
@@ -102,12 +107,9 @@ const onClick = object(listener, {
 
 const onScroll = object(listener, {
   type: scroll,
+  once,
   passive,
-  task(
-    document
-  ) {
-    close()
-  }
+  task: close
 })
 
 export const listen = (
