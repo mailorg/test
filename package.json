@@ -8,8 +8,6 @@
     "./*": "./src/*"
   },
   "scripts": {
-    "init": "npm install",
-    "build": "cd ../assets && npm run build",
     "push": "cd ../assets && npm run push ../utilities --",
     "test": "cd ../assets && npm run test ../utilities --"
   },
