@@ -188,35 +188,22 @@ export const fromNode = (
 
 export const move = (
   target,
-  { clientX, clientY },
-  mobile = false
+  { clientX, clientY }
 ) => {
   const { style } = target
   
-  style.position = 'fixed'
-  
-  if (mobile) {
-    delete style.left
-    delete style.top
-  } else {
-    style.left = `${clientX}px`
-    style.top = `${clientY}px`
-  }
+  style.setProperty('--context_menu_left', `${clientX}px`)
+  style.setProperty('--context_menu_top', `${clientY}px`)
 }
 
 export const resize = (
   target,
-  node,
-  mobile = false
+  node
 ) => {
-  if (mobile) {
-    return
-  }
-  
   const { style } = target
   const { clientHeight } = coords(target)
   const { bottom, top } = rect(node)
   const max = Math.max(top, clientHeight - bottom)
   
-  style.maxHeight = `${max}px`
+  style.setProperty('--context_menu_max_height', `${max}px`)
 }

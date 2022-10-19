@@ -14,8 +14,6 @@ import one from '@mailobj-browser/front/js/selectors/one.js'
 import {elements} from '@mailobj-browser/components-generics/js/styles.js'
 import {fromNode, move, resize} from '../fixed/fixed.js'
 import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
-import skin from '../ea/skin.js'
-import { smartphone } from '../ea/skins.js'
 
 const init = object(null, {
   clientX: 0,
@@ -96,13 +94,12 @@ const onClick = object(listener, {
     const { nextElementSibling, ownerDocument } = opener
     const aside = one(`body > .${elements.aside_fixed}`, ownerDocument)
     const menu = await open(nextElementSibling, aside)
-    const mobile = skin === smartphone
 
     onScroll.listen(ownerDocument)
   
-    move(menu, init, mobile)
-    resize(menu, opener, mobile)
-    move(menu, fromNode(menu, opener), mobile)
+    move(menu, init)
+    resize(menu, opener)
+    move(menu, fromNode(menu, opener))
     
     openers.set(menu, opener)
   }
