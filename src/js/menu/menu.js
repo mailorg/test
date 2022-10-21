@@ -50,6 +50,7 @@ const onKeyUp = object(listener, {
     
     if (next) {
       event.preventDefault()
+      event.stopImmediatePropagation()
       one('a, button, input', next).focus()
     }
   }
