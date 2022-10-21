@@ -12,8 +12,10 @@ import text from '@mailobj-browser/front/js/fetchers/text.js'
 import {stopImmediatePropagation} from '@mailobj-browser/front/js/events/hooks/hooks.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import {elements} from '@mailobj-browser/components-generics/js/styles.js'
-import {fromNode, move, resize} from '../fixed/fixed.js'
+import {fromNode, move, rect, resize} from '../fixed/fixed.js'
 import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
+import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
+import capture from '@mailobj-browser/front/js/events/options/capture.js'
 
 const init = object(null, {
   clientX: 0,
@@ -35,6 +37,56 @@ const onClickOut = object(listener, {
     }
   }
 })
+
+const onKeyUp = object(listener, {
+  type: keyUp,
+  capture,
+  task (list, event) {
+    const { key, target } = event
+    const current = target.closest('li')
+    const coords = rect(current)
+    const { height, width } = coords
+    const next = moves[key]?.(list, current, height / 2, width / 2, coords)
+    
+    if (next) {
+      event.preventDefault()
+      one('a, button, input', next).focus()
+    }
+  }
+})
+
+const moves = object(null, {
+  ArrowDown: (list, current, x, y, { left, bottom }) => {
+    return next(list, left + x, bottom + y) ??
+      current.nextElementSibling ??
+      list.firstElementChild
+  },
+  ArrowLeft: (list, current, x, y, { left, top }) => {
+    return next(list, left - x, top + y) ??
+      current.previousElementSibling ??
+      list.lastElementChild
+  },
+  ArrowRight: (list, current, x, y, { right, top }) => {
+    return next(list, right + x, top + y) ??
+      current.nextElementSibling ??
+      list.firstElementChild
+  },
+  ArrowUp: (list, current, x, y, { left, top }) => {
+    return next(list, left + x, top - y) ??
+      current.previousElementSibling ??
+      list.lastElementChild
+  }
+})
+
+const next = ({ children }, x, y) => {
+  for (const li of children) {
+    const { bottom, left, right, top } = rect(li)
+    
+    if (x >= left && x <= right && y >= top && y <= bottom) {
+      return li
+    }
+  }
+}
 
 const render = async (
   template,
@@ -70,6 +122,7 @@ export const open = async (
   await manager.trigger(body)
   append(container, menu)
   onClickOut.listen(ownerDocument)
+  onKeyUp.listen(menu)
   
   return menu
 }
@@ -96,11 +149,10 @@ const onClick = object(listener, {
     const menu = await open(nextElementSibling, aside)
 
     onScroll.listen(ownerDocument)
-  
     move(menu, init)
     resize(menu, opener)
     move(menu, fromNode(menu, opener))
-    
+    one('a, button, input', menu)?.focus()
     openers.set(menu, opener)
   }
 })
