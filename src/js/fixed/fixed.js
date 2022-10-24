@@ -179,7 +179,9 @@ export const fromNode = (
       break
     }
   }
-  
+
+  console.log(clientX);
+  console.log(clientY);
   return object(null, {
     clientX,
     clientY
@@ -191,7 +193,7 @@ export const move = (
   { clientX, clientY }
 ) => {
   const { style } = target
-  
+
   style.setProperty('--context_menu_left', `${clientX}px`)
   style.setProperty('--context_menu_top', `${clientY}px`)
 }
