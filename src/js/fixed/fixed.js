@@ -35,7 +35,8 @@ export const rect = (
   
   const rect = range.getBoundingClientRect()
   const { bottom, height, left, right, top, width, x, y } = rect
-  
+
+  console.log(height);
   return object(null, { bottom, height, left, right, top, width, x, y })
 }
 
@@ -125,9 +126,6 @@ export const fromNode = (
         clientX = left
       }
 
-      console.log(bottom);
-      console.log(height);
-      console.log(clientHeight);
       if (bottom + height > clientHeight) {
         clientY = top - height
       } else {
