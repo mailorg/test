@@ -119,6 +119,7 @@ export const fromNode = (
   
   switch (angle) {
     case bottomLeft: {
+      console.log("boottomleft")
       if (left + width > clientWidth) {
         clientX = right - width
       } else {
@@ -180,8 +181,6 @@ export const fromNode = (
     }
   }
 
-  console.log(clientX);
-  console.log(clientY);
   return object(null, {
     clientX,
     clientY
