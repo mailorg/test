@@ -153,8 +153,7 @@ const onClick = object(listener, {
     move(menu, init)
     resize(menu, opener)
     move(menu, fromNode(menu, opener))
-    console.log(menu);
-    console.log(init);
+    console.log(opener);
     one('a, button, input', menu)?.focus()
     openers.set(menu, opener)
   }
