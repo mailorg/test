@@ -36,7 +36,7 @@ export const rect = (
   const rect = range.getBoundingClientRect()
   const { bottom, height, left, right, top, width, x, y } = rect
 
-  console.log(height);
+  console.log(range);
   return object(null, { bottom, height, left, right, top, width, x, y })
 }
 
