@@ -204,6 +204,9 @@ export const resize = (
   const { clientHeight } = coords(target)
   const { bottom, top } = rect(node)
   const max = Math.max(top, clientHeight - bottom)
-  
+
+  console.log(clientHeight);
+  console.log(top);
+
   style.setProperty('--context_menu_max_height', `${max}px`)
 }
