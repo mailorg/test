@@ -130,7 +130,7 @@ export const fromNode = (
       } else {
         clientY = bottom
       }
-      
+      console.log({ height })
       break
     }
     case bottomRight: {
@@ -202,7 +202,6 @@ export const resize = (
 ) => {
   const { style } = target
   const { clientHeight } = coords(target)
-  console.log(rect(node))
   const { bottom, top } = rect(node)
   const max = Math.max(top, clientHeight - bottom)
 
