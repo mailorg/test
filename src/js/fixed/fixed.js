@@ -28,7 +28,14 @@ const coords = (
 export const rect = (
   target
 ) => {
-  const rect = target.getBoundingClientRect()
+  const { ownerDocument } = target
+  const range = ownerDocument.createRange()
+  
+  range.selectNode(target)
+  range.setStartAfter(target)
+  range.setEndAfter(target)
+  
+  const rect = range.getBoundingClientRect()
   const { bottom, height, left, right, top, width, x, y } = rect
 
   return object(null, { bottom, height, left, right, top, width, x, y })
@@ -125,7 +132,7 @@ export const fromNode = (
       } else {
         clientY = bottom
       }
-      
+      console.log({ bottom, clientHeight, clientY, height, top })
       break
     }
     case bottomRight: {
@@ -201,4 +208,7 @@ export const resize = (
   const max = Math.max(top, clientHeight - bottom)
 
   style.setProperty('--context_menu_max_height', `${max}px`)
+  
+  console.log(rect(target))
+  console.log(target.getBoundingClientRect())
 }
