@@ -208,4 +208,5 @@ export const resize = (
   style.setProperty('--context_menu_max_height', `${max}px`)
   
   console.log(rect(target))
+  console.log(target.getBoundingClientRect())
 }
