@@ -28,12 +28,7 @@ const coords = (
 export const rect = (
   target
 ) => {
-  const { ownerDocument } = target
-  const range = ownerDocument.createRange()
-  
-  range.selectNode(target)
-  
-  const rect = range.getBoundingClientRect()
+  const rect = target.getBoundingClientRect()
   const { bottom, height, left, right, top, width, x, y } = rect
 
   return object(null, { bottom, height, left, right, top, width, x, y })
