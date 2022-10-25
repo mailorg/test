@@ -125,7 +125,7 @@ export const fromNode = (
       } else {
         clientY = bottom
       }
-      console.log({ bottom, clientHeight, clientY, height, top })
+      
       break
     }
     case bottomRight: {
@@ -201,7 +201,4 @@ export const resize = (
   const max = Math.max(top, clientHeight - bottom)
 
   style.setProperty('--context_menu_max_height', `${max}px`)
-  
-  console.log(rect(target))
-  console.log(target.getBoundingClientRect())
 }
