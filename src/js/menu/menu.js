@@ -152,9 +152,11 @@ const onClick = object(listener, {
     onScroll.listen(ownerDocument)
     move(menu, init)
     resize(menu, opener)
-    move(menu, fromNode(menu, opener))
-    one('a, button, input', menu)?.focus()
-    openers.set(menu, opener)
+    requestAnimationFrame(() => {
+      move(menu, fromNode(menu, opener))
+      one('a, button, input', menu)?.focus()
+      openers.set(menu, opener)
+    })
   }
 })
 
