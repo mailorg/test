@@ -152,6 +152,7 @@ const onClick = object(listener, {
     onScroll.listen(ownerDocument)
     move(menu, init)
     resize(menu, opener)
+    console.log(menu.getBoundingClientRect())
     setTimeout(() => {
       move(menu, fromNode(menu, opener))
       one('a, button, input', menu)?.focus()
