@@ -153,11 +153,9 @@ const onClick = object(listener, {
     move(menu, init)
     resize(menu, opener)
     console.log(menu.getBoundingClientRect())
-    setTimeout(() => {
-      move(menu, fromNode(menu, opener))
-      one('a, button, input', menu)?.focus()
-      openers.set(menu, opener)
-    }, 2000)
+    move(menu, fromNode(menu, opener))
+    one('a, button, input', menu)?.focus()
+    openers.set(menu, opener)
   }
 })
 
