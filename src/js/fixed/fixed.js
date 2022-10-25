@@ -32,8 +32,7 @@ export const rect = (
   const range = ownerDocument.createRange()
   
   range.selectNode(target)
-  range.setStartAfter(target)
-  range.setEndAfter(target)
+  range.collapse(false)
   
   const rect = range.getBoundingClientRect()
   const { bottom, height, left, right, top, width, x, y } = rect
