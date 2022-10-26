@@ -6,11 +6,11 @@ export default object(null, {
     task(
         element
     ) {
-        const {ownerDocument, dataset} = element
-        const {body} = ownerDocument
-        const {confirm} = dataset
-        const {selector, name, action} = this
-        const e = one(selector, body)
+        const { ownerDocument, dataset } = element
+        const { body } = ownerDocument
+        const { confirm } = dataset
+        const { name, action } = this
+        const e = one("input[name='act']", body)
         e.value = action
         globals.ea_list2(e, "", name, null, confirm, null)
     }
