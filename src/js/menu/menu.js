@@ -146,7 +146,7 @@ const onClick = object(listener, {
     opener
   ) {
     const { nextElementSibling, ownerDocument } = opener
-    const aside = one(`body > .${elements.aside_fixed}`, ownerDocument)
+    const aside = one(`body > .${elements.aside_lightboxes}`, ownerDocument)
     const menu = await open(nextElementSibling, aside)
 
     onScroll.listen(ownerDocument)
