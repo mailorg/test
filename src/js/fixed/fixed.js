@@ -7,6 +7,11 @@ export const topRight = object(angle, {})
 export const bottomLeft = object(angle, {})
 export const bottomRight = object(angle, {})
 
+const init = object(null, {
+  clientX: 0,
+  clientY: 0
+})
+
 const coords = (
   target
 ) => {
@@ -183,7 +188,7 @@ export const fromNode = (
 
 export const move = (
   target,
-  { clientX, clientY }
+  { clientX, clientY } = init
 ) => {
   const { style } = target
 

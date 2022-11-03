@@ -25,6 +25,7 @@ const onKeyDown = object(listener, {
     const { key, target } = event
     const current = target.closest('li')
     const next = moves[key]?.(list, current)
+    console.log({ next })
     
     if (next) {
       event.preventDefault()
@@ -37,5 +38,6 @@ const onKeyDown = object(listener, {
 export default async (
   list
 ) => {
+  console.log({ list })
   onKeyDown.listen(list)
 }
