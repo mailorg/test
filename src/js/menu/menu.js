@@ -123,7 +123,7 @@ export const open = async (
   await manager.trigger(body)
   append(container, menu)
   onClickOut.listen(ownerDocument)
-  onKeyUp.listen(menu)
+  //onKeyUp.listen(menu)
   
   return menu
 }
