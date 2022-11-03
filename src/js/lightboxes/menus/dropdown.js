@@ -9,12 +9,10 @@ export { close }
 
 const moves = object(null, {
   ArrowDown: (list, current) => {
-    return current.nextElementSibling ??
-      list.firstElementChild
+    return current.nextElementSibling
   },
   ArrowUp: (list, current) => {
-    return current.previousElementSibling ??
-      list.lastElementChild
+    return current.previousElementSibling
   }
 })
 
