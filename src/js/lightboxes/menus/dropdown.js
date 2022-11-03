@@ -25,6 +25,7 @@ const onKeyUp = object(listener, {
   type: keyUp,
   capture,
   task (list, event) {
+    console.log({ list })
     const { key, target } = event
     const current = target.closest('li')
     const next = moves[key]?.(list, current)
@@ -41,5 +42,5 @@ export default async (
   list
 ) => {
   onKeyUp.listen(list)
-  focus(list)
+  focus(...list.children)
 }
