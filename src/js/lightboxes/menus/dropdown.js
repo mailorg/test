@@ -14,10 +14,14 @@ const focus = item => {
 }
 
 const moves = object(null, {
-  ArrowDown: (list, current) => {
+  ArrowDown: (list, current, event) => {
+    event.preventDefault()
+    
     return current.nextElementSibling
   },
-  ArrowUp: (list, current) => {
+  ArrowUp: (list, current, event) => {
+    event.preventDefault()
+    
     return current.previousElementSibling
   }
 })
@@ -27,14 +31,14 @@ const onKeyUp = object(listener, {
   capture,
   task (list, event) {
     const { key, target } = event
-    console.log({ key })
+
     const current = target.closest('li')
-    const next = moves[key]?.(list, current)
-    console.log({ next })
-    if (next) {
+    const move = moves[key]
+    
+    if (move) {
       event.preventDefault()
       event.stopImmediatePropagation()
-      focus(next)
+      focus(move?.(list, current))
     }
   }
 })
