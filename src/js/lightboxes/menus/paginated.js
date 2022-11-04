@@ -1,13 +1,9 @@
 import object from '@mailobj-browser/front/js/utils/object.js'
-import keyDown from '@mailobj-browser/front/js/events/types/keyDown.js'
-import capture from '@mailobj-browser/front/js/events/options/capture.js'
-import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
-import one from '@mailobj-browser/front/js/selectors/one.js'
-import { open } from './menu.js'
+import * as menu from './menu.js'
 
 const paginations = new WeakMap()
 
-const focus = (
+const scroll = (
   list
 ) => {
   const pagination = paginations.get(list)
@@ -16,21 +12,20 @@ const focus = (
   const current = children[start]
   
   if (current) {
-    current.scrollIntoView()
-    current.focus()
     pagination.items = children.slice(start, size)
+    current.scrollIntoView()
+    
+    return current
   }
-  
-  return current
 }
 
-const moves = object(null, {
+const keys = object(null, {
   ArrowDown: (list, current) => {
     const { items } = paginations.get(list)
-    const item = current.nextElementSibling
+    const next = current.nextElementSibling
   
-    if (items.includes(item)) {
-      return item
+    if (items.includes(next)) {
+      return next
     }
     
     return this.ArrowRight(list)
@@ -42,7 +37,7 @@ const moves = object(null, {
     if (page) {
       pagination.page -= 1
       
-      return focus(list)
+      return scroll(list)
     }
   },
   ArrowRight: (list) => {
@@ -52,42 +47,28 @@ const moves = object(null, {
     if (page < pages) {
       pagination.page += 1
       
-      return focus(list)
+      return scroll(list)
     }
   },
   ArrowUp: (list, current) => {
     const { items } = paginations.get(list)
-    const item = current.previousElementSibling
+    const previous = current.previousElementSibling
     
-    if (items.includes(item)) {
-      return item
+    if (items.includes(previous)) {
+      return previous
     }
   
     return this.ArrowLeft(list)
   }
 })
 
-const onKeyDown = object(listener, {
-  type: keyDown,
-  capture,
-  task (list, event) {
-    const { key, target } = event
-    const current = target.closest('li')
-    const next = moves[key]?.(list, current)
-    
-    if (next) {
-      event.preventDefault()
-      event.stopImmediatePropagation()
-      one('a, button, label', next).focus()
-    }
-  }
+const onKeyDown = object(menu.onKeyDown, {
+  keys
 })
 
 export default async (
-  template
+  list
 ) => {
-  const lightbox = await open(template)
-  const list = one('ol,ul', lightbox)
   const { children: [...children], scrollHeight } = list
   const { height } = list.getBoundingClientRect()
   const { length } = children
@@ -98,4 +79,5 @@ export default async (
   
   paginations.set(list, { children, items, page, pages, size })
   onKeyDown.listen(list)
+  menu.focus(list)
 }
