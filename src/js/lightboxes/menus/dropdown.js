@@ -5,6 +5,7 @@ import one from '@mailobj-browser/front/js/selectors/one.js'
 import { close } from '../lightbox.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import item from '@mailobj-browser/components-generics/js/xaddrs/item.js'
+import keyDown from '@mailobj-browser/front/js/events/types/keyDown.js'
 
 export { close }
 
@@ -22,7 +23,7 @@ const moves = object(null, {
 })
 
 const onKeyUp = object(listener, {
-  type: keyUp,
+  type: keyDown,
   capture,
   task (list, event) {
     const { key, target } = event
