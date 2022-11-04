@@ -2,6 +2,12 @@ import object from '@mailobj-browser/front/js/utils/object.js'
 import { rect } from '../../fixed/fixed.js'
 import * as menu from './menu.js'
 
+export const {
+  close,
+  focus,
+  open
+} = menu
+
 const calc = (list, event) => {
   const { target } = event
   const current = target.closest('li')

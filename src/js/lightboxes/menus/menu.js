@@ -9,9 +9,11 @@ import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import { fromEvent, fromNode, move, resize } from '../../fixed/fixed.js'
 import { close, parse } from '../lightbox.js'
 
+export { close }
+
 const openers = new WeakMap()
 
-export const onScroll = object(listener, {
+const onScroll = object(listener, {
   type: scroll,
   once,
   passive,

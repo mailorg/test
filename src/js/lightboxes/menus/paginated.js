@@ -1,6 +1,12 @@
 import object from '@mailobj-browser/front/js/utils/object.js'
 import * as menu from './menu.js'
 
+export const {
+  close,
+  focus,
+  open
+} = menu
+
 const paginations = new WeakMap()
 
 const scroll = (
