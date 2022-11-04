@@ -38,7 +38,7 @@ const onKeyUp = object(listener, {
     if (move) {
       event.preventDefault()
       event.stopImmediatePropagation()
-      focus(move?.(list, current))
+      focus(move?.(list, current, event))
     }
   }
 })
