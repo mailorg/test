@@ -70,3 +70,10 @@ export const focus = (
     one('a, button, label', item)?.focus()
   }
 }
+
+export const opener = (
+  menu
+) => {
+  return openers.get(menu)
+}
+
