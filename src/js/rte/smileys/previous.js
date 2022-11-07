@@ -15,8 +15,8 @@ const onClick = object(listener, {
   ) {
 	const contextMenu = one('#div_contextmenu')
 	if (contextMenu) {
-	  const pages = all('.cl_rte_smiley_table', contextMenu)
-	  const currentPage = one('.cl_rte_smiley_table:not(.cl_display_none)', contextMenu)
+	  const pages = all('.ea_generics__smileys', contextMenu)
+	  const currentPage = one('.ea_generics__smileys:not(.ea_generics__display-none)', contextMenu)
 	  const current = pages.indexOf(currentPage)
 	  const previous = ((current === 0) ? pages.length : current) - 1
 		
