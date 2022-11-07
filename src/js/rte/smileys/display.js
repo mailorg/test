@@ -20,7 +20,8 @@ const onClick = object(listener, {
     const list = one('#rte_opt_smiley')
 
     if (rte && list) {
-      const pages = all('.ea_generics__smileys', list)
+      const pages = all('.cl_rte_smiley_table', list)
+      // const pages = all('.ea_generics__smileys', list)
 
       for (const page of pages) {
         globals.ea_display(page, false)
@@ -41,8 +42,10 @@ const onClick = object(listener, {
         insert.listen(table)
       }
 
-      const previousBtn = one('.ea_generics__smileys_bottom button:first-child', contextMenu)
-      const nextBtn = one('.ea_generics__smileys_bottom button:last-child', contextMenu)
+      const previousBtn = one('.cl_rte_smiley_bottom button:first-child', contextMenu)
+      const nextBtn = one('.cl_rte_smiley_bottom button:last-child', contextMenu)
+      // const previousBtn = one('.ea_generics__smileys_bottom button:first-child', contextMenu)
+      // const nextBtn = one('.ea_generics__smileys_bottom button:last-child', contextMenu)
 
       previous(previousBtn)
       next(nextBtn)
