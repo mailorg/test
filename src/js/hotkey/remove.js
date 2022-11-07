@@ -10,7 +10,7 @@ export default object(null, {
         const { body } = ownerDocument
         const { confirm } = dataset
         const { name, action, selectors } = this
-        const e = one(`input[name='${name}]`, body)
+        const e = one(`input[name='${name}']`, body)
         e.value = action
         globals.ea_list(e, "", selectors, null, confirm)
     }
