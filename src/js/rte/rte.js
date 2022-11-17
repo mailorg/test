@@ -4,6 +4,7 @@ import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import selectionChange from '@mailobj-browser/front/js/events/types/selectionChange.js'
 import load from '@mailobj-browser/front/js/events/types/load.js'
+import globals from '../../ea/globals.js'
 
 const params = new WeakMap()
 const tasks = new WeakMap()
@@ -106,6 +107,13 @@ const onSelectionChange = object(listener, {
   }
 })
 
+export const command = (
+  rte,
+  command,
+  options
+) => {
+  globals.ea_rte_command(rte, command, options)
+}
 export default (
   button,
   { test }

@@ -13,11 +13,17 @@ export default contract ({
   hr: array([
     hr
   ]),
+  ol: array([
+    ol
+  ]),
   redo: array([
     redo
   ]),
   removeFormat: array([
     removeFormat
+  ]),
+  ul: array([
+    ul
   ]),
   undo: array([
     undo
