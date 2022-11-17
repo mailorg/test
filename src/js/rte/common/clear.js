@@ -15,5 +15,5 @@ const onClick = object(listener, {
 
 export default button => {
   onClick.listen(button)
-  rte(button, null)
+  rte(button, object(null, { test }))
 }
