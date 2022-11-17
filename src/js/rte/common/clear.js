@@ -13,6 +13,12 @@ const onClick = object(listener, {
   }
 })
 
+export const test = (
+  text
+) => {
+  return text
+}
+
 export default button => {
   onClick.listen(button)
   rte(button, object(null, { test }))
