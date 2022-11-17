@@ -114,6 +114,13 @@ export const command = (
 ) => {
   globals.ea_rte_command(rte, command, options)
 }
+
+export const command_clear = (
+  rte,
+) => {
+  globals.ea_rte_command_clear(rte)
+}
+
 export default (
   button,
   { test }
