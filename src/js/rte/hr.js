@@ -16,7 +16,7 @@ const onClick = object(listener, {
 export const test = (
   text
 ) => {
-  return text.closest('b')
+  return text.closest('hr')
 }
 
 export default button => {
