@@ -8,6 +8,8 @@ import strikethrough from './strikethrough.js'
 import subscript from './subscript.js'
 import superscript from './superscript.js'
 import underline from './underline.js'
+import formatBlock from './formatBlock.js'
+import fontSize from './fontSize.js'
 
 export default contract({
   bold: array([
@@ -15,6 +17,12 @@ export default contract({
   ]),
   fontColor: array([
     fontColor
+  ]),
+  fontSize: array([
+    fontSize
+  ]),
+  formatBlock: array([
+    formatBlock
   ]),
   highlightColor: array([
     highlightColor
