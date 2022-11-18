@@ -9,6 +9,7 @@ import subscript from './subscript.js'
 import superscript from './superscript.js'
 import underline from './underline.js'
 import formatBlock from './formatBlock.js'
+import fontName from './fontName.js'
 import fontSize from './fontSize.js'
 
 export default contract({
@@ -17,6 +18,9 @@ export default contract({
   ]),
   fontColor: array([
     fontColor
+  ]),
+  fontName: array([
+    fontName
   ]),
   fontSize: array([
     fontSize
