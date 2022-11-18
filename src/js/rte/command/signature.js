@@ -13,7 +13,14 @@ const onClick = object(listener, {
   ) {
     const { dataset } = button
     const { value } = dataset
-    globals.ea_rte_exec_insert('id_msg_text', '\n' + value.replace('/\r/g','\n') + '\n')
+    if (value) {
+      globals.ea_rte_exec_insert('id_msg_text', '\n' + value.replace('/\r/g', '\n') + '\n')
+    } else {
+      const { confirm } = dataset
+      if (confirm) {
+        alert(confirm)
+      }
+    }
   }
 })
 
