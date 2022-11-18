@@ -7,6 +7,7 @@ import redo from './redo.js'
 import ul from './ul.js'
 import undo from './undo.js'
 import removeFormat from './removeFormat.js'
+import signature from './signature.js'
 
 export default contract ({
   clear: array([
@@ -23,6 +24,9 @@ export default contract ({
   ]),
   removeFormat: array([
     removeFormat
+  ]),
+  signature: array([
+    signature
   ]),
   ul: array([
     ul
