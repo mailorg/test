@@ -30,7 +30,7 @@ export default contract ({
     signature
   ]),
   template: array([
-    template()
+    template
   ]),
   ul: array([
     ul
