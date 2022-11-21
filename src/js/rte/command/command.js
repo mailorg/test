@@ -8,6 +8,7 @@ import ul from './ul.js'
 import undo from './undo.js'
 import removeFormat from './removeFormat.js'
 import signature from './signature.js'
+import template from './template.js'
 
 export default contract ({
   clear: array([
@@ -27,6 +28,9 @@ export default contract ({
   ]),
   signature: array([
     signature
+  ]),
+  template: array([
+    template()
   ]),
   ul: array([
     ul
