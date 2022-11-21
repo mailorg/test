@@ -9,6 +9,7 @@ import undo from './undo.js'
 import removeFormat from './removeFormat.js'
 import signature from './signature.js'
 import template from './template.js'
+import spellcheck from './spellcheck.js'
 
 export default contract ({
   clear: array([
@@ -28,6 +29,9 @@ export default contract ({
   ]),
   signature: array([
     signature
+  ]),
+  spellcheck: array([
+    spellcheck
   ]),
   template: array([
     template
