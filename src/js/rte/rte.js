@@ -107,6 +107,12 @@ const onSelectionChange = object(listener, {
   }
 })
 
+export const insert = (
+  rte,
+  text
+) => {
+  globals.ea_rte_exec_insert(rte, text)
+}
 export const command = (
   rte,
   command,

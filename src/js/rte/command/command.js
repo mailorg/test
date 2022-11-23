@@ -1,6 +1,7 @@
 import contract from '@mailobj-browser/front/js/contracts/contract.js'
 import array from '@mailobj-browser/front/js/utils/array.js'
 import clear from './clear.js'
+import draw from './draw.js'
 import hr from './hr.js'
 import ol from './ol.js'
 import redo from './redo.js'
@@ -14,6 +15,9 @@ import spellcheck from './spellcheck.js'
 export default contract ({
   clear: array([
     clear
+  ]),
+  draw: array([
+    draw
   ]),
   hr: array([
     hr
