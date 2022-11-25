@@ -10,7 +10,7 @@ import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
 import click from '@mailobj-browser/front/js/events/types/click.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
-import { container } from './template/template.js'
+import { container } from './openers/template.js'
 
 let current = null
 
