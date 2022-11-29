@@ -24,7 +24,7 @@ export const listen = (
   listener
 ) => {
   const { parentNode } = template
-  
+  console.log({ container, template })
   nodes.set(parentNode, { container, template })
   listener.listen(parentNode)
   
