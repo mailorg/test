@@ -45,7 +45,7 @@ export const open = async (
   event = null
 ) => {
   const { ownerDocument } = opener
-  const content = await parse(container(opener), template(opener))
+  const content = await parse(template(opener), container(opener))
   
   close()
   move(content)
