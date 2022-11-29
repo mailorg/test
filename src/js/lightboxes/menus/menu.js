@@ -8,6 +8,7 @@ import keyDown from '@mailobj-browser/front/js/events/types/keyDown.js'
 import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import { fromEvent, fromNode, move, resize } from '../../fixed/fixed.js'
 import { close, parse } from '../lightbox.js'
+import { container, template } from '../openers/template.js'
 
 export { close }
 
@@ -40,11 +41,11 @@ export const onKeyDown = object(listener, {
 })
 
 export const open = async (
-  template,
+  opener,
   event = null
 ) => {
-  const { ownerDocument, parentNode } = template
-  const content = await parse(template)
+  const { ownerDocument } = opener
+  const content = await parse(container(opener), template(opener))
   
   close()
   move(content)
@@ -52,9 +53,9 @@ export const open = async (
   if (event) {
     move(content, fromEvent(content, event))
   } else {
-    resize(content, parentNode)
-    move(content, fromNode(content, parentNode))
-    openers.set(content, parentNode)
+    resize(content, opener)
+    move(content, fromNode(content, opener))
+    openers.set(content, opener)
   }
   
   focus(content)
@@ -76,4 +77,3 @@ export const opener = (
 ) => {
   return openers.get(menu)
 }
-

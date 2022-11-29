@@ -4,7 +4,8 @@ import * as menu from './menu.js'
 export const {
   close,
   focus,
-  open
+  open,
+  opener
 } = menu
 
 const keys = object(null, {
@@ -20,7 +21,7 @@ const onKeyDown = object(menu.onKeyDown, {
   keys
 })
 
-export default async (
+export default (
   list
 ) => {
   onKeyDown.listen(list)

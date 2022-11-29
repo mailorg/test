@@ -1,9 +1,21 @@
-const containers = new WeakMap()
+import removed from '../../wait/removed.js'
+
+const nodes = new WeakMap()
 
 export const container = (
-  template
+  parentNode
 ) => {
-  return containers.get(template)
+  const { container } = nodes.get(parentNode)
+  
+  return container
+}
+
+export const template = (
+  parentNode
+) => {
+  const { template } = nodes.get(parentNode)
+  
+  return template
 }
 
 export const listen = (
@@ -13,6 +25,11 @@ export const listen = (
 ) => {
   const { parentNode } = template
   
-  containers.set(template, container)
+  nodes.set(parentNode, { container, template })
   listener.listen(parentNode)
+  
+  queueMicrotask(async () => {
+    await removed(parentNode)
+    nodes.delete(parentNode)
+  })
 }
