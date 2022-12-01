@@ -79,14 +79,15 @@ const render = async (
   const { ownerDocument } = template
   const { defaultView } = ownerDocument
   const { Request } = defaultView
+  const clone = template.cloneNode(true)
   
   if (url) {
     const { fetched } = await text(object(null, {
       request: new Request(`${url}`)
     }))
     
-    template.innerHTML = fetched
+    clone.innerHTML = fetched
   }
   
-  return invoke(template)
+  return invoke(clone)
 }
