@@ -13,7 +13,7 @@ const handler = object(null, {
     const { url, target } = dataset
 
     const targetUrl = target !== undefined ? target : ''
-    if (url !== "") {
+    if (url === "" || url === undefined) {
       return
     }
     globals.ea_link(url, targetUrl, null)
