@@ -17,11 +17,11 @@ export const device = object(null, {
         return !!(width >= screenSizes.sm && width < screenSizes.md)
     },
     isScreenMd: () => {
-        const width = window.innerWidth;
-        return !!(width >= screenSizes.md && width < screenSizes.lg);
+        const width = window.innerWidth
+        return !!(width >= screenSizes.md && width < screenSizes.lg)
     },
     isScreenLg: () => {
-        const width = window.innerWidth;
-        return width >= screenSizes.lg;
+        const width = window.innerWidth
+        return width >= screenSizes.lg
     },
 })
