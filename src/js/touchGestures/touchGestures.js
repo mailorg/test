@@ -18,7 +18,7 @@ const directions = object(null, {
   LEFT: 'left'
 })
 
-export default (element) => {
+export const touchGestures = (element) => {
   if (element) {
     onTouchStart.listen(element)
     onTouchMove.listen(element)
