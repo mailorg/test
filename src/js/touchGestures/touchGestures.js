@@ -4,6 +4,7 @@ import touchStart from '@mailobj-browser/front/js/events/types/touchStart.js'
 import touchMove from '@mailobj-browser/front/js/events/types/touchMove.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
+import {close} from "../lightboxes/lightbox.js";
 
 const swipe = {
   startX: 0,
@@ -17,8 +18,9 @@ const directions = object(null, {
   RIGHT: 'right',
   LEFT: 'left'
 })
+let direction = null
 
-export const touchGestures = (element) => {
+export default (element) => {
   if (element) {
     onTouchStart.listen(element)
     onTouchMove.listen(element)
@@ -26,6 +28,10 @@ export const touchGestures = (element) => {
   } else {
     console.error("Touch gestures: element undefined")
   }
+}
+
+export const touchGestures = () => {
+  return direction
 }
 
 const onTouchStart = object(listener, {
@@ -64,9 +70,9 @@ const onTouchEnd = object(listener, {
     const deltaY = swipe.endY - swipe.startY
 
     if (deltaY === 0 || Math.abs(deltaX / deltaY) > 1) {
-      return deltaX > 0 ? directions.RIGHT : directions.LEFT
+      direction = deltaX > 0 ? directions.RIGHT : directions.LEFT
     } else {
-      return deltaY > 0 ? directions.UP : directions.DOWN
+      direction = deltaY > 0 ? directions.UP : directions.DOWN
     }
   }
 })
