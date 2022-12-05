@@ -23,8 +23,9 @@ export default (element) => {
     onTouchStart.listen(element)
     onTouchMove.listen(element)
     onTouchEnd.listen(element)
+  } else {
+    console.error("Touch gestures: element undefined")
   }
-  console.error("Touch gestures: element undefined")
 }
 
 const onTouchStart = object(listener, {
