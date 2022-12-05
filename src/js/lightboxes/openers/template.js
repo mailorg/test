@@ -18,15 +18,13 @@ export const template = (
   return template
 }
 
-export const listen = (
+export const register = (
   template,
-  container,
-  listener
+  container
 ) => {
   const { parentNode } = template
-  console.log({ container, template })
+  
   nodes.set(parentNode, { container, template })
-  listener.listen(parentNode)
   
   queueMicrotask(async () => {
     await removed(parentNode)
