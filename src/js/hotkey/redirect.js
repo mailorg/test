@@ -9,12 +9,14 @@ const handler = object(null, {
   ) {
     event.preventDefault()
 
-    const {dataset} = element
-    const {url} = dataset
+    const { dataset } = element
+    const { url, target } = dataset
 
-    if (url) {
-      globals.ea_link(url, '', null)
+    const targetUrl = target !== undefined ? target : ''
+    if (url !== "") {
+      return
     }
+    globals.ea_link(url, targetUrl, null)
   }
 })
 
