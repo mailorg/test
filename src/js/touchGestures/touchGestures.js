@@ -4,7 +4,6 @@ import touchStart from '@mailobj-browser/front/js/events/types/touchStart.js'
 import touchMove from '@mailobj-browser/front/js/events/types/touchMove.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
-import {close} from "../lightboxes/lightbox.js";
 
 const swipe = {
   startX: 0,
