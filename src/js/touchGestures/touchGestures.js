@@ -1,3 +1,4 @@
+import object from '@mailobj-browser/front/js/utils/object.js'
 import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import touchEnd from "@mailobj-browser/front/js/events/types/touchEnd.js"
 import touchStart from '@mailobj-browser/front/js/events/types/touchStart.js'
@@ -29,9 +30,11 @@ export default (element) => {
   }
 }
 
-export const touchGestures = () => {
-  return direction
-}
+export const touchGestures = object(null, {
+  direction: () => {
+    return direction
+  }
+})
 
 const onTouchStart = object(listener, {
   type: touchStart,
