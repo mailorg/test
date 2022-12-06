@@ -1,4 +1,3 @@
-import object from '@mailobj-browser/front/js/utils/object.js'
 import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import touchEnd from "@mailobj-browser/front/js/events/types/touchEnd.js"
 import touchStart from '@mailobj-browser/front/js/events/types/touchStart.js'
