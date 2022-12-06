@@ -37,6 +37,7 @@ const onTouchStart = object(listener, {
     element,
     event
   ) {
+    console.log("onTouchStart");
     const { touches } = event
 
     swipe.startX = touches[0].screenX
@@ -51,6 +52,7 @@ const onTouchMove = object(listener, {
     element,
     event
   ) {
+    console.log("onToucheMove");
     const { touches } = event
 
     swipe.endX = touches[0].screenX
@@ -62,6 +64,7 @@ const onTouchEnd = object(listener, {
   type: touchEnd,
   passive,
   task() {
+    console.log("onTouchEnd");
     const deltaX = swipe.endX - swipe.startX
     const deltaY = swipe.endY - swipe.startY
 
