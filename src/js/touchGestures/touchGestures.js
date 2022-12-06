@@ -73,5 +73,7 @@ const onTouchEnd = object(listener, {
     } else {
       direction = deltaY > 0 ? directions.UP : directions.DOWN
     }
+
+    return direction
   }
 })
