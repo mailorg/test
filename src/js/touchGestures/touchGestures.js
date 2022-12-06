@@ -1,11 +1,11 @@
-import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
-import touchEnd from "@mailobj-browser/front/js/events/types/touchEnd.js"
-import touchStart from '@mailobj-browser/front/js/events/types/touchStart.js'
-import touchMove from '@mailobj-browser/front/js/events/types/touchMove.js'
-import passive from '@mailobj-browser/front/js/events/options/passive.js'
-import object from '@mailobj-browser/front/js/utils/object.js'
+// import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
+// import touchEnd from "@mailobj-browser/front/js/events/types/touchEnd.js"
+// import touchStart from '@mailobj-browser/front/js/events/types/touchStart.js'
+// import touchMove from '@mailobj-browser/front/js/events/types/touchMove.js'
+// import passive from '@mailobj-browser/front/js/events/options/passive.js'
+// import object from '@mailobj-browser/front/js/utils/object.js'
 
-let Swipe = (function () {
+export const Swipe = (() => {
   function Swipe(element) {
     this.xDown = null;
     this.yDown = null;
@@ -69,7 +69,7 @@ let Swipe = (function () {
   };
 
   return Swipe;
-}());
+});
 
 
 // const swipe = {
