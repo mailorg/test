@@ -11,7 +11,7 @@ const swipe = {
   endX: 0,
   endY: 0
 }
-const directions = object(null, {
+const directions = Object.freeze({
   UP: 'up',
   DOWN: 'down',
   RIGHT: 'right',
@@ -19,21 +19,15 @@ const directions = object(null, {
 })
 let direction = null
 
-export default (element) => {
-  if (element) {
-    onTouchStart.listen(element)
-    onTouchMove.listen(element)
-    onTouchEnd.listen(element)
-  } else {
-    console.error("Touch gestures: element undefined")
-  }
+export default element => {
+  onTouchStart.listen(element)
+  onTouchMove.listen(element)
+  onTouchEnd.listen(element)
 }
 
-export const touchGestures = object(null, {
-  direction: () => {
-    return direction
-  }
-})
+export const touchDirection = () => {
+  return direction
+}
 
 const onTouchStart = object(listener, {
   type: touchStart,
