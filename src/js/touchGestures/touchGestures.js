@@ -20,6 +20,7 @@ const directions = Object.freeze({
 let direction = null
 
 export default element => {
+  console.log(element)
   onTouchStart.listen(element)
   onTouchMove.listen(element)
   onTouchEnd.listen(element)
