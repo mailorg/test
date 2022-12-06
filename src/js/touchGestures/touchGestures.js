@@ -60,7 +60,7 @@ const onTouchMove = object(listener, {
   }
 })
 
-const onTouchEnd = object(listener, {
+export const onTouchEnd = object(listener, {
   type: touchEnd,
   passive,
   task() {
@@ -73,5 +73,7 @@ const onTouchEnd = object(listener, {
     } else {
       direction = deltaY > 0 ? directions.UP : directions.DOWN
     }
+
+    return direction
   }
 })
