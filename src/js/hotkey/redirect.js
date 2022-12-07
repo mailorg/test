@@ -10,13 +10,12 @@ const handler = object(null, {
     event.preventDefault()
 
     const { dataset } = element
-    const { url, target } = dataset
+    const { url = '', target = '' } = dataset
 
-    const targetUrl = target !== undefined ? target : ''
-    if (url === "" || url === undefined) {
+    if (url === '') {
       return
     }
-    globals.ea_link(url, targetUrl, null)
+    globals.ea_link(url, target, null)
   }
 })
 
