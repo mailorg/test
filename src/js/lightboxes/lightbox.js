@@ -8,7 +8,6 @@ import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import once from '@mailobj-browser/front/js/events/options/once.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
-import click from '@mailobj-browser/front/js/events/types/click.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import blur from '@mailobj-browser/front/js/events/types/blur.js'
 
@@ -21,7 +20,7 @@ export const autoClose = (
   
   close()
   current = lightbox
-  onClickOut.listen(lightbox)
+  onBlur.listen(lightbox)
   onEscape.listen(ownerDocument)
 }
 
@@ -30,7 +29,7 @@ export const close = () => {
     const { ownerDocument } = current
     
     remove(current)
-    onClickOut.forget(current)
+    onBlur.forget(current)
     onEscape.forget(ownerDocument)
     current = null
   }
@@ -52,7 +51,7 @@ export const parse = async (
   return lightbox
 }
 
-const onClickOut = object(listener, {
+const onBlur = object(listener, {
   type: blur,
   once,
   passive,
