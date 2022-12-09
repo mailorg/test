@@ -65,6 +65,7 @@ const onClickOut = object(listener, {
     requestAnimationFrame(() => {
       const { activeElement } = document
       
+      console.log({ current, activeElement })
       if (current && activeElement && !current.contains(activeElement)) {
         close()
       }
