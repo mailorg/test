@@ -18,7 +18,6 @@ export const autoClose = (
 ) => {
   const { ownerDocument } = lightbox
   
-  console.log('autoClose')
   current = lightbox
   onBlur.listen(lightbox)
   onEscape.listen(ownerDocument)
@@ -53,7 +52,6 @@ export const parse = async (
 
 const onBlur = object(listener, {
   type: blur,
-  once,
   passive,
   task (
     document
