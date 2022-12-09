@@ -18,7 +18,7 @@ export const autoClose = (
 ) => {
   const { ownerDocument } = lightbox
   
-  close()
+  console.log('autoClose')
   current = lightbox
   onBlur.listen(lightbox)
   onEscape.listen(ownerDocument)
