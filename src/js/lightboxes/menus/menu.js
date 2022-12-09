@@ -60,6 +60,7 @@ export const open = async (
   
   focus(content)
   onScroll.listen(ownerDocument)
+  autoClose(content)
   
   return content
 }
@@ -75,7 +76,5 @@ export const focus = (
 export const opener = (
   menu
 ) => {
-  
-  
   return openers.get(menu)
 }
