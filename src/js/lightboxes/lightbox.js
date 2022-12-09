@@ -54,15 +54,14 @@ const onBlur = object(listener, {
   task (
     document
   ) {
-    console.log({ document })
     const { defaultView } = document
     const { requestAnimationFrame } = defaultView
   
     requestAnimationFrame(() => {
       const { activeElement } = document
       
-      console.log({ current, activeElement })
-      if (current && activeElement && !current.contains(activeElement)) {
+      if (current && activeElement && current !== activeElement && !current.contains(activeElement)) {
+        console.log({ current, activeElement })
         close()
       }
     })
