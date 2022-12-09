@@ -10,6 +10,7 @@ import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
 import click from '@mailobj-browser/front/js/events/types/click.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
+import blur from '@mailobj-browser/front/js/events/types/blur.js'
 
 let current = null
 
@@ -52,16 +53,22 @@ export const parse = async (
 }
 
 const onClickOut = object(listener, {
-  type: click,
+  type: blur,
   once,
   passive,
   task (
-    document,
-    { target }
+    document
   ) {
-    if (current && (current !== target) && !current.contains(target)) {
-      close()
-    }
+    const { defaultView } = document
+    const { requestAnimationFrame } = defaultView
+  
+    requestAnimationFrame(() => {
+      const { activeElement } = document
+      
+      if (current && activeElement && !current.contains(activeElement)) {
+        close()
+      }
+    })
   }
 })
 

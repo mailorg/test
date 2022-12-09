@@ -7,10 +7,10 @@ import one from '@mailobj-browser/front/js/selectors/one.js'
 import keyDown from '@mailobj-browser/front/js/events/types/keyDown.js'
 import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import { fromEvent, fromNode, move, resize } from '../../fixed/fixed.js'
-import { close, parse } from '../lightbox.js'
+import { autoClose, close, parse } from '../lightbox.js'
 import { container, template } from '../openers/template.js'
 
-export { close }
+export { autoClose, close }
 
 const openers = new WeakMap()
 
@@ -75,5 +75,7 @@ export const focus = (
 export const opener = (
   menu
 ) => {
+  
+  
   return openers.get(menu)
 }
