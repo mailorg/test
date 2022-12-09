@@ -20,17 +20,13 @@ export const autoClose = (
   const { ownerDocument } = lightbox
   
   current = lightbox
-  onBlur.listen(lightbox)
+  onBlur.listen(ownerDocument)
   onEscape.listen(ownerDocument)
 }
 
 export const close = () => {
   if (current) {
-    const { ownerDocument } = current
-    
     remove(current)
-    onBlur.forget(current)
-    onEscape.forget(ownerDocument)
     current = null
   }
 }
