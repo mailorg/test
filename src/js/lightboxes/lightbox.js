@@ -6,6 +6,7 @@ import manager from '@mailobj-browser/front/js/contracts/manager.js'
 import append from '@mailobj-browser/front/js/tree/append.js'
 import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import once from '@mailobj-browser/front/js/events/options/once.js'
+import capture from '@mailobj-browser/front/js/events/options/capture.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
@@ -52,6 +53,7 @@ export const parse = async (
 
 const onBlur = object(listener, {
   type: blur,
+  capture,
   passive,
   task (
     document
