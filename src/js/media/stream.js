@@ -28,6 +28,8 @@ export const get = async (window, constraints) => {
     onEnded.listen(track)
     tracks[kind].add(track)
   }
+  
+  return media
 }
 
 export const has = kind => {
