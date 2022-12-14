@@ -18,7 +18,7 @@ const onEnded = object(listener, {
 })
 
 export const get = async (window, constraints) => {
-  const { navigator } = constraints
+  const { navigator } = window
   const { mediaDevices } = navigator
   const media = await mediaDevices.getUserMedia(constraints)
   
