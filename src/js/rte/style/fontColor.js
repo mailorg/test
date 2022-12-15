@@ -26,7 +26,7 @@ const onClick = object(listener, {
         'color': globals.ea_rte_forecolor
       })
 
-      // globals.ea_rte_update_editor(globals.ea_rte_current)
+      globals.ea_rte_update_editor(globals.ea_rte_current)
       // globals.ea_rte_context_menu(fontColor, null, rte.id, 'forecolor', 'rte_opt_cp', url)
     }
   }
