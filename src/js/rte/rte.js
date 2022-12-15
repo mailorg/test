@@ -131,6 +131,7 @@ export default (
   button,
   { test }
 ) => {
+  console.log(button);
   const form = button.closest('form')
   const iframe = one('iframe', form)
 
