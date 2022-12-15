@@ -132,8 +132,14 @@ export default (
   { test }
 ) => {
   const form = button.closest('form')
-  console.log(form);
-  const iframe = one('iframe', form)
+
+  let iframe = null
+  if (form) {
+    iframe = one('iframe', form)
+  } else {
+    const { ownerDocument } = button
+    iframe = one('.ea_mail__send_msg_html', ownerDocument)
+  }
 
   params.set(iframe, object(null, { button, test }))
   onLoad.listen(iframe)
