@@ -13,23 +13,22 @@ const onClick = object(listener, {
   task(
     fontColor
   ) {
-    console.log("fontcolor")
-    // const { ownerDocument } = fontColor
-    // const rte = one('[data-rte]', ownerDocument)
-    //
-    // if (rte) {
-    //   const url = href('auth/colorpanel', {
-    //     'id_txt': 'rte',
-    //     'id_bkg': 'rte',
-    //     'table': '12x19',
-    //     'preview': 1,
-    //     'cancel': 1,
-    //     'color': globals.ea_rte_forecolor
-    //   })
-    //
-    //   globals.ea_rte_update_editor(globals.ea_rte_current)
-    //   globals.ea_rte_context_menu(fontColor, null, rte.id, 'forecolor', 'rte_opt_cp', url)
-    // }
+    const { ownerDocument } = fontColor
+    const rte = one('[data-rte]', ownerDocument)
+
+    if (rte) {
+      const url = href('auth/colorpanel', {
+        'id_txt': 'rte',
+        'id_bkg': 'rte',
+        'table': '12x19',
+        'preview': 1,
+        'cancel': 1,
+        'color': globals.ea_rte_forecolor
+      })
+
+      // globals.ea_rte_update_editor(globals.ea_rte_current)
+      // globals.ea_rte_context_menu(fontColor, null, rte.id, 'forecolor', 'rte_opt_cp', url)
+    }
   }
 })
 
