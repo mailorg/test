@@ -138,7 +138,7 @@ export default (
     iframe = one('iframe', form)
   } else {
     const { ownerDocument } = button
-    iframe = one('.ea_mail__send_msg_html', ownerDocument)
+    iframe = one('[data-rte]', ownerDocument)
   }
 
   params.set(iframe, object(null, { button, test }))

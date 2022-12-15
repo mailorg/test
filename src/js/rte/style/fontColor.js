@@ -13,8 +13,8 @@ const onClick = object(listener, {
   task(
     fontColor
   ) {
-    console.log("fontColor");
-    const rte = one('iframe', fontColor.closest('form'))
+    const { ownerDocument } = fontColor
+    const rte = one('[data-rte]', ownerDocument)
 
     if (rte) {
       const url = href('auth/colorpanel', {
