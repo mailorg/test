@@ -138,7 +138,7 @@ export default (
     iframe = one('iframe', form)
   } else {
     const { ownerDocument } = button
-    iframe = one('[data-rte]', ownerDocument)
+    iframe = one('[data-_rte.scss]', ownerDocument)
   }
 
   params.set(iframe, object(null, { button, test }))

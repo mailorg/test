@@ -14,7 +14,7 @@ const onClick = object(listener, {
     fontColor
   ) {
     const { ownerDocument } = fontColor
-    const rte = one('[data-rte]', ownerDocument)
+    const rte = one('[data-_rte.scss]', ownerDocument)
 
     if (rte) {
       const url = href('auth/colorpanel', {
