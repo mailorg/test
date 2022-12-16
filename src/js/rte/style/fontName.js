@@ -10,11 +10,6 @@ const onClick = object(listener, {
 	task (
 		button
 	) {
-		const list = button.closest(`.${elements.context_menu}`)
-		for (const button of all(`.${modifiers.button.light}`, list)) {
-			button.classList.remove(modifiers.context_menu_item.selected)
-		}
-		button.classList.add(modifiers.context_menu_item.selected)
 		command('id_msg_text', 'fontname', button.value)
 	}
 })
