@@ -10,6 +10,7 @@ const onSelectionChange = object(listener, {
 	task (
 		button
 	) {
+		console.log(button)
 		command('id_msg_text', 'fontname', button.options[button.selectedIndex].value)
 		button.selectedIndex = 0
 	}
