@@ -11,7 +11,7 @@ const onChange = object(listener, {
 		button
 	) {
 		console.log(button)
-		command('id_msg_text', 'fontname', button.options[button.selectedIndex].value)
+		command('id_msg_text', 'fontname', button.innerText)
 		button.selectedIndex = 0
 	}
 })
