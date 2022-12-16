@@ -4,7 +4,7 @@ import click from '@mailobj-browser/front/js/events/types/click.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import rte, { command } from '../rte.js'
 
-const onSelectionChange = object(listener, {
+const onChange = object(listener, {
 	type: click,
 	hooks: [preventDefault],
 	task (
@@ -23,6 +23,6 @@ export const test = (
 }
 
 export default button => {
-	onSelectionChange.listen(button)
+	onChange.listen(button)
 	rte(button, object(null, { test }))
 }
