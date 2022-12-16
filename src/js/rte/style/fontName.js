@@ -1,15 +1,19 @@
 import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import click from '@mailobj-browser/front/js/events/types/click.js'
-import load from '@mailobj-browser/front/js/events/types/load.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import rte, { command } from '../rte.js'
+import { element, modifiers } from "@mailobj-browser/components-generics/js/styles.js";
 
 const onClick = object(listener, {
 	type: click,
 	task (
 		button
 	) {
-		console.log(button)
+		const list = button.closest(`.${element.context_menu}`)
+		for (const button of list) {
+			button.classList.remove(modifiers.context_menu_item.selected)
+		}
+		button.classList.add(modifiers.context_menu_item.selected)
 		command('id_msg_text', 'fontname', button.value)
 	}
 })
