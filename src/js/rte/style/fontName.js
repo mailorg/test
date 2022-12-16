@@ -14,16 +14,6 @@ const onClick = object(listener, {
 	}
 })
 
-const onLoad = object(listener, {
-	type: load,
-	task (
-		button
-	) {
-		console.log(button)
-		button.setAttribute('font-family', value)
-	}
-})
-
 export const test = (
 	text
 ) => {
@@ -31,7 +21,7 @@ export const test = (
 }
 
 export default button => {
+	button.setAttribute('font-family', button.value)
 	onClick.listen(button)
-	onLoad.listen(button)
 	rte(button, object(null, { test }))
 }
