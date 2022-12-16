@@ -1,17 +1,14 @@
 import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
-import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import click from '@mailobj-browser/front/js/events/types/click.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import rte, { command } from '../rte.js'
 
-const onSelectionChange = object(listener, {
+const onClick = object(listener, {
   type: click,
-  hooks: [preventDefault],
   task (
     button
   ) {
-    command('id_msg_text', 'formatBlock', button.options[button.selectedIndex].value)
-    button.selectedIndex = 0
+    command('id_msg_text', 'formatBlock', button.value)
   }
 })
 
@@ -22,6 +19,6 @@ export const test = (
 }
 
 export default button => {
-  onSelectionChange.listen(button)
+  onClick.listen(button)
   rte(button, object(null, { test }))
 }
