@@ -21,7 +21,7 @@ export const test = (
 }
 
 export default button => {
-	button.setAttribute('font-family', button.value)
+	button.setAttribute('style', `font-family:'${button.value}'`)
 	onClick.listen(button)
 	rte(button, object(null, { test }))
 }
