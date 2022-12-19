@@ -4,10 +4,11 @@ import object from '@mailobj-browser/front/js/utils/object.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 
 const handler = object(null, {
-  hooks: [preventDefault],
   task(
-      element
+      element,
+      event
   ) {
+    preventDefault(event)
     const { dataset } = element
     const { url = '', target = '' } = dataset
 
