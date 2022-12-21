@@ -10,10 +10,10 @@ const onClick = object(listener, {
   task(
     button
   ) {
-    button.classList.toggle(genericsModifiers.show_more.hide)
-    const parent = button.closest('div')
-    const containerActions = one('.ea_generics__rte_advanced_actions', parent)
-    containerActions.classList.toggle(modifiers.display.none)
+    // button.classList.toggle(genericsModifiers.show_more.hide)
+    // const parent = button.closest('div')
+    // const containerActions = one('.ea_generics__rte_advanced_actions', parent)
+    // containerActions.classList.toggle(modifiers.display.none)
   }
 })
 
