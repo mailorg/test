@@ -11,7 +11,7 @@ const onClick = object(listener, {
     button
   ) {
     console.log(button)
-    // button.classList.toggle(genericsModifiers.show_more.hide)
+    button.classList.toggle(genericsModifiers.show_more.hide)
   }
 })
 
