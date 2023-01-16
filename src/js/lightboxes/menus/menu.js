@@ -9,6 +9,7 @@ import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import { fromEvent, fromNode, move, resize } from '../../fixed/fixed.js'
 import { autoClose, close, parse } from '../lightbox.js'
 import { container, template } from '../openers/template.js'
+import removed from '../../wait/removed.js'
 
 export { autoClose, close }
 
@@ -46,7 +47,8 @@ export const open = async (
 ) => {
   const { ownerDocument } = opener
   const content = await parse(template(opener), container(opener))
-  
+
+  await removed(content)
   close()
   move(content)
   
