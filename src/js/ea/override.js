@@ -1,7 +1,7 @@
 import { disable } from '@mailobj-browser/components-generics/js/hotkey/hotkey.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 
-const {ea_context_menu, ea_context_menu_close} = globalThis
+const { ea_context_menu_, ea_context_menu_close } = globalThis
 
 let resolver = resolvable()
 
@@ -18,10 +18,10 @@ const resolve = () => {
     resolve()
 }
 
-globalThis.ea_context_menu = (element, ...params) => {
+globalThis.ea_context_menu_ = (element, ...params) => {
     disable(element, next())
 
-    return ea_context_menu(element, ...params)
+    return ea_context_menu_(element, ...params)
 }
 
 globalThis.ea_context_menu_close = () => {
