@@ -5,12 +5,12 @@ import text from '@mailobj-browser/front/js/fetchers/text.js'
 import manager from '@mailobj-browser/front/js/contracts/manager.js'
 import append from '@mailobj-browser/front/js/tree/append.js'
 import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
-import once from '@mailobj-browser/front/js/events/options/once.js'
 import capture from '@mailobj-browser/front/js/events/options/capture.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import blur from '@mailobj-browser/front/js/events/types/blur.js'
+import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 
 let current = null
 
@@ -54,6 +54,7 @@ const onBlur = object(listener, {
   task (
     document
   ) {
+    /*
     const { defaultView } = document
     const { requestAnimationFrame } = defaultView
   
@@ -61,18 +62,24 @@ const onBlur = object(listener, {
       const { activeElement } = document
       
       if (current && activeElement && current !== activeElement && !current.contains(activeElement)) {
-        console.log({ current, activeElement })
         close()
       }
     })
+    
+     */
   }
 })
 
 const onEscape = object(listener, {
   type: keyUp,
-  once,
-  passive,
-  task: close
+  task: (document, event) => {
+    const { key } = event
+    
+    if (current && key === 'Escape') {
+      preventDefault(event)
+      close()
+    }
+  }
 })
 
 const render = async (

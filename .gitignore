@@ -3,3 +3,5 @@ node_modules
 fetchers
 package-lock.json
 switchers
+src/js/modal
+src/js/template
