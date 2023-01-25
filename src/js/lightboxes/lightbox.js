@@ -54,6 +54,7 @@ const onBlur = object(listener, {
   task (
     document
   ) {
+    /*
     const { defaultView } = document
     const { requestAnimationFrame } = defaultView
   
@@ -64,6 +65,8 @@ const onBlur = object(listener, {
         close()
       }
     })
+    
+     */
   }
 })
 
