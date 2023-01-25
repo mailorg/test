@@ -1,36 +1,44 @@
-import dropdown, { opener } from './dropdown.js'
-import keyDown from '@mailobj-browser/front/js/events/types/keyDown.js'
-import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
+import input from '@mailobj-browser/front/js/events/types/input.js'
+import capture from '@mailobj-browser/front/js/events/options/capture.js'
+import object from '@mailobj-browser/front/js/utils/object.js'
+import all from '@mailobj-browser/front/js/selectors/all.js'
+import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
+import * as menu from './menu.js'
 
-const observe = select => {
-  const { ownerDocument } = select
-  const { defaultView } = ownerDocument
-  const { MutationObserver } = defaultView
-  
-  
-}
+export const {
+  close,
+  open,
+  opener
+} = menu
 
-const onKeyDown = object(prevented, {
-  type: keyDown,
-  task
-})
+const selected = ''
 
-const onMouseDown = object(prevented, {
-  type: mouseDown,
-  task
+const onInput = object(listener, {
+  type: input,
+  capture,
+  task: (
+    list,
+    { target }
+  ) => {
+    const { parentNode, value } = target
+    const { textContent } = parentNode
+    const { options } = opener(list)
+    const [option] = options
+    
+    Object.assign(option, { selected, textContent, value })
+  }
 })
 
 export default (
   list
 ) => {
   const select = opener(list)
-  const { value = null } = select
   
-  dropdown(list)
-  
-  if (value === null) {
-    return
+  for (const input of all('input', list)) {
+    if (input.value === select.value) {
+      input.focus()
+    }
   }
   
-  one(`[value="${value}"]`, list)?.focus()
+  onInput.listen(list)
 }
