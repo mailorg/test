@@ -133,14 +133,15 @@ export default (
 ) => {
   const form = button.closest('form')
 
-  let iframe = null
+  let iframe
+  
   if (form) {
     iframe = one('iframe', form)
   } else {
     const { ownerDocument } = button
     iframe = one('[data-rte]', ownerDocument)
   }
-
+console.log({ iframe })
   params.set(iframe, object(null, { button, test }))
   onLoad.listen(iframe)
 }
