@@ -14,6 +14,9 @@ import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 
 let current = null
 
+export const autoClose = () => {
+}
+
 export const close = () => {
   current = null
   lightbox.close()
