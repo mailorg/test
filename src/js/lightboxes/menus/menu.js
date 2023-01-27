@@ -15,13 +15,6 @@ import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 
 let current = null
 
-export const autoClose = list => {
-  const { ownerDocument } = list
-  
-  onBlur.listen(ownerDocument)
-  onEscape.listen(ownerDocument)
-}
-
 export const close = () => {
   current = null
   lightbox.close()
@@ -127,3 +120,6 @@ export const opener = (
 ) => {
   return openers.get(menu)
 }
+
+onBlur.listen(document)
+onEscape.listen(document)
