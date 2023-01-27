@@ -12,6 +12,7 @@ import * as lightbox from '../lightbox.js'
 import { container, template } from '../openers/template.js'
 import blur from '@mailobj-browser/front/js/events/types/blur.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
+import remove from '@mailobj-browser/front/js/tree/remove.js'
 
 let current = null
 
@@ -19,8 +20,8 @@ export const autoClose = list => {
 }
 
 export const close = () => {
+  remove(current)
   current = null
-  lightbox.close()
 }
 
 const openers = new WeakMap()
@@ -57,7 +58,6 @@ const onEscape = object(listener, {
   task: (document, event) => {
     const { key } = event
     
-    console.log({ current, key })
     if (current && key === 'Escape') {
       preventDefault(event)
       close()
@@ -107,7 +107,6 @@ export const open = async (
   onBlur.listen(ownerDocument)
   onEscape.listen(ownerDocument)
   current = content
-  console.log({ current })
   
   return content
 }
