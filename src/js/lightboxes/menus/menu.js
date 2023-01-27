@@ -57,6 +57,7 @@ const onEscape = object(listener, {
   task: (document, event) => {
     const { key } = event
     
+    console.log({ current, key })
     if (current && key === 'Escape') {
       preventDefault(event)
       close()
