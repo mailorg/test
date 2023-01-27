@@ -107,6 +107,7 @@ export const open = async (
   onBlur.listen(ownerDocument)
   onEscape.listen(ownerDocument)
   current = content
+  console.log({ current })
   
   return content
 }
