@@ -6,6 +6,7 @@ import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import keyDown from '@mailobj-browser/front/js/events/types/keyDown.js'
 import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
+import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import { fromEvent, fromNode, move, resize } from '../../fixed/fixed.js'
 import * as lightbox from '../lightbox.js'
 import { container, template } from '../openers/template.js'
@@ -14,7 +15,11 @@ import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 
 let current = null
 
-export const autoClose = () => {
+export const autoClose = list => {
+  const { ownerDocument } = list
+  
+  onBlur.listen(ownerDocument)
+  onEscape.listen(ownerDocument)
 }
 
 export const close = () => {
