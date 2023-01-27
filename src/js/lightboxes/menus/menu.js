@@ -20,8 +20,10 @@ export const autoClose = list => {
 }
 
 export const close = () => {
-  remove(current)
-  current = null
+  if (current) {
+    remove(current)
+    current = null
+  }
 }
 
 const openers = new WeakMap()
