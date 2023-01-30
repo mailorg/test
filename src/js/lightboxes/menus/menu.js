@@ -16,9 +16,6 @@ import remove from '@mailobj-browser/front/js/tree/remove.js'
 
 let current = null
 
-export const autoClose = list => {
-}
-
 export const close = () => {
   if (current) {
     remove(current)
@@ -126,7 +123,3 @@ export const opener = (
 ) => {
   return openers.get(menu)
 }
-
-
-onBlur.listen(document)
-onEscape.listen(document)
