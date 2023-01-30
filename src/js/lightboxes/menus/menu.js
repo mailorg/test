@@ -114,7 +114,10 @@ export const focus = (
   item = null
 ) => {
   if (item) {
-    one('a, button, :checked, label', item)?.focus()
+    const matching = one('a, button, :checked, label', item)
+    
+    console.log(matching)
+    matching?.focus()
   }
 }
 
