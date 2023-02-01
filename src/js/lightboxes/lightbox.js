@@ -12,7 +12,6 @@ export const close = () => {
   if (current) {
     remove(current)
     current = null
-    console.error(new Error('__'))
   }
 }
 
