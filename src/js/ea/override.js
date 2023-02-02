@@ -18,10 +18,14 @@ const resolve = () => {
     resolve()
 }
 
-globalThis.ea_context_menu_ = (element, ...params) => {
-    disable(element, next())
-
-    return ea_context_menu_(element, ...params)
+globalThis.ea_context_menu_ = (element, event, ...params) => {
+    const node = element ?? event.target
+    
+    if (node) {
+        disable(node, next())
+    
+        return ea_context_menu_(element, event, ...params)
+    }
 }
 
 globalThis.ea_context_menu_close = () => {
