@@ -91,14 +91,17 @@ export const open = async (
   const content = await lightbox.parse(template(opener), container(opener))
   
   close()
+  console.log('premove', { content })
   move(content)
   
   if (event) {
     move(content, fromEvent(content, event))
+    console.log('event-moved', { content })
   } else {
     resize(content, opener)
     move(content, fromNode(content, opener))
     openers.set(content, opener)
+    console.log('opener-moved', { content })
   }
   
   focus(content)
@@ -107,6 +110,7 @@ export const open = async (
   onEscape.listen(ownerDocument)
   current = content
   
+  console.log('listen', { content })
   return content
 }
 
