@@ -11,6 +11,7 @@ const onClick = object(listener, {
   task (
     img
   ) {
+    console.log({ img, click })
     const { src } = img
     const origin = lightbox.opener(img.closest('[data-contract="menu.library"]'))
     const form = origin.closest('form')
@@ -24,7 +25,6 @@ const onClick = object(listener, {
 })
 
 export default img => {
-  console.log({ onClick, img })
   onClick.listen(img)
 }
 
