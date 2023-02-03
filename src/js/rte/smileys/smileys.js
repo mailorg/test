@@ -5,6 +5,6 @@ import insert from './insert.js'
 export default contract({
   insert: array([
     insert
-  ]),
+  ])
 })
 
