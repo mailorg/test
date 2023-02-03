@@ -9,9 +9,9 @@ import * as lightbox from '../../lightboxes/lightbox.js'
 const onClick = object(listener, {
   type: click,
   task (
-    img
+    button
   ) {
-    const { src } = img
+    const { src } = one('img', button)
     const origin = lightbox.opener(img.closest('[data-contract="menu.library"]'))
     const form = origin.closest('form')
     const rte = one('iframe', form)
@@ -23,7 +23,7 @@ const onClick = object(listener, {
   }
 })
 
-export default img => {
-  onClick.listen(img)
+export default button => {
+  onClick.listen(button)
 }
 
