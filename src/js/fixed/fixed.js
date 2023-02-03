@@ -125,10 +125,10 @@ export const fromNode = (
         clientX = left
       }
 
-      if (bottom + height > clientHeight) {
+      if (2 * bottom + height - top > clientHeight) {
         clientY = top - height
       } else {
-        clientY = bottom
+        clientY = clientHeight - height
       }
       console.log({ clientHeight, clientWidth, height, width })
       console.log({ bottom, left, right, top })
