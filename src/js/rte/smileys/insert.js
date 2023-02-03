@@ -24,6 +24,7 @@ const onClick = object(listener, {
 })
 
 export default img => {
+  console.log({ onClick, img })
   onClick.listen(img)
 }
 
