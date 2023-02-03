@@ -129,5 +129,5 @@ export const focus = (
 export const opener = (
   menu
 ) => {
-  return openers.get(menu)
+  return lightbox.opener(menu)
 }

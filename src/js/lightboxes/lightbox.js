@@ -5,8 +5,11 @@ import text from '@mailobj-browser/front/js/fetchers/text.js'
 import manager from '@mailobj-browser/front/js/contracts/manager.js'
 import append from '@mailobj-browser/front/js/tree/append.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
+import removed from '../wait/removed.js'
 
 let current = null
+
+const openers = new WeakMap()
 
 export const close = () => {
   if (current) {
@@ -17,17 +20,24 @@ export const close = () => {
 
 export const parse = async (
   template,
-  container
+  container,
+  opener = null
 ) => {
   const { dataset, ownerDocument } = template
   const { url } = dataset
   const body = element(ownerDocument, 'body')
   const { children: [lightbox] } = await render(template, url)
   
+  openers.set(lightbox, opener)
   append(body, lightbox)
   await manager.trigger(body)
   append(container, lightbox)
   current = lightbox
+  
+  queueMicrotask(async () => {
+    await removed(lightbox)
+    openers.delete(lightbox)
+  })
   
   return lightbox
 }
@@ -51,3 +61,5 @@ const render = async (
   
   return invoke(clone)
 }
+
+export const opener = lightbox => openers.get(lightbox)
