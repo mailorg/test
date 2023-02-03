@@ -130,7 +130,9 @@ export const fromNode = (
       } else {
         clientY = bottom
       }
-      
+      console.log({ clientHeight, clientWidth, height, width })
+      console.log({ bottom, left, right, top })
+      console.log({ clientX, clientY })
       break
     }
     case bottomRight: {
