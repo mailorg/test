@@ -1,18 +1,10 @@
 import contract from '@mailobj-browser/front/js/contracts/contract.js'
 import array from '@mailobj-browser/front/js/utils/array.js'
-import display from './display.js'
-import next from './next.js'
-import previous from './previous.js'
+import insert from './insert.js'
 
 export default contract({
-  display: array([
-    display
+  insert: array([
+    insert
   ]),
-  next: array([
-    next
-  ]),
-  previous: array([
-    previous
-  ])
 })
 
