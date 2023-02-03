@@ -98,17 +98,14 @@ export const display = (content, opener, event = null) => {
   const { ownerDocument } = opener
   
   close()
-  console.log('premove', { content })
   move(content)
   
   if (event) {
     move(content, fromEvent(content, event))
-    console.log('event-moved', { content })
   } else {
     resize(content, opener)
     move(content, fromNode(content, opener))
     openers.set(content, opener)
-    console.log('opener-moved', { content })
   }
   
   focus(content)
