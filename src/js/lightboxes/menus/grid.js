@@ -67,6 +67,7 @@ const onKeyDown = object(menu.onKeyDown, {
 export default async (
   list
 ) => {
+  console.log('grid')
   onKeyDown.listen(list)
   menu.focus(list)
 }
