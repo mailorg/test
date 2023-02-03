@@ -12,7 +12,7 @@ const onClick = object(listener, {
     button
   ) {
     const { src } = one('img', button)
-    const origin = lightbox.opener(img.closest('[data-contract="menu.library"]'))
+    const origin = lightbox.opener(button.closest('[data-contract="menu.library"]'))
     const form = origin.closest('form')
     const rte = one('iframe', form)
   
