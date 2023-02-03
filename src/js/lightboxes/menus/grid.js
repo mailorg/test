@@ -68,7 +68,7 @@ const onKeyDown = object(menu.onKeyDown, {
 export default async (
   list
 ) => {
-  display(list, opener(list))
   onKeyDown.listen(list)
+  display(list, opener(list))
   menu.focus(list)
 }

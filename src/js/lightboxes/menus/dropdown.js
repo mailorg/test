@@ -1,5 +1,6 @@
 import object from '@mailobj-browser/front/js/utils/object.js'
 import * as menu from './menu.js'
+import { display } from './menu.js'
 
 export const {
   close,
@@ -25,5 +26,6 @@ export default (
   list
 ) => {
   onKeyDown.listen(list)
+  display(list, opener(list))
   menu.focus(list)
 }
