@@ -88,4 +88,5 @@ export default async (
   onKeyDown.listen(list)
   display(list, opener(list))
   menu.focus(list)
+  console.log(list)
 }
