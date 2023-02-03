@@ -2,26 +2,22 @@ import click from '@mailobj-browser/front/js/events/types/click.js'
 import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
-import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
+import {close} from '../../lightboxes/menus/menu.js'
 import {globals} from '../../ea/ea.js'
-import {close, opener} from '../../menu/menu.js'
-import all from '@mailobj-browser/front/js/selectors/all.js'
+import * as lightbox from '../../lightboxes/lightbox.js'
 
 const onClick = object(listener, {
   type: click,
-  hooks: [preventDefault],
   task (
-    bkg,
+    button,
   ) {
-    const page = bkg.closest('ul')
-    const pages = page.parentNode.closest('ul')
-    const origin = opener(pages.parentNode)
+    const origin = lightbox.opener(button.closest('[data-contract="menu.library"]'))
     const form = origin.closest('form')
     const rte = one('iframe', form)
   
     if (rte && rte.id) {
-      const { src } = bkg
-      const { dataset } = bkg.parentNode
+      const { src } = one('img', button)
+      const { dataset } = button.parentNode
       const { repeat, attach, position, color } = dataset
       globals.ea_rte_exec_bkg(rte.id, src, repeat, attach, position, '', color, '')
     }
@@ -29,9 +25,7 @@ const onClick = object(listener, {
   }
 })
 
-export default bkgs => {
-  for (const bkg of all('img', bkgs)) {
-    onClick.listen(bkg)
-  }
+export default button => {
+  onClick.listen(button)
 }
 
