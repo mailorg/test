@@ -1,5 +1,6 @@
 import object from '@mailobj-browser/front/js/utils/object.js'
 import * as menu from './menu.js'
+import { display, opener } from './menu.js'
 
 export const {
   close,
@@ -85,5 +86,6 @@ export default async (
   
   paginations.set(list, { children, items, page, pages, size })
   onKeyDown.listen(list)
+  display(list, opener(list))
   menu.focus(list)
 }
