@@ -1,6 +1,7 @@
 import object from '@mailobj-browser/front/js/utils/object.js'
 import { rect } from '../../fixed/fixed.js'
 import * as menu from './menu.js'
+import { display, opener } from './menu.js'
 
 export const {
   close,
@@ -67,7 +68,7 @@ const onKeyDown = object(menu.onKeyDown, {
 export default async (
   list
 ) => {
-  console.log('grid')
+  display(list, opener(list))
   onKeyDown.listen(list)
   menu.focus(list)
 }

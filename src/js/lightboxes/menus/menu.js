@@ -87,8 +87,15 @@ export const open = async (
   opener,
   event = null
 ) => {
+  const content = lightbox.parse(template(opener), container(opener))
+  
+  display(content, opener, event)
+  
+  return content
+}
+
+export const display = (content, opener, event = null) => {
   const { ownerDocument } = opener
-  const content = await lightbox.parse(template(opener), container(opener))
   
   close()
   console.log('premove', { content })
@@ -109,9 +116,6 @@ export const open = async (
   onBlur.listen(ownerDocument)
   onEscape.listen(ownerDocument)
   current = content
-  
-  console.log('listen', { content })
-  return content
 }
 
 export const focus = (
