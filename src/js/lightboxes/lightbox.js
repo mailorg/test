@@ -13,8 +13,8 @@ const openers = new WeakMap()
 
 export const close = () => {
   if (current) {
-    remove(current)
-    current = null
+    //remove(current)
+    //current = null
   }
 }
 
