@@ -34,10 +34,12 @@ export const parse = async (
   append(container, lightbox)
   current = lightbox
   
+/*
   queueMicrotask(async () => {
     await removed(lightbox)
     openers.delete(lightbox)
   })
+*/
   
   return lightbox
 }
