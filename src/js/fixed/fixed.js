@@ -192,7 +192,7 @@ export const move = (
   target,
   { clientX, clientY } = init
 ) => {
-  const {style} = target.resolve()
+  const {style} = target
   
   style.setProperty('--ea_context_menu_left', `${clientX}px`)
   style.setProperty('--ea_context_menu_top', `${clientY}px`)
