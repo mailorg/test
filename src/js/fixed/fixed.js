@@ -192,7 +192,7 @@ export const move = (
   target,
   { clientX, clientY } = init
 ) => {
-  if (target) {
+  if (target !== undefined) {
     const { style } = target
 
     style.setProperty('--ea_context_menu_left', `${clientX}px`)
@@ -204,7 +204,7 @@ export const resize = (
   target,
   node
 ) => {
-  if (target) {
+  if (target !== undefined) {
     const { style } = target
     const { clientHeight } = coords(target)
     const { bottom, top } = rect(node)
