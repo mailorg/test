@@ -192,9 +192,9 @@ export const move = (
   target,
   { clientX, clientY } = init
 ) => {
-  const { style } = target
+  if (target) {
+    const { style } = target
 
-  if (style) {
     style.setProperty('--ea_context_menu_left', `${clientX}px`)
     style.setProperty('--ea_context_menu_top', `${clientY}px`)
   }
@@ -204,12 +204,12 @@ export const resize = (
   target,
   node
 ) => {
-  const { style } = target
-  const { clientHeight } = coords(target)
-  const { bottom, top } = rect(node)
-  const max = Math.max(top, clientHeight - bottom)
+  if (target) {
+    const { style } = target
+    const { clientHeight } = coords(target)
+    const { bottom, top } = rect(node)
+    const max = Math.max(top, clientHeight - bottom)
 
-  if (style) {
     style.setProperty('--ea_context_menu_max_height', `${max}px`)
   }
 }
