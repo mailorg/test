@@ -39,7 +39,6 @@ const onBlur = object(listener, {
   task (
     document
   ) {
-    console.log({ blur })
     const { defaultView } = document
     const { requestAnimationFrame } = defaultView
     
@@ -110,7 +109,6 @@ export const display = (content, opener, event = null) => {
     onBlur.listen(ownerDocument)
     onEscape.listen(ownerDocument)
     current = content
-    console.log(content)
   })
 }
 
