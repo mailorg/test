@@ -86,10 +86,12 @@ export default async (
   const rows = list.getAttribute('data-rows')
   const columns = list.getAttribute('data-columns')
   const columnWidth = list.getAttribute('data-column-width')
+  const columnSize = list.getAttribute('data-column-size')
   const {style} = list
   style.setProperty('--ea_context_menu_library_rows', rows)
   style.setProperty('--ea_context_menu_library_columns', columns)
   style.setProperty('--ea_context_menu_library_columns_width', columnWidth)
+  style.setProperty('--ea_context_menu_library_columns_size', columnSize)
 
   paginations.set(list, { children, items, page, pages, size })
   onKeyDown.listen(list)
