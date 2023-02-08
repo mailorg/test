@@ -84,11 +84,6 @@ export default async (
   const size = Math.floor(length / pages) + 1
   const items = children.slice(0, size)
 
-  paginations.set(list, { children, items, page, pages, size })
-  onKeyDown.listen(list)
-  display(list, opener(list))
-  menu.focus(list)
-
   const rows = list.getAttribute('data-rows')
   const columns = list.getAttribute('data-columns')
   const columnWidth = list.getAttribute('data-column-width')
@@ -96,4 +91,9 @@ export default async (
   style.setProperty('--ea_context_menu_library_rows', rows)
   style.setProperty('--ea_context_menu_library_columns', columns)
   style.setProperty('--ea_context_menu_library_columns_width', columnWidth)
+
+  paginations.set(list, { children, items, page, pages, size })
+  onKeyDown.listen(list)
+  display(list, opener(list))
+  menu.focus(list)
 }
