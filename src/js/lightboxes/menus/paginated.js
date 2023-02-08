@@ -92,8 +92,8 @@ export default async (
   const rows = list.getAttribute('data-rows')
   const columns = list.getAttribute('data-columns')
   const columnWidth = list.getAttribute('data-column-width')
-  console.log(list);
-  list.setProperty('--ea_context_menu_library_rows', rows)
-  list.setProperty('--ea_context_menu_library_columns', columns)
-  list.setProperty('--ea_context_menu_library_columns_width', columnWidth)
+  const {style} = list
+  style.setProperty('--ea_context_menu_library_rows', rows)
+  style.setProperty('--ea_context_menu_library_columns', columns)
+  style.setProperty('--ea_context_menu_library_columns_width', columnWidth)
 }
