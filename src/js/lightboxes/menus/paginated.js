@@ -84,16 +84,15 @@ export default async (
   const size = Math.floor(length / pages) + 1
   const items = children.slice(0, size)
 
-  // const rows = list.getAttribute('rows')
-  // const columns = list.getAttribute('columns')
-  // const columnWidth = list.getAttribute('columnWidth')
-  // list.setProperty('--ea_context_menu_library_rows', rows)
-  // list.setProperty('--ea_context_menu_library_columns', columns)
-  // list.setProperty('--ea_context_menu_library_columns_width', columnWidth)
-
   paginations.set(list, { children, items, page, pages, size })
-  console.log(list);
   onKeyDown.listen(list)
   display(list, opener(list))
   menu.focus(list)
+
+  const rows = list.getAttribute('rows')
+  const columns = list.getAttribute('columns')
+  const columnWidth = list.getAttribute('columnWidth')
+  list.setProperty('--ea_context_menu_library_rows', rows)
+  list.setProperty('--ea_context_menu_library_columns', columns)
+  list.setProperty('--ea_context_menu_library_columns_width', columnWidth)
 }
