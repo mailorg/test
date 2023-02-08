@@ -89,9 +89,9 @@ export default async (
   display(list, opener(list))
   menu.focus(list)
 
-  const rows = list.getAttribute('rows')
-  const columns = list.getAttribute('columns')
-  const columnWidth = list.getAttribute('columnWidth')
+  const rows = list.getAttribute('data-rows')
+  const columns = list.getAttribute('data-columns')
+  const columnWidth = list.getAttribute('data-column-width')
   console.log(rows);
   list.setProperty('--ea_context_menu_library_rows', rows)
   list.setProperty('--ea_context_menu_library_columns', columns)
