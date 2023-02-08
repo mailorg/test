@@ -83,7 +83,6 @@ export default async (
   const pages = Math.ceil(scrollHeight / height)
   const size = Math.floor(length / pages) + 1
   const items = children.slice(0, size)
-
   const rows = list.getAttribute('data-rows')
   const columns = list.getAttribute('data-columns')
   const columnWidth = list.getAttribute('data-column-width')
