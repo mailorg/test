@@ -84,6 +84,8 @@ export default async (
   const size = Math.floor(length / pages) + 1
   const items = children.slice(0, size)
 
+  console.log(pages);
+
   // const rows = list.getAttribute('rows')
   // const columns = list.getAttribute('columns')
   // const columnWidth = list.getAttribute('columnWidth')
