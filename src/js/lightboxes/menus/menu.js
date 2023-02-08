@@ -90,7 +90,7 @@ export const open = async (
 ) => {
   const content = await lightbox.parse(template(opener), container(opener), opener)
   
-  display(content, opener, event)
+  //display(content, opener, event)
   
   return content
 }
