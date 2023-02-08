@@ -92,7 +92,7 @@ export default async (
   const rows = list.getAttribute('data-rows')
   const columns = list.getAttribute('data-columns')
   const columnWidth = list.getAttribute('data-column-width')
-  console.log(rows);
+  console.log(list);
   list.setProperty('--ea_context_menu_library_rows', rows)
   list.setProperty('--ea_context_menu_library_columns', columns)
   list.setProperty('--ea_context_menu_library_columns_width', columnWidth)
