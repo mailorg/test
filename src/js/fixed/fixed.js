@@ -113,7 +113,7 @@ export const fromNode = (
   node,
   angle = bottomLeft
 ) => {
-  const { clientHeight, clientWidth, height, width } = coords(target)
+  const { clientHeight, clientWidth, height, width, x, y } = coords(target)
   const { bottom, left, right, top } = rect(node)
   let { clientX = 0, clientY = 0 } = {}
   
@@ -130,7 +130,7 @@ export const fromNode = (
       } else {
         clientY = bottom
       }
-      console.log({ clientHeight, clientWidth, height, width })
+      console.log({ clientHeight, clientWidth, height, width, x, y })
       console.log({ bottom, left, right, top })
       console.log({ clientX, clientY })
       break
