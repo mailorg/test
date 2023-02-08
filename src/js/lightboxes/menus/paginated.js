@@ -91,9 +91,8 @@ export default async (
   // list.setProperty('--ea_context_menu_library_columns', columns)
   // list.setProperty('--ea_context_menu_library_columns_width', columnWidth)
 
-  console.log(paginations);
   paginations.set(list, { children, items, page, pages, size })
-  console.log(paginations);
+  console.log(list);
   onKeyDown.listen(list)
   display(list, opener(list))
   menu.focus(list)
