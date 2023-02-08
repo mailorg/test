@@ -96,20 +96,22 @@ export const display = (content, opener, event = null) => {
   close()
   move(content)
   
-  if (event) {
-    move(content, fromEvent(content, event))
-  } else {
-    resize(content, opener)
-    move(content, fromNode(content, opener))
-    openers.set(content, opener)
-  }
+  requestAnimationFrame(() => {
+    if (event) {
+      move(content, fromEvent(content, event))
+    } else {
+      resize(content, opener)
+      move(content, fromNode(content, opener))
+      openers.set(content, opener)
+    }
   
-  focus(content)
-  onScroll.listen(ownerDocument)
-  onBlur.listen(ownerDocument)
-  onEscape.listen(ownerDocument)
-  current = content
-  console.log(content)
+    focus(content)
+    onScroll.listen(ownerDocument)
+    onBlur.listen(ownerDocument)
+    onEscape.listen(ownerDocument)
+    current = content
+    console.log(content)
+  })
 }
 
 export const focus = (
