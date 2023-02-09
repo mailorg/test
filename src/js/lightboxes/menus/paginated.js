@@ -87,5 +87,4 @@ export default async (
   paginations.set(list, { children, items, page, pages, size })
   onKeyDown.listen(list)
   display(list, opener(list))
-  menu.focus(list)
 }

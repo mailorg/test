@@ -27,5 +27,4 @@ export default (
 ) => {
   onKeyDown.listen(list)
   display(list, opener(list))
-  menu.focus(list)
 }
