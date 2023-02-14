@@ -67,7 +67,11 @@ const render = async (
       request: new Request(`${url}`)
     }))
     
-    clone.innerHTML = fetched
+    if (clone.hasChildNodes()) {
+      clone.firstChild.innerHTML = fetched
+    } else {
+      clone.innerHTML = fetched
+    }
   }
   
   return invoke(clone)
