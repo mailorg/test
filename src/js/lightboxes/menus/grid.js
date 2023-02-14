@@ -24,7 +24,6 @@ const next = (list, x, y) => {
     const { bottom, left, right, top } = rect(li)
     
     if (x >= left && x <= right && y >= top && y <= bottom) {
-      console.log({ li })
       return li
     }
   }
@@ -47,7 +46,6 @@ const keys = object(null, {
   },
   ArrowRight: (list, current) => {
     const { right, top, x, y } = calc(list, current)
-    console.log({ current, right, top, x, y }, next(list, right + x, top + y))
     
     return next(list, right + x, top + y) ??
       current.nextElementSibling ??
