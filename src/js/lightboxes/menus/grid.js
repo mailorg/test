@@ -23,6 +23,7 @@ const next = ({ children }, x, y) => {
     const { bottom, left, right, top } = rect(li)
     
     if (x >= left && x <= right && y >= top && y <= bottom) {
+      console.log({ li })
       return li
     }
   }
