@@ -44,6 +44,7 @@ const keys = object(null, {
       list.lastElementChild
   },
   ArrowRight: (list, current) => {
+    console.log({ list, current })
     const { right, top, x, y } = calc(list, current)
     
     return next(list, right + x, top + y) ??
