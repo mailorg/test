@@ -67,7 +67,7 @@ const render = async (
       request: new Request(`${url}`)
     }))
     
-    clone.innerHTML = '<div class="ea_generics__context_menu" data-contract="menu.dropdown">' + fetched + '</div>'
+    clone.innerHTML = fetched
   }
   
   return invoke(clone)
