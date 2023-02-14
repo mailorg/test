@@ -45,7 +45,7 @@ const keys = object(null, {
   },
   ArrowRight: (list, current) => {
     const { right, top, x, y } = calc(list, current)
-    console.log({ right, top, x, y })
+    console.log({ right, top, x, y }, next(list, right + x, top + y))
     
     return next(list, right + x, top + y) ??
       current.nextElementSibling ??
