@@ -2,6 +2,7 @@ import object from '@mailobj-browser/front/js/utils/object.js'
 import { rect } from '../../fixed/fixed.js'
 import * as menu from './menu.js'
 import { display, opener } from './menu.js'
+import all from '@mailobj-browser/front/js/selectors/all.js'
 
 export const {
   close,
@@ -18,8 +19,8 @@ const calc = (list, current) => {
   return { ...coords, current, x, y }
 }
 
-const next = ({ children }, x, y) => {
-  for (const li of children) {
+const next = (list, x, y) => {
+  for (const li of all('li', list)) {
     const { bottom, left, right, top } = rect(li)
     
     if (x >= left && x <= right && y >= top && y <= bottom) {
