@@ -2,6 +2,7 @@ import object from '@mailobj-browser/front/js/utils/object.js'
 import { rect } from '../../fixed/fixed.js'
 import * as menu from './menu.js'
 import { display, opener } from './menu.js'
+import all from '@mailobj-browser/front/js/selectors/all.js'
 
 export const {
   close,
@@ -9,19 +10,17 @@ export const {
   open
 } = menu
 
-const calc = (list, event) => {
-  const { target } = event
-  const current = target.closest('li')
+const calc = (list, current) => {
   const coords = rect(current)
   const { height, width } = coords
-  const x = height / 2
-  const y = width / 2
+  const x = Math.floor(Math.floor(height) / 2)
+  const y = Math.floor(Math.floor(width) / 2)
   
   return { ...coords, current, x, y }
 }
 
-const next = ({ children }, x, y) => {
-  for (const li of children) {
+const next = (list, x, y) => {
+  for (const li of all('li', list)) {
     const { bottom, left, right, top } = rect(li)
     
     if (x >= left && x <= right && y >= top && y <= bottom) {
@@ -31,29 +30,29 @@ const next = ({ children }, x, y) => {
 }
 
 const keys = object(null, {
-  ArrowDown: (list, current, event) => {
-    const { left, bottom, x, y } = calc(list, current, event)
+  ArrowDown: (list, current) => {
+    const { left, bottom, x, y } = calc(list, current)
     
     return next(list, left + x, bottom + y) ??
       current.nextElementSibling ??
       list.firstElementChild
   },
-  ArrowLeft: (list, current, event) => {
-    const { left, top, x, y } = calc(list, current, event)
+  ArrowLeft: (list, current) => {
+    const { left, top, x, y } = calc(list, current)
     
     return next(list, left - x, top + y) ??
       current.previousElementSibling ??
       list.lastElementChild
   },
-  ArrowRight: (list, current, event) => {
-    const { right, top, x, y } = calc(list, current, event)
+  ArrowRight: (list, current) => {
+    const { right, top, x, y } = calc(list, current)
     
     return next(list, right + x, top + y) ??
       current.nextElementSibling ??
       list.firstElementChild
   },
-  ArrowUp: (list, current, event) => {
-    const { left, top, x, y } = calc(list, current, event)
+  ArrowUp: (list, current) => {
+    const { left, top, x, y } = calc(list, current)
     
     return next(list, left + x, top - y) ??
       current.previousElementSibling ??
@@ -70,5 +69,4 @@ export default async (
 ) => {
   onKeyDown.listen(list)
   display(list, opener(list))
-  menu.focus(list)
 }

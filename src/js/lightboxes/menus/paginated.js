@@ -83,18 +83,8 @@ export default async (
   const pages = Math.ceil(scrollHeight / height)
   const size = Math.floor(length / pages) + 1
   const items = children.slice(0, size)
-  const rows = list.getAttribute('data-rows')
-  const columns = list.getAttribute('data-columns')
-  const columnWidth = list.getAttribute('data-column-width')
-  const columnSize = list.getAttribute('data-column-size')
-  const {style} = list
-  style.setProperty('--ea_context_menu_library_rows', rows)
-  style.setProperty('--ea_context_menu_library_columns', columns)
-  style.setProperty('--ea_context_menu_library_columns_width', columnWidth)
-  style.setProperty('--ea_context_menu_library_columns_size', columnSize)
 
   paginations.set(list, { children, items, page, pages, size })
   onKeyDown.listen(list)
   display(list, opener(list))
-  menu.focus(list)
 }

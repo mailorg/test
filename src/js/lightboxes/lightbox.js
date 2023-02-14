@@ -5,11 +5,18 @@ import text from '@mailobj-browser/front/js/fetchers/text.js'
 import manager from '@mailobj-browser/front/js/contracts/manager.js'
 import append from '@mailobj-browser/front/js/tree/append.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
+import prevented from '@mailobj-browser/front/js/events/listeners/prevented.js'
 import removed from '../wait/removed.js'
+import submit from '@mailobj-browser/front/js/events/types/submit.js'
+import all from '@mailobj-browser/front/js/selectors/all.js'
 
 let current = null
 
 const openers = new WeakMap()
+
+const onSubmit = object(prevented, {
+  type: submit
+})
 
 export const close = () => {
   if (current) {
@@ -33,6 +40,10 @@ export const parse = async (
   await manager.trigger(body)
   append(container, lightbox)
   current = lightbox
+  
+  for (const form of all('form[target="_self"]')) {
+    onSubmit.listen(form)
+  }
   
   queueMicrotask(async () => {
     await removed(lightbox)
