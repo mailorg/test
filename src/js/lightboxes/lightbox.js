@@ -66,7 +66,8 @@ const render = async (
     const { fetched } = await text(object(null, {
       request: new Request(`${url}`)
     }))
-    
+  
+    const { content } = clone
     if (clone.hasChildNodes()) {
       clone.firstChild.innerHTML = fetched
     } else {
