@@ -12,8 +12,8 @@ export const {
 const calc = (list, current) => {
   const coords = rect(current)
   const { height, width } = coords
-  const x = height / 2
-  const y = width / 2
+  const x = Math.floor(Math.floor(height) / 2)
+  const y = Math.floor(Math.floor(width) / 2)
   
   return { ...coords, current, x, y }
 }
