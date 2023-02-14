@@ -68,8 +68,8 @@ const render = async (
     }))
   
     const { content } = clone
-    if (clone.hasChildNodes()) {
-      clone.firstChild.innerHTML = fetched
+    if (content.hasChildNodes()) {
+      content.firstChild.innerHTML = fetched
     } else {
       clone.innerHTML = fetched
     }
