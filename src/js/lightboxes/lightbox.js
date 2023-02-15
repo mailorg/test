@@ -9,6 +9,7 @@ import prevented from '@mailobj-browser/front/js/events/listeners/prevented.js'
 import removed from '../wait/removed.js'
 import submit from '@mailobj-browser/front/js/events/types/submit.js'
 import all from '@mailobj-browser/front/js/selectors/all.js'
+import one from '@mailobj-browser/front/js/selectors/one.js'
 
 let current = null
 
@@ -68,8 +69,9 @@ const render = async (
     }))
   
     const { content } = clone
-    if (content.hasChildNodes()) {
-      content.firstChild.innerHTML = fetched
+    const wrapper = one('.ea_generics__context_menu', content)
+    if (wrapper) {
+      wrapper.innerHTML = fetched
     } else {
       clone.innerHTML = fetched
     }
