@@ -68,13 +68,7 @@ const render = async (
       request: new Request(`${url}`)
     }))
   
-    const { content } = clone
-    const wrapper = one('.ea_generics__context_menu', content)
-    if (wrapper) {
-      wrapper.innerHTML = fetched
-    } else {
-      clone.innerHTML = fetched
-    }
+    clone.innerHTML = fetched
   }
   
   return invoke(clone)
