@@ -5,25 +5,73 @@ import text from '@mailobj-browser/front/js/fetchers/text.js'
 import manager from '@mailobj-browser/front/js/contracts/manager.js'
 import append from '@mailobj-browser/front/js/tree/append.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
+import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import prevented from '@mailobj-browser/front/js/events/listeners/prevented.js'
 import removed from '../wait/removed.js'
 import submit from '@mailobj-browser/front/js/events/types/submit.js'
 import all from '@mailobj-browser/front/js/selectors/all.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
+import { fromEvent, fromNode, move, resize } from '../fixed/fixed.js'
+import { focus } from './menus/menu.js'
+import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
+import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
+import once from '@mailobj-browser/front/js/events/options/once.js'
+import passive from '@mailobj-browser/front/js/events/options/passive.js'
 
 let current = null
 
 const openers = new WeakMap()
-
-const onSubmit = object(prevented, {
-  type: submit
-})
 
 export const close = () => {
   if (current) {
     remove(current)
     current = null
   }
+}
+
+const onScroll = object(listener, {
+  type: scroll,
+  once,
+  passive,
+  task: close
+})
+
+const onEscape = object(listener, {
+  type: keyUp,
+  task: (document, event) => {
+    const { key } = event
+    
+    if (current && key === 'Escape') {
+      preventDefault(event)
+      close()
+    }
+  }
+})
+
+const onSubmit = object(prevented, {
+  type: submit
+})
+
+export const display = (content, opener, event = null) => {
+  const { ownerDocument } = opener
+  
+  close()
+  move(content)
+  
+  requestAnimationFrame(() => {
+    if (event) {
+      move(content, fromEvent(content, event))
+    } else {
+      resize(content, opener)
+      move(content, fromNode(content, opener))
+      openers.set(content, opener)
+    }
+    
+    focus(content)
+    onScroll.listen(ownerDocument)
+    onEscape.listen(ownerDocument)
+    current = content
+  })
 }
 
 export const parse = async (
