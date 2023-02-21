@@ -20,7 +20,7 @@ const calc = (list, current) => {
 }
 
 const next = (list, x, y) => {
-  for (const li of all('li', list)) {
+  for (const li of all(':not([aria-hidden]) li', list)) {
     const { bottom, left, right, top } = rect(li)
     
     if (x >= left && x <= right && y >= top && y <= bottom) {
@@ -33,30 +33,22 @@ export const keys = object(null, {
   ArrowDown: (list, current) => {
     const { left, bottom, x, y } = calc(list, current)
     
-    return next(list, left + x, bottom + y)/* ??
-      current.nextElementSibling ??
-      list.firstElementChild*/
+    return next(list, left + x, bottom + y)
   },
   ArrowLeft: (list, current) => {
     const { left, top, x, y } = calc(list, current)
     
-    return next(list, left - x, top + y)/* ??
-      current.previousElementSibling ??
-      list.lastElementChild*/
+    return next(list, left - x, top + y)
   },
   ArrowRight: (list, current) => {
     const { right, top, x, y } = calc(list, current)
     
-    return next(list, right + x, top + y)/* ??
-      current.nextElementSibling ??
-      list.firstElementChild*/
+    return next(list, right + x, top + y)
   },
   ArrowUp: (list, current) => {
     const { left, top, x, y } = calc(list, current)
     
-    return next(list, left + x, top - y)/* ??
-      current.previousElementSibling ??
-      list.lastElementChild*/
+    return next(list, left + x, top - y)
   }
 })
 
