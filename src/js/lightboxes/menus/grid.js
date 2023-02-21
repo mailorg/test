@@ -29,34 +29,34 @@ const next = (list, x, y) => {
   }
 }
 
-const keys = object(null, {
+export const keys = object(null, {
   ArrowDown: (list, current) => {
     const { left, bottom, x, y } = calc(list, current)
     
-    return next(list, left + x, bottom + y) ??
+    return next(list, left + x, bottom + y)/* ??
       current.nextElementSibling ??
-      list.firstElementChild
+      list.firstElementChild*/
   },
   ArrowLeft: (list, current) => {
     const { left, top, x, y } = calc(list, current)
     
-    return next(list, left - x, top + y) ??
+    return next(list, left - x, top + y)/* ??
       current.previousElementSibling ??
-      list.lastElementChild
+      list.lastElementChild*/
   },
   ArrowRight: (list, current) => {
     const { right, top, x, y } = calc(list, current)
     
-    return next(list, right + x, top + y) ??
+    return next(list, right + x, top + y)/* ??
       current.nextElementSibling ??
-      list.firstElementChild
+      list.firstElementChild*/
   },
   ArrowUp: (list, current) => {
     const { left, top, x, y } = calc(list, current)
     
-    return next(list, left + x, top - y) ??
+    return next(list, left + x, top - y)/* ??
       current.previousElementSibling ??
-      list.lastElementChild
+      list.lastElementChild*/
   }
 })
 
