@@ -30,22 +30,22 @@ const next = (list, x, y) => {
 }
 
 export const keys = object(null, {
-  ArrowDown: (list, current) => {
+  ArrowDown: async (list, current) => {
     const { left, bottom, x, y } = calc(list, current)
     
     return next(list, left + x, bottom + y)
   },
-  ArrowLeft: (list, current) => {
+  ArrowLeft: async (list, current) => {
     const { left, top, x, y } = calc(list, current)
     
     return next(list, left - x, top + y)
   },
-  ArrowRight: (list, current) => {
+  ArrowRight: async (list, current) => {
     const { right, top, x, y } = calc(list, current)
     
     return next(list, right + x, top + y)
   },
-  ArrowUp: (list, current) => {
+  ArrowUp: async (list, current) => {
     const { left, top, x, y } = calc(list, current)
     
     return next(list, left + x, top - y)

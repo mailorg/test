@@ -10,10 +10,10 @@ export const {
 } = menu
 
 const keys = object(null, {
-  ArrowDown: (list, current) => {
+  ArrowDown: async (list, current) => {
     return current.nextElementSibling
   },
-  ArrowUp: (list, current) => {
+  ArrowUp: async (list, current) => {
     return current.previousElementSibling
   }
 })

@@ -67,14 +67,14 @@ const onEscape = object(listener, {
 export const onKeyDown = object(listener, {
   type: keyDown,
   capture,
-  task (list, event) {
+  async task (list, event) {
     const { keys } = this
     const { key, target } = event
     const { [key]: pick } = keys
     
     if (pick) {
       const current = target.closest('li')
-      const next = pick(list, current, event)
+      const next = await pick(list, current, event)
       
       event.preventDefault()
       event.stopImmediatePropagation()

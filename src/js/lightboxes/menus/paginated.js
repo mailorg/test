@@ -1,6 +1,9 @@
 import object from '@mailobj-browser/front/js/utils/object.js'
 import * as menu from './menu.js'
 import { display, opener } from './menu.js'
+import * as grid from './grid.js'
+
+const { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } = grid.keys
 
 export const {
   close,
@@ -8,65 +11,23 @@ export const {
   open
 } = menu
 
-const paginations = new WeakMap()
-
-const scroll = (
-  list
-) => {
-  const pagination = paginations.get(list)
-  const { children, page, size } = pagination
-  const start = page * size
-  const current = children[start]
-  
-  if (current) {
-    pagination.items = children.slice(start, size)
-    current.scrollIntoView()
-    
-    return current
-  }
-}
-
 const keys = object(null, {
-  ArrowDown: (list, current) => {
-    const { items } = paginations.get(list)
-    const next = current.nextElementSibling
-  
-    if (items.includes(next)) {
-      return next
-    }
+  ArrowDown,
+  ArrowLeft: async (list, current) => {
+    const item = await ArrowLeft(list, current)
     
-    return this.ArrowRight(list)
-  },
-  ArrowLeft: (list) => {
-    const pagination = paginations.get(list)
-    const { page } = pagination
-  
-    if (page) {
-      pagination.page -= 1
-      
-      return scroll(list)
+    if (item) {
+      return item
     }
   },
-  ArrowRight: (list) => {
-    const pagination = paginations.get(list)
-    const { page, pages } = pagination
+  ArrowRight: async (list, current) => {
+    const item = await ArrowRight(list, current)
   
-    if (page < pages) {
-      pagination.page += 1
-      
-      return scroll(list)
+    if (item) {
+      return item
     }
   },
-  ArrowUp: (list, current) => {
-    const { items } = paginations.get(list)
-    const previous = current.previousElementSibling
-    
-    if (items.includes(previous)) {
-      return previous
-    }
-  
-    return this.ArrowLeft(list)
-  }
+  ArrowUp
 })
 
 const onKeyDown = object(menu.onKeyDown, {
@@ -76,15 +37,6 @@ const onKeyDown = object(menu.onKeyDown, {
 export default async (
   list
 ) => {
-  const { children: [...children], scrollHeight } = list
-  const { height } = list.getBoundingClientRect()
-  const { length } = children
-  const page = 0
-  const pages = Math.ceil(scrollHeight / height)
-  const size = Math.floor(length / pages) + 1
-  const items = children.slice(0, size)
-
-  paginations.set(list, { children, items, page, pages, size })
   onKeyDown.listen(list)
   display(list, opener(list))
 }
