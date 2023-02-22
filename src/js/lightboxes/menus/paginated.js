@@ -43,10 +43,10 @@ const keys = object(null, {
       
       return
     }
-    console.log({ current })
     const { left, top, x, y } = grid.calc(current)
   
-    return grid.item(pages, 1, top - y)
+    console.log(grid.item(pages, left + 1, top - y))
+    return grid.item(pages, left + 1, top - y)
   }
 })
 
