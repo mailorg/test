@@ -16,6 +16,7 @@ const keys = object(null, {
     const item = await ArrowDown(list, current)
   
     if (item) {
+      console.log({ item })
       return item
     }
     
