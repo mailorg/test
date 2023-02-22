@@ -21,6 +21,8 @@ const keys = object(null, {
     
     const { lastElementChild } = list
     
+    console.log(lastElementChild)
+    
     return ArrowDown(lastElementChild, current)
   },
   ArrowLeft,
