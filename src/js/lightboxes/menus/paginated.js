@@ -31,10 +31,9 @@ const keys = object(null, {
   ArrowLeft,
   ArrowRight,
   ArrowUp: async (list, current) => {
-    const { children } = list
-    const [pages, pagination] = children
+    const page = one('ul:not([aria-hidden="true"])', list)
   
-    if (pages.contains(current)) {
+    if (page.contains(current)) {
       const item = await ArrowUp(list, current)
 
       if (item) {
@@ -45,8 +44,8 @@ const keys = object(null, {
     }
     const { left, top, x, y } = grid.calc(current)
   
-    console.log(grid.item(pages, left + 1, top - 1))
-    return grid.item(pages, left + 1, top - 1)
+    console.log(grid.item(page, left + 1, top - 1))
+    return grid.item(page, left + 1, top - 1)
   }
 })
 
