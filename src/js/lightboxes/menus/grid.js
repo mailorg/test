@@ -20,7 +20,7 @@ const calc = (list, current) => {
 }
 
 const next = (wrapper, x, y) => {
-  const items = all(':not([aria-hidden="true"]) > [class$="_item"]', wrapper)
+  const items = all(':not([aria-hidden="true"]) [class$="_item"]', wrapper)
   console.log({ items })
   for (const item of items) {
     const { bottom, left, right, top } = rect(item)
