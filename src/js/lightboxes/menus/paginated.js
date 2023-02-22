@@ -12,22 +12,30 @@ export const {
 } = menu
 
 const keys = object(null, {
-  ArrowDown,
-  ArrowLeft: async (list, current) => {
-    const item = await ArrowLeft(list, current)
-    
-    if (item) {
-      return item
-    }
-  },
-  ArrowRight: async (list, current) => {
-    const item = await ArrowRight(list, current)
+  ArrowDown: async (list, current) => {
+    const item = await ArrowDown(list, current)
   
     if (item) {
       return item
     }
+    
+    const { lastElementChild } = list
+    
+    return ArrowDown(lastElementChild, current)
   },
-  ArrowUp
+  ArrowLeft,
+  ArrowRight,
+  ArrowUp: async (list, current) => {
+    const item = await ArrowUp(list, current)
+  
+    if (item) {
+      return item
+    }
+  
+    const { lastElementChild } = list
+  
+    return ArrowUp(lastElementChild, current)
+  }
 })
 
 const onKeyDown = object(menu.onKeyDown, {
