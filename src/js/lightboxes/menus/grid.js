@@ -21,7 +21,7 @@ const calc = (list, current) => {
 
 const next = (list, x, y) => {
   console.log({ list })
-  for (const li of all(':not([aria-hidden="true"]) li', list)) {
+  for (const li of all(':not([aria-hidden="true"]) > [class$="_item"]', list)) {
     const { bottom, left, right, top } = rect(li)
     
     if (x >= left && x <= right && y >= top && y <= bottom) {
