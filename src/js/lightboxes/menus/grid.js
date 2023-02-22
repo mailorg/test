@@ -20,13 +20,12 @@ const calc = (list, current) => {
 }
 
 const next = (wrapper, x, y) => {
-  const items = all(':not([aria-hidden="true"]) [class$="_item"]', wrapper)
-  console.log({ items })
+  const items = all('[class$="_item"]', wrapper)
+  
   for (const item of items) {
     const { bottom, left, right, top } = rect(item)
     
     if (x >= left && x <= right && y >= top && y <= bottom) {
-      console.log({ item })
       return item
     }
   }
