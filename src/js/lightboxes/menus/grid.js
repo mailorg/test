@@ -19,16 +19,15 @@ const calc = (list, current) => {
   return { ...coords, current, x, y }
 }
 
-const next = (wrapper, x, y) => {
-  const items = all('[class$="_item"]', wrapper)
+const next = (current, x, y) => {
+  const { parentNode } = current
+  const items = all('[class$="_item"]', parentNode)
   
   for (const item of items) {
     const { bottom, left, right, top } = rect(item)
     
     if (x >= left && x <= right && y >= top && y <= bottom) {
-      if (!item.matches('[aria-hidden="true"] li')) {
-        return item
-      }
+      return item
     }
   }
 }
@@ -37,22 +36,22 @@ export const keys = object(null, {
   ArrowDown: async (list, current) => {
     const { left, bottom, x, y } = calc(list, current)
     
-    return next(list, left + x, bottom + y)
+    return next(current, left + x, bottom + y)
   },
   ArrowLeft: async (list, current) => {
     const { left, top, x, y } = calc(list, current)
     
-    return next(list, left - x, top + y)
+    return next(current, left - x, top + y)
   },
   ArrowRight: async (list, current) => {
     const { right, top, x, y } = calc(list, current)
     
-    return next(list, right + x, top + y)
+    return next(current, right + x, top + y)
   },
   ArrowUp: async (list, current) => {
     const { left, top, x, y } = calc(list, current)
     
-    return next(list, left + x, top - y)
+    return next(current, left + x, top - y)
   }
 })
 

@@ -12,33 +12,10 @@ export const {
 } = menu
 
 const keys = object(null, {
-  ArrowDown: async (list, current) => {
-    const item = await ArrowDown(list, current)
-  
-    if (item) {
-      console.log({ item })
-      return item
-    }
-    
-    const { lastElementChild } = list
-    
-    console.log(lastElementChild)
-    
-    return ArrowDown(lastElementChild, current)
-  },
+  ArrowDown,
   ArrowLeft,
   ArrowRight,
-  ArrowUp: async (list, current) => {
-    const item = await ArrowUp(list, current)
-  
-    if (item) {
-      return item
-    }
-  
-    const { lastElementChild } = list
-  
-    return ArrowUp(lastElementChild, current)
-  }
+  ArrowUp
 })
 
 const onKeyDown = object(menu.onKeyDown, {
