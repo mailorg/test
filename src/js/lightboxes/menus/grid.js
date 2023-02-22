@@ -26,7 +26,7 @@ const next = (wrapper, x, y) => {
     const { bottom, left, right, top } = rect(item)
     
     if (x >= left && x <= right && y >= top && y <= bottom) {
-      if (!item.matches('[aria-hidden="true"]')) {
+      if (!item.matches('[aria-hidden="true"] li')) {
         return item
       }
     }
