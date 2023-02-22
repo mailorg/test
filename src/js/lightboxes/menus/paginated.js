@@ -45,6 +45,7 @@ const keys = object(null, {
     }
     const { left, top, x, y } = grid.calc(current)
   
+    console.log(grid.item(pages, left + 1, top - 1))
     return grid.item(pages, left + 1, top - 1)
   }
 })
