@@ -17,13 +17,13 @@ const keys = object(null, {
     const [pages, pagination] = children
     
     if (pages.contains(current)) {
-      const item = await ArrowDown(list, current)
+      const item = await ArrowDown(pages, current)
   
       if (item) {
         return item
       }
   
-      const { left, bottom, x, y } = grid.calc(list, current)
+      const { left, bottom, x, y } = grid.calc(current)
   
       return grid.item(pagination, left + x, bottom + y)
     }
@@ -44,7 +44,7 @@ const keys = object(null, {
       return
     }
   
-    const { left, top, x, y } = grid.calc(list, current)
+    const { left, top, x, y } = grid.calc(current)
   
     return grid.item(pagination, left + x, top - y)
   }
