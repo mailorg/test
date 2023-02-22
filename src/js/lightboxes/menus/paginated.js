@@ -2,6 +2,7 @@ import object from '@mailobj-browser/front/js/utils/object.js'
 import * as menu from './menu.js'
 import { display, opener } from './menu.js'
 import * as grid from './grid.js'
+import one from '@mailobj-browser/front/js/selectors/one.js'
 
 const { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } = grid.keys
 
