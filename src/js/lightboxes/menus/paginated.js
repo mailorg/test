@@ -12,10 +12,31 @@ export const {
 } = menu
 
 const keys = object(null, {
-  ArrowDown,
+  ArrowDown: async (list, current) => {
+    const item = await ArrowDown(list, current)
+  
+    if (item) {
+      return item
+    }
+    
+    const { lastElementChild } = list
+    const { left, bottom, x, y } = grid.calc(list, current)
+  
+    return grid.item(lastElementChild, left + x, bottom + y)
+  },
   ArrowLeft,
   ArrowRight,
-  ArrowUp
+  ArrowUp: async (list, current) => {
+    const item = await ArrowUp(list, current)
+  
+    if (item) {
+      return item
+    }
+  
+    const { lastElementChild } = list
+  
+    return ArrowUp(lastElementChild, current)
+  }
 })
 
 const onKeyDown = object(menu.onKeyDown, {

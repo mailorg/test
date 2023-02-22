@@ -10,7 +10,7 @@ export const {
   open
 } = menu
 
-const calc = (list, current) => {
+export const calc = (list, current) => {
   const coords = rect(current)
   const { height, width } = coords
   const x = Math.floor(Math.floor(height) / 2)
@@ -19,8 +19,7 @@ const calc = (list, current) => {
   return { ...coords, current, x, y }
 }
 
-const next = (current, x, y) => {
-  const { parentNode } = current
+export const item = (parentNode, x, y) => {
   const items = all('[class$="_item"]', parentNode)
   
   for (const item of items) {
@@ -34,24 +33,28 @@ const next = (current, x, y) => {
 
 export const keys = object(null, {
   ArrowDown: async (list, current) => {
+    const { parentNode } = current
     const { left, bottom, x, y } = calc(list, current)
     
-    return next(current, left + x, bottom + y)
+    return item(parentNode, left + x, bottom + y)
   },
   ArrowLeft: async (list, current) => {
+    const { parentNode } = current
     const { left, top, x, y } = calc(list, current)
     
-    return next(current, left - x, top + y)
+    return item(parentNode, left - x, top + y)
   },
   ArrowRight: async (list, current) => {
+    const { parentNode } = current
     const { right, top, x, y } = calc(list, current)
     
-    return next(current, right + x, top + y)
+    return item(parentNode, right + x, top + y)
   },
   ArrowUp: async (list, current) => {
+    const { parentNode } = current
     const { left, top, x, y } = calc(list, current)
     
-    return next(current, left + x, top - y)
+    return item(parentNode, left + x, top - y)
   }
 })
 
