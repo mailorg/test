@@ -32,7 +32,7 @@ const keys = object(null, {
   ArrowLeft,
   ArrowRight,
   ArrowUp: async (list, current) => {
-    const page = one('ul:not([aria-hidden="true"])', list)
+    const page = one('ul > li:not([aria-hidden="true"])', list)
   
     if (page.contains(current)) {
       const item = await ArrowUp(list, current)
