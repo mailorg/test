@@ -13,31 +13,40 @@ export const {
 
 const keys = object(null, {
   ArrowDown: async (list, current) => {
-    const item = await ArrowDown(list, current)
-  
-    if (item) {
-      return item
-    }
+    const { children } = list
+    const [pages, pagination] = children
     
-    const { lastElementChild } = list
-    const { left, bottom, x, y } = grid.calc(list, current)
+    if (pages.contains(current)) {
+      const item = await ArrowDown(list, current)
   
-    return grid.item(lastElementChild, left + x, bottom + y)
+      if (item) {
+        return item
+      }
+  
+      const { left, bottom, x, y } = grid.calc(list, current)
+  
+      return grid.item(pagination, left + x, bottom + y)
+    }
   },
   ArrowLeft,
   ArrowRight,
   ArrowUp: async (list, current) => {
-    const item = await ArrowUp(list, current)
+    const { children } = list
+    const [pages, pagination] = children
   
-    if (item) {
-      return item
+    if (pages.contains(current)) {
+      const item = await ArrowUp(list, current)
+  
+      if (item) {
+        return item
+      }
+      
+      return
     }
   
-    console.log({ list, current })
-    const { lastElementChild } = list
     const { left, top, x, y } = grid.calc(list, current)
   
-    return grid.item(lastElementChild, left + x, top - y)
+    return grid.item(pagination, left + x, top - y)
   }
 })
 
