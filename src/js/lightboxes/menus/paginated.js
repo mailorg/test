@@ -34,8 +34,9 @@ const keys = object(null, {
     }
   
     const { lastElementChild } = list
+    const { left, top, x, y } = grid.calc(list, current)
   
-    return ArrowUp(lastElementChild, current)
+    return grid.item(lastElementChild, left + x, top - y)
   }
 })
 
