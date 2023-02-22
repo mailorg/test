@@ -33,6 +33,7 @@ const keys = object(null, {
       return item
     }
   
+    console.log({ list, current })
     const { lastElementChild } = list
     const { left, top, x, y } = grid.calc(list, current)
   
