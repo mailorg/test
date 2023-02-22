@@ -19,14 +19,15 @@ const calc = (list, current) => {
   return { ...coords, current, x, y }
 }
 
-const next = (list, x, y) => {
-  console.log({ list })
-  for (const li of all(':not([aria-hidden="true"]) > [class$="_item"]', list)) {
-    const { bottom, left, right, top } = rect(li)
+const next = (wrapper, x, y) => {
+  const items = all(':not([aria-hidden="true"]) > [class$="_item"]', wrapper)
+  console.log({ items })
+  for (const item of items) {
+    const { bottom, left, right, top } = rect(item)
     
     if (x >= left && x <= right && y >= top && y <= bottom) {
-      console.log({ li })
-      return li
+      console.log({ item })
+      return item
     }
   }
 }
