@@ -36,7 +36,7 @@ const keys = object(null, {
   
     if (pages.contains(current)) {
       const item = await ArrowUp(list, current)
-  
+  console.log({ current })
       if (item) {
         return item
       }
