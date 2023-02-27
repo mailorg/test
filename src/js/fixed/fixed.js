@@ -192,8 +192,8 @@ export const move = (
 ) => {
   const {style} = target
   
-  style.setProperty('--ea_context_menu_left', `${clientX}px`)
-  style.setProperty('--ea_context_menu_top', `${clientY}px`)
+  style.setProperty('--ea_utilities_fixed_left', `${clientX}px`)
+  style.setProperty('--ea_utilities_fixed_top', `${clientY}px`)
 }
 
 export const resize = (
