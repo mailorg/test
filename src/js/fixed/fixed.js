@@ -42,7 +42,7 @@ export const rect = (
 export const fromEvent = (
   target,
   event,
-  angle = bottomLeft
+  angle = bottomRight
 ) => {
   const { clientHeight, clientWidth, height, width } = coords(target)
   let { clientX, clientY } = event
