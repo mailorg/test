@@ -205,5 +205,5 @@ export const resize = (
   const {bottom, top} = rect(node)
   const max = Math.max(top, clientHeight - bottom)
   
-  style.setProperty('--ea_context_menu_max_height', `${max}px`)
+  style.setProperty('--ea_utilities_fixed_max_height', `${max}px`)
 }
