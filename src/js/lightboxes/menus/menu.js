@@ -3,7 +3,6 @@ import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import capture from '@mailobj-browser/front/js/events/options/capture.js'
 import once from '@mailobj-browser/front/js/events/options/once.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
-import one from '@mailobj-browser/front/js/selectors/one.js'
 import keyDown from '@mailobj-browser/front/js/events/types/keyDown.js'
 import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
@@ -15,6 +14,8 @@ import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
 
 let current = null
+
+export const { focus } = lightbox
 
 export const close = () => {
   if (current) {
@@ -110,14 +111,6 @@ export const display = (content, opener, event = null) => {
     onEscape.listen(ownerDocument)
     current = content
   })
-}
-
-export const focus = (
-  item = null
-) => {
-  if (item) {
-    one('a, button, :checked, label', item)?.focus()
-  }
 }
 
 export const opener = (

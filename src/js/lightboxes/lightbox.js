@@ -12,7 +12,6 @@ import submit from '@mailobj-browser/front/js/events/types/submit.js'
 import all from '@mailobj-browser/front/js/selectors/all.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import { fromEvent, fromNode, move, resize } from '../fixed/fixed.js'
-import { focus } from './menus/menu.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import once from '@mailobj-browser/front/js/events/options/once.js'
@@ -26,6 +25,14 @@ export const close = () => {
   if (current) {
     remove(current)
     current = null
+  }
+}
+
+export const focus = (
+  item = null
+) => {
+  if (item) {
+    one('a, button, :checked, label', item)?.focus()
   }
 }
 
