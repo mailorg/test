@@ -18,6 +18,7 @@ import once from '@mailobj-browser/front/js/events/options/once.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
 
 let current = null
+let menu = null
 
 const openers = new WeakMap()
 
@@ -84,7 +85,8 @@ export const display = (content, opener, event = null) => {
 export const parse = async (
   template,
   container,
-  opener = null
+  opener = null,
+  asMenu = false
 ) => {
   const { dataset, ownerDocument } = template
   const { url } = dataset
@@ -94,8 +96,18 @@ export const parse = async (
   openers.set(lightbox, opener)
   append(body, lightbox)
   await manager.trigger(body)
+  
+  if (asMenu) {
+    menu = lightbox
+  } else {
+    if (menu) {
+      remove(menu)
+    }
+    
+    current = lightbox
+  }
+  
   append(container, lightbox)
-  current = lightbox
   
   for (const form of all('form[target="_self"]')) {
     onSubmit.listen(form)
