@@ -1,5 +1,5 @@
 export default (
-  { value, scopeJson }
+  value, scopeJson
 ) => {
   const json = JSON.parse(scopeJson)
   const decimals = (json.decimals) ?? 2
