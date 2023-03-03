@@ -28,6 +28,7 @@ export const close = () => {
 const openers = new WeakMap()
 
 const onCleanup = object(listener, {
+  capture,
   once,
   passive,
   task () {
