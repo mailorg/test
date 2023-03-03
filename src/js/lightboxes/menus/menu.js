@@ -6,11 +6,12 @@ import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import keyDown from '@mailobj-browser/front/js/events/types/keyDown.js'
 import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
-import { fromEvent, fromNode, move, resize } from '../../fixed/fixed.js'
+import * as fixed from '../../fixed/fixed.js'
 import * as lightbox from '../lightbox.js'
 import { container, template } from '../openers/template.js'
 import blur from '@mailobj-browser/front/js/events/types/blur.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
+import resize from '@mailobj-browser/front/js/events/types/resize.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
 
 let current = null
@@ -26,11 +27,18 @@ export const close = () => {
 
 const openers = new WeakMap()
 
-const onScroll = object(listener, {
-  type: scroll,
+const onCleanup = object(listener, {
   once,
   passive,
   task: close
+})
+
+const onResize = object(onCleanup, {
+  type: resize
+})
+
+const onScroll = object(onCleanup, {
+  type: scroll
 })
 
 const onBlur = object(listener, {
@@ -92,6 +100,7 @@ export const open = async (
 
 export const display = (content, opener, event = null) => {
   const { ownerDocument } = opener
+  const { fromEvent, fromNode, move, resize } = fixed
   
   close()
   move(content)
@@ -109,6 +118,7 @@ export const display = (content, opener, event = null) => {
     onScroll.listen(ownerDocument)
     onBlur.listen(ownerDocument)
     onEscape.listen(ownerDocument)
+    onResize.listen(ownerDocument)
     current = content
   })
 }
