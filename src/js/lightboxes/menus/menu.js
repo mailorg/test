@@ -31,12 +31,7 @@ const onCleanup = object(listener, {
   capture,
   once,
   passive,
-  task () {
-    const { type } = this
-    
-    console.log({ type })
-    close()
-  }
+  task: close
 })
 
 const onResize = object(onCleanup, {
