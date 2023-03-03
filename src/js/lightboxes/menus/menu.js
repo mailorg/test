@@ -30,7 +30,12 @@ const openers = new WeakMap()
 const onCleanup = object(listener, {
   once,
   passive,
-  task: close
+  task () {
+    const { type } = this
+    
+    console.log({ type })
+    close()
+  }
 })
 
 const onResize = object(onCleanup, {
