@@ -106,6 +106,7 @@ export const open = async (
 
 export const display = (content, opener, event = null) => {
   const { ownerDocument } = opener
+  const { defaultView } = ownerDocument
   const { fromEvent, fromNode, move, resize } = fixed
   
   close()
@@ -124,7 +125,7 @@ export const display = (content, opener, event = null) => {
     onScroll.listen(ownerDocument)
     onBlur.listen(ownerDocument)
     onEscape.listen(ownerDocument)
-    onResize.listen(ownerDocument)
+    onResize.listen(defaultView)
     current = content
   })
 }
