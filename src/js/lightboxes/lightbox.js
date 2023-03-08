@@ -89,13 +89,17 @@ export const parse = async (
   asMenu = false
 ) => {
   const { dataset, ownerDocument } = template
+  const { defaultView } = ownerDocument
+  const { CustomEvent } = defaultView
   const { url } = dataset
   const body = element(ownerDocument, 'body')
   const { children: [lightbox] } = await render(template, url)
+  const detail = object(null, { lightbox })
   
   openers.set(lightbox, opener)
   append(body, lightbox)
   await manager.trigger(body)
+  template.dispatchEvent(new CustomEvent('load', { detail }))
   
   if (asMenu) {
     menu = lightbox
