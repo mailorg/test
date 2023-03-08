@@ -29,8 +29,40 @@ const keys = object(null, {
       return grid.item(pagination, left + x, bottom + y)
     }
   },
-  ArrowLeft,
-  ArrowRight,
+  ArrowLeft: async (list, current) => {
+    const page = one('ul > li:not([aria-hidden="true"])', list)
+  
+    if (page.contains(current)) {
+      const item = await ArrowLeft(list, current)
+    
+      if (item) {
+        return item
+      }
+    
+      return
+    }
+    
+    const { previousElementSibling } = current
+    
+    return previousElementSibling
+  },
+  ArrowRight: async (list, current) => {
+    const page = one('ul > li:not([aria-hidden="true"])', list)
+  
+    if (page.contains(current)) {
+      const item = await ArrowRight(list, current)
+    
+      if (item) {
+        return item
+      }
+    
+      return
+    }
+    
+    const { nextElementSibling } = current
+    
+    return nextElementSibling
+  },
   ArrowUp: async (list, current) => {
     const page = one('ul > li:not([aria-hidden="true"])', list)
   
