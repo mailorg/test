@@ -76,13 +76,7 @@ const keys = object(null, {
       return
     }
     
-    const { children } = page
-    const [first] = children
-    const { x, y } = grid.calc(first)
-    const { left, top } = grid.calc(current)
-  
-    console.log(grid.item(page, left + x, top - y))
-    return grid.item(page, left + x, top - y)
+    return one('li', page)
   }
 })
 
