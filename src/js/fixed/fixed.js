@@ -42,10 +42,14 @@ export const rect = (
 export const fromEvent = (
   target,
   event,
-  angle = bottomRight
+  angle = bottomRight,
+  { left = 0, top = 0 } = {}
 ) => {
   const { clientHeight, clientWidth, height, width } = coords(target)
   let { clientX, clientY } = event
+  
+  clientX += left
+  clientY += top
   
   switch (angle) {
     case bottomLeft: {
