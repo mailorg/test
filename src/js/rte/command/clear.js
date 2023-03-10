@@ -19,7 +19,7 @@ const onClick = object(listener, {
 
       setTimeout(() => {
         body.focus()
-      }, 2000)
+      }, 100)
     }
   }
 })
