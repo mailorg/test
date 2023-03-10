@@ -17,8 +17,10 @@ const onClick = object(listener, {
 const onTouchStart = object(listener, {
   type: touchStart,
   hooks: [preventDefault],
-  task() {
-    command_clear('id_msg_text')
+  task(button) {
+    // command_clear('id_msg_text')
+    const {contentDocument} = one('#id_msg_text', button.closest('form'))
+    contentDocument.innerHTML = ""
   }
 })
 
