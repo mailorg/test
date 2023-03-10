@@ -14,7 +14,7 @@ const onClick = object(listener, {
 })
 
 const onTouchStart = object(listener, {
-  type: click,
+  type: touchStart,
   hooks: [preventDefault],
   task(button) {
     onClick.task(button)
