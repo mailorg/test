@@ -14,8 +14,10 @@ const onClick = object(listener, {
     const {ownerDocument} = button
     const {contentWindow} = one(`#${id}`, ownerDocument)
     console.log(contentWindow)
-    command_clear(id)
-    contentWindow.focus()
+    // command_clear(id)
+    setTimeout(() => {
+      contentWindow.focus()
+    }, 2000)
   }
 })
 
