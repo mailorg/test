@@ -12,13 +12,10 @@ const onClick = object(listener, {
   task(button) {
     const id = 'id_msg_text'
     const {ownerDocument} = button
-    const iframe = one(`#${id}`, ownerDocument)
-    const { contentWindow } = iframe
-    const { document } = contentWindow
-    const { body } = document
-    console.log(body)
+    const {contentWindow} = one(`#${id}`, ownerDocument)
+    console.log(contentWindow)
     command_clear(id)
-    body.focus()
+    contentWindow.focus()
   }
 })
 
