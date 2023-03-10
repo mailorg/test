@@ -11,16 +11,16 @@ const onClick = object(listener, {
   hooks: [preventDefault],
   task(button) {
     const id = 'id_msg_text'
-    const {ownerDocument} = button
-    const iframe = one(`#${id}`, ownerDocument)
-    const { contentWindow } = iframe
-    const { document } = contentWindow
-    const { body } = document
-    console.log(body)
+    // const {ownerDocument} = button
+    // const iframe = one(`#${id}`, ownerDocument)
+    // const { contentWindow } = iframe
+    // const { document } = contentWindow
+    // const { body } = document
+    // console.log(body)
     command_clear(id)
-    setTimeout(() => {
-      body.focus()
-    }, 2000)
+    // setTimeout(() => {
+    //   body.focus()
+    // }, 2000)
   }
 })
 
