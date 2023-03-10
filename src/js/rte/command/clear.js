@@ -1,23 +1,26 @@
 import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import click from '@mailobj-browser/front/js/events/types/click.js'
-import touchStart from '@mailobj-browser/front/js/events/types/touchStart.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
-import rte, {command_clear} from '../rte.js'
+import rte from '../rte.js'
 
 const onClick = object(listener, {
   type: click,
   hooks: [preventDefault],
   task(button) {
-    const id = 'id_msg_text'
-    const {ownerDocument} = button
-    const {contentWindow} = one(`#${id}`, ownerDocument)
-    console.log(contentWindow)
-    // command_clear(id)
-    setTimeout(() => {
-      contentWindow.focus()
-    }, 2000)
+    const {contentDocument} = one('#id_msg_text', button.closest('form'))
+    const {body} = contentDocument
+    const {dataset} = button
+    const msg = dataset.confirm
+
+    if (confirm(msg)) {
+      body.innerHTML = ""
+
+      setTimeout(() => {
+        body.focus()
+      }, 100)
+    }
   }
 })
 
