@@ -20,6 +20,7 @@ const onTouchStart = object(listener, {
   task(button) {
     // command_clear('id_msg_text')
     const {contentDocument} = one('#id_msg_text', button.closest('form'))
+    console.log(contentDocument);
     contentDocument.innerHTML = ""
   }
 })
