@@ -15,9 +15,9 @@ const onClick = object(listener, {
     const iframe = one(`#${id}`, ownerDocument)
     const { contentWindow } = iframe
     const { document } = contentWindow
-    command_clear(id)
-    document.focus()
     console.log(iframe)
+    command_clear(id)
+    contentWindow.focus()
   }
 })
 
