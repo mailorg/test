@@ -18,7 +18,9 @@ const onClick = object(listener, {
     const { body } = document
     console.log(body)
     command_clear(id)
-    body.focus()
+    setTimeout(() => {
+      body.focus()
+    }, 2000)
   }
 })
 
