@@ -45,15 +45,14 @@ export const fromEvent = (
   angle = bottomRight,
   origin = null
 ) => {
-  const targetCoords = coords(target)
-  const { clientHeight, clientWidth, height, width } = targetCoords
+  const { clientHeight, clientWidth, height, width, x, y } = coords(target)
   let { clientX, clientY } = event
   
   if (origin) {
-    clientX += origin.clientX - targetCoords.clientX
-    clientY += origin.clientY - targetCoords.clientY
+    clientX += origin.clientX - x
+    clientY += origin.clientY - y
     
-    console.log({ clientX, clientY })
+    console.log({ clientX, clientY, origin, x, y })
   }
   
   switch (angle) {
