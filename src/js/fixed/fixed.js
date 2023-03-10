@@ -49,8 +49,8 @@ export const fromEvent = (
   let { clientX, clientY } = event
   
   if (origin) {
-    clientX -= origin.clientX - x
-    clientY -= origin.clientY - y
+    clientX += origin.clientX - x
+    clientY += origin.clientY - y
     
     console.log({ clientX, clientY, event, origin, x, y })
   }
