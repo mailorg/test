@@ -43,13 +43,16 @@ export const fromEvent = (
   target,
   event,
   angle = bottomRight,
-  { left = 0, top = 0 } = {}
+  origin = null
 ) => {
-  const { clientHeight, clientWidth, height, width } = coords(target)
+  const targetCoords = coords(target)
+  const { clientHeight, clientWidth, height, width } = targetCoords
   let { clientX, clientY } = event
   
-  clientX += left
-  clientY += top
+  if (origin) {
+    clientX += origin.clientX - targetCoords.clientX
+    clientY += origin.clientY - targetCoords.clientY
+  }
   
   switch (angle) {
     case bottomLeft: {
