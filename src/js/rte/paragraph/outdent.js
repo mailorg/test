@@ -8,13 +8,8 @@ import rte from '../rte.js'
 const onClick = object(listener, {
   type: click,
   hooks: [preventDefault],
-  task (
-    outdent,
-    event
-  ) {
-  
+  task() {
     globals.ea_rte_command('id_msg_text', 'outdent', '')
-
   }
 })
 
@@ -24,5 +19,5 @@ export const test = () => {
 
 export default button => {
   onClick.listen(button)
-  rte(button, object(null, { test }))
+  rte(button, object(null, {test}))
 }
