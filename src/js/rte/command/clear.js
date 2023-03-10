@@ -17,7 +17,7 @@ const onClick = object(listener, {
     const { document } = contentWindow
     const { body } = document
     console.log(body)
-    // command_clear(id)
+    command_clear(id)
     body.focus()
   }
 })
