@@ -14,6 +14,14 @@ const onClick = object(listener, {
   }
 })
 
+const onTouchStart = object(listener, {
+  type: touchStart,
+  hooks: [preventDefault],
+  task() {
+    command_clear('id_msg_text')
+  }
+})
+
 export const test = (
   text
 ) => {
@@ -21,6 +29,7 @@ export const test = (
 }
 
 export default button => {
-  onClick.listen(button)
+  // onClick.listen(button)
+  onTouchStart.listen(button)
   rte(button, object(null, {test}))
 }
