@@ -21,8 +21,13 @@ const onTouchStart = object(listener, {
     // command_clear('id_msg_text')
     const {contentDocument} = one('#id_msg_text', button.closest('form'))
     const {body} = contentDocument
-    console.log(body);
-    body.innerHTML = ""
+    const { dataset } = button
+    const msg = dataset.confirm
+
+    if (confirm(msg)) {
+      console.log(body);
+      body.innerHTML = ""
+    }
   }
 })
 
