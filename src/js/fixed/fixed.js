@@ -51,8 +51,6 @@ export const fromEvent = (
   if (origin) {
     clientX -= origin.clientX - x
     clientY -= origin.clientY - y
-    
-    console.log({ clientX, clientY, event, origin, x, y })
   }
   
   switch (angle) {
