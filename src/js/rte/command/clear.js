@@ -16,6 +16,7 @@ const onClick = object(listener, {
 
     if (confirm(msg)) {
       body.innerHTML = ""
+      body.focus()
     }
   }
 })
