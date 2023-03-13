@@ -1,5 +1,5 @@
 import object from '@mailobj-browser/front/js/utils/object.js'
-// import { md } from '@mailobj-browser/components-generics/scss/abstracts/_variables.scss'
+import { md } from '@mailobj-browser/components-generics/scss/abstracts/_variables.scss'
 
 const screenSizes = object(null, {
   xxs: 0,
