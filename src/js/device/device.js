@@ -3,6 +3,7 @@ import { md } from '@mailobj-browser/components-generics/scss/abstracts/_variabl
 
 export const device = object(null, {
   isLowerThanMd: () => {
+    console.log(md)
     const width = window.innerWidth
     return width <= md
   },
