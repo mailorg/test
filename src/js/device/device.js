@@ -1,6 +1,6 @@
 import object from '@mailobj-browser/front/js/utils/object.js'
-import { md } from '@mailobj-browser/components-generics/scss/abstracts/_variables.scss'
 
+console.log(document)
 const screenSizes = object(null, {
   xxs: 0,
   xs: 360,
@@ -12,7 +12,6 @@ const screenSizes = object(null, {
 
 export const device = object(null, {
   isLowerThanMd: () => {
-    console.log(screenSizes.md)
     const width = window.innerWidth
     return width <= screenSizes.md
   },
