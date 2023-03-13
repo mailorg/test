@@ -8,7 +8,7 @@ const screenSizes = object(null, {
   sm: style.getPropertyValue('--ea_breakpoint_sm'),
   md: style.getPropertyValue('--ea_breakpoint_md'),
   lg: style.getPropertyValue('--ea_breakpoint_lg'),
-  xl: style.getPropertyValue('--ea_breakpoint_xl'),
+  xl: style.getPropertyValue('--ea_breakpoint_xl')
 })
 
 export const device = object(null, {
