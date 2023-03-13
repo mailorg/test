@@ -1,8 +1,7 @@
 import object from '@mailobj-browser/front/js/utils/object.js'
 
 const {documentElement} = document
-console.log();
-const {style} = documentElement
+console.log(getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint_md'));
 const screenSizes = object(null, {
   xxs: getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint_xxs'),
   xs: getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint_xs'),
