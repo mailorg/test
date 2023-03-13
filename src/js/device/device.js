@@ -2,7 +2,7 @@ import object from '@mailobj-browser/front/js/utils/object.js'
 
 const {documentElement} = document
 const {ownerDocument} = documentElement
-const {style} = ownerDocument
+const {style} = documentElement
 console.log(documentElement)
 const screenSizes = object(null, {
   xxs: 0,
