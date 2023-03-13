@@ -13,6 +13,7 @@ import blur from '@mailobj-browser/front/js/events/types/blur.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import resize from '@mailobj-browser/front/js/events/types/resize.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
+import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 
 let current = null
 
@@ -99,10 +100,11 @@ export const open = async (
   return lightbox.parse(template(opener), container(opener), opener, true)
 }
 
-export const display = (content, opener, event = null) => {
+export const display = async (content, opener, event = null) => {
   const { ownerDocument } = opener
   const { defaultView } = ownerDocument
   const { fromEvent, fromNode, move, resize } = fixed
+  const [promise, { resolve }] = resolvable()
   
   close()
   move(content)
@@ -116,13 +118,15 @@ export const display = (content, opener, event = null) => {
       openers.set(content, opener)
     }
   
-    focus(content)
     onScroll.listen(ownerDocument)
     onBlur.listen(ownerDocument)
     onEscape.listen(ownerDocument)
     onResize.listen(defaultView)
     current = content
+    resolve()
   })
+  
+  return promise
 }
 
 export const opener = (
