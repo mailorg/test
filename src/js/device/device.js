@@ -13,6 +13,7 @@ const screenSizes = object(null, {
 
 export const device = object(null, {
   isLowerThanMd: () => {
+    console.log(screenSizes.md)
     const width = window.innerWidth
     return width <= screenSizes.md
   },
