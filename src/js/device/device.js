@@ -1,8 +1,9 @@
 import object from '@mailobj-browser/front/js/utils/object.js'
 
 const {activeElement} = document
-const {style} = document
-console.log(style)
+const {style} = activeElement
+console.log(document)
+console.log(activeElement)
 const screenSizes = object(null, {
   xxs: 0,
   xs: 360,
