@@ -1,6 +1,6 @@
 import object from '@mailobj-browser/front/js/utils/object.js'
 
-const screenSizes = object(null, {
+export const sizes = object(null, {
   xxs: 1,
   xs: 2,
   sm: 3,
@@ -13,12 +13,12 @@ export const isLowerThan = async (node, key) => {
   const {ownerDocument = node} = node
   const {documentElement, defaultView} = ownerDocument
   const {getComputedStyle} = defaultView
-  return screenSizes[key] > screenSizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')]
+  return key > sizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')]
 }
 
 export const isGreaterThan = async (node, key) => {
   const {ownerDocument = node} = node
   const {documentElement, defaultView} = ownerDocument
   const {getComputedStyle} = defaultView
-  return screenSizes[key] < screenSizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')]
+  return key < sizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')]
 }
