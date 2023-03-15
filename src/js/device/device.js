@@ -9,18 +9,13 @@ const screenSizes = object(null, {
   xl: 6
 })
 
-export const isLowerThan = (element, key) => {
+export const isLowerThan = async (element, key) => {
   const {ownerDocument} = element
   const {documentElement} = ownerDocument
-  console.log(screenSizes[key]);
-  // console.log(screenSizes[xxs]);
-  const breakpoint = getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')
-  console.log(typeof breakpoint, typeof key);
-  console.log(screenSizes[breakpoint]);
   return screenSizes[key] > screenSizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')]
 }
 
-export const isGreaterThan = (element, key) => {
+export const isGreaterThan = async (element, key) => {
   const {ownerDocument} = element
   const {documentElement} = ownerDocument
   return screenSizes[key] < screenSizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')]
