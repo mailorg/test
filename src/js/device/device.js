@@ -9,14 +9,14 @@ const screenSizes = object(null, {
   xl: 6
 })
 
-export const isLowerThan = (node, key) => {
+export const isLowerThan = async (node, key) => {
   const {ownerDocument = node} = node
   const {documentElement, defaultView} = ownerDocument
   const {getComputedStyle} = defaultView
   return screenSizes[key] > screenSizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')]
 }
 
-export const isGreaterThan = (node, key) => {
+export const isGreaterThan = async (node, key) => {
   const {ownerDocument = node} = node
   const {documentElement, defaultView} = ownerDocument
   const {getComputedStyle} = defaultView
