@@ -11,6 +11,7 @@ const screenSizes = object(null, {
 
 export const isLowerThan = (element, key) => {
   const {ownerDocument} = element
+  console.log(ownerDocument);
   return screenSizes[key] > screenSizes[getComputedStyle(ownerDocument).getPropertyValue('--ea_breakpoint')]
 }
 
