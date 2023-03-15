@@ -3,7 +3,6 @@ import click from '@mailobj-browser/front/js/events/types/click.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import all from '@mailobj-browser/front/js/selectors/all.js'
 import rte, { command } from '../rte.js'
-import { elements, modifiers } from "@mailobj-browser/components-generics/js/styles.js";
 
 const onClick = object(listener, {
 	type: click,
