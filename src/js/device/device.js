@@ -11,7 +11,7 @@ export const sizes = object(null, {
 
 const map = new Map(Object.entries(sizes).map(([key, value]) => [value, key]))
 
-const size = async node => {
+const size = node => {
   const { ownerDocument = node } = node
   const { documentElement, defaultView } = ownerDocument
   const { getComputedStyle } = defaultView
