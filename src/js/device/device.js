@@ -9,7 +9,7 @@ const screenSizes = object(null, {
   xl: 6
 })
 
-export const isLowerThan = (element, key) => {
+export async const isLowerThan = (element, key) => {
   const {ownerDocument} = element
   const {documentElement} = ownerDocument
   console.log(screenSizes[key]);
