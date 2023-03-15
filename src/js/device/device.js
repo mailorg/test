@@ -13,7 +13,8 @@ export const isLowerThan = (element, key) => {
   const {ownerDocument} = element
   const {documentElement} = ownerDocument
   console.log(screenSizes[key]);
-  console.log(screenSizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')]);
+  console.log(screenSizes[xxs]);
+  console.log(screenSizes['xxs']);
   return screenSizes[key] > screenSizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')]
 }
 
