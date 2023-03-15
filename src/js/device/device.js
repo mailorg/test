@@ -11,10 +11,10 @@ const screenSizes = object(null, {
 
 export const isLowerThan = (element, key) => {
   const {ownerDocument} = element
-  return screenSizes[key] <= screenSizes[getComputedStyle(ownerDocument).getPropertyValue('--ea_breakpoint')]
+  return screenSizes[key] > screenSizes[getComputedStyle(ownerDocument).getPropertyValue('--ea_breakpoint')]
 }
 
 export const isGreaterThan = (element, key) => {
   const {ownerDocument} = element
-  return screenSizes[key] >= screenSizes[getComputedStyle(ownerDocument).getPropertyValue('--ea_breakpoint')]
+  return screenSizes[key] < screenSizes[getComputedStyle(ownerDocument).getPropertyValue('--ea_breakpoint')]
 }
