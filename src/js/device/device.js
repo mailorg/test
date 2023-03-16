@@ -21,10 +21,10 @@ const size = node => {
 
 export const isGreaterThan = (node, value) => {
 
-  return map.get(value) < size(node)
+  return sizes[map.get(value)] < size(node)
 }
 export const isLowerThan = (node, value) => {
-  console.log(map.get(value));
+  console.log(sizes[map.get(value)]);
   console.log(size(node));
-  return map.get(value) > size(node)
+  return sizes[map.get(value)] > size(node)
 }
