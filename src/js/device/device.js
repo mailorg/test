@@ -19,12 +19,5 @@ const size = node => {
   return sizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint').trim()]
 }
 
-export const isGreaterThan = (node, value) => {
-
-  return sizes[map.get(value)] < size(node)
-}
-export const isLowerThan = (node, value) => {
-  console.log(sizes[map.get(value)]);
-  console.log(size(node));
-  return sizes[map.get(value)] > size(node)
-}
+export const isGreaterThan = (node, value) => sizes[map.get(value)] < size(node)
+export const isLowerThan = (node, value) => sizes[map.get(value)] > size(node)
