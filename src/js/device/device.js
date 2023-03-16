@@ -12,8 +12,8 @@ export const sizes = object(null, {
 const map = new Map(Object.entries(sizes).map(([key, value]) => [value, key]))
 
 const size = node => {
-  const { ownerDocument = node } = node
-  const { documentElement, defaultView } = ownerDocument
+  const { ownerDocument } = node
+  const { documentElement, defaultView } = ownerDocument ?? node
   const { getComputedStyle } = defaultView
 
   return sizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint').trim()]
