@@ -17,7 +17,7 @@ const size = node => {
   const { getComputedStyle } = defaultView
 
   console.log(getComputedStyle(documentElement));
-  console.log(documentElement.styleSheets[0].cssRules[0].style);
+  console.log(documentElement);
   console.log(sizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')])
   return sizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')]
 }
