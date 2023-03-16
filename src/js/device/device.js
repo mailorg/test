@@ -13,10 +13,10 @@ const map = new Map(Object.entries(sizes).map(([key, value]) => [value, key]))
 
 const size = node => {
   const { ownerDocument = node } = node
-  console.log(ownerDocument);
   const { documentElement, defaultView } = ownerDocument
   const { getComputedStyle } = defaultView
 
+  console.log(getComputedStyle(documentElement));
   console.log(sizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')])
   return sizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')]
 }
