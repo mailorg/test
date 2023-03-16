@@ -16,10 +16,15 @@ const size = node => {
   const { documentElement, defaultView } = ownerDocument
   const { getComputedStyle } = defaultView
 
-  console.log(getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint').trim());
-  console.log(sizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint').trim()]);
   return sizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint').trim()]
 }
 
-export const isGreaterThan = (node, value) => map.get(value) < size(node)
-export const isLowerThan = (node, value) => map.get(value) > size(node)
+export const isGreaterThan = (node, value) => {
+
+  return map.get(value) < size(node)
+}
+export const isLowerThan = (node, value) => {
+  console.log(map.get(value));
+  console.log(size(node));
+  return map.get(value) > size(node)
+}
