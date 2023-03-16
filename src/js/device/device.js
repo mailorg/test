@@ -18,7 +18,7 @@ const size = node => {
 
   console.log(getComputedStyle(documentElement));
   console.log(documentElement);
-  console.log(sizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')])
+  console.log(sizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint').trim()])
   return sizes[getComputedStyle(documentElement).getPropertyValue('--ea_breakpoint')]
 }
 
