@@ -34,5 +34,5 @@ const onTouchEnd = object(listener, {
 
 export default button => {
   onClick.listen(button)
-  onTouchEnd.listen(button)
+  // onTouchEnd.listen(button)
 }
