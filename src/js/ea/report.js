@@ -4,6 +4,7 @@ import href from './href.js'
 
 export default async (param) => {
 
+  console.error(param)
   /* param peut être string ou Array : */
   const values = [param].flat()
   const url = href('util/log')
