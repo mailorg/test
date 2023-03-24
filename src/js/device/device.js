@@ -21,3 +21,10 @@ const size = node => {
 
 export const isGreaterThan = (node, value) => sizes[map.get(value)] < size(node)
 export const isLowerThan = (node, value) => sizes[map.get(value)] > size(node)
+
+export const isMobile = (node) => {
+  if (/(android|iphone|ipad|mobile)/i.test(navigator.userAgent.toLowerCase())) {
+
+    return true
+  }
+}
