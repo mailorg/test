@@ -14,4 +14,3 @@ export const set = (wrapper, target) => {
 export const get = wrapper => {
   return targets.get(wrapper)
 }
-
