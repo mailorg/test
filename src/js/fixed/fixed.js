@@ -198,8 +198,6 @@ export const move = (
 ) => {
   const {style} = target
 
-  console.log(target);
-
   style.setProperty('--ea_utilities_fixed_left', `${clientX}px`)
   style.setProperty('--ea_utilities_fixed_top', `${clientY}px`)
 }

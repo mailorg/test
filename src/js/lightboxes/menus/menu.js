@@ -105,7 +105,8 @@ export const display = async (content, opener, event = null) => {
   const { defaultView } = ownerDocument
   const { fromEvent, fromNode, move, resize } = fixed
   const [promise, { resolve }] = resolvable()
-  
+
+  console.log(content);
   close()
   move(content)
   
