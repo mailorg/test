@@ -122,7 +122,7 @@ export const fromNode = (
   const { clientHeight, clientWidth, height, width } = coords(target)
   const { bottom, left, right, top } = rect(node)
   let { clientX = 0, clientY = 0 } = {}
-  
+  console.log({ clientHeight, clientWidth, height, width })
   switch (angle) {
     case bottomLeft: {
       if (left + width > clientWidth) {
