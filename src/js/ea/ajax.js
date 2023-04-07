@@ -107,6 +107,18 @@ const form = (
   })
 }
 
+const build = async (
+  target,
+  event,
+  params
+) => {
+  const { type } = event
+  
+  return type === 'submit' ?
+    form(target, event, params) :
+    anchor(target, event, params)
+}
+
 onClick.listen(document)
 onSubmit.listen(document)
 
@@ -115,12 +127,9 @@ export const fromEvent = async (
   event,
   { ...params } = {}
 ) => {
-  const { type } = event
+  const request = build(target, event, params)
+  const context = object(null, { request, target })
+  const { response } = html(context)
   
-  return html(object(null, {
-    target,
-    request: type === 'submit' ?
-      form(target, event, params) :
-      anchor(target, event, params)
-  }))
+  return response
 }
