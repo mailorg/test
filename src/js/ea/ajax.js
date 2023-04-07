@@ -77,7 +77,7 @@ const form = (
 ) => {
   const { action, method = 'GET', ownerDocument } = element
   const { defaultView } = ownerDocument
-  const { FormData, Request } = defaultView
+  const { FormData, Request, URL, URLSearchParams } = defaultView
   const { name, value } = submitters.get(event)
   const body = new FormData(element)
   const entries = Object.entries(params)
@@ -91,12 +91,16 @@ const form = (
   }
   
   if (method.toUpperCase() === 'GET') {
-    return new Request(href(action, Object.fromEntries(body)), {
+    const url = Object.assign(new URL(action), {
+      search: `${new URLSearchParams(body)}`
+    })
+    
+    return new Request(`${url}`, {
       ...init
     })
   }
   
-  return new Request(href(action), {
+  return new Request(action, {
     ...init,
     body,
     method
