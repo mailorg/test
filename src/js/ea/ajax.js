@@ -120,3 +120,7 @@ export const fromEvent = async (
       anchor(target, event, params)
   }))
 }
+
+defaults.window.ajax = {
+  fromEvent
+}
