@@ -52,7 +52,7 @@ const onSubmit = object(listener, {
       candidates.add(submitter)
     }
   
-    submitter.set(event, ...[...candidates, empty].filter(Boolean))
+    submitters.set(event, ...[...candidates, empty].filter(Boolean))
   }
 })
 
