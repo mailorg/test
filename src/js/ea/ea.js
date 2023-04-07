@@ -1,3 +1,4 @@
+export * as ajax from './ajax.js'
 export { default as globals } from './globals.js'
 export { default as href } from './href.js'
 export { default as override } from './override.js'
