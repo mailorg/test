@@ -1,4 +1,4 @@
-@use "../abstracts/mixins" as *;
+@use "../abstracts";
 
 .ea_utilities__is_sr_only {
   @include ea_utilities__is_sr_only;
