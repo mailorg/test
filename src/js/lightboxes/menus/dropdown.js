@@ -27,7 +27,10 @@ export default async (
   list
 ) => {
   const select = opener(list)
+  const { parentNode } = list
   const { value = '' } = select
+  
+  console.log({ parentNode })
   
   onKeyDown.listen(list)
   await display(list, select)
