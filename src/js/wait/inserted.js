@@ -29,6 +29,10 @@ const observing = ownerDocument => {
 }
 
 export default (node, parentNode, abort = never) => {
+  if (parentNode.contains(node)) {
+    return Promise.race([abort, node])
+  }
+  
   const { ownerDocument } = parentNode
   const [promise, { resolve }] = resolvable()
   const observer = observing(ownerDocument)
