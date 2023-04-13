@@ -14,9 +14,6 @@ import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import resize from '@mailobj-browser/front/js/events/types/resize.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
-import { elements } from '../../styles.js'
-import inserted from '../../wait/inserted.js'
-import one from '@mailobj-browser/front/js/selectors/one.js'
 
 let current = null
 
@@ -104,21 +101,15 @@ export const open = async (
 }
 
 export const display = async (content, opener, event = null) => {
-  const { parentNode } = content
   const { ownerDocument } = opener
   const { defaultView } = ownerDocument
-  const container = one(`.${elements.aside_lightboxes}`, ownerDocument)
   const { fromEvent, fromNode, move, resize } = fixed
   const [promise, { resolve }] = resolvable()
 
   close()
   move(content)
   
-  requestAnimationFrame(async () => {
-    if (container !== parentNode) {
-      await inserted(content, container)
-    }
-    
+  requestAnimationFrame(() => {
     if (event) {
       move(content, fromEvent(content, event))
     } else {
