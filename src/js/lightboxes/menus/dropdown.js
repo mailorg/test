@@ -2,6 +2,7 @@ import object from '@mailobj-browser/front/js/utils/object.js'
 import * as menu from './menu.js'
 import { display } from './menu.js'
 import all from '@mailobj-browser/front/js/selectors/all.js'
+import one from '@mailobj-browser/front/js/selectors/one.js'
 import { elements } from '../../styles.js'
 import inserted from '../../wait/inserted.js'
 
