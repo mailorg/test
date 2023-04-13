@@ -114,11 +114,11 @@ export const display = async (content, opener, event = null) => {
   close()
   move(content)
   
-  if (container !== parentNode) {
-    await inserted(content, container)
-  }
-  
-  requestAnimationFrame(() => {
+  requestAnimationFrame(async () => {
+    if (container !== parentNode) {
+      await inserted(content, container)
+    }
+    
     if (event) {
       move(content, fromEvent(content, event))
     } else {
