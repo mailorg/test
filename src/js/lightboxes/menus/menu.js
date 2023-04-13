@@ -16,6 +16,7 @@ import remove from '@mailobj-browser/front/js/tree/remove.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 import { elements } from '../../styles.js'
 import inserted from '../../wait/inserted.js'
+import one from '@mailobj-browser/front/js/selectors/one.js'
 
 let current = null
 
