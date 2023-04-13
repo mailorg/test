@@ -1,18 +1,4 @@
-@mixin ea_utilities__is_sr_only() {
-  position: absolute !important;
-
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-
-  width: 0.01em !important;
-  height: 0.01em !important;
-  padding: 0 !important;
-  margin: 0 !important;
-
-  white-space: nowrap !important;
-
-  border: none !important;
-}
+@use "../abstracts/mixins" as *;
 
 .ea_utilities__is_sr_only {
   @include ea_utilities__is_sr_only;
@@ -28,10 +14,6 @@
 
 .ea_utilities__list_style-none {
   list-style: none !important;
-}
-
-@mixin ea_utilities__overflow-hidden() {
-  overflow: hidden !important;
 }
 
 .ea_utilities__overflow-hidden {
