@@ -30,7 +30,9 @@ export default async (
   list
 ) => {
   const select = opener(list)
+  const { parentNode, ownerDocument } = list
   const { value = '' } = select
+  const container = one(`.${elements.aside_lightboxes}`, ownerDocument)
   
   onKeyDown.listen(list)
   
