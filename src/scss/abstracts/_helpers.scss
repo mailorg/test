@@ -1,0 +1,39 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+@each $breakpoint in map-keys($bootstrap-breakpoints) {
+  @media (min-width: #{map-get($bootstrap-breakpoints, $breakpoint) + 0.02px}) {
+    .ea_utilities__is_hidden_#{$breakpoint} {
+      display: none !important;
+    }
+
+    .ea_utilities__is_sr_only_#{$breakpoint} {
+      @include ea_utilities__is_sr_only;
+    }
+  }
+
+  @media (max-width: #{map-get($bootstrap-breakpoints, $breakpoint)}) {
+    .ea_utilities__is_hidden_until_#{$breakpoint} {
+      display: none !important;
+    }
+
+    .ea_utilities__is_sr_only_until_#{$breakpoint} {
+      @include ea_utilities__is_sr_only;
+    }
+  }
+}
+
+// Flip icons
+[dir="rtl"] .ea_rtl_flip {
+  transform-origin: center;
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .ea_ltr {
+  display: none;
+}
+
+[dir="ltr"] .ea_rtl {
+  display: none;
+}
+

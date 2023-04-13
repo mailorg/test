@@ -1,0 +1,24 @@
+@use "sass:math";
+/// Bootstrap points de rupture de la grille
+/// @prop {String} keys - Identifiant du point de rupture
+/// @prop {Map} values - Valeur du point de rupture en pixels
+$bootstrap-breakpoints: (
+  'xxs': 0px,
+  'xs': 360px,
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+) !default;
+
+:root {
+  @each $key, $value in $bootstrap-breakpoints {
+    @if ($key == 'xxs') {
+      --ea_breakpoint: #{$key}
+    } @else {
+      @media (min-width: #{$value + 0.02px}) {
+        --ea_breakpoint: #{$key}
+      }
+    }
+  }
+}

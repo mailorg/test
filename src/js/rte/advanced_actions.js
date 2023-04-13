@@ -18,7 +18,7 @@ const onClick = object(listener, {
     const parent = button.closest('div')
     const containerActions = one(`.${elements.advanced_actions}`, parent)
     // containerActions.classList.toggle(genericsModifiers.display.none)
-    containerActions.classList.toggle('ea_generics__display-none')
+    containerActions.classList.toggle('ea_utilities__display-none')
   }
 })
 

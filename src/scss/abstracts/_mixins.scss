@@ -1,0 +1,33 @@
+@use "sass:meta";
+@use "sass:map";
+@use "variables" as *;
+
+// Transform scss variables to css global variables
+@mixin spread-map($map: ()) {
+  @each $key, $value in $map {
+    #{$key}: #{meta.inspect($value)};
+  }
+}
+
+/// Access breakpoints, max-width
+@mixin breakpoint-down($breakpoint) {
+  @if map-has-key($bootstrap-breakpoints, $breakpoint) {
+    @media (max-width: #{map-get($bootstrap-breakpoints, $breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @warn 'Unfortunately, no value could be retrieved from `#{$breakpoint}`. '
+    + 'Please make sure it is defined in `$bootstrap-breakpoints` map.';
+  }
+}
+
+@mixin breakpoint-up($breakpoint) {
+  @if map-has-key($bootstrap-breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($bootstrap-breakpoints, $breakpoint) + 0.02px}) {
+      @content;
+    }
+  } @else {
+    @warn 'Unfortunately, no value could be retrieved from `#{$breakpoint}`. '
+    + 'Please make sure it is defined in `$bootstrap-breakpoints` map.';
+  }
+}
