@@ -135,7 +135,8 @@ const render = async (
   const { defaultView } = ownerDocument
   const { Request } = defaultView
   const clone = template.cloneNode(true)
-  
+
+  console.log("0")
   if (url) {
     const { fetched } = await text(object(null, {
       request: new Request(`${url}`)
