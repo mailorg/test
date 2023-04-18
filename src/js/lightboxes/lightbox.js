@@ -23,7 +23,9 @@ let menu = null
 const openers = new WeakMap()
 
 export const close = () => {
+  console.log("4")
   if (current) {
+    console.log("3")
     remove(current)
     current = null
   }
