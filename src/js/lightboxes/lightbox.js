@@ -68,8 +68,10 @@ export const display = (content, opener, event = null) => {
   
   requestAnimationFrame(() => {
     if (event) {
+      console.log("1")
       move(content, fromEvent(content, event))
     } else {
+      console.log("2")
       resize(content, opener)
       move(content, fromNode(content, opener))
       openers.set(content, opener)
