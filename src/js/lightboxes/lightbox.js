@@ -64,7 +64,7 @@ const onSubmit = object(prevented, {
 
 export const display = (content, opener, event = null) => {
   const { ownerDocument } = opener
-  
+  console.log("5")
   close()
   move(content)
   
