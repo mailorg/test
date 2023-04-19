@@ -111,12 +111,9 @@ export const parse = async (
   template.dispatchEvent(new CustomEvent('load', {detail}))
 
   if (asMenu) {
-    console.log("1")
     menu = lightbox
   } else {
-    console.log("2")
     if (menu) {
-      console.log("3")
       remove(menu)
     }
 
@@ -146,6 +143,7 @@ const render = async (
   const {Request} = defaultView
   const clone = template.cloneNode(true)
 
+  console.log("0")
   if (url) {
     const {fetched} = await text(object(null, {
       request: new Request(`${url}`)
