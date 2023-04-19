@@ -101,6 +101,8 @@ export const parse = async (
   const {children: [lightbox]} = await render(template, url)
   const detail = object(null, {lightbox})
 
+  ownerDocument.classList.add(utilities.modifiers.overflow.hidden)
+
   openers.set(lightbox, opener)
   append(body, lightbox)
   await manager.trigger(body)
@@ -138,8 +140,6 @@ const render = async (
   const {defaultView} = ownerDocument
   const {Request} = defaultView
   const clone = template.cloneNode(true)
-
-  defaultView.classList.add(utilities.modifiers.overflow.hidden)
 
   if (url) {
     const {fetched} = await text(object(null, {
