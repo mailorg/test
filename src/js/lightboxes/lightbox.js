@@ -27,6 +27,8 @@ export const close = () => {
   if (current) {
     const {ownerDocument} = current
     const {defaultView} = ownerDocument
+
+    console.log(current);
     // defaultView.classList.remove(utilities.modifiers.overflow.hidden)
 
     remove(current)
@@ -100,9 +102,8 @@ export const parse = async (
   const body = element(ownerDocument, 'body')
   const {children: [lightbox]} = await render(template, url)
   const detail = object(null, {lightbox})
-
   const {body: bodyCurrent} = ownerDocument
-  console.log(ownerDocument, defaultView);
+
   bodyCurrent.classList.add(utilities.modifiers.overflow.hidden)
 
   openers.set(lightbox, opener)
