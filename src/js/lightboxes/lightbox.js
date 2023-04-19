@@ -11,7 +11,7 @@ import removed from '../wait/removed.js'
 import submit from '@mailobj-browser/front/js/events/types/submit.js'
 import all from '@mailobj-browser/front/js/selectors/all.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
-import { fromEvent, fromNode, move, resize } from '../fixed/fixed.js'
+import {fromEvent, fromNode, move, resize} from '../fixed/fixed.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import once from '@mailobj-browser/front/js/events/options/once.js'
@@ -26,7 +26,8 @@ const openers = new WeakMap()
 export const close = () => {
   if (current) {
     const {ownerDocument} = current
-    ownerDocument.classList.remove(utilities.modifiers.overflow.hidden)
+    const {defaultView} = ownerDocument
+    defaultView.classList.remove(utilities.modifiers.overflow.hidden)
 
     remove(current)
     current = null
@@ -51,8 +52,8 @@ const onScroll = object(listener, {
 const onEscape = object(listener, {
   type: keyUp,
   task: (document, event) => {
-    const { key } = event
-    
+    const {key} = event
+
     if (current && key === 'Escape') {
       preventDefault(event)
       close()
@@ -65,11 +66,11 @@ const onSubmit = object(prevented, {
 })
 
 export const display = (content, opener, event = null) => {
-  const { ownerDocument } = opener
+  const {ownerDocument} = opener
 
   close()
   move(content)
-  
+
   requestAnimationFrame(() => {
     if (event) {
       move(content, fromEvent(content, event))
@@ -78,7 +79,7 @@ export const display = (content, opener, event = null) => {
       move(content, fromNode(content, opener))
       openers.set(content, opener)
     }
-    
+
     focus(content)
     onScroll.listen(ownerDocument)
     onEscape.listen(ownerDocument)
@@ -92,40 +93,40 @@ export const parse = async (
   opener = null,
   asMenu = false
 ) => {
-  const { dataset, ownerDocument } = template
-  const { defaultView } = ownerDocument
-  const { CustomEvent } = defaultView
-  const { url } = dataset
+  const {dataset, ownerDocument} = template
+  const {defaultView} = ownerDocument
+  const {CustomEvent} = defaultView
+  const {url} = dataset
   const body = element(ownerDocument, 'body')
-  const { children: [lightbox] } = await render(template, url)
-  const detail = object(null, { lightbox })
-  
+  const {children: [lightbox]} = await render(template, url)
+  const detail = object(null, {lightbox})
+
   openers.set(lightbox, opener)
   append(body, lightbox)
   await manager.trigger(body)
-  template.dispatchEvent(new CustomEvent('load', { detail }))
-  
+  template.dispatchEvent(new CustomEvent('load', {detail}))
+
   if (asMenu) {
     menu = lightbox
   } else {
     if (menu) {
       remove(menu)
     }
-    
+
     current = lightbox
   }
-  
+
   append(container, lightbox)
-  
+
   for (const form of all('form[target="_self"]')) {
     onSubmit.listen(form)
   }
-  
+
   queueMicrotask(async () => {
     await removed(lightbox)
     openers.delete(lightbox)
   })
-  
+
   return lightbox
 }
 
@@ -133,21 +134,21 @@ const render = async (
   template,
   url
 ) => {
-  const { ownerDocument } = template
-  const { defaultView } = ownerDocument
-  const { Request } = defaultView
+  const {ownerDocument} = template
+  const {defaultView} = ownerDocument
+  const {Request} = defaultView
   const clone = template.cloneNode(true)
 
-  ownerDocument.classList.add(utilities.modifiers.overflow.hidden)
+  defaultView.classList.add(utilities.modifiers.overflow.hidden)
 
   if (url) {
-    const { fetched } = await text(object(null, {
+    const {fetched} = await text(object(null, {
       request: new Request(`${url}`)
     }))
-  
+
     clone.innerHTML = fetched
   }
-  
+
   return invoke(clone)
 }
 
