@@ -101,8 +101,8 @@ export const parse = async (
   const {children: [lightbox]} = await render(template, url)
   const detail = object(null, {lightbox})
 
-  console.log(body);
-  body.classList.add(utilities.modifiers.overflow.hidden)
+  console.log(ownerDocument, defaultView);
+  // body.classList.add(utilities.modifiers.overflow.hidden)
 
   openers.set(lightbox, opener)
   append(body, lightbox)
