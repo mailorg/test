@@ -111,9 +111,12 @@ export const parse = async (
   template.dispatchEvent(new CustomEvent('load', {detail}))
 
   if (asMenu) {
+    console.log("1")
     menu = lightbox
   } else {
+    console.log("2")
     if (menu) {
+      console.log("3")
       remove(menu)
     }
 
