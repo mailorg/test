@@ -28,7 +28,7 @@ export const close = () => {
     const {ownerDocument} = current
     const {body} = ownerDocument
 
-    body.classList.remove(utilities.modifiers.overflow.hidden)
+    // body.classList.remove(utilities.modifiers.overflow.hidden)
 
     remove(current)
     current = null
@@ -101,9 +101,9 @@ export const parse = async (
   const body = element(ownerDocument, 'body')
   const {children: [lightbox]} = await render(template, url)
   const detail = object(null, {lightbox})
-  const {body: bodyCurrent} = ownerDocument
-
-  bodyCurrent.classList.add(utilities.modifiers.overflow.hidden)
+  // const {body: bodyCurrent} = ownerDocument
+  //
+  // bodyCurrent.classList.add(utilities.modifiers.overflow.hidden)
 
   openers.set(lightbox, opener)
   append(body, lightbox)
@@ -143,7 +143,6 @@ const render = async (
   const {Request} = defaultView
   const clone = template.cloneNode(true)
 
-  console.log("0")
   if (url) {
     const {fetched} = await text(object(null, {
       request: new Request(`${url}`)
