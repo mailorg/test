@@ -16,6 +16,7 @@ import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import once from '@mailobj-browser/front/js/events/options/once.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
+import * as utilities from "../styles.js"
 
 let current = null
 let menu = null
@@ -23,9 +24,10 @@ let menu = null
 const openers = new WeakMap()
 
 export const close = () => {
-  console.log("4")
   if (current) {
-    console.log("3")
+    const {ownerDocument} = current
+    ownerDocument.classList.remove(utilities.modifiers.overflow.hidden)
+
     remove(current)
     current = null
   }
@@ -64,16 +66,14 @@ const onSubmit = object(prevented, {
 
 export const display = (content, opener, event = null) => {
   const { ownerDocument } = opener
-  console.log("5")
+
   close()
   move(content)
   
   requestAnimationFrame(() => {
     if (event) {
-      console.log("1")
       move(content, fromEvent(content, event))
     } else {
-      console.log("2")
       resize(content, opener)
       move(content, fromNode(content, opener))
       openers.set(content, opener)
@@ -138,7 +138,8 @@ const render = async (
   const { Request } = defaultView
   const clone = template.cloneNode(true)
 
-  console.log("0")
+  ownerDocument.classList.add(utilities.modifiers.overflow.hidden)
+
   if (url) {
     const { fetched } = await text(object(null, {
       request: new Request(`${url}`)
