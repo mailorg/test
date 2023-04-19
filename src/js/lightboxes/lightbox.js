@@ -26,10 +26,9 @@ const openers = new WeakMap()
 export const close = () => {
   if (current) {
     const {ownerDocument} = current
-    const {defaultView} = ownerDocument
+    const {body} = ownerDocument
 
-    console.log(current);
-    // defaultView.classList.remove(utilities.modifiers.overflow.hidden)
+    body.classList.remove(utilities.modifiers.overflow.hidden)
 
     remove(current)
     current = null
