@@ -1,29 +1,5 @@
 @use "sass:map";
 
-/// Fonce légèrement une couleur avec du noir
-/// @access public
-/// @param {Color} $color - Couleur à foncer
-/// @param {Number} $percentage - Pourcentage de traitement sur `$color`
-/// @return {Color}
-@function shade($color, $percentage, $map: null) {
-  @if ($map == null) {
-    $color-shade: hsl(0, 0%, 0%);
-    @return mix($color-shade, $color, $percentage);
-  } @else {
-
-  }
-}
-
-@function light($color, $percentage, $map: null) {
-  @if ($map == null) {
-    $color-light: hsl(255, 100%, 100%);
-    @return mix($color-light, $color, $percentage);
-  } @else {
-    $mix: mix($color-light, $color, $percentage);
-    @return scss-var()
-  }
-}
-
 /*
   Returns a CSS variable property specific to theming.
   Accepts an optional fallback, and optional map.
