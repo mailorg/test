@@ -25,11 +25,10 @@ const openers = new WeakMap()
 
 export const close = () => {
   if (current) {
-    const {ownerDocument} = current
-    const {body} = ownerDocument
+    const { ownerDocument } = current
+    const { body } = ownerDocument
 
-    // body.classList.remove(utilities.modifiers.overflow.hidden)
-
+    body.classList.remove(utilities.modifiers.overflow.hidden)
     remove(current)
     current = null
   }
@@ -101,9 +100,6 @@ export const parse = async (
   const body = element(ownerDocument, 'body')
   const {children: [lightbox]} = await render(template, url)
   const detail = object(null, {lightbox})
-  // const {body: bodyCurrent} = ownerDocument
-  //
-  // bodyCurrent.classList.add(utilities.modifiers.overflow.hidden)
 
   openers.set(lightbox, opener)
   append(body, lightbox)
@@ -116,7 +112,10 @@ export const parse = async (
     if (menu) {
       remove(menu)
     }
-
+    
+    const { body } = ownerDocument
+    
+    body.classList.add(utilities.modifiers.overflow.hidden)
     current = lightbox
   }
 
