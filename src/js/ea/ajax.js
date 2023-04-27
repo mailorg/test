@@ -129,7 +129,7 @@ export const fromEvent = async (
 ) => {
   const request = build(target, event, params)
   const context = object(null, { request, target })
-  const { response } = html(context)
+  const { response } = await html(context)
   
   return response
 }
