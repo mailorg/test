@@ -63,6 +63,7 @@ const onEscape = object(listener, {
 
 const onSubmit = object(prevented, {
   type: submit
+  task: () => {}
 })
 
 export const display = (content, opener, event = null) => {
