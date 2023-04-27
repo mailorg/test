@@ -107,7 +107,7 @@ const form = (
   })
 }
 
-const build = async (
+const build = (
   target,
   event,
   params
