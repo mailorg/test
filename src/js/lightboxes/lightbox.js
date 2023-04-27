@@ -62,7 +62,7 @@ const onEscape = object(listener, {
 })
 
 const onSubmit = object(prevented, {
-  type: submit
+  type: submit,
   task: () => {}
 })
 
