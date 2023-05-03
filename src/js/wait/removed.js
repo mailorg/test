@@ -12,7 +12,11 @@ const callback = (records, observer) => {
   for (const { removedNodes } of records) {
     for (const node of removedNodes) {
       if (observers.get(node.getRootNode()) !== observer) {
-        resolvers.get(node)?.(node)
+        for (const resolve of resolvers.get(node) ?? []) {
+          resolve(node)
+        }
+        
+        resolvers.delete(node)
       }
     }
   }
@@ -36,8 +40,12 @@ export default async (node, abort = never) => {
   const observer = observing(ownerDocument)
   
   observer.observe(parentNode, options)
-  resolvers.set(node, resolve)
   
-  console.log(await promise)
+  if (!resolvers.has(node)) {
+    resolvers.set(node, [])
+  }
+  
+  resolvers.get(node).push(resolve)
+  
   return Promise.race([abort, promise])
 }
