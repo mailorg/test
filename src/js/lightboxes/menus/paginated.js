@@ -88,5 +88,5 @@ export default async (
   list
 ) => {
   onKeyDown.listen(list)
-  display(list, opener(list))
+  await display(list, opener(list))
 }
