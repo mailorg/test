@@ -127,11 +127,11 @@ export const parse = async (
   }
 
   queueMicrotask(async () => {
+    console.log({ opener })
     await removed(lightbox)
     openers.delete(lightbox)
     opener?.focus()
     if (opener) opener.style.background = 'red'
-    console.log({ opener })
   })
 
   queueMicrotask(async () => {
