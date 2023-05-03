@@ -134,6 +134,7 @@ export const parse = async (
   queueMicrotask(async () => {
     await removed(opener)
     close()
+    remove(lightbox)
   })
 
   return lightbox
