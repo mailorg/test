@@ -38,5 +38,6 @@ export default async (node, abort = never) => {
   observer.observe(parentNode, options)
   resolvers.set(node, resolve)
   
+  console.log(await promise)
   return Promise.race([abort, promise])
 }
