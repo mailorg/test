@@ -12,7 +12,6 @@ const callback = (records, observer) => {
   for (const { removedNodes } of records) {
     for (const node of removedNodes) {
       if (observers.get(node.getRootNode()) !== observer) {
-        console.log({ node })
         resolvers.get(node)?.(node)
       }
     }
@@ -31,7 +30,7 @@ const observing = ownerDocument => {
   return observers.get(ownerDocument)
 }
 
-export default (node, abort = never) => {
+export default async (node, abort = never) => {
   const { ownerDocument, parentNode } = node
   const [promise, { resolve }] = resolvable()
   const observer = observing(ownerDocument)
