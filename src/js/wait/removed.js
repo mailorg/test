@@ -5,6 +5,7 @@ const observers = new WeakMap()
 const resolvers = new WeakMap()
 
 const options = {
+  childList: true,
   subtree: true
 }
 
