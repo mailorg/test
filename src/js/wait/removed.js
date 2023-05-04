@@ -46,7 +46,7 @@ export default async (node, abort = never) => {
   if (!resolvers.has(node)) {
     resolvers.set(node, [])
   }
-  
+  console.log({ node })
   resolvers.get(node).push(resolve)
   
   return Promise.race([abort, promise])
