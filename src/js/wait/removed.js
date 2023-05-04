@@ -5,7 +5,7 @@ const observers = new WeakMap()
 const resolvers = new WeakMap()
 
 const options = {
-  childList: true
+  subtree: true
 }
 
 const callback = (records, observer) => {
@@ -37,16 +37,17 @@ const observing = ownerDocument => {
 }
 
 export default async (node, abort = never) => {
-  const { ownerDocument, parentNode } = node
+  const { ownerDocument } = node
+  const { documentElement } = ownerDocument
   const [promise, { resolve }] = resolvable()
   const observer = observing(ownerDocument)
   
-  observer.observe(parentNode, options)
+  observer.observe(documentElement, options)
   
   if (!resolvers.has(node)) {
     resolvers.set(node, [])
   }
-  console.log({ node })
+  
   resolvers.get(node).push(resolve)
   
   return Promise.race([abort, promise])
