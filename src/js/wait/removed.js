@@ -3,21 +3,36 @@ import never from '@mailobj-browser/front/js/utils/never.js'
 
 const observers = new WeakMap()
 const resolvers = new WeakMap()
+const nodes = new Set()
 
 const options = {
   childList: true,
   subtree: true
 }
 
+const find = removedNode => {
+  if (nodes.has(removedNode)) {
+    return removedNode
+  }
+  
+  for (const node of nodes) {
+    if (removedNode?.contains(node)) {
+      return node
+    }
+  }
+}
+
 const callback = records => {
   for (const { removedNodes } of records) {
-    for (const node of removedNodes) {
-      if (resolvers.has(node)) {
-        console.log({ node })
+    for (const removedNode of removedNodes) {
+      const node = find(removedNode)
+      
+      if (node) {
         for (const resolve of resolvers.get(node)) {
           resolve(node)
         }
-        
+  
+        nodes.delete(node)
         resolvers.delete(node)
       }
     }
@@ -44,7 +59,8 @@ export default async (node, abort = never) => {
   
   observer.observe(documentElement, options)
   
-  if (!resolvers.has(node)) {
+  if (!nodes.has(node)) {
+    nodes.add(node)
     resolvers.set(node, [])
   }
   
