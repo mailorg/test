@@ -12,10 +12,14 @@ const options = {
 const callback = (records, observer) => {
   for (const { removedNodes } of records) {
     for (const node of removedNodes) {
+      if (!resolvers.has(node)) {
+        continue
+      }
+      
       const root = node.getRootNode()
       console.log({ root })
       if (observers.get(root) !== observer) {
-        for (const resolve of resolvers.get(node) ?? []) {
+        for (const resolve of resolvers.get(node)) {
           resolve(node)
         }
         
