@@ -12,7 +12,7 @@ const options = {
 const callback = records => {
   for (const { removedNodes } of records) {
     for (const node of removedNodes) {
-      if (!resolvers.has(node)) {
+      if (resolvers.has(node)) {
         console.log({ node })
         for (const resolve of resolvers.get(node)) {
           resolve(node)
