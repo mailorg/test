@@ -12,8 +12,8 @@ const callback = (records, observer) => {
   for (const { removedNodes } of records) {
     for (const node of removedNodes) {
       const root = node.getRootNode()
+      console.log({ root })
       if (observers.get(root) !== observer) {
-        console.log({ root })
         for (const resolve of resolvers.get(node) ?? []) {
           resolve(node)
         }
