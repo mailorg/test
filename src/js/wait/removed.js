@@ -9,16 +9,11 @@ const options = {
   subtree: true
 }
 
-const callback = (records, observer) => {
+const callback = records => {
   for (const { removedNodes } of records) {
     for (const node of removedNodes) {
       if (!resolvers.has(node)) {
-        continue
-      }
-      
-      const root = node.getRootNode()
-      console.log({ root })
-      if (observers.get(root) !== observer) {
+        console.log({ node })
         for (const resolve of resolvers.get(node)) {
           resolve(node)
         }
