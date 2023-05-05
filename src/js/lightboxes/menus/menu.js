@@ -89,8 +89,9 @@ export const onKeyDown = object(listener, {
       event.stopImmediatePropagation()
       
       if (element !== current) {
-        console.log({ current, element })
-        focus(one('li', current))
+        const li = one('li', current)
+        console.log({ current, element, li })
+        focus(li)
         this.listen(current)
         this.forget(element)
         
