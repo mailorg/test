@@ -90,8 +90,8 @@ export const onKeyDown = object(listener, {
       
       if (element !== current) {
         focus(one('li', current))
-        this.forget(element)
         this.listen(current)
+        this.forget(element)
         
         return
       }

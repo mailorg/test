@@ -31,8 +31,9 @@ export default async (
   await display(list, element)
   
   if (element.matches('select')) {
-    onKeyDown.listen(list)
     const { value = '' } = element
+    
+    onKeyDown.listen(list)
   
     for (const input of all('input', list)) {
       if (input.value === value) {
