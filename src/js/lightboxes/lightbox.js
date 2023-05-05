@@ -92,7 +92,7 @@ export const parse = async (
   template,
   container,
   opener = null,
-  asMenu = false
+  asModal = false
 ) => {
   const {dataset, ownerDocument} = template
   const {defaultView} = ownerDocument
@@ -107,9 +107,7 @@ export const parse = async (
   await manager.trigger(body)
   template.dispatchEvent(new CustomEvent('load', {detail}))
 
-  if (asMenu) {
-    menu = lightbox
-  } else {
+  if (asModal) {
     if (menu) {
       remove(menu)
     }
@@ -118,6 +116,8 @@ export const parse = async (
     
     body.classList.add(utilities.modifiers.overflow.hidden)
     current = lightbox
+  } else {
+    menu = lightbox
   }
 
   append(container, lightbox)
@@ -134,7 +134,6 @@ export const parse = async (
 
   queueMicrotask(async () => {
     await removed(opener)
-    console.log('removed')
     close()
     remove(lightbox)
   })
