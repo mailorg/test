@@ -125,7 +125,7 @@ export const parse = async (
   for (const form of all('form[target="_self"]')) {
     onSubmit.listen(form)
   }
-/*
+
   queueMicrotask(async () => {
     await removed(lightbox)
     openers.delete(lightbox)
@@ -137,7 +137,7 @@ export const parse = async (
     close()
     remove(lightbox)
   })
-*/
+
   return lightbox
 }
 
