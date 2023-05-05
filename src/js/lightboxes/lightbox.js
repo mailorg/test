@@ -107,7 +107,7 @@ export const parse = async (
   append(body, lightbox)
   await manager.trigger(body)
   template.dispatchEvent(new CustomEvent('load', { detail }))
-console.log({ asModal })
+
   if (asModal) {
     if (menu) {
       remove(menu)

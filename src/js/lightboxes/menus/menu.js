@@ -109,7 +109,7 @@ export const onKeyDown = object(listener, {
 export const open = async (
   opener
 ) => {
-  return lightbox.parse(template(opener), container(opener), opener, true)
+  return lightbox.parse(template(opener), container(opener), opener)
 }
 
 export const display = async (content, opener, event = null) => {
