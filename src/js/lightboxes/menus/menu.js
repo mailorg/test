@@ -14,6 +14,7 @@ import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import resize from '@mailobj-browser/front/js/events/types/resize.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
+import one from '@mailobj-browser/front/js/selectors/one.js'
 
 let current = null
 
