@@ -24,6 +24,7 @@ let menu = null
 const openers = new WeakMap()
 
 export const close = () => {
+  console.log('close', { current })
   if (current) {
     const { ownerDocument } = current
     const { body } = ownerDocument
