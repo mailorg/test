@@ -26,17 +26,22 @@ const onKeyDown = object(menu.onKeyDown, {
 export default async (
   list
 ) => {
-  const select = opener(list)
-  const { value = '' } = select
+  const element = opener(list)
   
-  onKeyDown.listen(list)
-  await display(list, select)
+  await display(list, element)
   
-  for (const input of all('input', list)) {
-    if (input.value === value) {
-      input.click()
-      input.focus()
-      break
+  if (element.matches('select')) {
+    onKeyDown.listen(list)
+    const { value = '' } = element
+  
+    for (const input of all('input', list)) {
+      if (input.value === value) {
+        input.click()
+        input.focus()
+        break
+      }
     }
+  } else {
+    onKeyDown.listen(element)
   }
 }

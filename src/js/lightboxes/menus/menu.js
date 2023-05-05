@@ -78,17 +78,26 @@ const onEscape = object(listener, {
 export const onKeyDown = object(listener, {
   type: keyDown,
   capture,
-  async task (list, event) {
+  async task (element, event) {
     const { keys } = this
     const { key, target } = event
     const { [key]: pick } = keys
     
     if (pick) {
-      const current = target.closest('li')
-      const next = await pick(list, current, event)
-      
       event.preventDefault()
       event.stopImmediatePropagation()
+      
+      if (element !== current) {
+        focus(one('li', current))
+        this.forget(element)
+        this.listen(current)
+        
+        return
+      }
+      
+      const li = target.closest('li')
+      const next = await pick(element, li, event)
+      
       focus(next)
     }
   }

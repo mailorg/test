@@ -65,6 +65,8 @@ const onKeyDown = object(menu.onKeyDown, {
 export default async (
   list
 ) => {
-  onKeyDown.listen(list)
-  await display(list, opener(list))
+  const element = opener(list)
+  
+  onKeyDown.listen(element)
+  await display(list, element)
 }
