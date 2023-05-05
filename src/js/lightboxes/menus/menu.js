@@ -58,7 +58,6 @@ const onBlur = object(listener, {
       const { activeElement } = document
       
       if (current && activeElement && current !== activeElement && !current.contains(activeElement)) {
-        console.log('blurred')
         close()
       }
     })
@@ -90,6 +89,7 @@ export const onKeyDown = object(listener, {
       event.stopImmediatePropagation()
       
       if (element !== current) {
+        console.log({ current, element })
         focus(one('li', current))
         this.listen(current)
         this.forget(element)
