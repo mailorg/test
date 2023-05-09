@@ -83,6 +83,7 @@ export const onKeyDown = object(listener, {
     const { keys } = this
     const { key, target } = event
     const { [key]: pick } = keys
+    console.log({ current, element, key, pick })
     
     if (pick) {
       event.preventDefault()
@@ -90,7 +91,6 @@ export const onKeyDown = object(listener, {
       
       if (element !== current) {
         const li = one('li', current)
-        console.log({ current, element, li })
         focus(li)
         this.listen(current)
         this.forget(element)
