@@ -131,13 +131,13 @@ export const parse = async (
     openers.delete(lightbox)
     opener?.focus()
   })
-/*
+
   queueMicrotask(async () => {
     await removed(opener)
     close()
     remove(lightbox)
   })
-*/
+
   return lightbox
 }
 
