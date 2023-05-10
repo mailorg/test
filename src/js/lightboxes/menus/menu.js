@@ -95,7 +95,7 @@ export const onKeyDown = object(listener, {
     if (pick) {
       event.preventDefault()
       event.stopImmediatePropagation()
-      
+      console.log({ current, target })
       if (element !== current) {
         const li = one('li', current)
         
