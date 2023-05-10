@@ -62,11 +62,11 @@ const onBlur = object(listener, {
         activeElement &&
         current !== activeElement &&
         !current.contains(activeElement)
-      
+  
+      console.log({ blurring })
       if (isBlurred) {
         close()
       } else {
-        console.log({ blurring })
         blurring = true
       }
     })
