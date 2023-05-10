@@ -62,8 +62,7 @@ const onBlur = object(listener, {
         activeElement &&
         current !== activeElement &&
         !current.contains(activeElement)
-  
-      console.log({ blurring })
+      
       if (isBlurred) {
         close()
       } else {
@@ -99,7 +98,7 @@ export const onKeyDown = object(listener, {
 
       if (element !== current) {
         const li = one('li', current)
-        
+        li.style.background = 'red'
         blurring = false
         focus(li)
         this.listen(current)
