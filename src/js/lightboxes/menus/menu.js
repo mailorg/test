@@ -65,9 +65,10 @@ const onBlur = object(listener, {
       
       if (isBlurred) {
         close()
+      } else {
+        console.log({ blurring })
+        blurring = true
       }
-      
-      blurring = true
     })
   }
 })
