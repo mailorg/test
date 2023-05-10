@@ -17,6 +17,7 @@ import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 
 let current = null
+let blurring = true
 
 export const { focus } = lightbox
 
@@ -56,10 +57,17 @@ const onBlur = object(listener, {
     
     requestAnimationFrame(() => {
       const { activeElement } = document
+      const isBlurred = blurring &&
+        current &&
+        activeElement &&
+        current !== activeElement &&
+        !current.contains(activeElement)
       
-      if (current && activeElement && current !== activeElement && !current.contains(activeElement)) {
+      if (isBlurred) {
         close()
       }
+      
+      blurring = true
     })
   }
 })
@@ -83,7 +91,6 @@ export const onKeyDown = object(listener, {
     const { keys } = this
     const { key, target } = event
     const { [key]: pick } = keys
-    console.log({ current, element, key, pick })
     
     if (pick) {
       event.preventDefault()
@@ -91,6 +98,8 @@ export const onKeyDown = object(listener, {
       
       if (element !== current) {
         const li = one('li', current)
+        
+        blurring = false
         focus(li)
         this.listen(current)
         this.forget(element)
