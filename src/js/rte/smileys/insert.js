@@ -26,7 +26,7 @@ const onClick = object(listener, {
 
       close()
 
-      contentDocument.getSelection().setPosition(contentDocument.body, 8)
+      contentDocument.getSelection().setPosition(contentDocument.body, 0)
 
       // rte.focus()
     }
