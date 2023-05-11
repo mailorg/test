@@ -14,7 +14,7 @@ const onClick = object(listener, {
     const { src } = one('img', button)
     const origin = lightbox.opener(button.closest('[data-contract="menu.library"]'))
     const form = origin.closest('form')
-    const rte = one('[data-rte="chat"]', form)
+    const rte = one('[data-rte]', form)
     const {contentDocument} = rte
     console.log(contentDocument.getSelection())
 
