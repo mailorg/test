@@ -16,7 +16,6 @@ const onClick = object(listener, {
     const form = origin.closest('form')
     const rte = one('[data-rte]', form)
     const {contentDocument, contentWindow} = rte
-    console.log(contentDocument.getSelection())
 
     if (rte) {
       // let caret = contentWindow.getSelection().focusNode
