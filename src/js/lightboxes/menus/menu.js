@@ -118,7 +118,7 @@ export const onKeyDown = object(listener, {
     if (key === 'Enter' && element === current) {
       const li = target.closest('li')
   
-      console.log({ key, li })
+      console.log({ key, li, target })
       one('a, button, input', li)?.click()
     }
   }
