@@ -22,9 +22,10 @@ const onClick = object(listener, {
       contentDocument.write(`<img alt="" src="${src}">`)
       contentDocument.close()
 
+      close()
+
       rte.focus()
     }
-    close()
   }
 })
 
