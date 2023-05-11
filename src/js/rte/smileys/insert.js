@@ -16,7 +16,8 @@ const onClick = object(listener, {
     const form = origin.closest('form')
     const rte = one('[data-rte="chat"]', form)
     const {contentDocument} = rte
-  
+    console.log(contentDocument.getSelection())
+
     if (rte) {
       // let rteValue = `<img alt="" src="${src}">`
       contentDocument.open()
