@@ -114,7 +114,7 @@ export const onKeyDown = object(listener, {
       
       return
     }
-    
+    console.log({ key, element, current })
     if (key === 'Enter' && element === current) {
       const li = target.closest('li')
       
