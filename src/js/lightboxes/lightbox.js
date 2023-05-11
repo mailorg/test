@@ -38,7 +38,9 @@ export const focus = (
   item = null
 ) => {
   if (item) {
-    one('a, button, label', item)?.focus()
+    const element = one('a, button, label', item)
+      console.log({ item, element })
+    element?.focus()
   }
 }
 
