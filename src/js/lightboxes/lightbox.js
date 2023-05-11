@@ -38,7 +38,7 @@ export const focus = (
   item = null
 ) => {
   if (item) {
-    one('a, button, :checked, label', item)?.focus()
+    one('a, button, input, label, select', item)?.focus()
   }
 }
 
