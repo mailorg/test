@@ -15,24 +15,32 @@ const onClick = object(listener, {
     const origin = lightbox.opener(button.closest('[data-contract="menu.library"]'))
     const form = origin.closest('form')
     const rte = one('[data-rte]', form)
-    const {contentDocument} = rte
-    console.log(contentDocument.getSelection())
+    const {contentDocument, contentWindow} = rte
 
     if (rte) {
-      console.log("1")
-      const {body} = contentDocument
+      // let caret = contentWindow.getSelection().focusNode
+      // const {nodeName} = caret
+      //
+      // if (caret && nodeName === "BODY") {
+      //   caret = contentWindow.getSelection().anchorNode
+      // }
+
+      globals.ea_rte_update_editor(rte)
+
+      // console.log("1")
+      // const {body} = contentDocument
       // let rteValue = `<img alt="" src="${src}">`
-      rte.focus()
+      // rte.focus()
       // contentDocument.open()
       // contentDocument.write('0123456789')
-      contentDocument.getSelection().collapseToStart()
+      // contentDocument.getSelection().collapseToStart()
       // contentDocument.close()
-      // close()
 
 
 
       // rte.focus()
     }
+    close()
   }
 })
 
