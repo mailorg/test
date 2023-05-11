@@ -99,9 +99,6 @@ export const onKeyDown = object(listener, {
       if (element !== current) {
         const li = one('li', current)
         
-        one('a', li).addEventListener('focusin', () => {
-          li.style.background = 'green'
-        })
         blurring = false
         focus(li)
         this.listen(current)
