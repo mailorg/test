@@ -19,15 +19,14 @@ const onClick = object(listener, {
     console.log(contentDocument.getSelection())
 
     if (rte) {
-      let caret = contentWindow.getSelection().focusNode
-      const {nodeName} = caret
-      console.log(nodeName);
-      if (caret && nodeName === "BODY") {
-        caret = contentWindow.getSelection().anchorNode
-      }
+      // let caret = contentWindow.getSelection().focusNode
+      // const {nodeName} = caret
+      //
+      // if (caret && nodeName === "BODY") {
+      //   caret = contentWindow.getSelection().anchorNode
+      // }
 
-      console.log(caret);
-
+      globals.ea_rte_update_editor(rte)
 
       // console.log("1")
       // const {body} = contentDocument
