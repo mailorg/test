@@ -15,6 +15,7 @@ import resize from '@mailobj-browser/front/js/events/types/resize.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
+import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
 
 let current = null
 let blurring = true
@@ -116,7 +117,13 @@ export const onKeyDown = object(listener, {
     }
     
     if (key === 'Enter' && element === current) {
-      target.click()
+      const { ownerDocument } = target
+      const { defaultView } = ownerDocument
+      const { MouseEvent } = defaultView
+      
+      target.dispatchEvent(new MouseEvent(mouseDown, {
+        buttons: 1
+      }))
     }
   }
 })
