@@ -26,7 +26,6 @@ const onClick = object(listener, {
       // contentDocument.write('0123456789')
       contentDocument.getSelection().collapseToStart()
       // contentDocument.close()
-
       // close()
 
 
