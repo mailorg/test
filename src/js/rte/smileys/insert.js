@@ -20,7 +20,11 @@ const onClick = object(listener, {
     if (rte) {
 
       console.log(rte.tagName);
-      contentWindow.focus()
+
+
+      setTimeout(() => {
+        contentWindow.focus()
+      }, 200)
 
       // let caret = contentWindow.getSelection().anchorNode
 
