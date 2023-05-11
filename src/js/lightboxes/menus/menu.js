@@ -91,7 +91,7 @@ export const onKeyDown = object(listener, {
     const { keys } = this
     const { key, target } = event
     const { [key]: pick } = keys
-    console.log({ current, target })
+    
     if (pick) {
       event.preventDefault()
       event.stopImmediatePropagation()
@@ -111,6 +111,12 @@ export const onKeyDown = object(listener, {
       const next = await pick(element, li, event)
       
       focus(next)
+      
+      return
+    }
+    
+    if (key === 'Enter' && element === current) {
+      target.click()
     }
   }
 })
