@@ -22,12 +22,12 @@ const onClick = object(listener, {
       const {body} = contentDocument
       // let rteValue = `<img alt="" src="${src}">`
       rte.focus()
-      contentDocument.open()
-      contentDocument.write('0123456789')
+      // contentDocument.open()
+      // contentDocument.write('0123456789')
       contentDocument.getSelection().collapseToStart()
-      contentDocument.close()
+      // contentDocument.close()
 
-      close()
+      // close()
 
 
 
