@@ -18,8 +18,12 @@ const onClick = object(listener, {
     const {contentDocument} = rte
   
     if (rte) {
+      let rteValue = `<img alt="" src="${src}">`
+      if (contentDocument.body.innerHTML !== `<br>`) {
+        rteValue = `${contentDocument.body.innerHTML}${rteValue}`
+      }
       contentDocument.open()
-      contentDocument.write(`<img alt="" src="${src}">`)
+      contentDocument.write(rteValue)
       contentDocument.close()
 
       close()
