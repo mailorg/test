@@ -19,7 +19,7 @@ const onClick = object(listener, {
   
     if (rte) {
       contentDocument.open()
-      contentDocument.write(src)
+      contentDocument.write(`<img alt="" src="${src}">`)
       contentDocument.close()
 
       rte.focus()
