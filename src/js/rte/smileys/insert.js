@@ -18,14 +18,10 @@ const onClick = object(listener, {
     const {contentDocument, contentWindow} = rte
 
     if (rte) {
-      // let caret = contentWindow.getSelection().focusNode
-      // const {nodeName} = caret
-      //
-      // if (caret && nodeName === "BODY") {
-      //   caret = contentWindow.getSelection().anchorNode
-      // }
 
-      globals.ea_rte_update_editor(rte)
+      contentWindow.focus()
+
+      // let caret = contentWindow.getSelection().anchorNode
 
       // console.log("1")
       // const {body} = contentDocument
@@ -35,6 +31,8 @@ const onClick = object(listener, {
       // contentDocument.write('0123456789')
       // contentDocument.getSelection().collapseToStart()
       // contentDocument.close()
+
+      // globals.ea_rte_exec_insert_link(rte.id, src, 'image')
 
 
 
