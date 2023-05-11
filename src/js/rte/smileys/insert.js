@@ -14,12 +14,22 @@ const onClick = object(listener, {
     const { src } = one('img', button)
     const origin = lightbox.opener(button.closest('[data-contract="menu.library"]'))
     const form = origin.closest('form')
-    const rte = one('iframe', form)
+    const rte = one('[data-rte="chat"]', form)
+    const {contentDocument} = rte
   
-    if (rte && rte.id) {
-      globals.ea_rte_exec_insert_link(rte.id, src, 'image')
+    if (rte) {
+      let rteValue = `<img alt="" src="${src}">`
+      if (contentDocument.body.innerHTML !== `<br>`) {
+        rteValue = `${contentDocument.body.innerHTML}${rteValue}`
+      }
+      contentDocument.open()
+      contentDocument.write(rteValue)
+      contentDocument.close()
+
+      close()
+
+      rte.focus()
     }
-    close()
   }
 })
 
