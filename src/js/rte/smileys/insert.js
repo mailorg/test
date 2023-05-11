@@ -20,9 +20,9 @@ const onClick = object(listener, {
 
     if (rte) {
       // let rteValue = `<img alt="" src="${src}">`
-      contentDocument.open()
+      // contentDocument.open()
       // contentDocument.write(rteValue)
-      contentDocument.close()
+      // contentDocument.close()
 
       close()
 
