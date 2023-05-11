@@ -17,15 +17,18 @@ const onClick = object(listener, {
     const rte = one('[data-rte]', form)
     const {contentDocument, contentWindow} = rte
 
+    close()
+
     if (rte) {
 
-      close()
       console.log(rte.tagName);
 
 
       setTimeout(() => {
         contentWindow.focus()
       }, 100)
+
+      contentDocument.execCommand("InsertImage", false, src)
 
       // let caret = contentWindow.getSelection().anchorNode
 
