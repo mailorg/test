@@ -21,10 +21,10 @@ const onClick = object(listener, {
     if (rte) {
       const {body} = contentDocument
       // let rteValue = `<img alt="" src="${src}">`
-      contentDocument.open()
       rte.focus()
+      contentDocument.open()
       contentDocument.write('0123456789')
-      contentDocument.getSelection().setPosition(body)
+      contentDocument.getSelection().collapseToStart()
       contentDocument.close()
 
       close()
