@@ -15,17 +15,27 @@ const onClick = object(listener, {
     const origin = lightbox.opener(button.closest('[data-contract="menu.library"]'))
     const form = origin.closest('form')
     const rte = one('[data-rte]', form)
-    const {contentDocument} = rte
+    const {contentDocument, contentWindow} = rte
     console.log(contentDocument.getSelection())
 
     if (rte) {
-      console.log("1")
-      const {body} = contentDocument
+      let caret = contentWindow.getSelection().focusNode
+      const {nodeName} = caret
+      console.log(nodeName);
+      if (caret && nodeName === "BODY") {
+        caret = contentWindow.getSelection().anchorNode
+      }
+
+      console.log(caret);
+
+
+      // console.log("1")
+      // const {body} = contentDocument
       // let rteValue = `<img alt="" src="${src}">`
-      rte.focus()
+      // rte.focus()
       // contentDocument.open()
       // contentDocument.write('0123456789')
-      contentDocument.getSelection().collapseToStart()
+      // contentDocument.getSelection().collapseToStart()
       // contentDocument.close()
       // close()
 
