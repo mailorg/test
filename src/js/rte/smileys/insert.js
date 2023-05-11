@@ -18,17 +18,14 @@ const onClick = object(listener, {
     const {contentDocument} = rte
   
     if (rte) {
-      let rteValue = `<img alt="" src="${src}">`
-      if (contentDocument.body.innerHTML !== `<br>`) {
-        rteValue = `${contentDocument.body.innerHTML}${rteValue}`
-      }
+      // let rteValue = `<img alt="" src="${src}">`
       contentDocument.open()
-      contentDocument.write(rteValue)
+      // contentDocument.write(rteValue)
       contentDocument.close()
 
       close()
 
-      rte.focus()
+      // rte.focus()
     }
   }
 })
