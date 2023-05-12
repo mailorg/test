@@ -16,8 +16,6 @@ const onClick = object(listener, {
     const rte = one('[data-rte]', form)
     const {contentDocument, contentWindow} = rte
 
-    close()
-
     if (rte) {
       //@todo améliorer cette partie, enlever setTimeout et remplacer execCommand
       setTimeout(() => {
@@ -26,6 +24,8 @@ const onClick = object(listener, {
 
       contentDocument.execCommand("InsertImage", false, src)
     }
+
+    close()
   }
 })
 
