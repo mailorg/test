@@ -16,20 +16,17 @@ const onClick = object(listener, {
     const rte = one('[data-rte]', form)
     const {contentDocument, contentWindow} = rte
 
-    if (rte) {
-      //@todo améliorer cette partie, enlever setTimeout et remplacer execCommand
-      setTimeout(() => {
-        contentWindow.focus()
-      }, 100)
-
-      contentDocument.execCommand("InsertImage", false, src)
-    }
-
     close()
+
+    if (rte) {
+      queueMicrotask(async () => {
+        await contentWindow.focus()
+        contentDocument.execCommand("InsertImage", false, src)
+      })
+    }
   }
 })
 
 export default button => {
   onClick.listen(button)
 }
-
