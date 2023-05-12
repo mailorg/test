@@ -132,7 +132,12 @@ export const onKeyDown = object(listener, {
 export const open = async (
   opener
 ) => {
-  return lightbox.parse(template(opener), container(opener), opener)
+  const content = await lightbox.parse(template(opener), container(opener), opener)
+  
+  close()
+  current = content
+  
+  return current
 }
 
 export const display = async (content, opener, event = null) => {
@@ -141,7 +146,6 @@ export const display = async (content, opener, event = null) => {
   const { fromEvent, fromNode, move, resize } = fixed
   const [promise, { resolve }] = resolvable()
 
-  close()
   move(content)
   
   requestAnimationFrame(() => {
@@ -157,7 +161,6 @@ export const display = async (content, opener, event = null) => {
     onBlur.listen(ownerDocument)
     onEscape.listen(ownerDocument)
     onResize.listen(defaultView)
-    current = content
     resolve()
   })
   
