@@ -8,7 +8,6 @@ import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import * as fixed from '../../fixed/fixed.js'
 import * as lightbox from '../lightbox.js'
-import { container, template } from '../openers/template.js'
 import blur from '@mailobj-browser/front/js/events/types/blur.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import resize from '@mailobj-browser/front/js/events/types/resize.js'
@@ -130,9 +129,11 @@ export const onKeyDown = object(listener, {
 })
 
 export const open = async (
-  opener
+  template,
+  container,
+  opener = null
 ) => {
-  const content = await lightbox.parse(template(opener), container(opener), opener)
+  const content = await lightbox.parse(template, container, opener)
   
   close()
   current = content
