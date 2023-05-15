@@ -23,7 +23,6 @@ export const { focus } = lightbox
 
 export const close = () => {
   if (current) {
-    console.log('close', { current })
     remove(current)
     current = null
   }
@@ -137,7 +136,6 @@ export const open = async (
   
   close()
   current = content
-  console.log('open', { current })
   
   return current
 }
