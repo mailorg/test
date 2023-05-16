@@ -3,6 +3,8 @@ import object from '@mailobj-browser/front/js/utils/object.js'
 export const block = 'ea_utilities'
 
 export const elements = object(null, {
+  aside_alerts: `${block}__aside_alerts`,
+  aside_confirms: `${block}__aside_confirms`,
   aside_lightboxes: `${block}__aside_lightboxes`,
   display: `${block}__display`,
   is_sr_only: `${block}__is_sr_only`,
