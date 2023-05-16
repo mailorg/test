@@ -24,8 +24,8 @@ const onClick = object(listener, {
 export default async message => {
   const { root } = defaults
   const template = one(`.${utilities.elements.aside_alerts} template`, root)
-  const { content, parentNode } = template.cloneNode(true)
-  const dialog = one('dialog', content)
+  const { content, parentNode } = template
+  const dialog = one('dialog', content).cloneNode(true)
   const paragraph = one('p', dialog)
   const button = one('button', dialog)
   
