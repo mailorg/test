@@ -33,8 +33,9 @@ export default async message => {
   const { root } = defaults
   const template = one(`.${utilities.elements.aside_confirms} template`, root)
   const { content, parentNode } = template
-  const paragraph = one('p', content)
-  const [yes, no] = all('button', content)
+  const dialog = one('dialog', content)
+  const paragraph = one('p', dialog)
+  const [yes, no] = all('button', dialog)
   const [promise, { resolve }] = resolvable()
   
   append(paragraph, message)
@@ -43,10 +44,10 @@ export default async message => {
   resolvers.set(no, resolve)
   onClick.listen(yes)
   onClick.listen(no)
-  await manager.fragment(content)
-  replaceChildren(parentNode, template, content)
+  await manager.fragment(dialog)
+  replaceChildren(parentNode, template, dialog)
   
-  const result = await Promise.race([promise, await removed(content)])
+  const result = await Promise.race([promise, await removed(dialog)])
   
   resolvers.delete(yes)
   resolvers.delete(no)
