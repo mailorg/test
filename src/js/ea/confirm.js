@@ -12,7 +12,6 @@ import removed from '../wait/removed.js'
 import manager from '@mailobj-browser/front/js/contracts/manager.js'
 import all from '@mailobj-browser/front/js/selectors/all.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
-import resolve from '@mailobj-browser/components-app/js/common/path/resolve.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 
 const resolvers = new WeakMap()
@@ -25,7 +24,7 @@ const onClick = object(listener, {
     const { value } = button
     
     remove(button.closest('dialog'))
-    resolve(value === '1')
+    resolvers.get(button)?.(value === '1')
   }
 })
 
