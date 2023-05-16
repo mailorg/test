@@ -24,17 +24,15 @@ const onClick = object(listener, {
 export default async message => {
   const { root } = defaults
   const template = one(`.${utilities.elements.aside_alerts} template`, root)
-  const { content, parentNode } = template
+  const { content, parentNode } = template.cloneNode(true)
   const dialog = one('dialog', content)
   const paragraph = one('p', dialog)
   const button = one('button', dialog)
   
   append(paragraph, message)
   onClick.listen(button)
-  console.log({ dialog })
+
   await manager.fragment(dialog)
   replaceChildren(parentNode, template, dialog)
-  console.log('added')
   await removed(dialog)
-  console.log('removed')
 }
