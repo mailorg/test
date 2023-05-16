@@ -1,5 +1,6 @@
 import * as utilities from '../styles.js'
 import defaults from '@mailobj-browser/front/js/selectors/defaults.js'
+import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import click from '@mailobj-browser/front/js/events/types/click.js'
 import once from '@mailobj-browser/front/js/events/options/once.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
