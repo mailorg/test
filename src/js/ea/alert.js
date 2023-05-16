@@ -9,6 +9,7 @@ import remove from '@mailobj-browser/front/js/tree/remove.js'
 import replaceChildren from '@mailobj-browser/front/js/tree/replaceChildren.js'
 import removed from '../wait/removed.js'
 import manager from '@mailobj-browser/front/js/contracts/manager.js'
+import object from '@mailobj-browser/front/js/utils/object.js'
 
 const onClick = object(listener, {
   type: click,
