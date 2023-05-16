@@ -30,7 +30,10 @@ export default async message => {
   
   append(paragraph, message)
   onClick.listen(button)
+  console.log({ alert: content })
   await manager.fragment(content)
   replaceChildren(parentNode, template, content)
+  console.log('added')
   await removed(content)
+  console.log('removed')
 }
