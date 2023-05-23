@@ -23,13 +23,12 @@ const report = async param => {
   return fetched
 }
 
-export const fromEvent = async ({ error }) => {
+export const fromEvent = async ({ error }, ea_link_file = null) => {
   const { message } = error
+  const json = JSON.stringify({ ...error, message })
+  const parts = [ea_link_file, json].filter(Boolean)
   
-  return report(JSON.stringify({
-    ...error,
-    message
-  }))
+  return report(parts.join(' '))
 }
 
 export default report
