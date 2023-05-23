@@ -3,26 +3,33 @@ import defaults from '@mailobj-browser/front/js/selectors/defaults.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import href from './href.js'
 
-export default async (param) => {
-
+const report = async param => {
   console.error(param)
   const { window } = defaults
   const { FormData, Request } = window
-  /* param peut être string ou Array : */
-  const values = [param].flat()
   const url = href('util/log')
-  const keys = Array.from({length: values.length}, (x, i) => 'param_' + i)
-  const data = new FormData()
-  data.append('fct', 'JS_LOG')
-  for (const i in keys) {
-   data.append(keys[i], values[i])
-  }
+  const body = new FormData()
+  
+  body.append('fct', 'JS_LOG')
+  body.append(`param_0`, param)
 
   const { fetched } = await fetch(object(null, {
     request: new Request(`${url}`, {
       method: 'POST',
-      body : data
+      body
     })	  
   }))
+  
   return fetched
 }
+
+export const fromEvent = async ({ error }) => {
+  const { message } = error
+  
+  return report(JSON.stringify({
+    ...error,
+    message
+  }))
+}
+
+export default report
