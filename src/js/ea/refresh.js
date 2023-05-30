@@ -1,48 +1,42 @@
-import html from '@mailobj-browser/front/js/fetchers/html.js'
 import wait from '@mailobj-browser/front/js/utils/wait.js'
 import removed from '../wait/removed.js'
+import { post } from './ajax.js'
 
 const states = new Map()
-const method = 'POST'
 
 export default meta => {
   const { content, ownerDocument } = meta
   const { defaultView } = ownerDocument
-  const { FormData, Request } = defaultView
+  const { FormData } = defaultView
   const [url, seconds] = content.split(';')
   const delay = seconds * 1000
   
   queueMicrotask(async () => {
     while (ownerDocument.includes(meta)) {
       await wait(delay)
-    
       const body = new FormData()
-    
-      for (const [key, value] of states) {
-        body.set(key, value)
+  
+      for (const [{ dataset: { refresh: { uuid } } }, values] of states) {
+        body.set(uuid, values)
       }
-    
-      await html(object(null, {
-        request: new Request(url, {
-          body,
-          method
-        }),
-        target: meta
-      }))
+      
+      await post(url, body, meta)
     }
   })
 }
 
 export const set = (
   element,
-  { dataset: { refresh: { state } } }
+  { dataset: { refresh: { state } } } = element
 ) => {
   if (!states.has(element)) {
+    states.set(element, [])
+    
     queueMicrotask(async () => {
       await removed(element)
       states.delete(element)
     })
   }
   
-  states.set(element, state)
+  states.get(element).push(state)
 }

@@ -4,8 +4,8 @@ import click from '@mailobj-browser/front/js/events/types/click.js'
 import submit from '@mailobj-browser/front/js/events/types/submit.js'
 import defaults from '@mailobj-browser/front/js/selectors/defaults.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
-import href from './href.js'
 import html from '@mailobj-browser/front/js/fetchers/html.js'
+import fetch from '@mailobj-browser/front/js/fetchers/fetch.js'
 
 const { document } = defaults
 
@@ -17,8 +17,6 @@ const selectors = [
   'form button[name]:not([type])'
 ]
 
-const GET = 'GET'
-const init = object(null, { method: GET })
 const empty = object()
 const selector = `${selectors}`
 const candidates = new Set()
@@ -57,30 +55,30 @@ const onSubmit = object(listener, {
 })
 
 const anchor = (
-  element,
+  target,
   event,
   params
 ) => {
-  const { href: action, ownerDocument } = element
-  const { defaultView } = ownerDocument
-  const { Request } = defaultView
+  const { download, href } = target
   
-  return new Request(href(action, params), {
-    ...init
+  return get(href, params, {
+    ...!download && { target }
   })
 }
 
 const form = (
-  element,
+  target,
   event,
   params
 ) => {
-  const { action, method = 'GET', ownerDocument } = element
+  const { action, method = 'GET', ownerDocument } = target
   const { defaultView } = ownerDocument
-  const { FormData, Request, URL, URLSearchParams } = defaultView
-  const { name, value } = submitters.get(event)
-  const body = new FormData(element)
+  const { FormData, URL, URLSearchParams } = defaultView
+  const { name, value } = submitters.get(event) ?? empty
+  const body = new FormData(target)
   const entries = Object.entries(params)
+  
+  submitters.delete(event)
   
   if (name) {
     entries.push([name, value])
@@ -95,41 +93,64 @@ const form = (
       search: `${new URLSearchParams(body)}`
     })
     
-    return new Request(`${url}`, {
-      ...init
-    })
+    return get(`${url}`, { target })
   }
   
-  return new Request(action, {
-    ...init,
-    body,
-    method
-  })
+  return post(action, body, { target })
 }
 
-const build = (
-  target,
-  event,
-  params
+const call = async (
+  request,
+  { target } = {}
 ) => {
-  const { type } = event
+  if (target) {
+    const { response } = await html(object(null, {
+      request,
+      target
+    }))
+    
+    return response
+  }
   
-  return type === 'submit' ?
-    form(target, event, params) :
-    anchor(target, event, params)
+  await fetch(object(null, { request }))
 }
 
 onClick.listen(document)
 onSubmit.listen(document)
 
+export const get = async (
+  url,
+  { target } = {}
+) => {
+  const { window } = defaults
+  const { Request } = window
+  const method = 'GET'
+  const options = { method }
+  const request = new Request(url, options)
+  
+  return call(request, { target })
+}
+
+export const post = async (
+  url,
+  body,
+  { target } = {}
+) => {
+  const { window } = defaults
+  const { Request } = window
+  const method = 'POST'
+  const options = { body, method }
+  const request = new Request(url, options)
+  
+  return call(request, { target })
+}
+
 export const fromEvent = async (
   target,
-  event,
-  { ...params } = {}
+  event
 ) => {
-  const request = build(target, event, params)
-  const context = object(null, { request, target })
-  const { response } = await html(context)
+  const { type } = event
+  const request = type === 'submit' ? form : anchor
   
-  return response
+  return call(request(target, event), { target })
 }
