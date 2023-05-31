@@ -6,6 +6,7 @@ import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import error from '@mailobj-browser/front/js/events/types/error.js'
 import globals from './globals.js'
 import href from './href.js'
+import skin from './skin.js'
 
 const browser = ({
   appCodeName,
@@ -36,6 +37,7 @@ const report = async (error, ea_link_file = null) => {
   
   console.error(message)
   body.append('fct', 'JS_LOG')
+  body.append('skin', skin)
   
   append(body, 'error', { message, stack, ...rest })
   append(body, 'navigator', browser(navigator))
