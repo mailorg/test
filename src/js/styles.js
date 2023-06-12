@@ -10,6 +10,7 @@ export const elements = object(null, {
   is_sr_only: `${block}__is_sr_only`,
   overflow: `${block}__overflow`,
   position: `${block}__position`,
+  show_more: `${block}__show_more`,
   visibility: `${block}__visibility`,
 })
 
@@ -22,6 +23,9 @@ export const modifiers = object(null, {
   }),
   position: object(null, {
     fixed: `${elements.position}-fixed`
+  }),
+  show_more: object(null, {
+    hide: `${elements.show_more}-hide`
   }),
   visibility: object(null, {
     hidden: `${elements.visibility}-hidden`
