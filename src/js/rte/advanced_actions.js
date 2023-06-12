@@ -16,7 +16,7 @@ const onClick = object(listener, {
     event
   ) {
     console.log(event);
-    button.classList.toggle(utilities.show_more.hide)
+    button.classList.toggle(utilities.modifiers.show_more.hide)
     const parent = button.closest('div')
     const containerActions = one(`.${elements.advanced_actions}`, parent)
     containerActions.classList.toggle(utilities.display.none)
