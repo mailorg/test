@@ -14,7 +14,6 @@ const onClick = object(listener, {
     button,
     event
   ) {
-    console.log(event);
     button.classList.toggle(utilities.modifiers.show_more.hide)
     const parent = button.closest('div')
     const containerActions = one(`.${elements.advanced_actions}`, parent)
@@ -22,17 +21,7 @@ const onClick = object(listener, {
   }
 })
 
-// const onTouchEnd = object(listener, {
-//   type: touchEnd,
-//   hooks: [preventDefault],
-//   task(
-//     button
-//   ) {
-//     onClick.task(button)
-//   }
-// })
 
 export default button => {
   onClick.listen(button)
-  // onTouchEnd.listen(button)
 }
