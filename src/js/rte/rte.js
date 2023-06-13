@@ -136,10 +136,8 @@ export default (
   let iframe
   
   if (form) {
-    console.log("1")
     iframe = one('iframe', form)
   } else {
-    console.log("2")
     const { ownerDocument } = button
     iframe = one('[data-rte]', ownerDocument)
   }
