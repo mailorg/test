@@ -12,12 +12,9 @@ const onClick = object(listener, {
     left,
     event
   ) {
-  
     globals.ea_rte_command('id_msg_text', 'justifyleft', '')
-
   }
 })
-
 export const test = (
   text
 ) => {

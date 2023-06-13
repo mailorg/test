@@ -141,6 +141,7 @@ export default (
     const { ownerDocument } = button
     iframe = one('[data-rte]', ownerDocument)
   }
+  console.log(typeof iframe);
   params.set(iframe, object(null, { button, test }))
   onLoad.listen(iframe)
 }
