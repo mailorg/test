@@ -69,23 +69,17 @@ const anchor = (
 
 const form = (
   target,
-  event,
-  params
+  event
 ) => {
   const { action, method = 'GET', ownerDocument } = target
   const { defaultView } = ownerDocument
   const { FormData, URL, URLSearchParams } = defaultView
   const { name, value } = submitters.get(event) ?? empty
   const body = new FormData(target)
-  const entries = Object.entries(params)
   
   submitters.delete(event)
   
   if (name) {
-    entries.push([name, value])
-  }
-  
-  for (const [name, value] of entries) {
     body.append(name, value)
   }
   
