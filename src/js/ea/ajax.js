@@ -6,6 +6,7 @@ import defaults from '@mailobj-browser/front/js/selectors/defaults.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import html from '@mailobj-browser/front/js/fetchers/html.js'
 import fetch from '@mailobj-browser/front/js/fetchers/fetch.js'
+import href from './href.js'
 
 const { document } = defaults
 
@@ -59,9 +60,9 @@ const anchor = (
   event,
   params
 ) => {
-  const { download, href } = target
+  const { download, href: url } = target
   
-  return get(href, params, {
+  return get(href(url, params), {
     ...!download && { target }
   })
 }

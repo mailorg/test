@@ -4,6 +4,7 @@ import { post } from './ajax.js'
 
 const states = new Map()
 
+
 export default meta => {
   const { content, ownerDocument } = meta
   const { defaultView } = ownerDocument
@@ -16,7 +17,12 @@ export default meta => {
       await wait(delay)
       const body = new FormData()
   
-      for (const [{ dataset: { refresh: { uuid } } }, values] of states) {
+      for (const [element, values] of states) {
+        const { dataset } = element
+        const { refresh } = dataset
+        const { uuid } = refresh
+        
+        
         body.set(uuid, values)
       }
       
