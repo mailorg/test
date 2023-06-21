@@ -99,11 +99,12 @@ const call = async (
   { target } = {}
 ) => {
   if (target) {
+    console.log({ target })
     const { response } = await html(object(null, {
       request,
       target
     }))
-    
+    console.log({ response })
     return response
   }
   
