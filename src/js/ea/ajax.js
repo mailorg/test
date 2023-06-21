@@ -99,7 +99,6 @@ const call = async (
   { target } = {}
 ) => {
   if (target) {
-    console.log({ target })
     const { response } = await html(object(null, {
       request,
       target
@@ -147,6 +146,6 @@ export const fromEvent = async (
 ) => {
   const { type } = event
   const request = type === 'submit' ? form : anchor
-  
-  return call(request(target, event), { target })
+
+  return request(target, event)
 }
