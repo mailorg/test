@@ -25,14 +25,19 @@ export default async message => {
   const { root } = defaults
   const template = one(`.${utilities.elements.aside_alerts} template`, root)
   const { content, parentNode } = template
-  const dialog = one('dialog', content).cloneNode(true)
+  /* Edit MLE :
+    Le dialog est dans plusieurs div pour le look
+    Je recupere donc plus que le dialog
+   */
+  const alert = content.cloneNode(true)
+  const dialog = one('dialog', alert).cloneNode(true)
   const paragraph = one('p', dialog)
   const button = one('button', dialog)
   
   append(paragraph, message)
   onClick.listen(button)
 
-  await manager.fragment(dialog)
-  replaceChildren(parentNode, template, dialog)
-  await removed(dialog)
+  await manager.fragment(alert)
+  replaceChildren(parentNode, template, alert)
+  await removed(alert)
 }
