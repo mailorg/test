@@ -30,7 +30,7 @@ export default async message => {
     Je recupere donc plus que le dialog
    */
   const alert = one('div.ea_generics__alert', content).cloneNode(true)
-  const dialog = one('dialog', alert).cloneNode(true)
+  const dialog = one('dialog', alert)
   const paragraph = one('p', dialog)
   const button = one('button', dialog)
   
