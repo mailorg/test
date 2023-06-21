@@ -29,7 +29,7 @@ export default async message => {
     Le dialog est dans plusieurs div pour le look
     Je recupere donc plus que le dialog
    */
-  const alert = content.cloneNode(true)
+  const alert = one('div.ea_generics__alert', content).cloneNode(true)
   const dialog = one('dialog', alert).cloneNode(true)
   const paragraph = one('p', dialog)
   const button = one('button', dialog)
