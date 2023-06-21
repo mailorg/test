@@ -103,11 +103,11 @@ const call = async (
       request,
       target
     }))
-    console.log({ response })
+
     return response
   }
   
-  return fetch(object(null, { request }))
+  fetch(object(null, { request }))
 }
 
 onClick.listen(document)
