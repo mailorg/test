@@ -16,20 +16,15 @@ import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
 
-let closable = [null, {}]
 let current = null
 let blurring = true
 
 export const { focus } = lightbox
 
 export const close = () => {
-  if (current) {
-    const [, { resolve }] = closable
-    
-    console.log({ current })
+  if (current && current.ownerDocument.contains(current)) {
     remove(current)
     current = null
-    resolve?.()
   }
 }
 
@@ -137,13 +132,10 @@ export const open = async (
   container,
   opener = null
 ) => {
-  const [previous] = closable
   const content = await lightbox.parse(template, container, opener)
   
   close()
-  await previous
   current = content
-  closable = resolvable()
   
   return current
 }
