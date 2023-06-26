@@ -52,11 +52,10 @@ const onBlur = object(listener, {
   task (
     document
   ) {
-    const { defaultView } = document
+    const { activeElement, defaultView } = document
     const { requestAnimationFrame } = defaultView
     
     requestAnimationFrame(() => {
-      const { activeElement } = document
       const isBlurred = blurring &&
         current &&
         activeElement &&
