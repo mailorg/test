@@ -17,7 +17,7 @@ import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
 
 let current = null
-let blurring = true
+let blurring = false
 
 export const { focus } = lightbox
 
