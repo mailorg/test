@@ -22,7 +22,7 @@ let blurring = true
 export const { focus } = lightbox
 
 export const close = () => {
-  if (current && current.ownerDocument.contains(current)) {
+  if (current) {
     remove(current)
     current = null
   }
