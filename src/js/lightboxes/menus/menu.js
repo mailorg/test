@@ -133,10 +133,8 @@ export const open = async (
   container,
   opener = null
 ) => {
-  const content = await lightbox.parse(template, container, opener)
-  
   close()
-  current = content
+  current = await lightbox.parse(template, container, opener)
   
   return current
 }
