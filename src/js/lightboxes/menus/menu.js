@@ -61,7 +61,8 @@ const onBlur = object(listener, {
         current &&
         activeElement &&
         current !== activeElement &&
-        !current.contains(activeElement)
+        !current.contains(activeElement) &&
+        document.contains(current)
       
       if (isBlurred) {
         console.log({ isBlurred })
