@@ -17,12 +17,13 @@ import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
 
 let current = null
-let blurring = false
+let blurring = true
 
 export const { focus } = lightbox
 
 export const close = () => {
   if (current) {
+    console.error(new Error())
     remove(current)
     current = null
   }
@@ -52,19 +53,18 @@ const onBlur = object(listener, {
   task (
     document
   ) {
-    const { activeElement, defaultView } = document
+    const { defaultView } = document
     const { requestAnimationFrame } = defaultView
     
     requestAnimationFrame(() => {
+      const { activeElement } = document
       const isBlurred = blurring &&
         current &&
         activeElement &&
         current !== activeElement &&
-        !current.contains(activeElement) &&
-        document.contains(activeElement)
+        !current.contains(activeElement)
       
       if (isBlurred) {
-        console.log({ isBlurred })
         close()
       } else {
         blurring = true
