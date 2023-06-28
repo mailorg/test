@@ -15,6 +15,7 @@ import remove from '@mailobj-browser/front/js/tree/remove.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
+import focusIn from '@mailobj-browser/front/js/events/types/focusIn.js'
 
 let current = null
 let blurring = true
@@ -47,7 +48,7 @@ const onScroll = object(onCleanup, {
 })
 
 const onBlur = object(listener, {
-  type: blur,
+  type: focusIn,
   capture,
   passive,
   task (
