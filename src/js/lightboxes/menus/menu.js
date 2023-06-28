@@ -59,12 +59,18 @@ const onBlur = object(listener, {
     const { target, type } = event
     const container = current?.parentNode
     
+    if (target === opener(current)) {
+      stopImmediatePropagation(event)
+      
+      return
+    }
+    /*
     if (container?.contains(target) || target === opener(current)) {
       stopImmediatePropagation(event)
       
       return
     }
-    
+    */
     close()
     console.log({ target, type })
     /*
