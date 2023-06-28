@@ -23,7 +23,9 @@ export const { focus } = lightbox
 
 export const close = () => {
   if (current) {
-    console.error(new Error())
+    const { ownerDocument } = current
+    
+    onBlur.forget(ownerDocument)
     remove(current)
     current = null
   }
@@ -158,7 +160,7 @@ export const display = async (content, opener, event = null) => {
     }
   
     onScroll.listen(ownerDocument)
-    //onBlur.listen(ownerDocument)
+    onBlur.listen(ownerDocument)
     onEscape.listen(ownerDocument)
     onResize.listen(defaultView)
     resolve()
