@@ -54,7 +54,9 @@ const onBlur = object(listener, {
   task (
     document
   ) {
+    close()
     console.log(this.type)
+    /*
     const { defaultView } = document
     const { requestAnimationFrame } = defaultView
     
@@ -72,6 +74,8 @@ const onBlur = object(listener, {
         blurring = true
       }
     })
+    
+     */
   }
 })
 
