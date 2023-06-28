@@ -56,6 +56,10 @@ const onBlur = object(listener, {
     document,
     event
   ) {
+    if (!current) {
+      return
+    }
+    
     const { target, type } = event
     const container = current?.parentNode
     
