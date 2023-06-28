@@ -15,18 +15,15 @@ import remove from '@mailobj-browser/front/js/tree/remove.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
-import focusIn from '@mailobj-browser/front/js/events/types/focusIn.js'
 
 let current = null
-let blurring = null
+let blurring = true
 
 export const { focus } = lightbox
 
 export const close = () => {
   if (current) {
-    const { ownerDocument } = current
-    
-    onBlur.forget(ownerDocument)
+    console.error(new Error())
     remove(current)
     current = null
   }
@@ -50,7 +47,7 @@ const onScroll = object(onCleanup, {
 })
 
 const onBlur = object(listener, {
-  type: focusIn,
+  type: blur,
   capture,
   passive,
   task (
@@ -58,15 +55,14 @@ const onBlur = object(listener, {
   ) {
     const { defaultView } = document
     const { requestAnimationFrame } = defaultView
+    const { activeElement } = document
+    const isBlurred = blurring &&
+      current &&
+      activeElement &&
+      current !== activeElement &&
+      !current.contains(activeElement)
     
     requestAnimationFrame(() => {
-      const { activeElement } = document
-      const isBlurred = blurring &&
-        current &&
-        activeElement &&
-        current !== activeElement &&
-        !current.contains(activeElement)
-      
       if (isBlurred) {
         close()
       } else {
@@ -103,7 +99,7 @@ export const onKeyDown = object(listener, {
       if (element !== current) {
         const li = one('li', current)
         
-        //blurring = false
+        blurring = false
         focus(li)
         this.listen(current)
         this.forget(element)
@@ -140,7 +136,6 @@ export const open = async (
   
   close()
   current = content
-  blurring = opener
   
   return current
 }
