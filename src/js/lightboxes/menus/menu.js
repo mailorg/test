@@ -57,14 +57,15 @@ const onBlur = object(listener, {
   ) {
     const { defaultView } = document
     const { requestAnimationFrame } = defaultView
-    const { activeElement } = document
-    const isBlurred = blurring &&
-      current &&
-      activeElement &&
-      current !== activeElement &&
-      !current.contains(activeElement)
     
     requestAnimationFrame(() => {
+      const { activeElement } = document
+      const isBlurred = blurring &&
+        current &&
+        activeElement &&
+        current !== activeElement &&
+        !current.contains(activeElement)
+      
       if (isBlurred) {
         close()
       } else {
