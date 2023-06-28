@@ -63,12 +63,13 @@ const onBlur = object(listener, {
     }
     
     const { ownerDocument, parentNode } = current
-    const { activeElement } = ownerDocument
+    const { activeElement, defaultView } = ownerDocument
+    const { requestAnimationFrame } = defaultView
     console.log({ activeElement, target, type })
     
     if (target === opener(current)) {
       stopImmediatePropagation(event)
-      close()
+      requestAnimationFrame(close)
       
       return
     }
