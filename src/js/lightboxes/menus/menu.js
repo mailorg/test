@@ -49,14 +49,14 @@ const onScroll = object(onCleanup, {
 })
 
 const onBlur = object(listener, {
-  type: 'focusout',
+  type: 'blur',
   capture,
   passive,
   task (
     document,
     event
   ) {
-    const { target } = event
+    const { target, type } = event
     const container = current?.parentNode
     
     if (container?.contains(target)) {
@@ -66,7 +66,7 @@ const onBlur = object(listener, {
     }
     
     close()
-    console.log(this.type)
+    console.log({ target, type })
     /*
     const { defaultView } = document
     const { requestAnimationFrame } = defaultView
