@@ -15,9 +15,10 @@ import remove from '@mailobj-browser/front/js/tree/remove.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
+import focusIn from '@mailobj-browser/front/js/events/types/focusIn.js'
 
 let current = null
-let blurring = true
+let blurring = null
 
 export const { focus } = lightbox
 
@@ -49,7 +50,7 @@ const onScroll = object(onCleanup, {
 })
 
 const onBlur = object(listener, {
-  type: blur,
+  type: focusIn,
   capture,
   passive,
   task (
@@ -102,7 +103,7 @@ export const onKeyDown = object(listener, {
       if (element !== current) {
         const li = one('li', current)
         
-        blurring = false
+        //blurring = false
         focus(li)
         this.listen(current)
         this.forget(element)
@@ -139,6 +140,7 @@ export const open = async (
   
   close()
   current = content
+  blurring = opener
   
   return current
 }
