@@ -49,7 +49,7 @@ const onScroll = object(onCleanup, {
 })
 
 const onBlur = object(listener, {
-  type: 'blur',
+  type: 'focusout',
   capture,
   passive,
   task (
