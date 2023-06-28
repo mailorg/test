@@ -54,7 +54,7 @@ const onBlur = object(listener, {
   task (
     document
   ) {
-    close()
+    //close()
     console.log(this.type)
     /*
     const { defaultView } = document
