@@ -184,9 +184,3 @@ export const display = async (content, opener, event = null) => {
   
   return promise
 }
-
-export const opener = (
-  menu
-) => {
-  return lightbox.opener(menu)
-}
