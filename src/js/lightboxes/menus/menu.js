@@ -16,6 +16,7 @@ import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
 import focusIn from '@mailobj-browser/front/js/events/types/focusIn.js'
+import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
 
 let current = null
 let blurring = true
@@ -52,9 +53,19 @@ const onBlur = object(listener, {
   capture,
   passive,
   task (
-    document
+    document,
+    event
   ) {
-    //close()
+    const { target } = event
+    const container = current?.parentNode
+    
+    if (container?.contains(target)) {
+      stopImmediatePropagation(event)
+      
+      return
+    }
+    
+    close()
     console.log(this.type)
     /*
     const { defaultView } = document
