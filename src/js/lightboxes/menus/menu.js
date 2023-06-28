@@ -48,67 +48,6 @@ const onScroll = object(onCleanup, {
   type: scroll
 })
 
-const onBlur = object(listener, {
-  type: 'focusout',
-  capture,
-  passive,
-  task (
-    document,
-    event
-  ) {
-    const { target, type } = event
-    
-    if (!current) {
-      return
-    }
-    
-    const { ownerDocument, parentNode } = current
-    const { activeElement, defaultView } = ownerDocument
-    const { requestAnimationFrame } = defaultView
-    console.log({ activeElement, target, type })
-    
-    if (target === opener(current)) {
-      stopImmediatePropagation(event)
-      requestAnimationFrame(close)
-      
-      return
-    }
-    /*
-    if (!parentNode?.contains(activeElement)) {
-      close()
-      return
-    }
-    /*
-    if (target === opener(current)) {
-      stopImmediatePropagation(event)
-      
-      return
-    }
-    */
-    close()
-    /*
-    const { defaultView } = document
-    const { requestAnimationFrame } = defaultView
-    
-    requestAnimationFrame(() => {
-      const { activeElement } = document
-      const isBlurred = blurring &&
-        current &&
-        activeElement &&
-        current !== activeElement &&
-        !current.contains(activeElement)
-      
-      if (isBlurred) {
-        close()
-      } else {
-        blurring = true
-      }
-    })
-    
-     */
-  }
-})
-
 const onEscape = object(listener, {
   type: keyUp,
   task: (document, event) => {
@@ -136,7 +75,6 @@ export const onKeyDown = object(listener, {
       if (element !== current) {
         const li = one('li', current)
         
-        blurring = false
         focus(li)
         this.listen(current)
         this.forget(element)
@@ -195,7 +133,6 @@ export const display = async (content, opener, event = null) => {
     }
   
     onScroll.listen(ownerDocument)
-    onBlur.listen(ownerDocument)
     onEscape.listen(ownerDocument)
     onResize.listen(defaultView)
     resolve()
