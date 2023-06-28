@@ -21,7 +21,7 @@ import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/sto
 let current = null
 let blurring = true
 
-export const { focus } = lightbox
+export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
@@ -59,7 +59,7 @@ const onBlur = object(listener, {
     const { target, type } = event
     const container = current?.parentNode
     
-    if (container?.contains(target)) {
+    if (container?.contains(target) || target === opener(current)) {
       stopImmediatePropagation(event)
       
       return
