@@ -107,12 +107,7 @@ export const open = async (
   container,
   opener = null
 ) => {
-  const content = await lightbox.parse(template, container, opener)
-  
-  //close()
-  current = content
-  
-  return current
+  return lightbox.parse(template, container, opener)
 }
 
 export const display = async (content, opener, event = null) => {
@@ -135,6 +130,7 @@ export const display = async (content, opener, event = null) => {
     onScroll.listen(ownerDocument)
     onEscape.listen(ownerDocument)
     onResize.listen(defaultView)
+    current = content
     resolve()
   })
   
