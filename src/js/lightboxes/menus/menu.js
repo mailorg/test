@@ -17,6 +17,7 @@ import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
 import focusIn from '@mailobj-browser/front/js/events/types/focusIn.js'
 import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
+import focusOut from '@mailobj-browser/front/js/events/types/focusOut.js'
 
 let current = null
 let blurring = true
@@ -37,6 +38,27 @@ const onCleanup = object(listener, {
   once,
   passive,
   task: close
+})
+
+const onFocusOut = object(listener, {
+  type: focusOut,
+  capture,
+  passive,
+  task (
+    opener
+  ) {
+    close()
+    /*
+    const { ownerDocument } = button
+    const { defaultView } = ownerDocument
+    const { requestAnimationFrame } = defaultView
+    const menu = menus.get(button)
+    
+    if (menu && ownerDocument.contains(menu)) {
+    }
+    
+     */
+  }
 })
 
 const onResize = object(onCleanup, {
