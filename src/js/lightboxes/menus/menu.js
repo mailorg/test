@@ -8,24 +8,19 @@ import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import * as fixed from '../../fixed/fixed.js'
 import * as lightbox from '../lightbox.js'
-import blur from '@mailobj-browser/front/js/events/types/blur.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import resize from '@mailobj-browser/front/js/events/types/resize.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
-import focusIn from '@mailobj-browser/front/js/events/types/focusIn.js'
-import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
 
 let current = null
-let blurring = true
 
 export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
-    console.error(new Error())
     remove(current)
     current = null
   }
