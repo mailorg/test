@@ -153,6 +153,7 @@ export const display = async (content, opener, event = null) => {
     onScroll.listen(ownerDocument)
     onEscape.listen(ownerDocument)
     onResize.listen(defaultView)
+    onFocusOut.listen(opener)
     current = content
     resolve()
   })
