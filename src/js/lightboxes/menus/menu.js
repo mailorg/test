@@ -107,6 +107,7 @@ export const open = async (
   container,
   opener = null
 ) => {
+  close()
   return lightbox.parse(template, container, opener)
 }
 
