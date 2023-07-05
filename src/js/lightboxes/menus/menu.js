@@ -19,6 +19,12 @@ let current = null
 
 export const { focus, opener } = lightbox
 
+export const isCurrent = element => {
+  const { ownerDocument } = element
+  
+  return current === element && ownerDocument.contains(element)
+}
+
 export const close = () => {
   if (current) {
     remove(current)
