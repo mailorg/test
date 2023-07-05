@@ -142,5 +142,5 @@ export default (
     iframe = one('[data-rte]', ownerDocument)
   }
   params.set(iframe, object(null, { button, test }))
-  // onLoad.listen(iframe)
+  onLoad.listen(iframe)
 }
