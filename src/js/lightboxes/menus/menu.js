@@ -69,14 +69,15 @@ export const onKeyDown = object(listener, {
     const { key, target } = event
     const { [key]: pick } = keys
     
-    console.log({ key })
     if (pick) {
+      console.log({ key })
       event.preventDefault()
       event.stopImmediatePropagation()
 
       if (element !== current) {
         const li = one('li', current)
         
+        console.log({ li })
         focus(li)
         this.listen(current)
         this.forget(element)
