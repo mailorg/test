@@ -151,9 +151,11 @@ export const fromEvent = async (
   const request = type === 'submit' ? form : anchor
 
   if ([app, web2, junior, kid].includes(skin)) {
-    const promise = request(target, event)
-      .then(() => globals.ea_screen_adjust())
-    return promise
+    const result = await request(target, event)
+    
+    globals.ea_screen_adjust()
+    
+    return result
   } else {
     return request(target, event)
   }
