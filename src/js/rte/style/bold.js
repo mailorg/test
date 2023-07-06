@@ -16,7 +16,8 @@ const onClick = object(listener, {
     const userSelection = contentWindow.getSelection()
     const {nextElementSibling} = userSelection
     const selectedTextRange = userSelection.getRangeAt(0)
-
+    const boldNode = one('b', selectedTextRange)
+    console.log(boldNode);
     // console.log(userSelection, selectedTextRange, boldElement);
     if (userSelection.containsNode(boldElement)) {
       console.log(boldElement)
