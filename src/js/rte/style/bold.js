@@ -5,6 +5,7 @@ import object from '@mailobj-browser/front/js/utils/object.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import rte from '../rte.js'
 
+const bold = '<b>'
 const onClick = object(listener, {
   type: click,
   hooks: [preventDefault],
@@ -12,12 +13,15 @@ const onClick = object(listener, {
     const iframe = one('iframe', button.closest('form'))
 
     const {contentWindow, contentDocument} = iframe
-    let {body} = contentDocument
-    // globals.ea_rte_command('id_msg_text', 'bold', '')
     const boldElement = contentDocument.createElement('b')
     const userSelection = contentWindow.getSelection()
-    console.log(userSelection);
+    const {nextElementSibling} = userSelection
     const selectedTextRange = userSelection.getRangeAt(0)
+
+    console.log(userSelection, selectedTextRange, boldElement);
+    if (nextElementSibling === bold) {
+
+    }
     selectedTextRange.surroundContents(boldElement)
   }
 })
