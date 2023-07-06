@@ -16,6 +16,7 @@ const onClick = object(listener, {
     const userSelection = contentWindow.getSelection()
     const {nextElementSibling} = userSelection
     const selectedTextRange = userSelection.getRangeAt(0)
+    console.log(selectedTextRange);
     const boldNode = one('b', selectedTextRange)
     console.log(boldNode);
     // console.log(userSelection, selectedTextRange, boldElement);
