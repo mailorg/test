@@ -15,7 +15,6 @@ const onClick = object(listener, {
   ) {
     const rte = one('iframe', fontColor.closest('form'))
 
-    console.log(rte);
     if (rte) {
       const url = href('auth/colorpanel', {
         'id_txt': 'rte',
