@@ -14,7 +14,7 @@ const onClick = object(listener, {
     const {contentWindow, contentDocument} = iframe
     let {body} = contentDocument
     // globals.ea_rte_command('id_msg_text', 'bold', '')
-    const boldElement = body.createElement('b')
+    const boldElement = contentDocument.createElement('b')
     const userSelection = contentWindow.getSelection()
     console.log(userSelection);
     const selectedTextRange = userSelection.getRangeAt(0)
