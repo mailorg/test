@@ -14,9 +14,9 @@ const onClick = object(listener, {
     const {contentWindow, contentDocument} = iframe
     const boldElement = contentDocument.createElement('b')
     const userSelection = contentWindow.getSelection()
-    const {nextElementSibling} = userSelection
+    const {focusNode} = userSelection
     const selectedTextRange = userSelection.getRangeAt(0)
-    console.log(selectedTextRange);
+    console.log(focusNode);
     // const boldNode = one('b', selectedTextRange)
     // console.log(boldNode);
     // console.log(userSelection, selectedTextRange, boldElement);
