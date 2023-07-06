@@ -70,7 +70,7 @@ const onFocusIn = object(listener, {
   once,
   passive,
   task: (document, { target }) => {
-    if (target !== blurring && !current.contains(target)) {
+    if (target !== blurring && !current?.contains(target)) {
       close()
     }
   }
