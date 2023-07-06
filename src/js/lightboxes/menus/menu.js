@@ -14,8 +14,11 @@ import remove from '@mailobj-browser/front/js/tree/remove.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
+import focusIn from '@mailobj-browser/front/js/events/types/focusIn.js'
+import focusOut from '@mailobj-browser/front/js/events/types/focusOut.js'
 
 let current = null
+let blurring = null
 
 export const { focus, opener } = lightbox
 
@@ -58,6 +61,30 @@ const onEscape = object(listener, {
       preventDefault(event)
       close()
     }
+  }
+})
+
+const onFocusIn = object(listener, {
+  type: focusIn,
+  capture,
+  once,
+  passive,
+  task: (document, { target }) => {
+    if (target !== blurring && !current.contains(target)) {
+      close()
+    }
+  }
+})
+
+const onFocusOut = object(listener, {
+  type: focusOut,
+  capture,
+  passive,
+  task: (aside, { target }) => {
+    const { ownerDocument } = aside
+    
+    blurring = target
+    onFocusIn.listen(ownerDocument)
   }
 })
 
@@ -108,7 +135,9 @@ export const open = async (
   container,
   opener = null
 ) => {
-  close()
+  //close()
+  onFocusOut.listen(container)
+  
   return lightbox.parse(template, container, opener)
 }
 
@@ -132,6 +161,7 @@ export const display = async (content, opener, event = null) => {
     onScroll.listen(ownerDocument)
     onEscape.listen(ownerDocument)
     onResize.listen(defaultView)
+    onFocusOut.listen(opener)
     current = content
     resolve()
   })
