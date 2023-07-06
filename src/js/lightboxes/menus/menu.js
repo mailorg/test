@@ -18,7 +18,7 @@ import focusIn from '@mailobj-browser/front/js/events/types/focusIn.js'
 import focusOut from '@mailobj-browser/front/js/events/types/focusOut.js'
 
 let current = null
-let blurring = null
+let focusing = null
 
 export const { focus, opener } = lightbox
 
@@ -70,10 +70,7 @@ const onFocusIn = object(listener, {
   once,
   passive,
   task: (document, { target }) => {
-    console.log({ focusIn, target, blurring, current })
-    if (target !== blurring && !current?.contains(target)) {
-      close()
-    }
+    focusing = target
   }
 })
 
@@ -81,14 +78,21 @@ const onFocusOut = object(listener, {
   type: focusOut,
   capture,
   passive,
-  task: (aside, { target }) => {
-    const { ownerDocument } = aside
+  task: ({ ownerDocument }) => {
+    const { defaultView } = ownerDocument
+    const { requestAnimationFrame } = defaultView
     
-    console.log({ focusOut, target, blurring, current, aside })
-    blurring = target
+    focusing = null
     onFocusIn.listen(ownerDocument)
+    requestAnimationFrame(autoClose)
   }
 })
+
+const autoClose = () => {
+  if (focusing && !current?.contains(focusing)) {
+    close()
+  }
+}
 
 export const onKeyDown = object(listener, {
   type: keyDown,
