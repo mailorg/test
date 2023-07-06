@@ -89,6 +89,7 @@ const onFocusOut = object(listener, {
 })
 
 const autoClose = () => {
+  console.log({ focusing, current })
   if (!focusing && !current?.contains(focusing)) {
     close()
   }
