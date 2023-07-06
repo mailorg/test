@@ -142,7 +142,7 @@ export const open = async (
   container,
   opener = null
 ) => {
-  //close()
+  close()
   onFocusOut.listen(container)
   
   return lightbox.parse(template, container, opener)
