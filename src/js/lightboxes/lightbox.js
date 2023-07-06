@@ -129,7 +129,10 @@ export const parse = async (
   queueMicrotask(async () => {
     await removed(lightbox)
     openers.delete(lightbox)
-    opener?.focus()
+    
+    if (asModal) {
+      opener?.focus()
+    }
   })
 
   queueMicrotask(async () => {
