@@ -84,6 +84,7 @@ const onFocusOut = object(listener, {
   task: (aside, { target }) => {
     const { ownerDocument } = aside
     
+    console.log({ focusOut, target, blurring, current, aside })
     blurring = target
     onFocusIn.listen(ownerDocument)
   }
