@@ -5,7 +5,6 @@ import object from '@mailobj-browser/front/js/utils/object.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import rte from '../rte.js'
 
-const bold = '<b>'
 const onClick = object(listener, {
   type: click,
   hooks: [preventDefault],
@@ -18,9 +17,9 @@ const onClick = object(listener, {
     const {nextElementSibling} = userSelection
     const selectedTextRange = userSelection.getRangeAt(0)
 
-    console.log(userSelection, selectedTextRange, boldElement);
-    if (nextElementSibling === bold) {
-
+    // console.log(userSelection, selectedTextRange, boldElement);
+    if (userSelection.containsNode(boldElement)) {
+      console.log(boldElement)
     }
     selectedTextRange.surroundContents(boldElement)
   }
