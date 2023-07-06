@@ -2,28 +2,14 @@ import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import click from '@mailobj-browser/front/js/events/types/click.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
-import one from '@mailobj-browser/front/js/selectors/one.js'
+import globals from '../../ea/globals.js'
 import rte from '../rte.js'
 
 const onClick = object(listener, {
   type: click,
   hooks: [preventDefault],
-  task(button) {
-    const iframe = one('iframe', button.closest('form'))
-
-    const {contentWindow, contentDocument} = iframe
-    const boldElement = contentDocument.createElement('b')
-    const userSelection = contentWindow.getSelection()
-    const {focusNode} = userSelection
-    const selectedTextRange = userSelection.getRangeAt(0)
-    console.log(focusNode);
-    // const boldNode = one('b', selectedTextRange)
-    // console.log(boldNode);
-    // console.log(userSelection, selectedTextRange, boldElement);
-    if (userSelection.containsNode(boldElement)) {
-      console.log(boldElement)
-    }
-    selectedTextRange.surroundContents(boldElement)
+  task() {
+    globals.ea_rte_command('id_msg_text', 'bold', '')
   }
 })
 
