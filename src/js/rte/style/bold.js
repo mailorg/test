@@ -8,8 +8,16 @@ import rte from '../rte.js'
 const onClick = object(listener, {
   type: click,
   hooks: [preventDefault],
-  task() {
-    globals.ea_rte_command('id_msg_text', 'bold', '')
+  task(button) {
+    const iframe = button.closest('iframe')
+    const {contentWindow, contentDocument} = iframe
+    let {body} = contentDocument
+    // globals.ea_rte_command('id_msg_text', 'bold', '')
+    const boldElement = body.createElement('b')
+    const userSelection = contentWindow.getSelection()
+    console.log(userSelection);
+    const selectedTextRange = userSelection.getRangeAt(0)
+    selectedTextRange.surroundContents(boldElement)
   }
 })
 
