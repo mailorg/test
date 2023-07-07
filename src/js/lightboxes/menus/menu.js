@@ -72,7 +72,7 @@ const onFocusIn = object(listener, {
   task: (document, { target }) => {
     const { activeElement } = document
     
-    focusing = target ?? activeElement
+    focusing = target
   }
 })
 
@@ -80,7 +80,8 @@ const onFocusOut = object(listener, {
   type: focusOut,
   capture,
   passive,
-  task: ({ ownerDocument }) => {
+  task: (container) => {
+    const { ownerDocument } = container
     const { defaultView } = ownerDocument
     const { requestAnimationFrame } = defaultView
     
@@ -93,7 +94,7 @@ const onFocusOut = object(listener, {
 const autoClose = () => {
   console.log({ focusing, current })
   if (!focusing || !current?.contains(focusing)) {
-    requestAnimationFrame(close)
+    close()
   }
 }
 
