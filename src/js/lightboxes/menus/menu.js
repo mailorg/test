@@ -32,6 +32,7 @@ export const close = () => {
   if (current) {
     remove(current)
     current = null
+    focusing = null
   }
 }
 
