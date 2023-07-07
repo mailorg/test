@@ -22,14 +22,9 @@ let focusing = null
 
 export const { focus, opener } = lightbox
 
-export const isCurrent = element => {
-  const { ownerDocument } = element
-  
-  return current === element && ownerDocument.contains(element)
-}
-
 export const close = () => {
   if (current) {
+    console.error(new Error())
     remove(current)
     current = null
     focusing = null
@@ -71,8 +66,6 @@ const onFocusIn = object(listener, {
   once,
   passive,
   task: (document, { target }) => {
-    const { activeElement } = document
-    
     focusing = target
   }
 })
