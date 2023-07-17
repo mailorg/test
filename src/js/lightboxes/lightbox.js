@@ -55,12 +55,12 @@ export const onEscape = object(listener, {
   type: keyUp,
   task: (document, event) => {
     const { key } = event
-
+    
+    console.log({ menu, current })
     if (key !== 'Escape') {
       return
     }
     
-    console.log({ menu, current })
     if (menu && document.contains(menu)) {
       preventDefault(event)
       stopImmediatePropagation(event)
