@@ -17,6 +17,8 @@ import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import once from '@mailobj-browser/front/js/events/options/once.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import * as utilities from "../styles.js"
+import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
+import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
 
 let current = null
 let menu = null
@@ -60,6 +62,7 @@ const onEscape = object(listener, {
 
     if (menu && document.contains(menu)) {
       preventDefault(event)
+      stopImmediatePropagation(event)
       remove(menu)
       
       return
