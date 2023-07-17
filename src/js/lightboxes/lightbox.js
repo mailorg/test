@@ -51,7 +51,7 @@ const onScroll = object(listener, {
   task: close
 })
 
-const onEscape = object(listener, {
+export const onEscape = object(listener, {
   type: keyUp,
   task: (document, event) => {
     const { key } = event

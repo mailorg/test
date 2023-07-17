@@ -5,10 +5,8 @@ import once from '@mailobj-browser/front/js/events/options/once.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import keyDown from '@mailobj-browser/front/js/events/types/keyDown.js'
 import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
-import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import * as fixed from '../../fixed/fixed.js'
 import * as lightbox from '../lightbox.js'
-import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import resize from '@mailobj-browser/front/js/events/types/resize.js'
 import remove from '@mailobj-browser/front/js/tree/remove.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
@@ -16,6 +14,7 @@ import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
 import focusIn from '@mailobj-browser/front/js/events/types/focusIn.js'
 import focusOut from '@mailobj-browser/front/js/events/types/focusOut.js'
+import { onEscape } from '../lightbox.js'
 
 let current = null
 let focusing = null
@@ -24,7 +23,6 @@ export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
-    console.log('close')
     remove(current)
     current = null
     focusing = null
@@ -46,18 +44,6 @@ const onResize = object(onCleanup, {
 
 const onScroll = object(onCleanup, {
   type: scroll
-})
-
-const onEscape = object(listener, {
-  type: keyUp,
-  task: (document, event) => {
-    const { key } = event
-    
-    if (current && key === 'Escape') {
-      preventDefault(event)
-      close()
-    }
-  }
 })
 
 const onFocusIn = object(listener, {
@@ -147,6 +133,7 @@ export const open = async (
 export const display = async (content, opener, event = null) => {
   const { ownerDocument } = opener
   const { defaultView } = ownerDocument
+  const { onEscape } = lightbox
   const { fromEvent, fromNode, move, resize } = fixed
   const [promise, { resolve }] = resolvable()
 
@@ -160,9 +147,9 @@ export const display = async (content, opener, event = null) => {
       move(content, fromNode(content, opener))
       openers.set(content, opener)
     }
-  
-    onScroll.listen(ownerDocument)
+    
     onEscape.listen(ownerDocument)
+    onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
     onFocusOut.listen(opener)
     current = content
