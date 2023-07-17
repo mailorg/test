@@ -54,12 +54,13 @@ const onScroll = object(listener, {
 const onEscape = object(listener, {
   type: keyUp,
   task: (document, event) => {
-    const {key} = event
+    const { key } = event
 
     if (key !== 'Escape') {
       return
     }
-
+    
+    console.log({ menu, current })
     if (menu && document.contains(menu)) {
       preventDefault(event)
       stopImmediatePropagation(event)
@@ -70,6 +71,7 @@ const onEscape = object(listener, {
 
     if (current) {
       preventDefault(event)
+      stopImmediatePropagation(event)
       close()
     }
   }
