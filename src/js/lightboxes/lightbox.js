@@ -54,7 +54,18 @@ const onEscape = object(listener, {
   task: (document, event) => {
     const {key} = event
 
-    if (current && key === 'Escape') {
+    if (key !== 'Escape') {
+      return
+    }
+
+    if (menu && document.contains(menu)) {
+      preventDefault(event)
+      remove(menu)
+      
+      return
+    }
+
+    if (current) {
       preventDefault(event)
       close()
     }
