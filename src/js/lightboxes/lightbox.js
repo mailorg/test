@@ -27,6 +27,7 @@ const openers = new WeakMap()
 
 export const close = () => {
   if (current) {
+    console.error(new Error())
     const { ownerDocument } = current
     const { body } = ownerDocument
 
