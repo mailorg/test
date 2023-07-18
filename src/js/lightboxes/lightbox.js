@@ -27,7 +27,6 @@ const openers = new WeakMap()
 
 export const close = () => {
   if (current) {
-    console.error(new Error())
     const { ownerDocument } = current
     const { body } = ownerDocument
 
@@ -61,10 +60,10 @@ export const onEscape = object(listener, {
       return
     }
     
-    if (menu) {
-      console.log({ menu, current })
+    if (menu && document.contains(menu)) {
       preventDefault(event)
       stopImmediatePropagation(event)
+      remove(menu)
       menu = null
       
       return
