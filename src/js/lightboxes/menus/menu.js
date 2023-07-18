@@ -14,7 +14,6 @@ import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
 import focusIn from '@mailobj-browser/front/js/events/types/focusIn.js'
 import focusOut from '@mailobj-browser/front/js/events/types/focusOut.js'
-import { onEscape } from '../lightbox.js'
 
 let current = null
 let focusing = null
@@ -23,7 +22,6 @@ export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
-    console.error(new Error())
     remove(current)
     current = null
     focusing = null
@@ -149,7 +147,6 @@ export const display = async (content, opener, event = null) => {
       openers.set(content, opener)
     }
     
-    onEscape.listen(ownerDocument)
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
     onFocusOut.listen(opener)
