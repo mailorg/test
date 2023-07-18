@@ -60,11 +60,10 @@ export const onEscape = object(listener, {
       return
     }
     
-    if (menu && document.contains(menu)) {
+    if (menu) {
       console.log({ menu, current })
       preventDefault(event)
       stopImmediatePropagation(event)
-      remove(menu)
       menu = null
       
       return
