@@ -132,7 +132,6 @@ export const open = async (
 export const display = async (content, opener, event = null) => {
   const { ownerDocument } = opener
   const { defaultView } = ownerDocument
-  const { onEscape } = lightbox
   const { fromEvent, fromNode, move, resize } = fixed
   const [promise, { resolve }] = resolvable()
 
