@@ -13,7 +13,6 @@ const onClick = object(listener, {
   async task (
     select
   ) {
-    console.log("select.js")
     const template = one(':scope > template', button)
     const lightbox = await parse(template)
     
