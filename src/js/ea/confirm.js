@@ -32,7 +32,12 @@ export default async message => {
   const { root } = defaults
   const template = one(`.${utilities.elements.aside_confirms} template`, root)
   const { content, parentNode } = template
-  const dialog = one('dialog', content).cloneNode(true)
+  /* Edit MLE :
+    Le dialog est dans plusieurs div pour le look
+    Je recupere donc plus que le dialog
+   */
+  const confirm = one('div.ea_generics__control', content).cloneNode(true)
+  const dialog = one('dialog', confirm)
   const paragraph = one('p', dialog)
   const [yes, no] = all('button', dialog)
   const [promise, { resolve }] = resolvable()
