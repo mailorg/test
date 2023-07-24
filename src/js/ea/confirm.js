@@ -22,8 +22,8 @@ const onClick = object(listener, {
   passive,
   task: button => {
     const { value } = button
-    
-    remove(button.closest('dialog'))
+
+    remove(button.closest('div.ea_generics__control'))
     resolvers.get(button)?.(value === '1')
   }
 })
