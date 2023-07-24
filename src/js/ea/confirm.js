@@ -48,10 +48,10 @@ export default async message => {
   resolvers.set(no, resolve)
   onClick.listen(yes)
   onClick.listen(no)
-  await manager.fragment(dialog)
-  replaceChildren(parentNode, template, dialog)
+  await manager.fragment(confirm)
+  replaceChildren(parentNode, template, confirm)
   
-  const result = await Promise.race([promise, await removed(dialog)])
+  const result = await Promise.race([promise, await removed(confirm)])
   
   resolvers.delete(yes)
   resolvers.delete(no)
