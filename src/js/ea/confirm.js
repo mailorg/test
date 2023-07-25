@@ -23,7 +23,7 @@ const onClick = object(listener, {
   task: button => {
     const { value } = button
 
-    remove(button.closest('div.ea_generics__control'))
+    remove(button.closest('div.ea_generics__modal'))
     resolvers.get(button)?.(value === '1')
   }
 })

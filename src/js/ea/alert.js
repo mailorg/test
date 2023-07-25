@@ -17,7 +17,7 @@ const onClick = object(listener, {
   once,
   passive,
   task: button => {
-    remove(button.closest('div.ea_generics__control'))
+    remove(button.closest('div.ea_generics__modal'))
   }
 })
 
