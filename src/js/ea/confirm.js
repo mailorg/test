@@ -32,18 +32,30 @@ export default async message => {
   const { root } = defaults
   const template = one(`.${utilities.elements.aside_confirms} template`, root)
   const { content, parentNode } = template
-  /* Edit MLE :
-    Le dialog est dans plusieurs div pour le look
-    Je recupere donc plus que le dialog
-   */
+
   const confirm = one('div.ea_generics__modal', content).cloneNode(true)
   const dialog = one('dialog', confirm)
-  const paragraph = one('p', dialog)
-  const [yes, no] = all('button', dialog)
+  const header = one('div.ea_generics__modal_content_header', dialog)
+  const h2 = one('h2', header)
+
+  const body = one('div.ea_generics__modal_content_body', dialog)
+  const paragraph = one('p', body)
+
+  const footer = one('div.ea_generics__modal_content_footer', dialog)
+  const [yes, no] = all('button', footer)
+
+  const json = JSON.parse(message)
+  if (json.title && json.title.length) {
+    append(h2, json.title)
+    if (json.content && json.content.length) {
+      append(paragraph, json.content)
+    }
+  } else {
+    append(h2, json)
+  }
+
   const [promise, { resolve }] = resolvable()
-  
-  append(paragraph, message)
-  
+
   resolvers.set(yes, resolve)
   resolvers.set(no, resolve)
   onClick.listen(yes)
