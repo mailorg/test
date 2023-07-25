@@ -44,14 +44,16 @@ export default async message => {
   const footer = one('div.ea_generics__modal_content_footer', dialog)
   const [yes, no] = all('button', footer)
 
-  const json = JSON.parse(message)
-  if (json.title && json.title.length) {
-    append(h2, json.title)
-    if (json.content && json.content.length) {
-      append(paragraph, json.content)
+  if (message[0] === '{') {
+    const json = JSON.parse(message)
+    if (json.title && json.title.length) {
+      append(h2, json.title)
+      if (json.content && json.content.length) {
+        append(paragraph, json.content)
+      }
     }
   } else {
-    append(h2, json)
+    append(h2, message)
   }
 
   const [promise, { resolve }] = resolvable()
