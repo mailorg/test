@@ -36,7 +36,7 @@ export default async message => {
     Le dialog est dans plusieurs div pour le look
     Je recupere donc plus que le dialog
    */
-  const confirm = one('div.ea_generics__control', content).cloneNode(true)
+  const confirm = one('div.ea_generics__modal', content).cloneNode(true)
   const dialog = one('dialog', confirm)
   const paragraph = one('p', dialog)
   const [yes, no] = all('button', dialog)
