@@ -28,7 +28,10 @@ const onClick = object(listener, {
   }
 })
 
-export default async message => {
+export default async (
+    title,
+    text = ''
+) => {
   const { root } = defaults
   const template = one(`.${utilities.elements.aside_confirms} template`, root)
   const { content, parentNode } = template
@@ -44,16 +47,9 @@ export default async message => {
   const footer = one('div.ea_generics__modal_content_footer', dialog)
   const [yes, no] = all('button', footer)
 
-  if (message[0] === '{') {
-    const json = JSON.parse(message)
-    if (json.title && json.title.length) {
-      append(h2, json.title)
-      if (json.content && json.content.length) {
-        append(paragraph, json.content)
-      }
-    }
-  } else {
-    append(h2, message)
+  append(h2, title)
+  if (content && content.length) {
+    append(paragraph, text)
   }
 
   const [promise, { resolve }] = resolvable()
