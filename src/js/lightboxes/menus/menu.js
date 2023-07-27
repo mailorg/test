@@ -52,7 +52,6 @@ const onFocusIn = object(listener, {
   once,
   passive,
   task: (document, { target }) => {
-    console.log({ focusIn })
     focusing = target
   }
 })
@@ -67,16 +66,13 @@ const onFocusOut = object(listener, {
     const { requestAnimationFrame } = defaultView
     
     focusing = null
-    console.log({ focusOut })
     onFocusIn.listen(ownerDocument)
     requestAnimationFrame(autoClose)
   }
 })
 
 const autoClose = () => {
-  console.log({ autoClose, current, focusing })
   if (current && (!focusing || !current.contains(focusing))) {
-    console.log({ close })
     close()
   }
 }
@@ -156,7 +152,6 @@ export const display = async (content, opener, event = null) => {
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
     onFocusOut.listen(opener)
-    onFocusOut.listen(content)
     current = content
     resolve()
   })
