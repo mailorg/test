@@ -48,7 +48,7 @@ export default async (
   const [yes, no] = all('button', footer)
 
   append(h2, title)
-  if (content && content.length) {
+  if (text.length) {
     append(paragraph, text)
   }
 
