@@ -103,7 +103,14 @@ export const onKeyDown = object(listener, {
       const next = await pick(element, li, event)
       
       if (next) {
-        one('input', next).click()
+        const { ownerDocument } = next
+        const { defaultView } = ownerDocument
+        const { InputEvent } = defaultView
+        const input = one('input', next)
+        
+        input.click()
+        input.checked = true
+        element.dispatchEvent(new InputEvent('input'))
       }
       
       return
