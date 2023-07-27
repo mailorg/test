@@ -22,8 +22,7 @@ const keys = object(null, {
 })
 
 const onKeyDown = object(menu.onKeyDown, {
-  keys,
-  selects: list => selects.has(list)
+  keys
 })
 
 export default async (
