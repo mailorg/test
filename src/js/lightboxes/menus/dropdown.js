@@ -27,8 +27,7 @@ const onKeyDown = object(menu.onKeyDown, {
 })
 
 export default async (
-  list,
-  select = false
+  list
 ) => {
   const element = opener(list)
   
