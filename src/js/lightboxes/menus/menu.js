@@ -102,7 +102,9 @@ export const onKeyDown = object(listener, {
       const li = target.closest('li')
       const next = await pick(element, li, event)
       
-      focus(next)
+      if (next) {
+        one('input', next).click()
+      }
       
       return
     }
