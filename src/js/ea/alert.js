@@ -23,7 +23,7 @@ const onClick = object(listener, {
 
 export default async (
   message,
-  opener = null
+  openers = []
 ) => {
   const { root } = defaults
   const template = one(`.${utilities.elements.aside_alerts} template`, root)
@@ -45,7 +45,10 @@ export default async (
   button.focus()
   await removed(alert)
   
-  if (opener?.ownerDocument?.contains(opener)) {
-    opener.focus()
+  for (const opener of openers) {
+    if (opener.ownerDocument?.contains(opener)) {
+      opener.focus()
+      break
+    }
   }
 }

@@ -31,7 +31,7 @@ const onClick = object(listener, {
 export default async (
   title,
   text = '',
-  opener = null
+  openers = []
 ) => {
   const { root } = defaults
   const template = one(`.${utilities.elements.aside_confirms} template`, root)
@@ -71,8 +71,11 @@ export default async (
     resolvers.delete(button)
   }
   
-  if (opener?.ownerDocument?.contains(opener)) {
-    opener.focus()
+  for (const opener of openers) {
+    if (opener.ownerDocument?.contains(opener)) {
+      opener.focus()
+      break
+    }
   }
   
   return result === true
