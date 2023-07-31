@@ -39,5 +39,6 @@ export default async message => {
 
   await manager.fragment(alert)
   replaceChildren(parentNode, template, alert)
+  button.focus()
   await removed(alert)
 }

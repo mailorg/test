@@ -35,6 +35,7 @@ export default async (
   const { root } = defaults
   const template = one(`.${utilities.elements.aside_confirms} template`, root)
   const { content, parentNode } = template
+  const [promise, { resolve }] = resolvable()
 
   const confirm = one('div.ea_generics__modal', content).cloneNode(true)
   const dialog = one('dialog', confirm)
@@ -45,26 +46,29 @@ export default async (
   const paragraph = one('p', body)
 
   const footer = one('div.ea_generics__modal_content_footer', dialog)
-  const [yes, no] = all('button', footer)
+  const buttons = all('button', footer)
+  const [focusable] = buttons
 
   append(h2, title)
+  
   if (text.length) {
     append(paragraph, text)
   }
 
-  const [promise, { resolve }] = resolvable()
+  for (const button of buttons) {
+    resolvers.set(button, resolve)
+    onClick.listen(button)
+  }
 
-  resolvers.set(yes, resolve)
-  resolvers.set(no, resolve)
-  onClick.listen(yes)
-  onClick.listen(no)
   await manager.fragment(confirm)
   replaceChildren(parentNode, template, confirm)
+  focusable.focus()
   
   const result = await Promise.race([promise, await removed(confirm)])
   
-  resolvers.delete(yes)
-  resolvers.delete(no)
+  for (const button of buttons) {
+    resolvers.delete(button)
+  }
   
   return result === true
 }
