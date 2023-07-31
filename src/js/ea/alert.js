@@ -21,7 +21,10 @@ const onClick = object(listener, {
   }
 })
 
-export default async message => {
+export default async (
+  message,
+  opener = null
+) => {
   const { root } = defaults
   const template = one(`.${utilities.elements.aside_alerts} template`, root)
   const { content, parentNode } = template
@@ -41,4 +44,8 @@ export default async message => {
   replaceChildren(parentNode, template, alert)
   button.focus()
   await removed(alert)
+  
+  if (opener?.ownerDocument?.contains(opener)) {
+    opener.focus()
+  }
 }
