@@ -70,13 +70,14 @@ const onFocusOut = object(listener, {
   passive,
   task: async (container) => {
     const { ownerDocument } = container
+    const menu = current
     
     focusing = null
     onFocusIn.listen(ownerDocument)
-    await wait(50)
+    await wait(500)
     
-    if (current && (!focusing || !current.contains(focusing))) {
-      close()
+    if (current !== menu && (!focusing || !menu.contains(focusing))) {
+      remove(menu)
     }
   }
 })
