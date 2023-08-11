@@ -81,7 +81,7 @@ const onFocusOut = object(listener, {
 
 const autoClose = () => {
   if (current && (!focusing || !current.contains(focusing))) {
-    requestAnimationFrame(close)
+    close()
   }
 }
 
