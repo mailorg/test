@@ -1,39 +1,28 @@
+import object from '@mailobj-browser/front/js/utils/object.js'
+
+const pad = (value, size) => `${value}`.padStart(size + 1, '0')
+
+const cases = object(null, {
+	D: (date, { dateDay0 }) => pad(date.getDate(), dateDay0),
+	M: (date, { dateMonth0 }) => pad(date.getMonth() + 1, dateMonth0),
+	Y: (date) => date.getFullYear()
+})
+
 export default (
-  value, scopeJson
-) => {
-  const json = JSON.parse(scopeJson)
-  const dateFormat = (json.dateFormat) ?? 'DMY'
-  const dateSeparator = (json.dateSeparator) ?? '/'
-  const dateDay0 = (json.dateDay0) ?? 1
-  const dateMonth0 = (json.dateMonth0) ?? 1
-
-  let str = '', first = true
-
-  for (const c of dateFormat) {
-	if (!first) {
-	  str = str + dateSeparator
+  date,
+	{
+		dateFormat = 'DMY',
+		dateSeparator = '/',
+		dateDay0 = 1,
+		dateMonth0 = 1
 	}
-    switch (c) {
-	  case 'D':
-	    const day = value.getDate()
-		if (dateDay0 && day < 10) {
-		  str = str + '0'
-		}
-	    str = str + value.getDate()
-		break
-	  case 'M':
-	    const month = value.getMonth() + 1
-		if (dateMonth0 && month < 10) {
-		  str = str + '0'
-		}
-	    str = str + month
-		break
-	  case 'Y':
-	    str = str + value.getFullYear()
-		break
-    }
-	first = false
+) => {
+	const values = []
+	const format = { dateDay0, dateMonth0 }
+
+  for (const key of dateFormat) {
+		values.push(cases[key]?.(date, format))
   }
 
-  return str
+  return values.join(dateSeparator)
 }
