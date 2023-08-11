@@ -15,6 +15,7 @@ import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
 import focusIn from '@mailobj-browser/front/js/events/types/focusIn.js'
 import focusOut from '@mailobj-browser/front/js/events/types/focusOut.js'
 import { onEscape } from '../lightbox.js'
+import wait from '@mailobj-browser/front/js/utils/wait.js'
 
 let current = null
 let focusing = null
@@ -67,24 +68,18 @@ const onFocusOut = object(listener, {
   type: focusOut,
   capture,
   passive,
-  task: (container) => {
-    console.log(focusOut)
+  task: async (container) => {
     const { ownerDocument } = container
-    const { defaultView } = ownerDocument
-    const { requestAnimationFrame } = defaultView
     
     focusing = null
     onFocusIn.listen(ownerDocument)
-    requestAnimationFrame(autoClose)
+    await wait(50)
+    
+    if (current && (!focusing || !current.contains(focusing))) {
+      close()
+    }
   }
 })
-
-const autoClose = () => {
-  if (current && (!focusing || !current.contains(focusing))) {
-    console.log([current, focusing, focusing && current.contains(focusing)])
-    close()
-  }
-}
 
 export const onKeyDown = object(listener, {
   type: keyDown,
