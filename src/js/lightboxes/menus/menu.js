@@ -58,6 +58,7 @@ const onFocusIn = object(listener, {
   once,
   passive,
   task: (document, { target }) => {
+    console.log(focusIn)
     focusing = target
   }
 })
@@ -67,6 +68,7 @@ const onFocusOut = object(listener, {
   capture,
   passive,
   task: (container) => {
+    console.log(focusOut)
     const { ownerDocument } = container
     const { defaultView } = ownerDocument
     const { requestAnimationFrame } = defaultView
