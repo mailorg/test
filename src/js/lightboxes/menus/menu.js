@@ -76,6 +76,7 @@ const onFocusOut = object(listener, {
     await wait(50)
     
     if (current !== menu && (!focusing || !menu.contains(focusing))) {
+      console.log('rm')
       remove(menu)
     }
   }
