@@ -73,7 +73,7 @@ const onFocusOut = object(listener, {
     console.log({ focusOut })
     focusing = null
     onFocusIn.listen(ownerDocument)
-    await wait(100)
+    await wait(500)
     
     console.log({ focusOut, focusing })
     if (current !== menu || !focusing) {
