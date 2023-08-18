@@ -75,7 +75,7 @@ const onFocusOut = object(listener, {
     onFocusIn.listen(ownerDocument)
     await wait(50)
     
-    if (current !== menu && (!focusing || !menu.contains(focusing))) {
+    if (current !== menu || (!focusing || !menu.contains(focusing))) {
       console.log({ focusOut, remove })
       remove(menu)
     }
