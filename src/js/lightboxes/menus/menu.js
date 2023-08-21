@@ -116,6 +116,7 @@ export const onKeyDown = object(listener, {
         console.log({ input, text })
         input.checked = false
         input.click()
+        focus(next)
       }
       
       return
