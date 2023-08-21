@@ -16,6 +16,8 @@ import focusIn from '@mailobj-browser/front/js/events/types/focusIn.js'
 import focusOut from '@mailobj-browser/front/js/events/types/focusOut.js'
 import { onEscape } from '../lightbox.js'
 import wait from '@mailobj-browser/front/js/utils/wait.js'
+import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
+import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
 
 let current = null
 let focusing = null
@@ -91,9 +93,8 @@ export const onKeyDown = object(listener, {
     const { [key]: pick } = keys
     
     if (pick) {
-      console.log('picked')
-      event.preventDefault()
-      event.stopImmediatePropagation()
+      preventDefault(event)
+      stopImmediatePropagation(event)
 
       if (element !== current) {
         const li = one('li', current)
