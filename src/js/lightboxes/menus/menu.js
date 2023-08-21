@@ -110,11 +110,6 @@ export const onKeyDown = object(listener, {
       const next = await pick(element, li, event)
       
       if (next) {
-        const input = one('input', next)
-        const text = next.textContent
-        
-        console.log({ input, text })
-        input.checked = true
         focus(next)
       }
       
