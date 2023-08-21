@@ -24,6 +24,7 @@ export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
+    console.log('close')
     remove(current)
     current = null
     focusing = null
