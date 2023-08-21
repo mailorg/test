@@ -111,8 +111,9 @@ export const onKeyDown = object(listener, {
       
       if (next) {
         const input = one('input', next)
+        const text = next.textContent
         
-        console.log({ input })
+        console.log({ input, text })
         input.checked = false
         input.click()
       }
