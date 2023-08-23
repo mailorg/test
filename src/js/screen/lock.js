@@ -5,7 +5,7 @@ export default async () => {
   const { wakeLock } = navigator
 
   if (lock) {
-    throw('screen is already locked')
+    throw new Error('screen is already locked')
   }
 
   try {
@@ -18,7 +18,7 @@ export default async () => {
 
 export const release = async () => {
   if (!lock) {
-    throw('screen is not locked')
+    throw new Error('screen is not locked')
   }
   await lock.release()
   lock = null
