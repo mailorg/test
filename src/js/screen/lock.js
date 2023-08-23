@@ -1,7 +1,7 @@
 let lock
 
 export default async () => {
-  const { navigator } = window
+  const { navigator } = globalThis
   const { wakeLock } = navigator
 
   if (lock) {
@@ -10,16 +10,14 @@ export default async () => {
 
   try {
     lock = await wakeLock.request('screen')
-  } catch (e) {
-    const { name, message } = e
+  } catch ( { name, message } ) {
     console.error(`${name}`, `${message}`)
   }
 }
 
 export const release = async () => {
-  if (!lock) {
-    throw new Error('screen is not locked')
+  if (lock) {
+    await lock.release()
+    lock = null
   }
-  await lock.release()
-  lock = null
 }
