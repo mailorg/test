@@ -9,15 +9,12 @@ export default async () => {
   }
 
   try {
-    lock = await wakeLock.request('screen')
+    lock = await wakeLock?.request('screen')
   } catch ( { name, message } ) {
     console.error(`${name}`, `${message}`)
   }
 }
 
 export const release = async () => {
-  if (lock) {
-    await lock.release()
-    lock = null
-  }
+  lock = await lock?.release()
 }
