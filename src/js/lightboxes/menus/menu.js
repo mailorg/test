@@ -69,7 +69,7 @@ const onFocusOut = object(listener, {
   type: focusOut,
   capture,
   passive,
-  task: async () => {
+  task: async element => {
     const menu = current
     
     console.log('focusout')
@@ -77,7 +77,7 @@ const onFocusOut = object(listener, {
     onFocusIn.listen(menu)
     
     requestAnimationFrame(() => {
-      if (focusing) {
+      if (!focusing && opener(menu) !== element) {
         remove(menu)
         console.log('removed')
         
