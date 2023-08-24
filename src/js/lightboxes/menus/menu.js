@@ -70,7 +70,7 @@ const onFocusOut = object(listener, {
   task: async () => {
     const menu = current
     const isSelect = opener(menu).matches('select')
-    console.log(focusOut)
+    
     requestAnimationFrame(() => {
       if (current !== menu || !isSelect) {
         remove(menu)
@@ -78,10 +78,11 @@ const onFocusOut = object(listener, {
         
         return
       }
-      
+      console.log(focusOut, isSelect)
       if (!focusing || !menu.contains(focusing)) {
         remove(menu)
         focusing = null
+        console.log('removed')
       }
     })
   }
