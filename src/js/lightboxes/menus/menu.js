@@ -74,6 +74,8 @@ const onFocusOut = object(listener, {
     
     if (element === opener(menu)) {
       onFocusOut.forget(element)
+    } else {
+      onFocusIn.listen(menu)
     }
     
     console.log('focusout')
@@ -162,13 +164,13 @@ export const display = async (content, opener, event = null) => {
     
     if (!opener.matches('select')) {
       console.log('not select')
+      onFocusIn.listen(content)
       onFocusOut.listen(opener)
     }
     
     onEscape.listen(ownerDocument)
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
-    onFocusIn.listen(content)
     onFocusOut.listen(content)
     current = content
     resolve()
