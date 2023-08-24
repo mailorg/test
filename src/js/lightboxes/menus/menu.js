@@ -70,11 +70,9 @@ const onFocusOut = object(listener, {
   capture,
   passive,
   task: async (container) => {
-    const { ownerDocument } = container
     const menu = current
     
     focusing = null
-    onFocusIn.listen(ownerDocument)
     await wait(50)
     
     if (current !== menu) {
@@ -166,6 +164,7 @@ export const display = async (content, opener, event = null) => {
     onEscape.listen(ownerDocument)
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
+    onFocusIn.listen(ownerDocument)
     onFocusOut.listen(opener)
     current = content
     resolve()
