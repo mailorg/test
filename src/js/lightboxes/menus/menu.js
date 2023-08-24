@@ -157,7 +157,7 @@ export const display = async (content, opener, event = null) => {
     }
     
     if (!opener.matches('select')) {
-      onFocusOut.listen(opener)
+      //onFocusOut.listen(opener)
     }
     
     onEscape.listen(ownerDocument)
