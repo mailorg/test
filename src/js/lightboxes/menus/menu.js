@@ -71,20 +71,17 @@ const onFocusOut = object(listener, {
   passive,
   task: async () => {
     const menu = current
-    const { ownerDocument } = menu
-    const isSelect = opener(menu)?.matches('select')
     
     console.log('focusout')
-    onFocusIn.listen(ownerDocument)
-    //await wait(50)
+    focusing = null
+    onFocusIn.listen(menu)
     
     requestAnimationFrame(() => {
-      if (current !== menu || !isSelect || !focusing || !menu.contains(focusing)) {
+      if (focusing) {
         remove(menu)
-        focusing = null
         console.log('removed')
         
-        onFocusIn.forget(ownerDocument)
+        onFocusIn.forget(menu)
       }
     })
   }
