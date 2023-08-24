@@ -159,7 +159,7 @@ export const display = async (content, opener, event = null) => {
     onFocusOut.listen(opener)
     resolve()
     current = content
-    focusing = null
+    requestAnimationFrame(() => (focusing = null))
   })
   
   return promise
