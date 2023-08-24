@@ -62,6 +62,7 @@ const onFocusIn = object(listener, {
   passive,
   task: (document, { target }) => {
     focusing = target
+    console.log(focusIn, focusing)
   }
 })
 
@@ -73,7 +74,7 @@ const onFocusOut = object(listener, {
     const menu = current
     
     focusing = null
-    await wait(1000)
+    await wait(50)
     
     if (current !== menu) {
       remove(menu)
