@@ -17,6 +17,7 @@ import focusOut from '@mailobj-browser/front/js/events/types/focusOut.js'
 import { onEscape } from '../lightbox.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
+import wait from '@mailobj-browser/front/js/utils/wait.js'
 
 let current = null
 let focusing = null
@@ -70,6 +71,8 @@ const onFocusOut = object(listener, {
   task: async () => {
     const menu = current
     const isSelect = opener(menu)?.matches('select')
+    
+    await wait(50)
     
     requestAnimationFrame(() => {
       if (current !== menu || !isSelect) {
