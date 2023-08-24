@@ -75,9 +75,9 @@ const onFocusOut = object(listener, {
     console.log('focusout')
     focusing = null
     onFocusIn.listen(menu)
-    
+    //opener(menu) !== element
     requestAnimationFrame(() => {
-      if (!focusing && opener(menu) !== element) {
+      if (!focusing) {
         remove(menu)
         console.log('removed')
         
