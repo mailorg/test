@@ -74,14 +74,11 @@ const onFocusOut = object(listener, {
     
     console.log('focusout')
     focusing = null
-    onFocusIn.listen(menu)
     //opener(menu) !== element
     requestAnimationFrame(() => {
       if (!focusing) {
         remove(menu)
         console.log('removed')
-        
-        onFocusIn.forget(menu)
       }
     })
   }
@@ -166,9 +163,9 @@ export const display = async (content, opener, event = null) => {
     onEscape.listen(ownerDocument)
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
+    onFocusIn.listen(content)
     onFocusOut.listen(content)
     current = content
-    focusing = null
     resolve()
   })
   
