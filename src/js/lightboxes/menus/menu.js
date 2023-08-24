@@ -85,7 +85,7 @@ const onFocusOut = object(listener, {
     }
     
     if (!focusing || !menu.contains(focusing)) {
-      console.log('rm')
+      console.log('rm', focusing)
       remove(menu)
     }
   }
