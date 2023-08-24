@@ -171,6 +171,7 @@ export const display = async (content, opener, event = null) => {
     onFocusOut.listen(opener)
     onFocusOut.listen(content)
     current = content
+    focusing = null
     resolve()
   })
   
