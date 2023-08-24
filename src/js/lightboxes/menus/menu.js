@@ -76,7 +76,7 @@ const onFocusOut = object(listener, {
     
     console.log('focusout')
     onFocusIn.listen(ownerDocument)
-    await wait(50)
+    //await wait(50)
     
     requestAnimationFrame(() => {
       if (current !== menu || !isSelect || !focusing || !menu.contains(focusing)) {
