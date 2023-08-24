@@ -59,7 +59,6 @@ const onScroll = object(onCleanup, {
 const onFocusIn = object(listener, {
   type: focusIn,
   capture,
-  once,
   passive,
   task: (document, { target }) => {
     focusing = target
