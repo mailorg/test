@@ -75,7 +75,7 @@ const onFocusOut = object(listener, {
     console.log('focusout')
     focusing = null
     
-    if (element === opener(menu)) {
+    if (element !== menu) {
       onFocusOut.forget(element)
     } else {
       onFocusIn.listen(menu)
