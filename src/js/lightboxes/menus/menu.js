@@ -73,7 +73,7 @@ const onFocusOut = object(listener, {
     const menu = current
     
     focusing = null
-    await wait(100)
+    await wait(1000)
     
     if (current !== menu) {
       remove(menu)
