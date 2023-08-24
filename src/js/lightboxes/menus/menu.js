@@ -72,6 +72,10 @@ const onFocusOut = object(listener, {
   task: async element => {
     const menu = current
     
+    if (element === opener(menu)) {
+      onFocusOut.forget(element)
+    }
+    
     console.log('focusout')
     focusing = null
     //opener(menu) !== element
@@ -157,7 +161,7 @@ export const display = async (content, opener, event = null) => {
     }
     
     if (!opener.matches('select')) {
-      //onFocusOut.listen(opener)
+      onFocusOut.listen(opener)
     }
     
     onEscape.listen(ownerDocument)
