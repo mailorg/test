@@ -62,7 +62,6 @@ const onFocusIn = object(listener, {
   passive,
   task: (document, { target }) => {
     focusing = target
-    console.log(focusIn, focusing)
   }
 })
 
@@ -75,7 +74,6 @@ const onFocusOut = object(listener, {
     
     requestAnimationFrame(() => {
       if (current !== menu || !focusing || !menu.contains(focusing)) {
-        console.log('rm', focusing)
         remove(menu)
         focusing = null
       }
