@@ -70,16 +70,16 @@ const onFocusOut = object(listener, {
   type: focusOut,
   capture,
   passive,
-  task: async (container) => {
+  task: async () => {
     const menu = current
     
-    await wait(50)
-    
-    if (current !== menu || !focusing || !menu.contains(focusing)) {
-      console.log('rm', focusing)
-      remove(menu)
-      focusing = null
-    }
+    requestAnimationFrame(() => {
+      if (current !== menu || !focusing || !menu.contains(focusing)) {
+        console.log('rm', focusing)
+        remove(menu)
+        focusing = null
+      }
+    })
   }
 })
 
