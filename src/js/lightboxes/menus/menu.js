@@ -69,9 +69,17 @@ const onFocusOut = object(listener, {
   passive,
   task: async () => {
     const menu = current
+    const isSelect = opener(menu).matches('select')
     console.log(focusOut)
     requestAnimationFrame(() => {
-      if (current !== menu || !focusing || !menu.contains(focusing)) {
+      if (current !== menu || !isSelect) {
+        remove(menu)
+        focusing = null
+        
+        return
+      }
+      
+      if (!focusing || !menu.contains(focusing)) {
         remove(menu)
         focusing = null
       }
