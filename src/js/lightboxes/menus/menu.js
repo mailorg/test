@@ -73,8 +73,9 @@ const onFocusOut = object(listener, {
     requestAnimationFrame(() => {
       if (current !== menu || !focusing || !menu.contains(focusing)) {
         remove(menu)
-        focusing = null
       }
+      
+      focusing = null
     })
   }
 })
