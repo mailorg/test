@@ -129,7 +129,6 @@ export const open = async (
   opener = null
 ) => {
   close()
-  onFocusOut.listen(container)
   
   return lightbox.parse(template, container, opener)
 }
@@ -156,10 +155,13 @@ export const display = async (content, opener, event = null) => {
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
     onFocusIn.listen(ownerDocument)
-    onFocusOut.listen(opener)
     resolve()
     current = content
-    requestAnimationFrame(() => (focusing = null))
+    requestAnimationFrame(() => {
+      onFocusOut.listen(content)
+      onFocusOut.listen(opener)
+      focusing = null
+    })
   })
   
   return promise
