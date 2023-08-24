@@ -71,22 +71,19 @@ const onFocusOut = object(listener, {
   passive,
   task: async () => {
     const menu = current
+    const { ownerDocument } = menu
     const isSelect = opener(menu)?.matches('select')
     
+    onFocusIn.listen(ownerDocument)
     await wait(50)
     
     requestAnimationFrame(() => {
-      if (current !== menu || !isSelect) {
-        remove(menu)
-        focusing = null
-        
-        return
-      }
-      console.log(focusOut, isSelect)
-      if (!focusing || !menu.contains(focusing)) {
+      if (current !== menu || !isSelect || !focusing || !menu.contains(focusing)) {
         remove(menu)
         focusing = null
         console.log('removed')
+        
+        onFocusIn.forget(ownerDocument)
       }
     })
   }
@@ -167,7 +164,6 @@ export const display = async (content, opener, event = null) => {
     onEscape.listen(ownerDocument)
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
-    onFocusIn.listen(ownerDocument)
     onFocusOut.listen(opener)
     onFocusOut.listen(content)
     current = content
