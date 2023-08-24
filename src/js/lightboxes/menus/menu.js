@@ -72,14 +72,15 @@ const onFocusOut = object(listener, {
   task: async element => {
     const menu = current
     
+    console.log('focusout')
+    focusing = null
+    
     if (element === opener(menu)) {
       onFocusOut.forget(element)
     } else {
       onFocusIn.listen(menu)
     }
     
-    console.log('focusout')
-    focusing = null
     //opener(menu) !== element
     requestAnimationFrame(() => {
       if (!focusing) {
