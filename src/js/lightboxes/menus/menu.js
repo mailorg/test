@@ -73,19 +73,14 @@ const onFocusOut = object(listener, {
   task: async (container) => {
     const menu = current
     
-    focusing = null
     await wait(50)
     
-    if (current !== menu) {
-      remove(menu)
-      
-      return
-    }
-    
-    if (!focusing || !menu.contains(focusing)) {
+    if (current !== menu || !focusing || !menu.contains(focusing)) {
       console.log('rm', focusing)
       remove(menu)
     }
+    
+    focusing = null
   }
 })
 
