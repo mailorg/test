@@ -15,7 +15,6 @@ import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
 import focusIn from '@mailobj-browser/front/js/events/types/focusIn.js'
 import focusOut from '@mailobj-browser/front/js/events/types/focusOut.js'
 import { onEscape } from '../lightbox.js'
-import wait from '@mailobj-browser/front/js/utils/wait.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
 
@@ -26,7 +25,6 @@ export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
-    console.error(new Error())
     remove(current)
     current = null
     focusing = null
@@ -71,7 +69,7 @@ const onFocusOut = object(listener, {
   passive,
   task: async () => {
     const menu = current
-    
+    console.log(focusOut)
     requestAnimationFrame(() => {
       if (current !== menu || !focusing || !menu.contains(focusing)) {
         remove(menu)
