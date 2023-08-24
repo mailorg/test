@@ -161,6 +161,7 @@ export const display = async (content, opener, event = null) => {
     }
     
     if (!opener.matches('select')) {
+      console.log('not select')
       onFocusOut.listen(opener)
     }
     
