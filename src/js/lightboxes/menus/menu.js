@@ -74,6 +74,7 @@ const onFocusOut = object(listener, {
     const { ownerDocument } = menu
     const isSelect = opener(menu)?.matches('select')
     
+    console.log('focusout')
     onFocusIn.listen(ownerDocument)
     await wait(50)
     
