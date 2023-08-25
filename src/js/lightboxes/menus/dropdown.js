@@ -3,8 +3,6 @@ import * as menu from './menu.js'
 import { display } from './menu.js'
 import all from '@mailobj-browser/front/js/selectors/all.js'
 
-const selects = new WeakSet()
-
 export const {
   close,
   focus,
@@ -34,9 +32,6 @@ export default async (
   
   if (element.matches('select')) {
     const { value = '' } = element
-    
-    onKeyDown.listen(list)
-    selects.add(list)
   
     for (const input of all('input', list)) {
       if (input.value === value) {
@@ -46,6 +41,8 @@ export default async (
       }
     }
   } else {
-    onKeyDown.listen(element)
+    focus(list)
   }
+  
+  onKeyDown.listen(list)
 }

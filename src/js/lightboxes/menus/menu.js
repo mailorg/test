@@ -69,19 +69,13 @@ const onFocusOut = object(listener, {
   type: focusOut,
   capture,
   passive,
-  task: async element => {
+  task: async () => {
     const menu = current
-    
-    if (element !== menu) {
-      onFocusOut.forget(element)
-    } else {
-      onFocusIn.listen(menu)
-    }
     
     console.log('focusout')
     focusing = null
+    onFocusIn.listen(menu)
     
-    //opener(menu) !== element
     requestAnimationFrame(() => {
       if (!focusing) {
         remove(menu)
@@ -102,16 +96,6 @@ export const onKeyDown = object(listener, {
     if (pick) {
       preventDefault(event)
       stopImmediatePropagation(event)
-
-      if (element !== current) {
-        const li = one('li', current)
-        
-        focus(li)
-        this.listen(current)
-        this.forget(element)
-        
-        return
-      }
       
       const li = target.closest('li')
       const next = await pick(element, li, event)
@@ -161,12 +145,6 @@ export const display = async (content, opener, event = null) => {
       resize(content, opener)
       move(content, fromNode(content, opener))
       openers.set(content, opener)
-    }
-    
-    if (!opener.matches('select')) {
-      console.log('not select')
-      onFocusIn.listen(content)
-      onFocusOut.listen(opener)
     }
     
     onEscape.listen(ownerDocument)
