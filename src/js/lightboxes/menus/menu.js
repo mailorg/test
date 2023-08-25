@@ -72,7 +72,7 @@ const onFocusOut = object(listener, {
   task: async element => {
     const menu = current
     
-    console.log('focusout')
+    console.log('focusout', element)
     focusing = null
     onFocusIn.listen(menu)
     
