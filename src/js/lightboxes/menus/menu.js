@@ -77,9 +77,9 @@ const onFocusOut = object(listener, {
         } else {
           remove(menu)
         }
-        
-        focusing = null
       }
+      
+      focusing = null
     })
   }
 })
