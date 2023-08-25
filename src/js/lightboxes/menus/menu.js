@@ -161,10 +161,6 @@ export const display = async (content, opener, event = null) => {
       openers.set(content, opener)
     }
     
-    if (!opener.matches('select')) {
-      onFocusOut.listen(opener)
-    }
-    
     onEscape.listen(ownerDocument)
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
