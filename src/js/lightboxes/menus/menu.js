@@ -1,3 +1,4 @@
+import array from '@mailobj-browser/front/js/utils/array.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import capture from '@mailobj-browser/front/js/events/options/capture.js'
