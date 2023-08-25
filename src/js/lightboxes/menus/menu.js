@@ -20,6 +20,7 @@ import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefaul
 import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
 import contextMenu from '@mailobj-browser/front/js/events/types/contextMenu.js'
 import click from '@mailobj-browser/front/js/events/types/click.js'
+import { tapDown } from '@mailobj-browser/front/js/events/listeners/builtins/tap.js'
 
 let current = null
 let focusing = null
@@ -48,14 +49,13 @@ const onCleanup = object(listener, {
   task: close
 })
 
-const onOpenerClick = object(listener, {
+const onOpenerClick = object(tapDown, {
   hooks: array([
     preventDefault,
     stopImmediatePropagation
   ]),
   capture,
   once,
-  type: click,
   task: close
 })
 
