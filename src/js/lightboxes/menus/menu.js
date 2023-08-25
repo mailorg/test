@@ -73,8 +73,6 @@ const onFocusOut = object(listener, {
     const menu = current
     
     console.log('focusout', element)
-    focusing = null
-    onFocusIn.listen(menu)
     
     requestAnimationFrame(() => {
       if (!focusing) {
@@ -83,6 +81,8 @@ const onFocusOut = object(listener, {
         } else {
           remove(menu)
         }
+        
+        focusing = null
         console.log('removed')
       }
     })
@@ -138,6 +138,7 @@ export const open = async (
   container,
   opener = null
 ) => {
+  onFocusIn.listen(container)
   
   return lightbox.parse(template, container, opener)
 }
