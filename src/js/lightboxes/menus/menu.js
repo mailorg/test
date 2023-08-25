@@ -152,6 +152,7 @@ export const display = async (content, opener, event = null) => {
     onResize.listen(defaultView)
     onFocusOut.listen(content)
     current = content
+    focusing = null
     resolve()
   })
   
