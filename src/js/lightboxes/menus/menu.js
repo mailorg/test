@@ -47,6 +47,16 @@ const onCleanup = object(listener, {
   task: close
 })
 
+const onOpenerClick = object(listener, {
+  hooks: array([
+    preventDefault,
+    stopImmediatePropagation
+  ]),
+  capture,
+  once,
+  task: close
+})
+
 const onResize = object(onCleanup, {
   capture,
   type: resize
@@ -166,6 +176,7 @@ export const display = async (content, opener, event = null) => {
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
     onContextMenu.listen(content)
+    onOpenerClick.listen(opener)
     current = content
     resolve()
     
