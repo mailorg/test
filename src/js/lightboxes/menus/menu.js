@@ -69,19 +69,22 @@ const onFocusOut = object(listener, {
   type: focusOut,
   capture,
   passive,
-  task: async () => {
+  task: async element => {
     const menu = current
     
     console.log('focusout')
+    focusing = null
     onFocusIn.listen(menu)
     
     requestAnimationFrame(() => {
       if (!focusing) {
-        remove(menu)
+        if (menu === current) {
+          close()
+        } else {
+          remove(menu)
+        }
         console.log('removed')
-        onFocusIn.forget(menu)
       }
-      focusing = null
     })
   }
 })
@@ -97,6 +100,16 @@ export const onKeyDown = object(listener, {
     if (pick) {
       preventDefault(event)
       stopImmediatePropagation(event)
+
+      if (element !== current) {
+        const li = one('li', current)
+        
+        focus(li)
+        this.listen(current)
+        this.forget(element)
+        
+        return
+      }
       
       const li = target.closest('li')
       const next = await pick(element, li, event)
@@ -126,7 +139,6 @@ export const open = async (
   opener = null
 ) => {
   close()
-  onFocusOut.listen(container)
   
   return lightbox.parse(template, container, opener)
 }
@@ -149,9 +161,14 @@ export const display = async (content, opener, event = null) => {
       openers.set(content, opener)
     }
     
+    if (!opener.matches('select')) {
+      onFocusOut.listen(opener)
+    }
+    
     onEscape.listen(ownerDocument)
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
+    onFocusOut.listen(content)
     current = content
     focusing = null
     resolve()
