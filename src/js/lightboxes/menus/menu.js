@@ -73,7 +73,6 @@ const onFocusOut = object(listener, {
     const menu = current
     
     console.log('focusout')
-    focusing = null
     onFocusIn.listen(menu)
     
     requestAnimationFrame(() => {
@@ -81,6 +80,7 @@ const onFocusOut = object(listener, {
         remove(menu)
         console.log('removed')
       }
+      focusing = null
     })
   }
 })
