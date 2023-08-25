@@ -17,6 +17,7 @@ import focusOut from '@mailobj-browser/front/js/events/types/focusOut.js'
 import { onEscape } from '../lightbox.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
+import contextMenu from '@mailobj-browser/front/js/events/types/contextMenu.js'
 
 let current = null
 let focusing = null
@@ -52,6 +53,14 @@ const onResize = object(onCleanup, {
 
 const onScroll = object(onCleanup, {
   type: scroll
+})
+
+const onContextMenu = object(listener, {
+  hooks: array([
+    preventDefault
+  ]),
+  type: contextMenu,
+  task: close
 })
 
 const onFocusIn = object(listener, {
@@ -155,13 +164,11 @@ export const display = async (content, opener, event = null) => {
     onEscape.listen(ownerDocument)
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
+    onContextMenu.listen(content)
+    onFocusOut.listen(content)
+    focusing = null
     current = content
     resolve()
-    
-    requestAnimationFrame(() => {
-      onFocusOut.listen(content)
-      focusing = null
-    })
   })
   
   return promise
