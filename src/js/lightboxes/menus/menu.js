@@ -19,7 +19,6 @@ import { onEscape } from '../lightbox.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
 import contextMenu from '@mailobj-browser/front/js/events/types/contextMenu.js'
-import click from '@mailobj-browser/front/js/events/types/click.js'
 import { tapUp } from '@mailobj-browser/front/js/events/listeners/builtins/tap.js'
 
 let current = null
@@ -29,6 +28,7 @@ export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
+    onOpenerTapUp.forget(opener(current))
     remove(current)
     current = null
     focusing = null
@@ -49,7 +49,7 @@ const onCleanup = object(listener, {
   task: close
 })
 
-const onOpenerClick = object(tapUp, {
+const onOpenerTapUp = object(tapUp, {
   hooks: array([
     preventDefault,
     stopImmediatePropagation
@@ -178,7 +178,7 @@ export const display = async (content, opener, event = null) => {
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
     onContextMenu.listen(content)
-    onOpenerClick.listen(opener)
+    onOpenerTapUp.listen(opener)
     current = content
     resolve()
     
