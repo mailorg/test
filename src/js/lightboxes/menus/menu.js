@@ -19,6 +19,7 @@ import { onEscape } from '../lightbox.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
 import contextMenu from '@mailobj-browser/front/js/events/types/contextMenu.js'
+import click from '@mailobj-browser/front/js/events/types/click.js'
 
 let current = null
 let focusing = null
@@ -54,6 +55,7 @@ const onOpenerClick = object(listener, {
   ]),
   capture,
   once,
+  type: click,
   task: close
 })
 
