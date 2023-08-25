@@ -166,10 +166,13 @@ export const display = async (content, opener, event = null) => {
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
     onContextMenu.listen(content)
-    onFocusOut.listen(content)
-    focusing = null
     current = content
     resolve()
+    
+    requestAnimationFrame(() => {
+      onFocusOut.listen(content)
+      focusing = null
+    })
   })
   
   return promise
