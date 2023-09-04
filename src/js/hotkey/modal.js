@@ -11,8 +11,9 @@ const handler = object(null, {
         event
     ) {
         preventDefault(event)
-        const { parentNode, ownerDocument } = element
-        const template = one('template', parentNode)
+        const { ownerDocument } = element
+        const anchor = element.closest('a[href="javascript:"]')
+        const template = one('template', anchor)
         const container = one(`.${utilities.elements.aside_lightboxes}`, ownerDocument)
 
         await open(template, container)
