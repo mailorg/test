@@ -1,9 +1,7 @@
 import { hotkey } from '@mailobj-browser/components-generics/js/hotkey/hotkey.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
-import one from '@mailobj-browser/front/js/selectors/one.js'
-import { open } from '../lightboxes/menus/menu.js'
-import * as utilities from '../styles.js'
+import { onTapUp } from '@mailobj-browser/components-generics/js/selectors/templates/anchor'
 
 const handler = object(null, {
     async task(
@@ -11,12 +9,9 @@ const handler = object(null, {
         event
     ) {
         preventDefault(event)
-        const { ownerDocument } = element
         const anchor = element.closest('a[href="javascript:"]')
-        const template = one('template', anchor)
-        const container = one(`.${utilities.elements.aside_lightboxes}`, ownerDocument)
 
-        await open(template, container)
+        await onTapUp.trigger(anchor)
     }
 })
 
