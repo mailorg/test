@@ -98,6 +98,9 @@ const onFocusOut = object(listener, {
         focusing = null
         
         if (menu === current) {
+          const { ownerDocument } = current
+          
+          onFocusIn.forget(ownerDocument)
           current = null
         }
       }
