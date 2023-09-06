@@ -94,16 +94,12 @@ const onFocusOut = object(listener, {
     
     requestAnimationFrame(() => {
       if (!focusing) {
+        if (menu === current) {
+          return close()
+        }
+        
         remove(menu)
         focusing = null
-        
-        if (menu === current) {
-          console.log('cleaning')
-          const { ownerDocument } = current
-          
-          onFocusIn.forget(ownerDocument)
-          current = null
-        }
       }
     })
   }
