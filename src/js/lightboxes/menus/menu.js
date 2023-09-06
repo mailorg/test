@@ -98,6 +98,7 @@ const onFocusOut = object(listener, {
         focusing = null
         
         if (menu === current) {
+          console.log('cleaning')
           const { ownerDocument } = current
           
           onFocusIn.forget(ownerDocument)
