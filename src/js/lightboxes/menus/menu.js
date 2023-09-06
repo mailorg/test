@@ -96,6 +96,10 @@ const onFocusOut = object(listener, {
       if (!focusing) {
         remove(menu)
         focusing = null
+        
+        if (menu === current) {
+          current = null
+        }
       }
     })
   }
