@@ -30,7 +30,6 @@ export const close = () => {
   if (current) {
     onOpenerTapUp.forget(opener(current))
     remove(current)
-    current = null
     focusing = null
   }
 }
@@ -158,6 +157,7 @@ export const open = async (
 ) => {
   onFocusIn.listen(container)
   console.log({ current })
+  current = null
   
   return lightbox.parse(template, container, opener)
 }
