@@ -82,6 +82,7 @@ const onFocusIn = object(listener, {
   passive,
   task: (document, { target }) => {
     focusing = target
+    console.log({ focusing })
   }
 })
 
