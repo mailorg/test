@@ -30,6 +30,7 @@ export const close = () => {
   if (current) {
     onOpenerTapUp.forget(opener(current))
     remove(current)
+    current = null
     focusing = null
   }
 }
@@ -79,9 +80,8 @@ const onFocusIn = object(listener, {
   type: focusIn,
   capture,
   passive,
-  task: (document, { target }) => {
+  task: (container, { target }) => {
     focusing = target
-    console.log({ focusing })
   }
 })
 
@@ -94,11 +94,6 @@ const onFocusOut = object(listener, {
     
     requestAnimationFrame(() => {
       if (!focusing) {
-        if (menu === current) {
-          console.log('closing', focusing)
-          return close()
-        }
-        
         remove(menu)
         focusing = null
       }
@@ -156,8 +151,6 @@ export const open = async (
   opener = null
 ) => {
   onFocusIn.listen(container)
-  console.log({ current })
-  current = null
   
   return lightbox.parse(template, container, opener)
 }
