@@ -94,8 +94,8 @@ const onFocusOut = object(listener, {
     const menu = current
     console.log(focusOut, focusing)
     
-    requestAnimationFrame(() => {/*
-      console.log('raf', focusing)
+    requestAnimationFrame(() => {
+      console.log('raf', document.activeElement)/*
       if (!focusing) {
         remove(menu)
         focusing = null
