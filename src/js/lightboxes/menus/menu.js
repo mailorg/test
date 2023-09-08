@@ -24,13 +24,13 @@ const events = new WeakSet()
 
 let current = null
 
-//let counter = 0
+let counter = 0
 
 export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
-    //alert(current.parentNode.children.length)
+    console.log(current.parentNode.children.length)
     onOpenerTapUp.forget(opener(current))
     remove(current)
     current = null
@@ -52,8 +52,7 @@ const onOpenerTapUp = object(tapUp, {
   ]),
   capture,
   once,
-  task (opener, event) {
-    console.log(events, event)
+  task: () => {
     close()
   }
 })
@@ -81,7 +80,7 @@ const onFocusOut = object(listener, {
   passive,
   task: async (list, { relatedTarget }) => {
     if (!relatedTarget) {
-      //alert(counter)
+      console.log({ counter })
       requestAnimationFrame(close)
     }
   }
@@ -136,7 +135,7 @@ export const open = async (
   container,
   opener = null
 ) => {
-  //counter += 1
+  counter += 1
   return lightbox.parse(template, container, opener)
 }
 
