@@ -129,6 +129,8 @@ export const open = async (
   container,
   opener = null
 ) => {
+  close()
+  
   return lightbox.parse(template, container, opener)
 }
 
@@ -139,7 +141,6 @@ export const display = async (content, opener, event = null) => {
   const { fromEvent, fromNode, move, resize } = fixed
   const [promise, { resolve }] = resolvable()
   
-  //close()
   move(content)
   
   requestAnimationFrame(() => {
