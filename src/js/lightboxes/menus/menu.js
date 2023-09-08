@@ -9,7 +9,6 @@ import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import * as fixed from '../../fixed/fixed.js'
 import * as lightbox from '../lightbox.js'
 import resize from '@mailobj-browser/front/js/events/types/resize.js'
-import remove from '@mailobj-browser/front/js/tree/remove.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
@@ -22,15 +21,12 @@ import { tapUp } from '@mailobj-browser/front/js/events/listeners/builtins/tap.j
 
 let current = null
 
-let counter = 0
-
 export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
     const { parentNode } = current
-    const length = current.parentNode.children.length
-    alert(`length: ${length}`)
+    
     onOpenerTapUp.forget(opener(current))
     parentNode.innerHTML = ''
     current = null
@@ -134,7 +130,6 @@ export const open = async (
   container,
   opener = null
 ) => {
-  counter += 1
   return lightbox.parse(template, container, opener)
 }
 
@@ -166,7 +161,7 @@ export const display = async (content, opener, event = null) => {
     resolve()
     
     requestAnimationFrame(() => {
-      //onOpenerTapUp.listen(opener)
+      onOpenerTapUp.listen(opener)
     })
   })
   
