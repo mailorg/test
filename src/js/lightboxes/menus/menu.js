@@ -28,7 +28,7 @@ export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
-    //alert('close')
+    alert(current.parentNode.children.length)
     onOpenerTapUp.forget(opener(current))
     remove(current)
     current = null
