@@ -49,7 +49,10 @@ const onOpenerTapUp = object(tapUp, {
   ]),
   capture,
   once,
-  task: close
+  task: () => {
+    console.log('ontapup')
+    close()
+  }
 })
 
 const onResize = object(onCleanup, {
