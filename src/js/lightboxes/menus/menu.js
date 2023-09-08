@@ -9,6 +9,7 @@ import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import * as fixed from '../../fixed/fixed.js'
 import * as lightbox from '../lightbox.js'
 import resize from '@mailobj-browser/front/js/events/types/resize.js'
+import remove from '@mailobj-browser/front/js/tree/remove.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
@@ -25,10 +26,8 @@ export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
-    const { parentNode } = current
-    
     onOpenerTapUp.forget(opener(current))
-    parentNode.innerHTML = ''
+    remove(current)
     current = null
   }
 }
