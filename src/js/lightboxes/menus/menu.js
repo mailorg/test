@@ -77,6 +77,7 @@ const onFocusOut = object(listener, {
     if (!relatedTarget) {
       requestAnimationFrame(close)
     } else if (relatedTarget === opener(current) && relatedTarget.matches('select')) {
+      console.log('close select')
       close()
     }
   }
