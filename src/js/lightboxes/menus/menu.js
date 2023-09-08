@@ -51,7 +51,7 @@ const onOpenerTapUp = object(tapUp, {
   capture,
   once,
   task (opener, event) {
-    console.log(events.has(event))
+    console.log(events, event)
     close()
   }
 })
