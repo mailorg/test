@@ -20,8 +20,6 @@ import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/sto
 import contextMenu from '@mailobj-browser/front/js/events/types/contextMenu.js'
 import { tapUp } from '@mailobj-browser/front/js/events/listeners/builtins/tap.js'
 
-const events = new WeakSet()
-
 let current = null
 
 let counter = 0
@@ -30,10 +28,11 @@ export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
+    const { parentNode } = current
     const length = current.parentNode.children.length
     alert(`length: ${counter}`)
     onOpenerTapUp.forget(opener(current))
-    remove(current)
+    parentNode.innerHTML = ''
     current = null
   }
 }
