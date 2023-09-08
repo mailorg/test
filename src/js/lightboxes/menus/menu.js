@@ -92,17 +92,9 @@ const onFocusOut = object(listener, {
   capture,
   passive,
   task: async (list, { relatedTarget }) => {
-    const menu = current
-    console.log(focusOut, relatedTarget)
-    
-    requestAnimationFrame(() => {
-      //console.log('raf')
-      /*
-      if (!focusing) {
-        remove(menu)
-        focusing = null
-      }*/
-    })
+    if (!relatedTarget) {
+      close()
+    }
   }
 })
 
