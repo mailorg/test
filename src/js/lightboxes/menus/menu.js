@@ -48,7 +48,7 @@ const onOpenerTapUp = object(tapUp, {
   capture,
   once,
   task: () => {
-    close()
+    //close()
   }
 })
 
