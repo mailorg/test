@@ -82,6 +82,7 @@ const onFocusIn = object(listener, {
   passive,
   task: (container, { target }) => {
     focusing = target
+    console.log(focusIn, focusing)
   }
 })
 
@@ -91,8 +92,10 @@ const onFocusOut = object(listener, {
   passive,
   task: async () => {
     const menu = current
+    console.log(focusOut, focusing)
     
     requestAnimationFrame(() => {
+      console.log('raf', focusing)
       if (!focusing) {
         remove(menu)
         focusing = null
