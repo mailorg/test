@@ -91,9 +91,9 @@ const onFocusOut = object(listener, {
   type: focusOut,
   capture,
   passive,
-  task: async () => {
+  task: async (list, { relatedTarget }) => {
     const menu = current
-    console.log(focusOut, current)
+    console.log(focusOut, relatedTarget)
     
     requestAnimationFrame(() => {
       //console.log('raf')
