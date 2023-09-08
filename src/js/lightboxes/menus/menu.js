@@ -142,7 +142,6 @@ export const display = async (content, opener, event = null) => {
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
     onContextMenu.listen(content)
-    onOpenerTapUp.listen(opener)
     current = content
     resolve()
     
