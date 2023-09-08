@@ -93,7 +93,7 @@ const onFocusOut = object(listener, {
   passive,
   task: async () => {
     const menu = current
-    console.log(focusOut, focusing)
+    console.log(focusOut, document.activeElement)
     
     requestAnimationFrame(() => {
       console.log('raf')/*
