@@ -13,7 +13,6 @@ import remove from '@mailobj-browser/front/js/tree/remove.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
-import focusIn from '@mailobj-browser/front/js/events/types/focusIn.js'
 import focusOut from '@mailobj-browser/front/js/events/types/focusOut.js'
 import { onEscape } from '../lightbox.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
@@ -22,17 +21,14 @@ import contextMenu from '@mailobj-browser/front/js/events/types/contextMenu.js'
 import { tapUp } from '@mailobj-browser/front/js/events/listeners/builtins/tap.js'
 
 let current = null
-let focusing = null
 
 export const { focus, opener } = lightbox
 
 export const close = () => {
-  console.log(document.activeElement)
   if (current) {
     onOpenerTapUp.forget(opener(current))
     remove(current)
     current = null
-    focusing = null
   }
 }
 
@@ -75,16 +71,6 @@ const onContextMenu = object(listener, {
   ]),
   type: contextMenu,
   task: close
-})
-
-const onFocusIn = object(listener, {
-  type: focusIn,
-  capture,
-  passive,
-  task: (container, { target }) => {
-    focusing = target
-    //console.log(focusIn, focusing)
-  }
 })
 
 const onFocusOut = object(listener, {
@@ -147,8 +133,6 @@ export const open = async (
   container,
   opener = null
 ) => {
-  onFocusIn.listen(container)
-  
   return lightbox.parse(template, container, opener)
 }
 
@@ -181,7 +165,6 @@ export const display = async (content, opener, event = null) => {
     
     requestAnimationFrame(() => {
       onFocusOut.listen(content)
-      focusing = null
     })
   })
   
