@@ -30,7 +30,8 @@ export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
-    console.log(current.parentNode.children.length)
+    const length = current.parentNode.children.length
+    alert(`length: ${counter}`)
     onOpenerTapUp.forget(opener(current))
     remove(current)
     current = null
@@ -80,7 +81,7 @@ const onFocusOut = object(listener, {
   passive,
   task: async (list, { relatedTarget }) => {
     if (!relatedTarget) {
-      console.log({ counter })
+      alert(`counter: ${counter}`)
       requestAnimationFrame(close)
     }
   }
