@@ -160,10 +160,13 @@ export const display = async (content, opener, event = null) => {
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
     onContextMenu.listen(content)
-    onOpenerTapUp.listen(opener)
-    onFocusOut.listen(content)
     current = content
     resolve()
+    
+    requestAnimationFrame(() => {
+      onOpenerTapUp.listen(opener)
+      onFocusOut.listen(content)
+    })
   })
   
   return promise
