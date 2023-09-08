@@ -27,6 +27,7 @@ let focusing = null
 export const { focus, opener } = lightbox
 
 export const close = () => {
+  console.log(document.activeElement)
   if (current) {
     onOpenerTapUp.forget(opener(current))
     remove(current)
@@ -95,7 +96,7 @@ const onFocusOut = object(listener, {
     console.log(focusOut, focusing)
     
     requestAnimationFrame(() => {
-      console.log('raf', document.activeElement)/*
+      console.log('raf')/*
       if (!focusing) {
         remove(menu)
         focusing = null
@@ -153,7 +154,7 @@ export const open = async (
   container,
   opener = null
 ) => {
-  onFocusIn.listen(container.ownerDocument)
+  onFocusIn.listen(container)
   
   return lightbox.parse(template, container, opener)
 }
