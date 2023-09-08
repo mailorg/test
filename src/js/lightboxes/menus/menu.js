@@ -26,6 +26,7 @@ export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
+    onOpenerTapUp.forget(opener(current))
     remove(current)
     current = null
   }
@@ -36,6 +37,16 @@ const openers = new WeakMap()
 const onCleanup = object(listener, {
   once,
   passive,
+  task: close
+})
+
+const onOpenerTapUp = object(tapUp, {
+  hooks: array([
+    preventDefault,
+    stopImmediatePropagation
+  ]),
+  capture,
+  once,
   task: close
 })
 
@@ -61,7 +72,7 @@ const onFocusOut = object(listener, {
   capture,
   passive,
   task: async (list, { relatedTarget }) => {
-    if (!relatedTarget ||relatedTarget === opener(list)) {
+    if (!relatedTarget) {
       requestAnimationFrame(close)
     }
   }
@@ -142,11 +153,12 @@ export const display = async (content, opener, event = null) => {
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
     onContextMenu.listen(content)
+    onOpenerTapUp.listen(opener)
+    onFocusOut.listen(content)
     current = content
     resolve()
     
     requestAnimationFrame(() => {
-      onFocusOut.listen(content)
     })
   })
   
