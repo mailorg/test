@@ -73,12 +73,9 @@ const onFocusOut = object(listener, {
   type: focusOut,
   capture,
   passive,
-  task: async (list, { relatedTarget }) => {console.log({ relatedTarget })
+  task: async (list, { relatedTarget }) => {
     if (!relatedTarget) {
       requestAnimationFrame(close)
-    } else if (relatedTarget === opener(current) && relatedTarget.matches('select')) {
-      console.log('close select')
-      close()
     }
   }
 })
