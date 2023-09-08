@@ -26,7 +26,6 @@ export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
-    onOpenerTapUp.forget(opener(current))
     remove(current)
     current = null
   }
@@ -37,16 +36,6 @@ const openers = new WeakMap()
 const onCleanup = object(listener, {
   once,
   passive,
-  task: close
-})
-
-const onOpenerTapUp = object(tapUp, {
-  hooks: array([
-    preventDefault,
-    stopImmediatePropagation
-  ]),
-  capture,
-  once,
   task: close
 })
 
