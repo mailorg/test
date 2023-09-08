@@ -20,6 +20,8 @@ import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/sto
 import contextMenu from '@mailobj-browser/front/js/events/types/contextMenu.js'
 import { tapUp } from '@mailobj-browser/front/js/events/listeners/builtins/tap.js'
 
+const events = new WeakSet()
+
 let current = null
 
 export const { focus, opener } = lightbox
@@ -49,7 +51,7 @@ const onOpenerTapUp = object(tapUp, {
   capture,
   once,
   task (opener, event) {
-    console.log(this.type, event.type)
+    console.log(events.has(event))
     close()
   }
 })
@@ -130,9 +132,14 @@ export const onKeyDown = object(listener, {
 export const open = async (
   template,
   container,
-  opener = null
+  opener = null,
+  event = null
 ) => {
   close()
+  
+  if (event) {
+    events.add(event)
+  }
   
   return lightbox.parse(template, container, opener)
 }
