@@ -153,7 +153,7 @@ export const open = async (
   container,
   opener = null
 ) => {
-  onFocusIn.listen(container)
+  onFocusIn.listen(container.ownerDocument)
   
   return lightbox.parse(template, container, opener)
 }
