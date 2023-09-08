@@ -73,7 +73,7 @@ const onFocusOut = object(listener, {
   type: focusOut,
   capture,
   passive,
-  task: async (list, { relatedTarget }) => {
+  task: async (list, { relatedTarget }) => {console.log({ relatedTarget })
     if (!relatedTarget) {
       requestAnimationFrame(close)
     }
