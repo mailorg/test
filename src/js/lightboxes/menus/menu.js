@@ -157,9 +157,6 @@ export const display = async (content, opener, event = null) => {
     onFocusOut.listen(content)
     current = content
     resolve()
-    
-    requestAnimationFrame(() => {
-    })
   })
   
   return promise
