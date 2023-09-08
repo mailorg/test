@@ -30,7 +30,7 @@ export const close = () => {
   if (current) {
     const { parentNode } = current
     const length = current.parentNode.children.length
-    alert(`length: ${counter}`)
+    alert(`length: ${length}`)
     onOpenerTapUp.forget(opener(current))
     parentNode.innerHTML = ''
     current = null
