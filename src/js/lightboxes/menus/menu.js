@@ -32,12 +32,6 @@ export const close = () => {
   }
 }
 
-export const list = element => {
-  if (current && current.contains(element)) {
-    return current
-  }
-}
-
 const openers = new WeakMap()
 
 const onCleanup = object(listener, {
