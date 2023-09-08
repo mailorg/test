@@ -80,7 +80,6 @@ const onFocusOut = object(listener, {
   passive,
   task: async (list, { relatedTarget }) => {
     if (!relatedTarget) {
-      alert(`counter: ${counter}`)
       requestAnimationFrame(close)
     }
   }
