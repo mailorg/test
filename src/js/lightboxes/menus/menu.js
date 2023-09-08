@@ -87,7 +87,7 @@ const onFocusIn = object(listener, {
 })
 
 const onFocusOut = object(listener, {
-  type: 'blur',
+  type: focusOut,
   capture,
   passive,
   task: async () => {
