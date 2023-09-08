@@ -24,7 +24,7 @@ const events = new WeakSet()
 
 let current = null
 
-let counter = 0
+//let counter = 0
 
 export const { focus, opener } = lightbox
 
@@ -81,7 +81,7 @@ const onFocusOut = object(listener, {
   passive,
   task: async (list, { relatedTarget }) => {
     if (!relatedTarget) {
-      alert(counter)
+      //alert(counter)
       requestAnimationFrame(close)
     }
   }
@@ -136,7 +136,7 @@ export const open = async (
   container,
   opener = null
 ) => {
-  counter += 1
+  //counter += 1
   return lightbox.parse(template, container, opener)
 }
 
