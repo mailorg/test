@@ -66,9 +66,6 @@ const onScroll = object(onCleanup, {
 })
 
 const onContextMenu = object(listener, {
-  hooks: array([
-    preventDefault
-  ]),
   type: contextMenu,
   task: close
 })
