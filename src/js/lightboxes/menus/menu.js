@@ -75,7 +75,11 @@ const onFocusOut = object(listener, {
   capture,
   passive,
   task: async (list, { relatedTarget }) => {
-    if (!relatedTarget || relatedTarget === opener(list)) {
+    const origin = opener(list)
+    
+    if (!relatedTarget || relatedTarget === origin) {
+      onOpenerTapUp.forget(origin)
+      
       requestAnimationFrame(() => {
         if (list === current) {
           close()
