@@ -161,7 +161,7 @@ export const display = async (content, opener, event = null) => {
     onResize.listen(defaultView)
     onContextMenu.listen(content)
     onFocusOut.listen(content)
-    onOpenerTapUp.listen(opener)
+    //onOpenerTapUp.listen(opener)
     current = content
     resolve()
     
