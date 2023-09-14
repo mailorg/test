@@ -27,12 +27,12 @@ export default async (
   list
 ) => {
   const element = opener(list)
-  const { value = '' } = element
   
   await display(list, element)
-  focus(list)
   
   if (element.matches('select')) {
+    const { value = '' } = element
+  
     for (const input of all('input', list)) {
       if (input.value === value) {
         input.click()
@@ -40,6 +40,8 @@ export default async (
         break
       }
     }
+  } else {
+    focus(list)
   }
   
   onKeyDown.listen(list)
