@@ -8,6 +8,9 @@ export default (
     decimalSeparator = '.',
     VATDiv = 100
   }
-) => `${currencyBefore}${(amount / VATDiv).toFixed(decimals)}${currencyAfter}`
-  .replace('.', decimalSeparator)
-  .replaceAll('$', currency)
+) => {
+    console.log(amount);
+    return `${currencyBefore}${(amount / VATDiv).toFixed(decimals)}${currencyAfter}`
+   .replace('.', decimalSeparator)
+   .replaceAll('$', currency)
+}
