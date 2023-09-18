@@ -82,7 +82,7 @@ const onFocusOut = object(listener, {
       return
     }
 
-    if (relatedTarget.matches('a') && relatedTarget.dataset.confirm) {
+    if (relatedTarget.matches('a')) {
       return
     }
     
