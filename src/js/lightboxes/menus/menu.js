@@ -83,6 +83,7 @@ const onFocusOut = object(listener, {
     }
     
     if (relatedTarget === one('template', relatedTarget)?.parentNode) {
+      console.log('template')
       return
     }
     
