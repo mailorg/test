@@ -81,7 +81,7 @@ const onFocusOut = object(listener, {
       return
     }
 
-    if (list.contains(relatedTarget) && relatedTarget.matches('a')) {
+    if (list.contains(relatedTarget) && relatedTarget.dataset.confirm) {
       return
     }
     
