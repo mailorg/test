@@ -74,10 +74,12 @@ const form = (
   target,
   event
 ) => {
-  const { action, method = 'GET', ownerDocument } = target
+  const submitter = submitters.get(event) ?? empty
+  const { name, value, ownerDocument } = submitter
+  const action = submitter.getAttribute('formaction') ?? target.action
+  const method = submitter.getAttribute('formmethod') ?? target.method ?? 'GET'
   const { defaultView } = ownerDocument
   const { FormData, URL, URLSearchParams } = defaultView
-  const { name, value } = submitters.get(event) ?? empty
   const body = new FormData(target)
   
   submitters.delete(event)
@@ -142,7 +144,6 @@ export const post = async (
   
   return call(request, { target })
 }
-
 export const fromEvent = async (
   target,
   event
