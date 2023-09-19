@@ -26,6 +26,10 @@
   @include ea_utilities__overflow-hidden();
 }
 
+.ea_utilities__overflow-auto {
+  overflow: auto !important;
+}
+
 .ea_utilities__vertical_align-text_bottom {
   display: inline-block;
   vertical-align: text-bottom;
