@@ -7,8 +7,6 @@ import object from '@mailobj-browser/front/js/utils/object.js'
 import html from '@mailobj-browser/front/js/fetchers/html.js'
 import fetch from '@mailobj-browser/front/js/fetchers/fetch.js'
 import globals from '@mailobj-browser/utilities/js/ea/globals.js'
-import skin from '@mailobj-browser/utilities/js/ea/skin.js'
-import { app, web2, junior, kid } from '@mailobj-browser/utilities/js/ea/skins.js'
 import href from './href.js'
 
 const { document } = defaults
@@ -151,13 +149,7 @@ export const fromEvent = async (
   const { type } = event
   const request = type === 'submit' ? form : anchor
 
-  if ([app, web2, junior, kid].includes(skin)) {
-    const result = await request(target, event)
-    
-    globals.ea_screen_adjust()
-    
-    return result
-  } else {
-    return request(target, event)
-  }
+  const result = await request(target, event)
+  globals.ea_screen_adjust()
+  return result
 }
