@@ -74,8 +74,8 @@ const form = (
 ) => {
   const submitter = submitters.get(event) ?? empty
   const { name, value, ownerDocument } = submitter
-  const action = submitter.getAttribute('formaction') ?? target.action
-  const method = submitter.getAttribute('formmethod') ?? target.method ?? 'GET'
+  const action = submitter.formAction ?? target.action
+  const method = submitter.formMethod ?? target.method ?? 'GET'
   const { defaultView } = ownerDocument
   const { FormData, URL, URLSearchParams } = defaultView
   const body = new FormData(target)
@@ -142,14 +142,16 @@ export const post = async (
   
   return call(request, { target })
 }
+
 export const fromEvent = async (
   target,
   event
 ) => {
   const { type } = event
   const request = type === 'submit' ? form : anchor
-
   const result = await request(target, event)
+  
   globals.ea_screen_adjust()
+  
   return result
 }
