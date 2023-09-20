@@ -60,6 +60,18 @@ const onSubmit = object(listener, {
   }
 })
 
+const formAction = (form, submitter) => {
+  return submitter?.hasAttribute?.('formaction')
+    ? submitter.formAction
+    : form.action
+}
+
+const formMethod = (form, submitter) => {
+  return submitter?.hasAttribute?.('formmethod')
+    ? submitter.formMethod
+    : form.method ?? 'GET'
+}
+
 const anchor = (
   target,
   event,
@@ -78,8 +90,8 @@ const form = (
 ) => {
   const submitter = submitters.get(event) ?? empty
   const { name, value, ownerDocument } = submitter
-  const action = submitter.formAction ?? target.action
-  const method = submitter.formMethod ?? target.method ?? 'GET'
+  const action = formAction(target, submitter)
+  const method = formMethod(target, submitter)
   const { defaultView } = ownerDocument
   const { FormData, URL, URLSearchParams } = defaultView
   const body = new FormData(target)
