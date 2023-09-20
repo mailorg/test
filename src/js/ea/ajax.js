@@ -84,6 +84,7 @@ const form = (
   const { FormData, URL, URLSearchParams } = defaultView
   const body = new FormData(target)
   
+  console.log({ action, target })
   submitters.delete(event)
   
   if (name) {
