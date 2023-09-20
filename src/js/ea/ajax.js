@@ -12,11 +12,10 @@ import href from './href.js'
 const { document } = defaults
 
 const selectors = [
-  'form input[name][type="image"]',
-  'form input[name][type="submit"]',
-  'form button[name][type="submit"]',
-  'form button[name][form]',
-  'form button[name]:not([type])'
+  'form input[type="image"]',
+  'form input[type="submit"]',
+  'form button[type="submit"]',
+  'form button:not([type])'
 ]
 
 const empty = object()
@@ -41,17 +40,22 @@ const onSubmit = object(listener, {
   type: submit,
   capture,
   task: (document, event) => {
-    const { activeElement } = event
     const { submitter } = event
     
-    if (activeElement?.matches(selector)) {
-      candidates.add(activeElement)
+    if (submitter) {
+      submitters.set(event, submitter)
+      
+      return
     }
     
-    if (submitter?.matches(selector)) {
-      candidates.add(submitter)
+    const { activeElement } = document
+    
+    if (activeElement?.matches(selector)) {
+      submitters.set(event, activeElement)
+      
+      return
     }
-  
+    
     submitters.set(event, ...[...candidates, empty].filter(Boolean))
   }
 })
