@@ -5,6 +5,7 @@ export default async (filter) => {
 }
 
 const all = async (filter) => {
+  const { navigator } = globalThis
   const devices = await navigator.mediaDevices?.enumerateDevices?.()
 
   if (devices) {
