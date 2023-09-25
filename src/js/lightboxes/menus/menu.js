@@ -27,7 +27,6 @@ export const { focus, opener } = lightbox
 
 export const close = () => {
   if (current) {
-    console.error(new Error())
     onOpenerTapUp.forget(opener(current))
     remove(current)
     current = null
@@ -77,9 +76,8 @@ const onFocusOut = object(listener, {
   capture,
   passive,
   task: async (list, { relatedTarget }) => {
-    console.log({ relatedTarget, current })
     if (!relatedTarget) {
-      await wait(500)
+      await wait(100)
       requestAnimationFrame(close)
       
       return
