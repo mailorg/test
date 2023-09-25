@@ -86,7 +86,7 @@ const onFocusOut = object(listener, {
     }
     
     if (relatedTarget !== opener(list)) {
-      requestAnimationFrame(close)
+      //requestAnimationFrame(close)
     }
   }
 })
