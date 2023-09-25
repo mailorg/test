@@ -19,6 +19,7 @@ import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefaul
 import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
 import contextMenu from '@mailobj-browser/front/js/events/types/contextMenu.js'
 import { tapUp } from '@mailobj-browser/front/js/events/listeners/builtins/tap.js'
+import wait from '@mailobj-browser/front/js/utils/wait.js'
 
 let current = null
 
@@ -78,6 +79,7 @@ const onFocusOut = object(listener, {
   task: async (list, { relatedTarget }) => {
     console.log({ relatedTarget })
     if (!relatedTarget) {
+      await wait(50)
       requestAnimationFrame(close)
       
       return
