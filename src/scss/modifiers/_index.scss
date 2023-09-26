@@ -2,6 +2,9 @@
 @use "../abstracts/mixins" as *;
 @use "../abstracts/helpers" as *;
 
+body {
+  opacity: 1;
+}
 .ea_utilities__is_sr_only {
   @include ea_utilities__is_sr_only;
 }
