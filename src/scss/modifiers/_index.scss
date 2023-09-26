@@ -70,3 +70,11 @@
 .ea_utilities__word_break-break_word {
   word-break: break-word;
 }
+
+.ea_utilities__clearfix {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
