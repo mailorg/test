@@ -35,14 +35,6 @@
   vertical-align: text-bottom;
 }
 
-.ea_utilities__text_align-center {
-  text-align: center !important;
-}
-
-.ea_utilities__text_align-right {
-  text-align: right !important;
-}
-
 .ea_utilities__vertical_align-top {
   vertical-align: top !important;
 }
@@ -59,18 +51,6 @@
   position: fixed;
 }
 
-.ea_utilities__font_weight-bold {
-  font-weight: bold;
-}
-
-.ea_utilities__font_style-italic {
-  font-style: italic;
-}
-
-.ea_utilities__word_break-break_word {
-  word-break: break-word;
-}
-
 .ea_utilities__clearfix {
   &::after {
     display: block;
@@ -85,4 +65,27 @@
 
 .ea_utilities__margin_0 {
   margin: 0 !important;
+}
+
+/**
+** Text
+**/
+.ea_utilities__text_align-center {
+  text-align: center !important;
+}
+
+.ea_utilities__text_align-right {
+  text-align: right !important;
+}
+
+.ea_utilities__font_weight-bold {
+  font-weight: bold;
+}
+
+.ea_utilities__font_style-italic {
+  font-style: italic;
+}
+
+.ea_utilities__word_break-break_word {
+  word-break: break-word;
 }
