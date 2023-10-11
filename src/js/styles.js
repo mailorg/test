@@ -11,8 +11,7 @@ export const elements = object(null, {
   overflow: `${block}__overflow`,
   position: `${block}__position`,
   // show_more: `${block}__show_more`,
-  visibility: `${block}__visibility`,
-  scroll_to: `${block}__scroll_to`
+  visibility: `${block}__visibility`
 })
 
 export const modifiers = object(null, {
