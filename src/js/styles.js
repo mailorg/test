@@ -12,6 +12,7 @@ export const elements = object(null, {
   position: `${block}__position`,
   // show_more: `${block}__show_more`,
   visibility: `${block}__visibility`,
+  scroll_to: `${block}__scroll_to`
 })
 
 export const modifiers = object(null, {
