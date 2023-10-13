@@ -13,6 +13,7 @@ export default (
   if (withVat) {
     VATDiv = 100
   }
+  console.log(amount, VATDiv);
   return `${currencyBefore}${(amount / VATDiv).toFixed(decimals)}${currencyAfter}`
     .replace('.', decimalSeparator)
     .replaceAll('$', currency)
