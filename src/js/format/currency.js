@@ -8,9 +8,9 @@ export default (
     decimalSeparator = '.',
     VATDiv = 100
   },
-  noVat = false
+  withVat = false
 ) => {
-  if (noVat) {
+  if (withVat) {
     VATDiv = 100
   }
   return `${currencyBefore}${(amount / VATDiv).toFixed(decimals)}${currencyAfter}`
