@@ -7,7 +7,13 @@ export default (
     decimals = 2,
     decimalSeparator = '.',
     VATDiv = 100
+  },
+  noVat = false
+) => {
+  if (noVat) {
+    VATDiv = 100
   }
-) => `${currencyBefore}${(amount / VATDiv).toFixed(decimals)}${currencyAfter}`
-  .replace('.', decimalSeparator)
-  .replaceAll('$', currency)
+  return `${currencyBefore}${(amount / VATDiv).toFixed(decimals)}${currencyAfter}`
+    .replace('.', decimalSeparator)
+    .replaceAll('$', currency)
+}
