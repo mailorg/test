@@ -8,8 +8,6 @@ export default (
     decimalSeparator = '.',
   }
 ) => {
-  console.log(amount);
-  console.log(amount.toFixed(decimals));
   return `${currencyBefore}${amount.toFixed(decimals)}${currencyAfter}`
     .replace('.', decimalSeparator)
     .replaceAll('$', currency)
