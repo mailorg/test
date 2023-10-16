@@ -5,6 +5,6 @@ export default (
   }
 ) => {
   console.log(amount);
-  console.log(VATRate);
+  console.log(VATRate+100);
   return (amount/(VATRate+100))*100
 }
