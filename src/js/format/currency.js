@@ -8,7 +8,7 @@ export default (
     decimalSeparator = '.',
   }
 ) => {
-  return `${currencyBefore}${(amount).toFixed(decimals)}${currencyAfter}`
+  return `${currencyBefore}${amount.toFixed(decimals)}${currencyAfter}`
     .replace('.', decimalSeparator)
     .replaceAll('$', currency)
 }
