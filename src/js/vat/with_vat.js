@@ -4,5 +4,5 @@ export default (
     VATRate
   }
 ) => {
-  return (amount/VATRate)*100
+  return (amount/(1+VATRate/100))*100
 }
