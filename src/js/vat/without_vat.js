@@ -1,7 +1,7 @@
 export default (
   amount,
   {
-    VATRate
+    VATRate = 0
   }
 ) => {
   console.log(amount);
