@@ -4,11 +4,10 @@ export default (
     currency = '$',
     currencyBefore = '',
     currencyAfter = '',
-    decimals = 2,
     decimalSeparator = '.',
   }
 ) => {
-  return `${currencyBefore}${amount.toFixed(decimals)}${currencyAfter}`
+  return `${currencyBefore}${amount}${currencyAfter}`
     .replace('.', decimalSeparator)
     .replaceAll('$', currency)
 }
