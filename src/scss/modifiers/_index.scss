@@ -1,8 +1,8 @@
 @use "../abstracts/functions" as *;
 @use "../abstracts/mixins" as *;
 @use "../abstracts/helpers" as *;
-@use "@mailobj-browser/components-generics/tweaks/skins/variables" as *;
-@use "@mailobj-browser/components-generics/tweaks/skins/default";
+@use "@mailobj-browser/components-generics/src/scss/tweaks/skins/variables" as *;
+@use "@mailobj-browser/components-generics/src/scss/tweaks/skins/default";
 
 .ea_utilities__is_sr_only {
   @include ea_utilities__is_sr_only;
