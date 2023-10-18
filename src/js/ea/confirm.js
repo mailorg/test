@@ -40,13 +40,13 @@ export default async (
 
   const confirm = one('div.ea_generics__modal', content).cloneNode(true)
   const dialog = one('dialog', confirm)
-  const header = one('div.ea_generics__modal_content_header', dialog)
+  const header = one('div.ea_generics__modal_header', dialog)
   const h2 = one('h2', header)
 
-  const body = one('div.ea_generics__modal_content_body', dialog)
+  const body = one('div.ea_generics__modal_main', dialog)
   const paragraph = one('p', body)
 
-  const footer = one('div.ea_generics__modal_content_footer', dialog)
+  const footer = one('div.ea_generics__modal_footer', dialog)
   const buttons = all('button', footer)
   const [focusable] = buttons
 
