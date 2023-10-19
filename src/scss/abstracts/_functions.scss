@@ -21,3 +21,11 @@
     @error "map is null";
   }
 }
+
+@function is-int($value) {
+  @if type-of($value) != number {
+    @warn '`#{$value}` is not a valid number!';
+    @return null;
+  }
+  @return round($value) == $value;
+}
