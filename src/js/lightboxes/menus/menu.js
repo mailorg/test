@@ -23,7 +23,7 @@ import wait from '@mailobj-browser/front/js/utils/wait.js'
 
 let current = null
 
-export const { focus, opener } = lightbox
+export const { focus, opener, stash, unstash } = lightbox
 
 export const close = () => {
   if (current) {
