@@ -22,10 +22,19 @@
   }
 }
 
+// is integer
 @function is-int($value) {
   @if type-of($value) != number {
     @warn '`#{$value}` is not a valid number!';
     @return null;
   }
   @return round($value) == $value;
+}
+
+// greatest common divisor
+@function gcd($a, $b) {
+  @if $b == 0 {
+    @return $a;
+  }
+  @return gcd($b, $a%$b);
 }
