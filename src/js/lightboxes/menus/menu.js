@@ -21,6 +21,7 @@ import contextMenu from '@mailobj-browser/front/js/events/types/contextMenu.js'
 import { tapUp } from '@mailobj-browser/front/js/events/listeners/builtins/tap.js'
 import wait from '@mailobj-browser/front/js/utils/wait.js'
 
+const openers = new WeakMap()
 let current = null
 
 export const { focus, opener, stash, unstash } = lightbox
@@ -38,8 +39,6 @@ export const list = element => {
     return current
   }
 }
-
-const openers = new WeakMap()
 
 const onScroll = object(listener, {
   type: scroll,
