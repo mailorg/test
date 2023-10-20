@@ -109,7 +109,6 @@ export const onKeyDown = object(listener, {
       preventDefault(event)
       stopImmediatePropagation(event)
       
-      console.log({ key, element, current })
       if (element !== current) {
         const li = one('li', current)
         
@@ -122,6 +121,7 @@ export const onKeyDown = object(listener, {
       
       const li = target.closest('li')
       const next = await pick(element, li, event)
+      console.log({ key, element, current, next })
       
       if (next) {
         focus(next)
