@@ -28,6 +28,7 @@ export const { focus, opener, stash, unstash } = lightbox
 
 export const close = () => {
   if (current) {
+    console.error(new Error())
     onOpenerTapUp.forget(opener(current))
     remove(current)
     current = null
@@ -121,7 +122,6 @@ export const onKeyDown = object(listener, {
       
       const li = target.closest('li')
       const next = await pick(element, li, event)
-      console.log({ key, element, current, next })
       
       if (next) {
         focus(next)
