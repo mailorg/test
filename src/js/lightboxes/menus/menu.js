@@ -28,7 +28,6 @@ export const { focus, opener, stash, unstash } = lightbox
 
 export const close = () => {
   if (current) {
-    console.error(new Error())
     onOpenerTapUp.forget(opener(current))
     remove(current)
     current = null
