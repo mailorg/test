@@ -102,18 +102,13 @@ export const onKeyDown = object(listener, {
   capture,
   async task (element, event) {
     const { keys } = this
-    const { key, shiftKey, target } = event
+    const { key, target } = event
     
     if (['Escape', 'Tab'].includes(key)) {
       const focusable = opener(current)
-      const { ownerDocument } = focusable
-      const { defaultView } = ownerDocument
-      const { KeyboardEvent } = defaultView
-      
       
       close()
       focusable.focus()
-      focusable.dispatchEvent(new KeyboardEvent({ key, shiftKey }))
       
       return
     }
