@@ -103,6 +103,16 @@ export const onKeyDown = object(listener, {
   async task (element, event) {
     const { keys } = this
     const { key, target } = event
+    
+    if (['Escape', 'Tab'].includes(key)) {
+      const focusable = opener(current)
+      
+      close()
+      focusable.focus()
+      
+      return
+    }
+    
     const { [key]: pick } = keys
     
     if (pick) {
