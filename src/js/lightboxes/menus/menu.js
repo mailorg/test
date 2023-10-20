@@ -41,10 +41,16 @@ export const list = element => {
 
 const openers = new WeakMap()
 
-const onCleanup = object(listener, {
+const onScroll = object(listener, {
+  type: scroll,
+  capture,
   once,
   passive,
-  task: close
+  task: (document, { target }) => {
+    if (current && (target === document || !current.contains(target))) {
+      close()
+    }
+  }
 })
 
 const onOpenerTapUp = object(tapUp, {
@@ -57,13 +63,12 @@ const onOpenerTapUp = object(tapUp, {
   task: close
 })
 
-const onResize = object(onCleanup, {
+const onResize = object(listener, {
   capture,
-  type: resize
-})
-
-const onScroll = object(onCleanup, {
-  type: scroll
+  once,
+  passive,
+  type: resize,
+  task: close
 })
 
 const onContextMenu = object(listener, {
