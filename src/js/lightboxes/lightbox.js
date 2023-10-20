@@ -22,19 +22,24 @@ import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/sto
 
 let current = null
 let menu = null
-let stashed = null
+let stashed = []
 
 const openers = new WeakMap()
 
 export const stash = () => {
-  stashed = [menu, menu.parentNode]
-  menu.remove()
+  if (menu) {
+    stashed.length = 0
+    stashed.push(menu, menu.parentNode)
+    menu.remove()
+  }
 }
 
 export const unstash = () => {
-  menu = stashed[0]
-  stashed[1].append(menu)
-  stashed.length = 0
+  if (stashed.length) {
+    menu = stashed[0]
+    stashed[1].append(menu)
+    stashed.length = 0
+  }
 }
 
 export const close = () => {
