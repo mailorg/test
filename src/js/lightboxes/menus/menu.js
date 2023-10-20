@@ -88,7 +88,7 @@ const onFocusOut = object(listener, {
       return
     }
 
-    if (list.contains(relatedTarget) && relatedTarget.matches('a,button')) {
+    if (list.contains(relatedTarget) && relatedTarget.matches('a,button,input')) {
       return
     }
     
