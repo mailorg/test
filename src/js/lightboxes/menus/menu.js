@@ -40,6 +40,10 @@ export const list = element => {
   }
 }
 
+export const isOpen = () => {
+  return current && current.ownerDocument.contains(current)
+}
+
 const onScroll = object(listener, {
   type: scroll,
   capture,
