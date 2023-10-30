@@ -28,6 +28,8 @@ export default async (
   const { root } = defaults
   const template = one(`.${utilities.elements.aside_alerts} template`, root)
   const { content, parentNode } = template
+  const { ownerDocument } = root
+  const { body } = ownerDocument
   /* Edit MLE :
     Le dialog est dans plusieurs div pour le look
     Je recupere donc plus que le dialog
@@ -42,8 +44,10 @@ export default async (
 
   await manager.fragment(alert)
   replaceChildren(parentNode, template, alert)
+  body.classList.add(utilities.modifiers.overflow.hidden)
   button.focus()
   await removed(alert)
+  body.classList.remove(utilities.modifiers.overflow.hidden)
   
   for (const opener of openers) {
     if (opener.ownerDocument?.contains(opener)) {

@@ -35,6 +35,8 @@ const confirm = async (
   openers = []
 ) => {
   const { root } = defaults
+  const { ownerDocument } = root
+  const { body } = ownerDocument
   const template = one(`.${utilities.elements.aside_confirms} template`, root)
   const { content, parentNode } = template
   const [promise, { resolve }] = resolvable()
@@ -44,8 +46,8 @@ const confirm = async (
   const header = one('div.ea_generics__modal_header', dialog)
   const h2 = one('h2', header)
   
-  const body = one('div.ea_generics__modal_main', dialog)
-  const paragraph = one('p', body)
+  const main = one('div.ea_generics__modal_main', dialog)
+  const paragraph = one('p', main)
   
   const footer = one('div.ea_generics__modal_footer', dialog)
   const buttons = all('button', footer)
@@ -64,9 +66,12 @@ const confirm = async (
   
   await manager.fragment(confirm)
   replaceChildren(parentNode, template, confirm)
+  body.classList.add(utilities.modifiers.overflow.hidden)
   focusable.focus()
   
   const result = await Promise.race([promise, await removed(confirm)])
+  
+  body.classList.remove(utilities.modifiers.overflow.hidden)
   
   for (const button of buttons) {
     resolvers.delete(button)
