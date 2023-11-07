@@ -4,6 +4,8 @@
 @use "@mailobj-browser/components-generics/src/scss/tweaks/skins/variables" as *;
 @use "@mailobj-browser/components-generics/src/scss/tweaks/skins/default";
 
+
+
 // Transform scss variables to css global variables
 @mixin spread-map($map: ()) {
   @each $key, $value in $map {
