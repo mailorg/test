@@ -1,6 +1,9 @@
 @use "sass:meta";
 @use "sass:map";
 @use "variables" as *;
+@use "../tweaks/skins/variables" as *;
+@use "@mailobj-browser/utilities/src/scss/styles" as *;
+@use "../tweaks/skins/default";
 
 // Transform scss variables to css global variables
 @mixin spread-map($map: ()) {
@@ -50,4 +53,10 @@
 
 @mixin ea_utilities__overflow-hidden() {
   overflow: hidden !important;
+}
+
+@mixin tile() {
+  border: 1px solid scss-var($ea--card_border_color, default.$skin-map-default);
+  border-radius: scss-var($ea--card_border_radius, default.$skin-map-default);
+  padding: scss-var($ea--card_spacer, default.$skin-map-default);
 }
