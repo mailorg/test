@@ -51,9 +51,3 @@
 @mixin ea_utilities__overflow-hidden() {
   overflow: hidden !important;
 }
-
-@mixin tile($border_color, $border_radius, $padding) {
-  border: 1px solid $border_color;
-  border-radius: $border_radius;
-  padding: $padding;
-}
