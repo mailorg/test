@@ -19,7 +19,7 @@ import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import * as utilities from "../styles.js"
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
-import { elements } from './styles.js'
+import { modifiers } from './styles.js'
 
 let current = null
 let menu = null
@@ -30,11 +30,11 @@ const openers = new WeakMap()
 const opening = lightbox => {
   const opener = openers.get(lightbox)
   
-  opener.classList.add(`.${elements.lightbox.open}`)
+  opener.classList.add(`.${elements.modifiers.open}`)
   
   queueMicrotask(async () => {
     await removed(lightbox)
-    opener.classList.remove(`.${elements.lightbox.open}`)
+    opener.classList.remove(`.${elements.modifiers.open}`)
   })
 }
 
