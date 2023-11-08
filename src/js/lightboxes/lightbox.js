@@ -19,12 +19,24 @@ import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import * as utilities from "../styles.js"
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
+import { elements } from './styles.js'
 
 let current = null
 let menu = null
 let stashed = []
 
 const openers = new WeakMap()
+
+const opening = lightbox => {
+  const opener = openers.get(lightbox)
+  
+  opener.classList.add(`.${elements.lightbox.open}`)
+  
+  queueMicrotask(async () => {
+    await removed(lightbox)
+    opener.classList.remove(`.${elements.lightbox.open}`)
+  })
+}
 
 export const stash = () => {
   if (menu) {
@@ -38,6 +50,7 @@ export const unstash = () => {
   if (stashed.length) {
     menu = stashed[0]
     stashed[1].append(menu)
+    opening(menu)
     stashed.length = 0
   }
 }
@@ -139,6 +152,7 @@ export const parse = async (
   append(body, lightbox)
   await manager.trigger(body)
   template.dispatchEvent(new CustomEvent('load', { detail }))
+  opening(lightbox)
 
   if (asModal) {
     if (menu) {

@@ -1,4 +1,5 @@
 import object from '@mailobj-browser/front/js/utils/object.js'
+import * as lightbox from './lightboxes/styles.js'
 
 export const block = 'ea_utilities'
 
@@ -15,6 +16,7 @@ export const elements = object(null, {
 })
 
 export const modifiers = object(null, {
+  ...lightbox.modifiers,
   display: object(null, {
     none: `${elements.display}-none`
   }),
