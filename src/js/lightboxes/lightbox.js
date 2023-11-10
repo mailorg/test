@@ -30,6 +30,10 @@ const openers = new WeakMap()
 const opening = lightbox => {
   const opener = openers.get(lightbox)
   
+  if (!opener) {
+    return
+  }
+  
   opener.classList.add(modifiers.open)
   
   queueMicrotask(async () => {
