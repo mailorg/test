@@ -198,7 +198,7 @@ export const move = (
 ) => {
   const {style} = target
 
-  style.setProperty('--ea_utilities_calculated_left', `${clientX}px`)
+  style.setProperty('--ea_utilities_calculated__left', `${clientX}px`)
   style.setProperty('--ea_utilities_calculated__top', `${clientY}px`)
 }
 
