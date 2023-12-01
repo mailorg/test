@@ -1,6 +1,7 @@
 export * as ajax from './ajax.js'
 export { default as globals } from './globals.js'
 export { default as href } from './href.js'
+export { default as lang } from './lang.js'
 export { default as override } from './override.js'
 export { default as report } from './report.js'
 export { default as skin } from './skin.js'
