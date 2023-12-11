@@ -47,8 +47,12 @@
   white-space: nowrap !important;
 }
 
+.ea_utilities__position-relative {
+  position: relative !important;
+}
+
 .ea_utilities__position-fixed {
-  position: fixed;
+  position: fixed !important;
 }
 
 .ea_utilities__clearfix {
