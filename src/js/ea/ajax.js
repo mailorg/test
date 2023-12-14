@@ -118,10 +118,12 @@ const call = async (
   { target } = {}
 ) => {
   if (target) {
-    const { response } = await html(object(null, {
+    const { response, element } = await html(object(null, {
       request,
       target
     }))
+    
+    console.log(element)
 
     return response
   }
