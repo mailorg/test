@@ -3,14 +3,14 @@ import click from '@mailobj-browser/front/js/events/types/click.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
-import {elements} from './styles.js'
+import { elements } from './styles.js'
 import * as utilities from '@mailobj-browser/utilities/js/styles.js'
 import * as generics from '@mailobj-browser/components-generics/js/styles.js'
 
 const onClick = object(listener, {
   type: click,
   hooks: [preventDefault],
-  task(
+  task (
     button,
     event
   ) {
@@ -20,7 +20,6 @@ const onClick = object(listener, {
     containerActions.classList.toggle(utilities.modifiers.display.none)
   }
 })
-
 
 export default button => {
   onClick.listen(button)
