@@ -166,7 +166,7 @@ export const fromEvent = async (
   const { type } = event
   const request = type === 'submit' ? form : anchor
   const result = await request(target, event)
-  console.log(result.element)
+  console.log(result)
   globals.ea_screen_adjust()
   
   return result
