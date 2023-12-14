@@ -118,12 +118,10 @@ const call = async (
   { target } = {}
 ) => {
   if (target) {
-    const { response, element } = await html(object(null, {
+    const { response } = await html(object(null, {
       request,
       target
     }))
-    
-    console.log(element)
 
     return response
   }
@@ -168,7 +166,7 @@ export const fromEvent = async (
   const { type } = event
   const request = type === 'submit' ? form : anchor
   const result = await request(target, event)
-  console.log(result)
+
   globals.ea_screen_adjust()
   
   return result
