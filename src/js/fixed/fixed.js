@@ -132,11 +132,11 @@ export const fromNode = (
       }
 
       if (bottom + height > clientHeight) {
-        clientY = top - height
+        clientY = Math.max(0, top - height)
       } else {
         clientY = bottom
       }
-      console.log({ clientY })
+
       break
     }
     case bottomRight: {
@@ -152,7 +152,6 @@ export const fromNode = (
         clientY = bottom
       }
       
-      console.log({ clientY })
       break
     }
     case topLeft: {
@@ -168,7 +167,6 @@ export const fromNode = (
         clientY = top - height
       }
       
-      console.log({ clientY })
       break
     }
     case topRight: {
@@ -184,7 +182,6 @@ export const fromNode = (
         clientY = top - height
       }
       
-      console.log({ clientY })
       break
     }
   }
