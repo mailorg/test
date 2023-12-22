@@ -210,12 +210,15 @@ export const move = (
 
 export const resize = (
   target,
-  node
+  node,
+  angle = bottomLeft
 ) => {
   const {style} = target
   const {clientHeight} = coords(target)
   const {bottom, top} = rect(node)
   const max = Math.max(top, clientHeight - bottom)
+  
+  console.log({ clientHeight, bottom, top, max })
   
   style.setProperty('--ea_utilities_calculated__max_height', `${max}px`)
 }
