@@ -93,12 +93,11 @@ const onFocusOut = object(listener, {
       return
     }
 
-    if (list.contains(relatedTarget) && relatedTarget.matches('a,button,input')) {
+    if (list === relatedTarget || (list.contains(relatedTarget) && relatedTarget.matches('a,button,input'))) {
       return
     }
     
     if (relatedTarget !== opener(list)) {
-      console.log(relatedTarget === list)
       requestAnimationFrame(close)
     }
   }
