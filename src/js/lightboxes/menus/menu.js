@@ -180,6 +180,7 @@ export const display = async (content, opener, event = null) => {
     } else {
       resize(content, opener)
       move(content, fromNode(content, opener))
+      resize(content, opener)
       openers.set(content, opener)
     }
     
