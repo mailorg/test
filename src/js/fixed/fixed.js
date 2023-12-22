@@ -108,6 +108,9 @@ export const fromEvent = (
     }
   }
   
+  clientX = Math.min(clientWidth, Math.max(0, clientX))
+  clientY = Math.min(clientHeight, Math.max(0, clientY))
+  
   return object(null, {
     clientX,
     clientY
@@ -132,7 +135,7 @@ export const fromNode = (
       }
 
       if (bottom + height > clientHeight) {
-        clientY = Math.max(0, top - height)
+        clientY = top - height
       } else {
         clientY = bottom
       }
@@ -185,6 +188,9 @@ export const fromNode = (
       break
     }
   }
+  
+  clientX = Math.min(right, Math.max(0, clientX))
+  clientY = Math.min(bottom, Math.max(0, clientY))
 
   return object(null, {
     clientX,
