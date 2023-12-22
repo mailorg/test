@@ -15,7 +15,7 @@ const init = object(null, {
 const coords = (
   target
 ) => {
-  const { ownerDocument } = targete
+  const { ownerDocument } = target
   const { documentElement } = ownerDocument
   const { clientHeight, clientWidth } = documentElement
   const { height, width, x, y } = rect(target)
