@@ -20,6 +20,7 @@ import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/sto
 import contextMenu from '@mailobj-browser/front/js/events/types/contextMenu.js'
 import { tapUp } from '@mailobj-browser/front/js/events/listeners/builtins/tap.js'
 import wait from '@mailobj-browser/front/js/utils/wait.js'
+import { bottomLeft } from '../../fixed/fixed.js'
 
 const openers = new WeakMap()
 let current = null
@@ -169,7 +170,7 @@ export const display = async (content, opener, event = null) => {
   const { ownerDocument } = opener
   const { defaultView } = ownerDocument
   const { onEscape } = lightbox
-  const { fromEvent, fromNode, move, resize } = fixed
+  const { fromEvent, fromNode, move, resize, bottomLeft } = fixed
   const [promise, { resolve }] = resolvable()
   
   move(content)
@@ -178,7 +179,7 @@ export const display = async (content, opener, event = null) => {
     if (event) {
       move(content, fromEvent(content, event))
     } else {
-      resize(content, opener)
+      resize(content, opener, bottomLeft)
       move(content, fromNode(content, opener))
       openers.set(content, opener)
     }
