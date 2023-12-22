@@ -15,7 +15,7 @@ const init = object(null, {
 const coords = (
   target
 ) => {
-  const { ownerDocument } = target
+  const { ownerDocument } = targete
   const { documentElement } = ownerDocument
   const { clientHeight, clientWidth } = documentElement
   const { height, width, x, y } = rect(target)
@@ -136,7 +136,7 @@ export const fromNode = (
       } else {
         clientY = bottom
       }
-      
+      console.log({ clientY })
       break
     }
     case bottomRight: {
@@ -152,6 +152,7 @@ export const fromNode = (
         clientY = bottom
       }
       
+      console.log({ clientY })
       break
     }
     case topLeft: {
@@ -167,6 +168,7 @@ export const fromNode = (
         clientY = top - height
       }
       
+      console.log({ clientY })
       break
     }
     case topRight: {
@@ -182,6 +184,7 @@ export const fromNode = (
         clientY = top - height
       }
       
+      console.log({ clientY })
       break
     }
   }
