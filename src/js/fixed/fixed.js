@@ -251,5 +251,6 @@ export const resize = (
     }
   }
   
+  max = Math.floor(max)
   style.setProperty('--ea_utilities_calculated__max_height', `${max}px`)
 }
