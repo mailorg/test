@@ -223,10 +223,13 @@ export const resize = (
     case bottomRight : {
       if ((clientHeight - height - bottom) > -1) {
         max = height
+        console.log({ max })
       } else if (bottom <= clientHeight / 2) {
         max = clientHeight - bottom
+        console.log({ max })
       } else {
         max = top
+        console.log({ max })
       }
       
       break;
