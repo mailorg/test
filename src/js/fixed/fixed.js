@@ -211,14 +211,42 @@ export const move = (
 export const resize = (
   target,
   node,
-  angle = bottomLeft
+  angle = null
 ) => {
-  const {style} = target
-  const {clientHeight} = coords(target)
-  const {bottom, top} = rect(node)
-  const max = Math.max(top, clientHeight - bottom)
+  const { style } = target
+  const { clientHeight, height } = coords(target)
+  const { bottom, top } = rect(node)
+  let max
   
-  console.log({ clientHeight, bottom, top, max })
+  switch (angle) {
+    case bottomLeft :
+    case bottomRight : {
+      if ((clientHeight - height - bottom) > -1) {
+        max = height
+      } else if (bottom <= clientHeight / 2) {
+        max = clientHeight - bottom
+      } else {
+        max = top
+      }
+      
+      break;
+    }
+    case topLeft :
+    case topRight : {
+      if ((clientHeight - height - top) > -1) {
+        max = height
+      } else if (top <= clientHeight / 2) {
+        max = clientHeight - top
+      } else {
+        max = bottom
+      }
+      
+      break;
+    }
+    default: {
+      max = Math.max(top, clientHeight - bottom)
+    }
+  }
   
   style.setProperty('--ea_utilities_calculated__max_height', `${max}px`)
 }
