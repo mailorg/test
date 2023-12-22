@@ -49,9 +49,9 @@ const onScroll = object(listener, {
   type: scroll,
   capture,
   passive,
-  task: (document, { target }) => {
-    console.log({ current, target })
+  task (document, { target }) {
     if (current && (target === document || !current.contains(target))) {
+      this.forget(document)
       close()
     }
   }
