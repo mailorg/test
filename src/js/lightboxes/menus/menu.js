@@ -51,6 +51,7 @@ const onScroll = object(listener, {
   once,
   passive,
   task: (document, { target }) => {
+    console.log({ current, target })
     if (current && (target === document || !current.contains(target))) {
       close()
     }
