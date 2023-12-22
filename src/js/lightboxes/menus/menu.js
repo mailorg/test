@@ -48,7 +48,6 @@ export const isOpen = () => {
 const onScroll = object(listener, {
   type: scroll,
   capture,
-  once,
   passive,
   task: (document, { target }) => {
     console.log({ current, target })
