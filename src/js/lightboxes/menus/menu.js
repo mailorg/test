@@ -98,7 +98,7 @@ const onFocusOut = object(listener, {
     }
     
     if (relatedTarget !== opener(list)) {
-      console.log({ relatedTarget })
+      console.log(relatedTarget === list)
       requestAnimationFrame(close)
     }
   }
