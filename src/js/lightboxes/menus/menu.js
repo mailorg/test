@@ -18,8 +18,6 @@ import { onEscape } from '../lightbox.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
 import contextMenu from '@mailobj-browser/front/js/events/types/contextMenu.js'
-import { tapUp } from '@mailobj-browser/front/js/events/listeners/builtins/tap.js'
-import wait from '@mailobj-browser/front/js/utils/wait.js'
 import { bottomLeft } from '../../fixed/fixed.js'
 
 const openers = new WeakMap()
@@ -29,7 +27,6 @@ export const { focus, opener, stash, unstash } = lightbox
 
 export const close = () => {
   if (current) {
-    onOpenerTapUp.forget(opener(current))
     remove(current)
     current = null
   }
@@ -57,16 +54,6 @@ const onScroll = object(listener, {
   }
 })
 
-const onOpenerTapUp = object(tapUp, {
-  hooks: array([
-    preventDefault,
-    stopImmediatePropagation
-  ]),
-  capture,
-  once,
-  task: close
-})
-
 const onResize = object(listener, {
   capture,
   once,
@@ -85,19 +72,8 @@ const onFocusOut = object(listener, {
   capture,
   passive,
   task: async (list, { relatedTarget }) => {
-    if (!relatedTarget) {
-      await wait(150)
-      requestAnimationFrame(close)
-      
-      return
-    }
-
-    if (list === relatedTarget || (list.contains(relatedTarget) && relatedTarget.matches('a,button,input'))) {
-      return
-    }
-    
-    if (relatedTarget !== opener(list)) {
-      requestAnimationFrame(close)
+    if (!relatedTarget?.closest('ol,ul')) {
+      close()
     }
   }
 })
