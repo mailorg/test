@@ -71,8 +71,11 @@ const onFocusOut = object(listener, {
   type: focusOut,
   capture,
   passive,
-  task: async (list, { relatedTarget }) => {
+  task: async (list, event) => {
+    const { relatedTarget } = event
+    
     if (!relatedTarget?.closest('ol,ul')) {
+      stopImmediatePropagation(event)
       close()
     }
   }
