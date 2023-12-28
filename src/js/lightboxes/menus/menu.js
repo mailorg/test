@@ -1,4 +1,3 @@
-import array from '@mailobj-browser/front/js/utils/array.js'
 import object from '@mailobj-browser/front/js/utils/object.js'
 import listener from '@mailobj-browser/front/js/events/listeners/listener.js'
 import capture from '@mailobj-browser/front/js/events/options/capture.js'
@@ -13,7 +12,6 @@ import remove from '@mailobj-browser/front/js/tree/remove.js'
 import resolvable from '@mailobj-browser/front/js/utils/resolvable.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
 import mouseDown from '@mailobj-browser/front/js/events/types/mouseDown.js'
-import focusOut from '@mailobj-browser/front/js/events/types/focusOut.js'
 import { onEscape } from '../lightbox.js'
 import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefault.js'
 import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
@@ -68,8 +66,7 @@ const onContextMenu = object(listener, {
   task: close
 })
 
-const onFocusOut = object(tapUp, {
-  //type: focusOut,
+const onTapUp = object(tapUp, {
   capture,
   passive,
   task: async (list, event) => {
@@ -168,7 +165,7 @@ export const display = async (content, opener, event = null) => {
     onScroll.listen(ownerDocument)
     onResize.listen(defaultView)
     onContextMenu.listen(content)
-    onFocusOut.listen(content)
+    onTapUp.listen(content)
     //onOpenerTapUp.listen(opener)
     current = content
     resolve()
