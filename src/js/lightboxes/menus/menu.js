@@ -19,6 +19,7 @@ import preventDefault from '@mailobj-browser/front/js/events/hooks/preventDefaul
 import stopImmediatePropagation from '@mailobj-browser/front/js/events/hooks/stopImmediatePropagation.js'
 import contextMenu from '@mailobj-browser/front/js/events/types/contextMenu.js'
 import { bottomLeft } from '../../fixed/fixed.js'
+import { tapUp } from '@mailobj-browser/front/js/events/listeners/builtins/tap.js'
 
 const openers = new WeakMap()
 let current = null
@@ -67,14 +68,14 @@ const onContextMenu = object(listener, {
   task: close
 })
 
-const onFocusOut = object(listener, {
-  type: focusOut,
+const onFocusOut = object(tapUp, {
+  //type: focusOut,
   capture,
   passive,
   task: async (list, event) => {
-    const { relatedTarget } = event
+    const { target } = event
     
-    if (!relatedTarget?.closest('ol,ul')) {
+    if (!target?.closest('ol,ul')) {
       stopImmediatePropagation(event)
       close()
     }
