@@ -1,5 +1,5 @@
 .ea_utilities__aside_lightboxes {
-  &:last-child::before {
+  :last-child::before {
     content: '';
     animation-duration: 250ms;
     animation-fill-mode: forwards;
