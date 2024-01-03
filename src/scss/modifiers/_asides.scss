@@ -3,31 +3,13 @@ $-background: rgba(0, 0, 0, 0.65);
 .ea_utilities__aside_alerts,
 .ea_utilities__aside_confirms/*,
 .ea_utilities__aside_postits ?? */ {
-  > ::before {
+  > :last-child::before {
     content: '';
     position: fixed;
     height: 100svh;
     width: 100vw;
     left: 0;
     top: 0;
-  }
-
-  > :first-child::before {
-    animation-duration: 250ms;
-    animation-fill-mode: forwards;
-    animation-name: overlayEnter;
-  }
-
-  > :last-child::before {
-    background-color: $-background;
-  }
-}
-
-@keyframes overlayEnter {
-  0% {
-    background-color: rgba(0, 0, 0, 0);
-  }
-  100% {
     background-color: $-background;
   }
 }
