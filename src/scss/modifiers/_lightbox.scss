@@ -2,8 +2,9 @@
 @use "../abstracts/mixins" as *;
 @use "../abstracts/helpers" as *;
 
-@include breakpoint-up(sm) {
+
   .ea_utilities__lightbox-dropdown.ea_utilities__lightbox-open {
+    @include breakpoint-up(sm) {
     z-index: 201;
   }
 }
