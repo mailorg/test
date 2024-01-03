@@ -1,0 +1,17 @@
+.ea_utilities__aside_lightboxes {
+  &:last-child::before {
+    content: '';
+    animation-duration: 250ms;
+    animation-fill-mode: forwards;
+    animation-name: overlayEnter;
+  }
+}
+
+@keyframes overlayEnter {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+}
