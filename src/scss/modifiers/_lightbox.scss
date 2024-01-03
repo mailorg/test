@@ -1,6 +1,4 @@
-@use "../abstracts/functions" as *;
 @use "../abstracts/mixins" as *;
-@use "../abstracts/helpers" as *;
 
 @include breakpoint-up(sm) {
   .ea_utilities__lightbox-dropdown.ea_utilities__lightbox-open {
