@@ -9,9 +9,9 @@ export const bottomRight = object(angle, {})
 
 const init = object(null, {
   clientX: 0,
-  clientY: 0,
-  gap: 2
+  clientY: 0
 })
+const gap = 2
 
 const coords = (
   target
@@ -132,9 +132,9 @@ export const fromNode = (
       console.log("bottomLeft")
       if (left + width > clientWidth) {
         console.log("1")
-        clientX = right - width
+        clientX = right - width + gap
       } else {
-        clientX = left
+        clientX = left - gap
       }
 
       if (bottom + height > clientHeight) {
