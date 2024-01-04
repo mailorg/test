@@ -136,9 +136,9 @@ export const fromNode = (
       }
 
       if (bottom + height > clientHeight) {
-        clientY = top - height - gap
+        clientY = top - height
       } else {
-        clientY = bottom + gap
+        clientY = bottom
       }
 
       break
@@ -151,9 +151,9 @@ export const fromNode = (
       }
       
       if (bottom + height > clientHeight) {
-        clientY = top - height - gap
+        clientY = top - height
       } else {
-        clientY = bottom + gap
+        clientY = bottom
       }
       
       break
@@ -166,9 +166,9 @@ export const fromNode = (
       }
       
       if (top - height < 0) {
-        clientY = bottom + gap
+        clientY = bottom
       } else {
-        clientY = top - height - gap
+        clientY = top - height
       }
       
       break
@@ -181,9 +181,9 @@ export const fromNode = (
       }
       
       if (top - height < 0) {
-        clientY = bottom + gap
+        clientY = bottom
       } else {
-        clientY = top - height - gap
+        clientY = top - height
       }
       
       break
@@ -192,8 +192,9 @@ export const fromNode = (
 
   console.log(bottom)
   console.log(clientY)
+  clientY -= gap
   clientX = Math.min(right, Math.max(0, clientX))
-  clientY = Math.min(bottom, Math.max(0, clientY))
+  clientY = Math.min(bottom + gap, Math.max(0, clientY))
   console.log(clientY)
 
   return object(null, {
