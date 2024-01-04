@@ -137,12 +137,8 @@ export const fromNode = (
       }
 
       if (bottom + height > clientHeight) {
-        console.log("2")
         clientY = top - height - gap
-        console.log(top - height)
-        console.log(clientY)
       } else {
-        console.log(bottom)
         clientY = bottom + gap
       }
 
@@ -157,9 +153,9 @@ export const fromNode = (
       }
       
       if (bottom + height > clientHeight) {
-        clientY = top - height
+        clientY = top - height - gap
       } else {
-        clientY = bottom
+        clientY = bottom + gap
       }
       
       break
