@@ -121,7 +121,7 @@ export const fromEvent = (
 export const fromNode = (
   target,
   node,
-  angle = bottomLeft
+  angle = bottomRight
 ) => {
   const { clientHeight, clientWidth, height, width } = coords(target)
   const { bottom, left, right, top } = rect(node)
