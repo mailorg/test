@@ -140,6 +140,7 @@ export const fromNode = (
       } else {
         console.log(bottom)
         clientY = bottom + gap
+        console.log(clientY)
       }
 
       break
