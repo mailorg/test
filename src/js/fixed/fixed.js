@@ -227,8 +227,10 @@ export const resize = (
       if ((clientHeight - height - bottom) > -1) {
         max = height
       } else if (bottom <= clientHeight / 2) {
+        console.log("1")
         max = clientHeight - bottom
       } else {
+        console.log("2")
         max = top - gap
       }
       
@@ -241,13 +243,12 @@ export const resize = (
       } else if (top <= clientHeight / 2) {
         max = clientHeight - top
       } else {
-        max = bottom
+        max = bottom - gap
       }
       
       break;
     }
     default: {
-      console.log("4")
       max = Math.max(top, clientHeight - bottom)
     }
   }
