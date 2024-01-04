@@ -190,13 +190,10 @@ export const fromNode = (
     }
   }
 
-  console.log(bottom)
-  console.log(clientY)
   clientX = Math.min(right, Math.max(0, clientX))
   if (bottom + gap > clientY) {
     clientY = Math.min(bottom, Math.max(0, clientY))
   }
-  console.log(clientY)
 
   return object(null, {
     clientX,
@@ -228,10 +225,13 @@ export const resize = (
     case bottomLeft :
     case bottomRight : {
       if ((clientHeight - height - bottom) > -1) {
+        console.log("1")
         max = height
       } else if (bottom <= clientHeight / 2) {
+        console.log("2")
         max = clientHeight - bottom
       } else {
+        console.log("3")
         max = top
       }
       
@@ -250,6 +250,7 @@ export const resize = (
       break;
     }
     default: {
+      console.log("4")
       max = Math.max(top, clientHeight - bottom)
     }
   }
