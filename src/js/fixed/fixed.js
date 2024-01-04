@@ -194,6 +194,7 @@ export const fromNode = (
   
   clientX = Math.min(right, Math.max(0, clientX))
   clientY = Math.min(bottom, Math.max(0, clientY))
+  console.log(clientY)
 
   return object(null, {
     clientX,
