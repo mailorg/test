@@ -140,6 +140,7 @@ export const fromNode = (
         console.log("2")
         clientY = top - height - gap
         console.log(top - height)
+        console.log(clientY)
       } else {
         console.log(bottom)
         clientY = bottom + gap
