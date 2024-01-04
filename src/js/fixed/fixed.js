@@ -138,9 +138,7 @@ export const fromNode = (
       if (bottom + height > clientHeight) {
         clientY = top - height - gap
       } else {
-        console.log(bottom)
         clientY = bottom + gap
-        console.log(clientY)
       }
 
       break
@@ -191,7 +189,9 @@ export const fromNode = (
       break
     }
   }
-  
+
+  console.log(bottom)
+  console.log(clientY)
   clientX = Math.min(right, Math.max(0, clientX))
   clientY = Math.min(bottom, Math.max(0, clientY))
   console.log(clientY)
