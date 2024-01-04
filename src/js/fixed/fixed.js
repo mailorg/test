@@ -165,11 +165,11 @@ export const fromNode = (
       if (left + width > clientWidth) {
         clientX = right - width
       } else {
-        clientX = left + gap
+        clientX = left
       }
       
       if (top - height < 0) {
-        clientY = bottom
+        clientY = bottom + gap
       } else {
         clientY = top - height - gap
       }
