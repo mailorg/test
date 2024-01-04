@@ -193,7 +193,9 @@ export const fromNode = (
   console.log(bottom)
   console.log(clientY)
   clientX = Math.min(right, Math.max(0, clientX))
-  clientY = Math.min(bottom, Math.max(0, clientY))
+  if (bottom + gap !== clientY) {
+    clientY = Math.min(bottom, Math.max(0, clientY))
+  }
   console.log(clientY)
 
   return object(null, {
