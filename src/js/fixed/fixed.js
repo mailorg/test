@@ -131,7 +131,6 @@ export const fromNode = (
     case bottomLeft: {
       console.log("bottomLeft")
       if (left + width > clientWidth) {
-        console.log("1")
         clientX = right - width
       } else {
         clientX = left
@@ -140,7 +139,9 @@ export const fromNode = (
       if (bottom + height > clientHeight) {
         console.log("2")
         clientY = top - height - gap
+        console.log(top - height)
       } else {
+        console.log(bottom)
         clientY = bottom + gap
       }
 
