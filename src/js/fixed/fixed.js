@@ -9,7 +9,8 @@ export const bottomRight = object(angle, {})
 
 const init = object(null, {
   clientX: 0,
-  clientY: 0
+  clientY: 0,
+  gap: 2
 })
 
 const coords = (
@@ -128,16 +129,16 @@ export const fromNode = (
 
   switch (angle) {
     case bottomLeft: {
-      // console.log("bottomLeft")
+      console.log("bottomLeft")
       if (left + width > clientWidth) {
-        // console.log("1")
+        console.log("1")
         clientX = right - width
       } else {
         clientX = left
       }
 
       if (bottom + height > clientHeight) {
-        // console.log("2")
+        console.log("2")
         clientY = top - height
       } else {
         clientY = bottom
@@ -146,7 +147,7 @@ export const fromNode = (
       break
     }
     case bottomRight: {
-      // console.log("bottomRight")
+      console.log("bottomRight")
       if (right - width < 0) {
         clientX = left
       } else {
@@ -162,7 +163,7 @@ export const fromNode = (
       break
     }
     case topLeft: {
-      // console.log("topLeft")
+      console.log("topLeft")
       if (left + width > clientWidth) {
         clientX = right - width
       } else {
@@ -178,7 +179,7 @@ export const fromNode = (
       break
     }
     case topRight: {
-      // console.log("topRight")
+      console.log("topRight")
       if (right - width < 0) {
         clientX = left
       } else {
