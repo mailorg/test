@@ -185,9 +185,9 @@ export const fromNode = (
       }
       
       if (top - height < 0) {
-        clientY = bottom
+        clientY = bottom + gap
       } else {
-        clientY = top - height
+        clientY = top - height - gap
       }
       
       break
