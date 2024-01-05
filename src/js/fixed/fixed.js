@@ -11,7 +11,7 @@ const init = object(null, {
   clientX: 0,
   clientY: 0
 })
-const gap = 2
+const gap = 0
 
 const coords = (
   target
