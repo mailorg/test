@@ -224,15 +224,11 @@ export const resize = (
   switch (angle) {
     case bottomLeft :
     case bottomRight : {
-      console.log('bottomLeft')
       if ((clientHeight - height - bottom) > -1) {
-        console.log('1')
         max = height
       } else if (bottom <= clientHeight / 2) {
-        console.log('2')
         max = clientHeight - bottom
       } else {
-        console.log('3')
         max = top - gap
       }
       
@@ -240,22 +236,17 @@ export const resize = (
     }
     case topLeft :
     case topRight : {
-      console.log("topLeft")
       if ((clientHeight - height - top) > -1) {
-        console.log('1')
         max = height
       } else if (top <= clientHeight / 2) {
-        console.log('2')
         max = clientHeight - top
       } else {
-        console.log('3')
         max = bottom - gap
       }
       
       break;
     }
     default: {
-      console.log("default")
       max = Math.max(top, clientHeight - bottom)
     }
   }
