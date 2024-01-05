@@ -37,8 +37,6 @@ const selector = `
   [tabindex]:not([tabindex="-1"]):not([disabled]):not([hidden]):not([aria-hidden="true"])
 `
 
-const dialog = document.querySelector('dialog')
-
 const focusables = (dialog, reversed) => {
   const elements = all(selector, dialog).filter(visible)
   
@@ -150,7 +148,9 @@ const onFocus = object(listener, {
     if (target === dialog) {
       documentElement.focus()
     } else if (relatedTarget === documentElement) {
-      one(selector, dialog)?.focus()
+      const [first] = all(selector, dialog).filter(focusables)
+      
+      first?.focus()
     }
   }
 })
@@ -210,7 +210,6 @@ export const parse = async (
     const { body } = ownerDocument
     
     body.classList.add(utilities.modifiers.overflow.hidden)
-    onFocus.listen(body)
     current = lightbox
   } else {
     menu = lightbox
