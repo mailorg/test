@@ -212,6 +212,7 @@ export const parse = async (
     const { body } = ownerDocument
     
     body.classList.add(utilities.modifiers.overflow.hidden)
+    onFocus.listen(body)
     current = lightbox
   } else {
     menu = lightbox
