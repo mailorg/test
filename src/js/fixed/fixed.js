@@ -11,6 +11,7 @@ const init = object(null, {
   clientX: 0,
   clientY: 0
 })
+const gap = 2
 
 const coords = (
   target
@@ -135,9 +136,9 @@ export const fromNode = (
       }
 
       if (bottom + height > clientHeight) {
-        clientY = top - height
+        clientY = top - height - gap
       } else {
-        clientY = bottom
+        clientY = bottom + gap
       }
 
       break
@@ -150,9 +151,9 @@ export const fromNode = (
       }
       
       if (bottom + height > clientHeight) {
-        clientY = top - height
+        clientY = top - height - gap
       } else {
-        clientY = bottom
+        clientY = bottom + gap
       }
       
       break
@@ -165,9 +166,9 @@ export const fromNode = (
       }
       
       if (top - height < 0) {
-        clientY = bottom
+        clientY = bottom + gap
       } else {
-        clientY = top - height
+        clientY = top - height - gap
       }
       
       break
@@ -180,17 +181,19 @@ export const fromNode = (
       }
       
       if (top - height < 0) {
-        clientY = bottom
+        clientY = bottom + gap
       } else {
-        clientY = top - height
+        clientY = top - height - gap
       }
       
       break
     }
   }
-  
+
   clientX = Math.min(right, Math.max(0, clientX))
-  clientY = Math.min(bottom, Math.max(0, clientY))
+  if (bottom + gap > clientY) {
+    clientY = Math.min(bottom, Math.max(0, clientY))
+  }
 
   return object(null, {
     clientX,
@@ -226,7 +229,7 @@ export const resize = (
       } else if (bottom <= clientHeight / 2) {
         max = clientHeight - bottom
       } else {
-        max = top
+        max = top - gap
       }
       
       break;
@@ -238,7 +241,7 @@ export const resize = (
       } else if (top <= clientHeight / 2) {
         max = clientHeight - top
       } else {
-        max = bottom
+        max = bottom - gap
       }
       
       break;
