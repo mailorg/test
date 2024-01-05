@@ -15,6 +15,7 @@ import one from '@mailobj-browser/front/js/selectors/one.js'
 import { fromEvent, fromNode, move, rect, resize } from '../fixed/fixed.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
+import focusType from '@mailobj-browser/front/js/events/types/focus.js'
 import once from '@mailobj-browser/front/js/events/options/once.js'
 import passive from '@mailobj-browser/front/js/events/options/passive.js'
 import * as utilities from "../styles.js"
@@ -138,7 +139,7 @@ export const onEscape = object(listener, {
 })
 
 const onFocus = object(listener, {
-  type: focus,
+  type: focusType,
   capture,
   task: (body, event) => {
     const dialog = one('dialog', current)
