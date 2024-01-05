@@ -11,7 +11,7 @@ import removed from '../wait/removed.js'
 import submit from '@mailobj-browser/front/js/events/types/submit.js'
 import all from '@mailobj-browser/front/js/selectors/all.js'
 import one from '@mailobj-browser/front/js/selectors/one.js'
-import {fromEvent, fromNode, move, resize} from '../fixed/fixed.js'
+import { fromEvent, fromNode, move, rect, resize } from '../fixed/fixed.js'
 import keyUp from '@mailobj-browser/front/js/events/types/keyUp.js'
 import scroll from '@mailobj-browser/front/js/events/types/scroll.js'
 import once from '@mailobj-browser/front/js/events/options/once.js'
@@ -26,6 +26,32 @@ let menu = null
 let stashed = []
 
 const openers = new WeakMap()
+
+const selector = `
+  a[href]:not([hidden]):not([aria-hidden="true"]),
+  button:not([disabled]):not([hidden]):not([aria-hidden="true"]),
+  input:not([type="hidden"]):not([disabled]):not([hidden]):not([aria-hidden="true"]),
+  textarea:not([disabled]):not([hidden]):not([aria-hidden="true"]),
+  select:not([disabled]):not([hidden]):not([aria-hidden="true"]),
+  details:not([hidden]):not([aria-hidden="true"]),
+  [tabindex]:not([tabindex="-1"]):not([disabled]):not([hidden]):not([aria-hidden="true"])
+`
+
+const dialog = document.querySelector('dialog')
+
+const focusables = (dialog, reversed) => {
+  const elements = all(selector, dialog).filter(visible)
+  
+  return reversed ?
+    elements.toReversed() :
+    elements
+}
+
+const visible = element => {
+  const { height, width } = rect(element)
+  
+  return height && width
+}
 
 const opening = lightbox => {
   const opener = openers.get(lightbox)
@@ -65,6 +91,7 @@ export const close = () => {
     const { body } = ownerDocument
 
     body.classList.remove(utilities.modifiers.overflow.hidden)
+    onFocus.forget(body)
     remove(current)
     current = null
   }
@@ -107,6 +134,23 @@ export const onEscape = object(listener, {
       preventDefault(event)
       stopImmediatePropagation(event)
       close()
+    }
+  }
+})
+
+const onFocus = object(listener, {
+  type: focus,
+  capture,
+  task: (body, event) => {
+    const dialog = one('dialog', current)
+    const { relatedTarget, target } = event
+    const { ownerDocument } = body
+    const { documentElement } = ownerDocument
+    
+    if (target === dialog) {
+      documentElement.focus()
+    } else if (relatedTarget === documentElement) {
+      one(selector, dialog)?.focus()
     }
   }
 })
@@ -166,6 +210,7 @@ export const parse = async (
     const { body } = ownerDocument
     
     body.classList.add(utilities.modifiers.overflow.hidden)
+    onFocus.listen(body)
     current = lightbox
   } else {
     menu = lightbox
